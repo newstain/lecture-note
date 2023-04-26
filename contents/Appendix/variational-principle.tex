@@ -1,0 +1,51 @@
+\chapter{变分原理及其应用}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{变分原理}
+在二维直角坐标中有两个定点$(x_1,\ y_1)$、$(x_2,\ y_2)$，连接这两点的任意一条曲线为$y = y(x)$，其满足边界条件如下：
+\begin{equation}
+    y(x_1) = y_1, \quad y(x_2) = y_2
+\end{equation} 
+现在，我们定义一个新的函数$f$，它是关于$y$和$y^{\prime}$($y$的一阶导数)的函数，形式为$f = f(y, y^{\prime})$，我们对其做关于$x$的定积分，如下
+\begin{equation}
+	I = \int_{x_1}^{x_2} f(y, y^{\prime}) \, dx	\label{eq:variation-simple}
+\end{equation} 
+这样，当$y$变化时，定积分$I$也会随之改变，这样，我们期望能找到某一个$y$，使$I$有极值（极大或极小）。
+
+我们回顾一下以往的极值问题，对于某一个函数$y=y(x)$，我们变化自变量$x$，通过对比不同$x$处的函数值$y$来找到极值；现在我们来看式\eqref{eq:variation-simple}，它的积分变量是$x$，且积分区间固定，我们无法通过改变$x$来改变$I$的值，但是被积函数$f$是关于$y$和$y^{\prime}$的函数，它的形式并不确定，因此，针对式$\eqref{eq:variation-simple}$的变分问题，我们考察的是：取不同形式的$y(x)$，使积分$I$有极值。\CJKunderdot{\textcolor{red}{我们习惯上把$I$称作$y(x)$的泛函}}【也就是函数的函数，$f$是$y$的函数，$I$是$f$的函数；或者$y$是$x$的函数（$x$变化范围，例如从$x=1$变为$x=2$），$I$是$y$的函数（$y$变换形式，如$y=x$变为$y=x^2$）】。由于取的是$I$的极值，因此当我们对$y(x)$做微小的变化是，$I$在一级近似下应该不变（也就是$I$关于$y$的一阶导为0）。$\delta y$是$y$的无穷小变化，习惯上把\CJKunderdot{\textcolor{red}{$\delta y$称为$y$的变分}}。
+
+当我们变化$\delta y$时，$f$的变化为
+\begin{equation}
+	\delta f = \frac{\partial f}{\partial y} \delta y + \frac{\partial f}{\partial y^{\prime}} \delta y^{\prime}
+\end{equation} 
+$I$相应的变化为
+\begin{equation}
+	\delta I = \int_{x_1}^{x_2} \delta f \, dx = \int_{x_1}^{x_2} \left[  \frac{\partial f}{\partial y} \delta y + \frac{\partial f}{\partial y^{\prime}} \delta y^{\prime} \right] \, dx	\label{eq:variation}
+\end{equation} 
+方括号第二项用分部积分方法
+\begin{equation}
+	\begin{aligned}
+		\int_{x_1}^{x_2} \frac{\partial f}{\partial y^{\prime}} \delta y^{\prime}\, dx =&{} \int_{x_1}^{x_2} \frac{\partial f}{\partial y^{\prime}} \left( \frac{d (\delta y)}{dx} \right) \, dx = \int_{x_1}^{x_2} \frac{\partial f}{\partial y^{\prime}} \, d (\delta y)	\\
+		=&{} \left. \left( \frac{\partial f}{\partial y^{\prime}} \delta y \right) \right|_{x_1}^{x_2} - \int_{x_1}^{x_2} \delta y \frac{d}{dx}\left( \frac{\partial f}{\partial y^{\prime}} \right) \, dx
+	\end{aligned}
+\end{equation} 
+考虑到边界是固定的，也就是在$x=x_1$和$x=x_2$出函数值$y(x_1)$和$y(x_2)$保持不变，因此我们有$\delta y(x_1) = \delta y(x_2) = 0$，上式最后一个等号右边第一项为0，即
+\begin{equation}
+	\left[ \frac{\partial f}{\partial y^{\prime}} \delta y \right]_{x_1}^{x_2} = 0
+\end{equation}
+将以上两式带回到式\eqref{eq:variation}，得到
+\begin{equation}
+	\delta I = \int_{x_1}^{x_2} \left[ \frac{\partial f}{\partial y} - \frac{d}{dx}\left( \frac{\partial f}{\partial y^{\prime}} \right) \right] \, dx
+\end{equation} 
+若要求$I$有极值，则$\delta I = 0$，那么有下式成立
+\begin{equation}
+    \frac{\partial f}{\partial y} - \frac{d}{dx}\left( \frac{\partial f}{\partial y^{\prime}} \right) = 0
+\end{equation} 
+上式则是\textcolor{red}{Euler-Lagrange方程}。
+
+\section{变分原理与Schr\"{o}dinger方程}
+我们可以从变分原理出发，推导出Schr\"{o}dinger方程。
+
+体系的Hamilton量为$\hat{H}$，
+
+

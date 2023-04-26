@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    \draw[-Stealth, line width=1pt](0, 0) -- (4, 0);
+    \node at (3.8, -0.2) {$x$};
+    \draw[-Stealth,color=gray](0, 0) -- (0, 4);
+    \node[color=gray] at (-0.2, 3.8) {$y$};
+    \draw (2, 0) coordinate(A) -- (0, 0) coordinate (B)
+         -- (2, 2) coordinate (C)[-Stealth,line width=1pt]
+         pic [draw, "$\theta$", angle eccentricity=1.5] {angle};
+    \fill [color=red] (canvas cs:x=2cm,y=2cm) circle (2pt);
+    \node at (2.2, 2) [right] {$P(r, \theta)$};
+    \node at (0.8, 1) {$r$};
+    \node at (0, 0)   [below left]{$O$};
+\end{tikzpicture}
