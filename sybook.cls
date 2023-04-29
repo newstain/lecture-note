@@ -121,8 +121,8 @@
                 {\hfill $\square$\par}
 
 \newenvironment*{note}
-                {\noindent\S \textcolor{red}{Note:}}%开始部分定义
-                {}%结束部分定义
+                {\par\noindent \textcolor{red}{\S Note:}}%开始部分定义
+                {\par}%结束部分定义
 
 % \newenvironment{proof}{{\noindent 证明}\quad}{\hfill $\square$\par}
 
@@ -225,7 +225,11 @@
 
 % \RequirePackage{transparent}
 \RequirePackage{graphicx, float, subfig}
-\graphicspath{{./figure/}{./figure/math/}}
+\graphicspath{
+              {./figure/}{./figure/math/}{./figure/symbols/}
+              {./figure/electrodynamics}
+             }
+
 
 %%%%%  my newcommand %%%%%%
 \newcommand{\inkfig}[2]{\def\svgwidth{\columnwidth}
@@ -283,3 +287,12 @@
 
 \titlespacing{\chapter}{0pt}{-20pt}{1.3\baselineskip}
 \titlespacing{\paragraph}{0pt}{8.0\lineskip}{\lineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 自定义符号 %%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+% Griffiths书中的 矢量间隔
+\def\rcurs{{\mbox{$\resizebox{.15in}{.08in}{\includegraphics{./figure/symbols/ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.15in}{.08in}{\includegraphics{./figure/symbols/BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
