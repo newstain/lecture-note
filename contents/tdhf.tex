@@ -1,0 +1,1106 @@
+\chapter{The Time-Dependent Hartree-Fock Method(TDHF)}
+
+\begin{introduction}
+  \item A detailed derivation about TDHF
+\end{introduction}
+  $\ast -- $ \textcolor{purple}{\textit{The Nuclear Many-Body Problem}}
+
+  \section{Time-Denpendent Hartree-Fock Method}
+  The processes in nuclei involving large amplititudes(anharmonic vibrations, fission and fussion processes) can be formulated in a time-dependent way.  \textcolor{blue}{*In a microscopic picture, such a deformed state would be represented by a Slater determinant in a deformed potential well, which is certainly no eigenstate of $H$, but a wave packet in the sense of Eq.\eqref{tdhf1}}.
+
+  Let's start with an arbitrary wave packet $\mid\Psi(0)\rangle$, its exact time evolution is:
+  \begin{equation}
+    \Psi(t) = e^{-iHt/\hbar}\mid \Psi(0)\rangle \label{tdhf1} 
+  \end{equation}
+  and its one-body density at time $t$ is given by
+  \begin{equation}
+    \rho_{kl}(t) = \langle \Psi(t) \mid c_l^\dagger c_k \mid \Psi(t) \rangle  \label{tdhf2}
+  \end{equation}
+  In order to obtain equation of motion, we calculate its time derivative:
+  \begin{equation}
+    i\hbar\dot{\rho}_{kl}(t) = \langle \Psi(t) | [c_l^\dagger c_k, H] | \Psi(t) \rangle \label{tdhf3}
+  \end{equation}
+
+  \begin{proof}
+    we use the Sch{\"o}dinger equation, and we calculate it in Sch{\"o}dinger picture that the operator don't evaluate with time.
+    \begin{equation}
+      \begin{aligned}
+        \dot{\rho}_{kl}(t) =& \frac{d}{dt}\rho_{kl}(t) = \frac{d}{dt}\left[\langle \Psi(t) \mid c_l^\dagger c_k \mid \Psi(t) \rangle\right]\\
+                                =& \left( \frac{d}{dt}(\langle \Psi(t) \mid) c_l^\dagger c_k \mid \Psi(t) \rangle + \langle \Psi(t) \mid \frac{d}{dt}(c_l^\dagger c_k) \mid \Psi(t) \rangle + \langle \Psi(t) \mid c_l^\dagger c_k \frac{d}{dt}(\mid \Psi(t) \rangle)\right)\\
+                                =& -\frac{1}{i\hbar}\langle \Psi(t) \mid Hc_l^\dagger c_k \mid \Psi(t) \rangle + \frac{1}{i\hbar}\langle \Psi(t) \mid c_l^\dagger c_kH \mid \Psi(t) \rangle\\
+                                =&\frac{1}{i\hbar}\langle \Psi(t) \mid [c_l^\dagger c_k,H] \mid \Psi(t) \rangle \label{tdhf4}
+      \end{aligned}
+    \end{equation}
+  \end{proof}
+
+  In HF theory, the Hamiltonian is
+  \begin{equation}
+    H = \sum_{pr}t_{pr} c_p^\dagger c_r + \frac{1}{4}\sum_{prsj}\bar{v}_{prsj}c_p^\dagger c_r^\dagger c_j c_s \label{tdhf5}
+  \end{equation}
+  according the equation above, the two-body Hamiltonian can be written as
+  \begin{equation}
+    i\hbar\dot{\rho}_{kl} - \sum_{p}(t_{kp}\rho_{pl}-\rho_{kp}t_{pl}) = \frac{1}{2}\sum_{prs} \left(\bar{v}_{kprs}\rho_{rslp}^{(2)} - \bar{v}_{rslp}\rho_{kprs}^{2}\right) \label{tdhf6}
+  \end{equation}
+  where we have introduced the two-body density
+  \begin{equation}
+    \rho_{klpq}^{(2)}(t) = \langle \Psi(t) | c_p^\dagger c_q^\dagger c_l c_k | \Psi(t) \rangle  \label{tdhf7}
+  \end{equation}
+  \begin{proof}
+    According to Eq.\eqref{tdhf3} and Eq.\eqref{tdhf3}  the firs term of l.h.s in Eq.\eqref{tdhf5} equals to
+    \begin{equation}
+      \begin{aligned}
+        i\hbar\dot{\rho}_{kl}(t) =& \langle \Psi(t) | [c_l^\dagger c_k, H] | \Psi(t) \rangle \\
+                                 =& \left\langle \Psi(t) \left| \sum_{pr}t_{pr}[c_l^\dagger c_k, c_p^\dagger c_r] + \frac{1}{4}\sum_{prsj}\bar{v}_{prsj}[c_l^\dagger c_k, c_p^\dagger c_r^\dagger c_jc_s] \right| \Psi(t) \right\rangle  \label{tdhf8}
+      \end{aligned}
+    \end{equation}
+
+    $\bullet$ (1)We first calculate the term $\sum\limits_{pr}t_{pr}[c_l^\dagger c_k, c_p^\dagger c_r]$, note that we calculate the equation under a Fermion system, so we have the equation:
+    \begin{equation}
+      \{a_\alpha, a_\beta^\dagger\} = \delta_{\alpha\beta}, \quad  \{a_\alpha^\dagger, a_\beta^\dagger\} = \{a_\alpha, a_\beta\} = 0 \label{tdhf9}
+    \end{equation}
+    and in addition, for commutation relations we have the  equation
+    \begin{equation}
+      [\hat{A}\hat{B}, \hat{C}] = \hat{A}\{\hat{B}, \hat{C}\} - \{\hat{A}, \hat{C}\}\hat{B} \label{tdhf10}
+    \end{equation}
+    therefore, we have
+    \begin{equation}
+      \begin{aligned}
+      \sum_{pr}t_{pr}\left([c_l^\dagger c_k, c_p^\dagger c_r]\right) =& \sum_{pr}t_{pr}\left(c_p^\dagger [c_l^\dagger c_k,c_r] + [c_l^\dagger c_k,c_p^\dagger ]c_r\right)\\
+                        =& \sum_{pr}t_{pr}\left(c_p^\dagger \left( c_l^\dagger \cancel{\{{c_k, c_r}\}} - \{{c_l^\dagger, c_r}\}c_k \right) + \left( c_l^\dagger\{c_k, c_p^\dagger\} - \cancel{\{c_l^\dagger, c_p^\dagger\}}c_k \right)c_r\right)\\
+                        =& \sum_{pr}t_{pr}\left(-c_p^\dagger \{{c_l^\dagger, c_r}c_k\} + c_l^\dagger\{c_k, c_p^\dagger\}c_r\right)\\
+                        =& \sum_{pr}t_{pr}\left(-\delta_{lr}c_p^\dagger c_k + \delta_{kp}c_l^\dagger c_r\right) \label{tdhf11}
+      \end{aligned}
+    \end{equation}
+    consider four cases
+    \begin{itemize}
+      \item $k\neq p, l \neq r$ \[\sum_{pr}t_{pr}\left(-\delta_{lr}c_p^\dagger c_k + \delta_{kp}c_l^\dagger c_r\right)=0\]
+      \item $k\neq p, l = r$  \[\sum_{pr}t_{pr}\left(-\delta_{lr}c_p^\dagger c_k + \delta_{kp}c_l^\dagger c_r\right)=\sum_{pr}-t_{pl}c_p^\dagger c_k\]
+      \item $k = p, l \neq r$ \[\sum_{pr}t_{pr}\left(-\delta_{lr}c_p^\dagger c_k + \delta_{kp}c_l^\dagger c_r\right)=\sum_{r}-t_{kr}c_l^\dagger c_r\]
+            use the dummy index $p$ replace $r$ and has
+            \[\sum_{pr}t_{pr}\left(-\delta_{lr}c_p^\dagger c_k + \delta_{kp}c_l^\dagger c_r\right)=\sum_{p}-t_{kp}c_l^\dagger c_p\]
+      \item $k = p, l \neq r$ \[ \sum_{pr}t_{pr}\left(-\delta_{lr}c_p^\dagger c_k + \delta_{kp}c_l^\dagger c_r\right) = c_l^\dagger c_l - c_p^\dagger c_p\]
+    \end{itemize}
+    according to the case above, we finally has the form
+    \begin{equation}
+      \sum_{pr}t_{pr}\left([c_l^\dagger c_k, c_p^\dagger c_r]\right) = \sum_{p}(t_{kp}c_l^\dagger c_p-t_{pl}c_p^\dagger c_k) \label{tdhf12}
+    \end{equation}
+
+    $\bullet$ (2)Then we calculate the formulation $\sum\limits_{prsj} \bar{v}_{p r s j}\left[c_{l}^{\dagger} c_{k}, c_{p}^{\dagger} c_{r}^{\dagger} c_{j} c_{s}\right]$, we have
+    \begin{equation}
+      \begin{aligned}
+        \left[c_{l}^{\dagger} c_{k}, c_{p}^{\dagger} c_{r}^{\dagger} c_{j} c_{s}\right] =& c_{p}^{\dagger} c_{r}^{\dagger} c_{j}[c_{l}^{\dagger} c_{k}, c_{s}] + [c_{l}^{\dagger} c_{k},c_{p}^{\dagger} c_{r}^{\dagger} c_{j} ]c_{s}\\
+        =&c_{p}^{\dagger} c_{r}^{\dagger} c_{j}[c_{l}^{\dagger} c_{k}, c_{s}]+ (c_{p}^{\dagger} c_{r}^{\dagger}[c_{l}^{\dagger} c_{k},c_{j} ]+[c_{l}^{\dagger} c_{k},c_{p}^{\dagger} c_{r}^{\dagger}  ]c_{j})c_{s}\\
+        =&c_{p}^{\dagger} c_{r}^{\dagger} c_{j}[c_{l}^{\dagger} c_{k}, c_{s}]+ c_{p}^{\dagger} c_{r}^{\dagger}[c_{l}^{\dagger} c_{k},c_{j} ]c_{s}+[c_{l}^{\dagger} c_{k},c_{p}^{\dagger} c_{r}^{\dagger}]c_{j}c_{s}\\
+        =&c_{p}^{\dagger} c_{r}^{\dagger} c_{j}[c_{l}^{\dagger} c_{k}, c_{s}]+ c_{p}^{\dagger} c_{r}^{\dagger}[c_{l}^{\dagger} c_{k},c_{j} ]c_{s}\\
+         &+(c_{p}^{\dagger}[ c_{l}^{\dagger} c_{k}, c_{r}^{\dagger} ] + [ c_{l}^{\dagger} c_{k},c_{p}^{\dagger} ]c_{r}^{\dagger})c_{j}c_{s}\\
+        =&c_{p}^{\dagger} c_{r}^{\dagger} c_{j}[c_{l}^{\dagger} c_{k}, c_{s}]+ c_{p}^{\dagger} c_{r}^{\dagger}[c_{l}^{\dagger} c_{k},c_{j} ]c_{s}\\
+         &+c_{p}^{\dagger}[ c_{l}^{\dagger} c_{k}, c_{r}^{\dagger} ]c_j c_{s} + [ c_{l}^{\dagger} c_{k},c_{p}^{\dagger} ]c_{r}^{\dagger})c_{j}c_{s}\\
+        =&c_{p}^{\dagger} c_{r}^{\dagger} c_{j}(c_{l}^{\dagger} \cancel{\{c_{k}, c_{s}]\}} - \{c_{l}^{\dagger}, c_{s}]\}c_{k})+ c_{p}^{\dagger} c_{r}^{\dagger}(c_{l}^{\dagger} \cancel{\{c_{k}, c_{j}]\}} - \{c_{l}^{\dagger}, c_{j}]\}c_{k})c_{s}\\
+        &+c_{p}^{\dagger}(c_{l}^{\dagger} \cancel{\{c_{k}, c_{r}]\}} - \{c_{l}^{\dagger}, c_{r}]\}c_{k})c_{j}c_{s} + (c_{l}^{\dagger}\{c_{k}, c_{p}^\dagger]\} - \cancel{\{c_{l}^{\dagger}, c_{p}^\dagger\}}c_{k})c_{r}^{\dagger}c_{j}c_{s}\\
+        =&-\delta_{ls}c_p^\dagger c_r^\dagger c_j c_k -\delta_{lj}c_p^\dagger c_r^\dagger c_k c_s + \delta_{kr}c_p^\dagger c_l^\dagger c_j c_s + \delta_{kp}c_l^\dagger c_r^\dagger c_j c_s \label{tdhf13}
+      \end{aligned}
+    \end{equation}
+    so we get
+    \begin{equation}
+      \begin{aligned}
+         & \sum_{prsj}\bar{v}_{prsj}[c_{l}^{\dagger} c_{k}, c_{p}^{\dagger} c_{r}^{\dagger} c_{j} c_{s}]\\
+        =& \sum_{prsj}\bar{v}_{prsj}(-\delta_{ls}c_p^\dagger c_r^\dagger c_j c_k -\delta_{lj}c_p^\dagger c_r^\dagger c_k c_s + \delta_{kr}c_p^\dagger c_l^\dagger c_j c_s + \delta_{kp}c_l^\dagger c_r^\dagger c_j c_s)\\
+        =& \sum_{prsj}\bar{v}_{prsj}(\delta_{kp}c_l^\dagger c_r^\dagger c_j c_s + \delta_{kr}c_p^\dagger c_l^\dagger c_j c_s - \delta_{ls}c_p^\dagger c_r^\dagger c_j c_k -\delta_{lj}c_p^\dagger c_r^\dagger c_k c_s)\\
+        =& \sum_{rsj}\bar{v}_{krsj}c_l^\dagger c_r^\dagger c_j c_s + \sum_{psj}\bar{v}_{pksj}c_p^\dagger c_l^\dagger c_j c_s - \sum_{prj}\bar{v}_{prlj}c_p^\dagger c_r^\dagger c_j c_k - \sum_{prs}\bar{v}_{prsl}c_p^\dagger c_r^\dagger c_k c_s\\
+        =& \sum_{prs}\bar{v}_{kprs}c_l^\dagger c_p^\dagger c_s c_r + \sum_{psr}\bar{v}_{pksr}c_p^\dagger c_l^\dagger c_r c_s - \sum_{prs}\bar{v}_{rslp}c_r^\dagger c_s^\dagger c_p c_k - \sum_{prs}\bar{v}_{rspl}c_r^\dagger c_s^\dagger c_k c_p\\ 
+        =& \sum_{prs}\bar{v}_{kprs}c_l^\dagger c_p^\dagger c_s c_r + \sum_{prs}\bar{v}_{kprs}c_l^\dagger c_p^\dagger c_s c_r - \sum_{prs}\bar{v}_{rslp}c_r^\dagger c_s^\dagger c_p c_k - \sum_{prs}\bar{v}_{rslp}c_r^\dagger c_s^\dagger c_p c_k\\
+        =& 2\sum_{prs}\bar{v}_{kprs}c_l^\dagger c_p^\dagger c_s c_r - 2\sum_{prs}\bar{v}_{rslp}c_r^\dagger c_s^\dagger c_p c_k\\ \label{tdhf14}
+      \end{aligned}
+    \end{equation}
+    in the fifth equation we use the property
+    \begin{equation}
+      \bar{v}_{prsl} = -\bar{v}_{prls} = -\bar{v}_{rpsl} = \bar{v}_{rpsl} \label{tdhf15}
+    \end{equation}
+    Insert Eq.\eqref{tdhf12}, \eqref{tdhf14} and \eqref{tdhf8} into l.h.s of Eq.\eqref{tdhf6}, and then get the r.h.s.
+  \end{proof}
+
+  The l.h.s of Eq.\eqref{tdhf6} describes the free motion of the system, it contains only the kinetic energy. And the r.h.s of Eq.\eqref{tdhf6} contains the interaction between the particles. This interaction can be divided into two parts --- a self-consistent one-body field, which averages over all particles, and individual collisions between two nucleons which cannot be taken into account by the mean field. The latter causes the two-body correlations.
+
+  To achieve this decomposition we define a correlation function $g^{(2)}$ by extracting the uncorrelated pairs of $\rho^{(2)}$,
+  \begin{equation}
+    \rho_{klpq}^{(2)}(t) = \rho_{kp}\rho_{lq} - \rho_{kq}\rho_{lp} + g_{rslp}^{(2)} \label{tdhf16}
+  \end{equation}
+  and gain, instead of Eq.\eqref{tdhf6}
+  \begin{equation}
+    i\hbar\dot{\rho}_{kl} - [t+\Gamma, \rho]_{kl} = \frac{1}{2}\sum_{prs} \left(\bar{v}_{kprs}g_{rslp}^{(2)} - \bar{v}_{rslp}g_{kprs}^{(2)}\right) \label{tdhf17}
+  \end{equation}
+  with the density dependent HF potentia
+  \begin{equation}
+    \Gamma_{kl} = \sum_{pq}\bar{v}_{kqlp}\rho_{pq}  \label{tdhf18}
+  \end{equation}
+
+  \begin{note}
+    The self-consistent field $\Gamma$ is time dependent. And for an element of the product of two matrices $t$ and $\rho$ can be written as
+    \begin{equation}
+      [t\rho]_{kl} = \sum_{p}t_{kp}\rho_{pl}  \label{tdhf19}
+    \end{equation}
+    We used Wick's theorem in Eq.\eqref{tdhf16}, and the term $g_{rslp}^{(2)}$ contains the residual interaction force( just like pairing force).
+  \end{note}
+
+  Particles in this system can now undergo two kinds of interactions --- collisons with the moving walls of the self-consistent field $\Gamma$ or collisions with the other particles. Both types provide internal excitations of the system. We expect that two-body scattering plays no essential role in the dynamical case, as long as the excitation energies per particle are less than the Fermi energy and $g^{(2)}$ may be neglected. 
+  
+  For $g^{(2)}=0$ we therefore end up with the \textit{TDHF equation}
+  \begin{equation}
+    i\hbar\dot{\rho} = [h,\rho] \label{tdhf20}
+  \end{equation} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Adiabatic Time-Dependent Hartree-Fock Method}
+
+  The theory involves \textcolor{red}{two approximations:} \newline
+  \textcolor{red}{1}.The \textit{TDHF assumption}, where the wave functions stay a Slater determinant at all times;\newline
+  \textcolor{red}{2}.The \textit{adabatic approach}, where we must include the velocities only to second order.
+
+  In ATDHF, the motion of collective system is much slower than the motion of nucleon.
+  \vspace{8pt}
+
+  TIn TDHF theory everything is determined by the single-particle density $\rho(t)$, which is not time-reversal invariant. Since we want to have time-reversal invariant coordinates, Baranger and Veneroni proposed the following decomposition of the density $\rho(t)$
+  \begin{equation}
+    \rho(t) = e^{(i/\hbar)\chi(t)}\rho_0(t)e^{-(i/\hbar)\chi(t)} \label{tdhf21}
+  \end{equation}
+  where $\rho_0$ and $\chi$ are both \textcolor{blue}{Hermitian, time-even matrices}. And $\rho_0$ satisfies
+  \begin{equation}
+    \rho_0^2 = \rho_0, \quad {\rm Tr}\rho_0 = N \label{tdhf22}
+  \end{equation}
+  it corresponds to an $N$-dimensional Slater determinant $|\Psi_0\rangle$. In the following the $\rho_0$ shall be the \textcolor{blue}{coordinate} and $\chi$ shall be the \textcolor{blue}{momentum}.
+
+  Eq.\eqref{tdhf21} is unique under the following conditions:
+  \begin{itemize}
+    \item [(i)] $\chi$ has only eigenvalues $\chi_\mu$ with
+                \begin{equation}
+                  -\frac{\pi}{4}\hbar \leqslant \chi_\mu < \frac{\pi}{4}\hbar \label{tdhf23}
+                \end{equation}
+    \item[(ii)] The $pp$ and $hh$ matrix elements of $\chi$ vanish in the basis in which $\rho_0$ is diagonal, that is 
+                \begin{equation}
+                  \chi^{hh}=\rho_0\chi\rho_0=0, \quad \chi^{pp} = \sigma_0\chi\sigma_0=0  \label{tdhf24}
+                \end{equation}
+  \end{itemize}
+  \begin{note}
+    $\rho_0$ is the projector onto hole state and $\sigma_0=1-\rho_0$ is the projector onto particle states in the basis in which $\rho_0$ is diagonal.
+  \end{note}
+
+  The \textit{adiabatic approximation} consists in assuming that the density $\rho(t)$ of the system is at all times close to the density $\rho_0(t)$, and the density $\rho_0(t)$ don't evaluated with time, so it means that \textcolor{blue}{we have a nearly static density at all times}. In other words, \textcolor{blue}{it means that the matrix $\chi$ which introduce time-odd components is small.}
+
+  Expand $\rho(t)$ up to second order in $\chi$ and get
+  \begin{equation}
+    \rho=e^{(i/\hbar)\chi(t)}\rho_{0}e^{-(i/\hbar)\chi(t)} \simeq \rho_0 + \rho_1 + \rho_2  \label{tdhf25}
+  \end{equation}
+  with 
+  \begin{equation}
+    \rho_1 = \frac{i}{\hbar}[\chi, \rho_0], \quad \chi=-i\hbar[\rho_1,\rho_0] \label{tdhf26}
+  \end{equation}
+  \begin{equation}
+    \rho_2=\frac{-1}{2\hbar^2} [ \chi,\left[ \chi,\rho_0] \right] = \frac{1}{\hbar^2}\left( \chi\rho_0\chi - \frac{1}{2}(\chi^2\rho_0+\rho_0\chi^2) \right) \label{tdhf27}
+  \end{equation}
+  \begin{proof}
+    Implement the Taylor Expantion of $\rho$ and only preserve to second order term
+    \begin{equation}
+      \begin{aligned}
+        \rho =& e^{(i/\hbar)\chi(t)}\rho_{0}e^{-(i/\hbar)\chi(t)}\\                                       \label{tdhf28}  
+             \simeq & \left[ 1 + \frac{i\chi}{\hbar} - \frac{1}{2}\left(\frac{\chi}{\hbar}\right)^2 \right] \rho_0 \left[ 1 - \frac{i\chi}{\hbar} - \frac{1}{2}\left(\frac{\chi}{\hbar}\right)^2 \right] \\
+             =& \left[1+\frac{i}{\hbar}\chi - \frac{1}{2\hbar}^2\chi^2 \right] \left[ \rho_0 - \frac{i}{\hbar}\rho_0\chi - \frac{1}{2\hbar}^2\rho_0\chi^2 \right] \\
+             =& \rho_0 - \frac{i}{\hbar}\rho_0\chi \ \frac{1}{2\hbar^2}\rho_0\chi^2 + \frac{i}{\hbar}\chi\rho_0 + \frac{1}{\hbar^2}\chi\rho_0\chi - \cancel{\frac{i}{\hbar^3}\chi\rho_0\chi^2}\\
+              &  - \frac{1}{2\hbar^2}\chi^2\rho_0 + \cancel{\frac{i}{2\hbar^3}\chi^2\rho_0\chi} + \cancel{\frac{1}{4\hbar^4}\chi^2\rho_0\chi^2}\\
+             =& \rho_0 + \frac{i}{\hbar}(\chi\rho_0 - \rho_0\chi) + \frac{1}{\hbar^2}[\chi\rho_0\chi - \frac{1}{2}(\chi^2\rho_0 + \rho_0\chi^2)] \\
+             =& \rho_0 + \frac{i}{\hbar}[\chi, \rho_0] + \frac{1}{2\hbar^2}[\chi\rho_0\chi - \chi^2\rho_0 + \chi\rho_0\chi - \rho_0\chi^2]\\
+             =& \rho_0 + \frac{i}{\hbar}[\chi, \rho_0] + \frac{1}{2\hbar^2}[\chi(\rho_0\chi - \chi\rho_0) + (\chi\rho_0 - \rho_0\chi)\chi]\\
+             =& \rho_0 + \frac{i}{\hbar}[\chi, \rho_0] + \frac{1}{2\hbar^2}[\chi(\rho_0\chi - \chi\rho_0) - (\rho_0\chi - \chi\rho_0)\chi]\\
+             =& \rho_0 + \frac{i}{\hbar}[\chi, \rho_0] + \frac{1}{2\hbar^2}[\chi, [\rho_0,\chi]]\\
+             =& \rho_0 + \frac{i}{\hbar}[\chi, \rho_0] - \frac{1}{2\hbar^2}[\chi, [\chi,\rho_0]]\\          
+             =& \rho_0 + \rho_1 + \rho_2\\                                                                      
+      \end{aligned}
+    \end{equation}
+    where we define
+    \begin{equation}
+      \rho_1 = \frac{i}{\hbar}[\chi, \rho_0], \quad \rho_2=\frac{-1}{2\hbar^2} [ \chi,\left[ \chi,\rho_0] \right] \label{tdhf29}
+    \end{equation}
+    According to Eq.\eqref{tdhf24}, we have
+    \begin{equation}
+      \begin{aligned}
+        \sigma_0\chi\sigma_0 =& (1-\rho_0)\chi(1-\rho_0) = (1-\rho_0)(\chi-\chi\rho_0)\\      \label{tdhf30}
+                             =& \chi - \chi\rho_0 - \rho_0\chi + \cancel{\rho_0\chi\rho_0}\\
+                             =& \chi - \chi\rho_0 - \rho_0\chi \\
+                             =& 0                                       
+      \end{aligned}
+    \end{equation}
+    so, we get
+    \begin{equation}
+      \chi = \chi\rho_0 + \rho_0\chi    \label{tdhf31}
+    \end{equation}
+    and according to Eq.\eqref{tdhf29}, we have
+    \begin{equation}
+      i\hbar\rho_1 = \rho_0\chi - \chi\rho_0    \label{tdhf32}
+    \end{equation}
+    therefore, we get
+    \begin{subequations}
+      \begin{align}
+        i\hbar\rho_1\rho_0 =& \rho_0\chi\rho_0 - \chi\rho_0^2 =  \rho_0\chi\rho_0 - \chi\rho_0 = - \chi\rho_0     \label{tdhf33a}\\
+        i\hbar\rho_0\rho_1 =& \rho_0^2\chi - \rho_0\chi\rho_0 =  \rho_0\chi - \rho_0\chi\rho_0 = \rho_0\chi       \label{tdhf33b}
+      \end{align}
+    \end{subequations}
+    Eq.\eqref{tdhf33b} - Eq.\eqref{tdhf33a}, and get
+    \begin{equation}
+      \begin{aligned}
+        i\hbar(\rho_0\rho_1 - \rho_1\rho_0) = -i\hbar(\rho_1\rho_0 - \rho_0\rho_1) = -i\hbar[\rho_1, \rho_0] = \rho_0\chi + \chi\rho_0 = \chi   \label{tdhf34}
+      \end{aligned}
+    \end{equation}
+  \end{proof}
+  
+  We can proove that $\rho_1$ has only $ph-$ and $hp-$ and that $\rho_2$ has only $pp-$ and $hh-$matrix elements:
+  \begin{align}
+    \label{tdhf35} \rho_1 =& \frac{i}{\hbar}(\sigma_0\chi\rho_0-\rho_0\chi\sigma_0)\\        
+    \label{tdhf36} \rho_2 =& \sigma_0\rho_1^2\sigma_0 - \rho_0\rho_1^2\rho_0                 
+  \end{align}
+  \begin{note}
+    In order to proove these two equation, we need to define the following rules for calculating with single-particle densities $\rho$ of Slater determinans$(\rho^2=\rho, \sigma=1-\rho)$\textcolor{purple}{(see D.31, D.32, Appedinx D, The Nuclear Many-Body Problem)}.
+
+    An arbitrary matrix $A$ has the folloing $pp$, $ph$, $hp$ and $hh$ parts in a basis in which $\rho$ is diagonal:
+    \begin{equation}
+      A^{pp}:= \sigma A \sigma; \quad  A^{hh}:= \rho A \rho; \quad A^{ph}=\sigma A \rho; \quad A^{hp}=\rho A \sigma \label{tdhf37}
+    \end{equation}
+    The three statements
+    \begin{equation}
+      A = A\rho + \rho A \Leftrightarrow A = A\sigma + \sigma A \Leftrightarrow A^{pp}=A^{hh}=0 \label{tdhf38}
+    \end{equation}
+    are equivalent. 
+    
+    If two matrices $A$ and $B$ obey the relation $B=[A,\rho]$, it follows:
+    \begin{equation}
+      A^{pp}=A^{hh}=0; \quad B^{ph} = A^{hp}; \quad B^{hp}=-A^{hp}   \label{tdhf39}
+    \end{equation}
+  \end{note}
+  \begin{proof}
+    For Eq.\eqref{tdhf35}, we have
+    \begin{equation}
+      \begin{aligned} 
+      \rho_1 =& \frac{i}{\hbar}[\chi,\rho_0] = \frac{i}{\hbar}(\chi\rho_0 - \rho_0\chi) \\          \label{tdhf40}
+             =& \frac{i}{\hbar}(\chi\rho_o - \rho_0\chi\rho_0 + \rho_0\chi\rho_0 - \rho_0\chi)  \\
+             =& \frac{i}{\hbar}[(1-\rho_0)\chi\rho_0 + \rho_0\chi(\rho_0 - 1)]  \\
+             =& \frac{i}{\hbar}(\sigma_0\chi\rho_0 - \rho_0\chi\sigma_0)
+      \end{aligned}
+    \end{equation}
+    For Eq.\eqref{tdhf36}, fist, we have
+    \begin{equation}
+      \begin{aligned}
+        \rho_1^2 =& (\frac{i}{\hbar})^2(\chi\rho_0-\rho_0\chi)(\chi\rho_0-\rho_0\chi)\\               \label{tdhf41}
+                 =& -\frac{1}{\hbar^2}(\chi\rho_0\chi\rho_0 - \chi\rho_0\rho_0\chi - \rho_0\chi\chi\rho_0 + \rho_0\chi\rho_0\chi) \\
+                 =& -\frac{1}{\hbar^2}[\cancel{\chi(\rho_0\chi\rho_0)} - \chi(\rho_0\rho_0)\chi - \rho_0(\chi\chi)\rho_0 + \cancel{(\rho_0\chi\rho_0)\chi}]\\
+                 =& \frac{1}{\hbar^2}(\rho_0\chi^2\rho_0 + \chi\rho_0\chi)
+      \end{aligned}
+    \end{equation}
+    we find that
+    \begin{equation}
+        \rho_0\rho_1^2 = \frac{1}{\hbar^2}[\rho_0\chi^2\rho_0 + \cancel{(\rho_0\chi\rho_0)\chi}]= \frac{1}{\hbar^2}\rho_0\chi^2\rho_0 = \frac{1}{\hbar^2}[\rho_0\chi^2\rho_0 + \cancel{\chi(\rho_0\chi\rho_0)}] = \rho_1^2\rho_0  \label{tdhf42}
+    \end{equation}
+    also, we have
+    \begin{equation}
+      \begin{aligned}
+        \chi^2 =& (-i\hbar)^2(\rho_1\rho_0 - \rho_0\rho_1)(\rho_1\rho_0 - \rho_0\rho_1)\\     \label{tdhf43}
+               =& -\hbar^2(\rho_1\rho_0\rho_1\rho_0 - \rho_1\rho_0\rho_0\rho_1 -\rho_0\rho_1\rho_1\rho_0 + \rho_0\rho_1\rho_0\rho_1)\\
+               =& -\hbar^2(\rho_1\rho_0\rho_1\rho_0 - \rho_1\rho_0\rho_1 -\rho_0\rho_1^2\rho_0 + \rho_0\rho_1\rho_0\rho_1)
+      \end{aligned}
+    \end{equation}
+    in the same way, we can find that
+    \begin{equation}
+      \begin{aligned}
+              \rho_0\chi^2 =& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_1\rho_0\rho_1 -\rho_0\rho_0\rho_1^2\rho_0 + \rho_0\rho_0\rho_1\rho_0\rho_1)\\       \label{tdhf44}
+                           =& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_1\rho_0\rho_1 -\rho_0\rho_0\rho_1^2\rho_0 + \rho_0\rho_1\rho_0\rho_1)\\
+                           =& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0 -\rho_0\rho_0\rho_1^2\rho_0)\\
+              \chi^2\rho_0 =& -\hbar^2(\rho_1\rho_0\rho_1\rho_0\rho_0 - \rho_1\rho_0\rho_1\rho_0 -\rho_0\rho_1^2\rho_0\rho_0 + \rho_0\rho_1\rho_0\rho_1\rho_0)\\
+                           =& -\hbar^2(\rho_1\rho_0\rho_1\rho_0 - \rho_1\rho_0\rho_1\rho_0 -\rho_0\rho_1^2\rho_0 + \rho_0\rho_1\rho_0\rho_1\rho_0)    \\
+                           =& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_1^2\rho_0)    \\
+         \rho_0\chi^2\rho_0=& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0\rho_0 - \rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_0\rho_1^2\rho_0\rho_0 + \rho_0\rho_0\rho_1\rho_0\rho_1\rho_0)\\
+                           =& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_1^2\rho_0 + \rho_0\rho_1\rho_0\rho_1\rho_0)\\
+                           =& -\hbar^2(\rho_0\rho_1\rho_0\rho_1\rho_0 - \rho_0\rho_1^2\rho_0)\\
+      \end{aligned}
+    \end{equation}
+    so, we have the equations
+    \begin{equation}
+      \rho_0\chi^2 = \chi^2\rho_0 = \rho_0\chi^2\rho_0     \label{tdhf45}
+    \end{equation}
+    therefore, according to Eq.\eqref{tdhf41}, Eq.\eqref{tdhf42} and Eq.\eqref{tdhf45} and get
+    \begin{equation}
+      \begin{aligned}
+      \rho_2 =& \frac{1}{\hbar^2}\left( \chi\rho_0\chi - \frac{1}{2}(\chi^2\rho_0+\rho_0\chi^2) \right) = \frac{1}{\hbar^2}\left( \chi\rho_0\chi - \frac{1}{2}(\chi^2\rho_0+\rho_0\chi^2) \right) \\ \label{tdhf46}
+             =& \frac{1}{\hbar^2}\left( \chi\rho_0\chi + \rho_0\chi^2\rho_0 - \rho_0\chi^2\rho_0 - \frac{1}{2}(\chi^2\rho_0+\rho_0\chi^2) \right) \\ 
+             =& \frac{1}{\hbar^2}\left( \chi\rho_0\chi + \rho_0\chi^2\rho_0\right) - \frac{1}{\hbar^2}\left( \rho_0\chi^2\rho_0 + \frac{1}{2}(\chi^2\rho_0+\rho_0\chi^2) \right) \\
+             =& \frac{1}{\hbar^2}\left( \chi\rho_0\chi + \rho_0\chi^2\rho_0\right) - \frac{1}{\hbar^2}\left( \rho_0\chi^2\rho_0 + \frac{1}{2}(\rho_0\chi^2\rho_0+\rho_0\chi^2\rho_0) \right) \\
+             =& \rho_1^2 - 2\frac{1}{\hbar^2}(\rho_0\chi^2\rho_0) \\
+             =& \rho_1^2 - (\rho_0\rho_1^2 + \rho_1^2\rho_0) \\
+             =& \rho_1^2 - \rho_0\rho_1^2 - \rho_1^2\rho_0 \\
+             =& \underbrace{\rho_1^2 - \rho_0\rho_1^2 - \rho_1^2\rho_0 +\rho_0\rho_1^2\rho_0} - \rho_0\rho_1^2\rho_0 \\
+             =& (1-\rho_0)(\rho_1^2-\rho_1^2\rho_0) - \rho_0\rho_1^2\rho_0 \\
+             =& (1-\rho_0)\rho_1^2(1-\rho_0) - \rho_0\rho_1^2\rho_0\\
+             =& \sigma_0\rho_1^2\sigma_0 - \rho_0\rho_1^2\rho_0
+      \end{aligned}
+    \end{equation}
+  \end{proof}
+
+  In the same way we can expand
+  \begin{equation}
+    h(\rho) = t + {\rm Tr}(\bar{v}\rho) = h_0 + \Gamma_1 + \Gamma_2 \label{tdhf47}
+  \end{equation}
+  with
+  \begin{equation}
+    h_0 = t + {\rm Tr}(\bar{v}\rho_0), \quad \Gamma_1 = {\rm Tr}_1(\bar{v}\rho_1), \quad \Gamma_2 = {\rm Tr}_1(\bar{v}\rho_2)    \label{48}
+  \end{equation}
+  \begin{note}
+    We have the definition(\textcolor{blue}{see E.19, Appendix D, The Nuclear Many-body Problem}):
+    \begin{equation}
+      \Gamma_{lm} = \sum_{pq}\bar{v}_{lqmp}\rho_{pq}:= {\rm Tr}_1(\bar{v}\rho)  \label{tdhf49}
+    \end{equation}
+  \end{note}
+
+  if we insert the Eq.\eqref{tdhf25} and Eq.\eqref{tdhf47} into the Eq.\eqref{tdhf20}, we can decompose it according to its behavior under time reversal an get the two \textit{ATDHF eqautions}:
+  \begin{subequations}
+    \begin{align}
+      \label{tdhf50a} {\rm (I)} \quad i\hbar\dot{\rho}_0 =& [h_0, \rho_1] + [\Gamma_1, \rho_0]  \\
+      \label{tdhf50b} {\rm (II)} \quad i\hbar\dot{\rho}_1 =& [h_0, \rho_0] + [\Gamma_1, \rho_1] + [\Gamma_2, \rho_0]
+    \end{align}
+  \end{subequations}
+  \begin{proof}
+    Insert the Eq.\eqref{tdhf25} and Eq.\eqref{tdhf47} into the Eq.\eqref{tdhf20} and neglect the term which is higher than or equals to second order, we can get
+    \begin{equation}
+      \begin{aligned}
+        i\hbar\dot{\rho} =& i\hbar(\dot{\rho}_0 + \dot{\rho}_1 + \dot{\rho}_2)  \\
+                         =& [h, \rho] \\
+                         =& [h_0 + \Gamma_1 + \Gamma_2, \rho_0 + \rho_1 + \rho_2]\\
+                         =& [h_0, \rho_0] + [h_0, \rho_1] + [h_0, \rho_2] \\
+                          & +[\Gamma_1, \rho_0] + [\Gamma_1, \rho_1] + \cancel{[\Gamma_1, \rho_2]} \\
+                          & +[\Gamma_2, \rho_0] + \cancel{[\Gamma_2, \rho_1]} + \cancel{[\Gamma_2, \rho_2]} \\
+      \end{aligned}
+    \end{equation}
+    we should match the first and second order term between the l.h.s and r.h.s, so we have the equations
+    \begin{equation*}
+      \begin{aligned}
+        i\hbar\dot{\rho}_0 =& [h_0, \rho_1] + [\Gamma_1, \rho_0]  \\
+        i\hbar\dot{\rho}_1 =& [h_0, \rho_0] + [\Gamma_1, \rho_1] + [\Gamma_2, \rho_0]
+      \end{aligned}
+    \end{equation*}
+    In the second equation, we have neglected the term $[h_0, \rho_2]$. $\rho_2$ only has $hh$ and $pp$ matrix elements. The $ph$ matrix elements of $[h_0, \rho_2]$ therefore conttain only $ph$ and $hp$ matrix elements of $h_0$, which are of at least first order in $\chi$. Therefore,  $[h_0, \rho_2]$ can be neglected in the $hp$ and $ph$ part of Eq.
+  \end{proof}
+  
+  \begin{note}
+    In the ATDHF equations, $\rho_0$ and $\chi$ are cononical conjugate coordinate and momentum. Equation (I) gives a linear connection between velocity and momentum, which depends on $\rho_0$, that is, the correspoinding mass is coordinate dependent. Equation (II) has the time derivative of the momentum on the l.h.s. The r.h.s therefore represents a force. It depends on the term $[h_0,\rho_0]$ and on furether terms quadratic in the momentum $\chi$. 
+  \end{note}
+
+  \section{The collective Hamiltonian}
+  \begin{note}
+      We shall often have occasion to consider separately the particle-particle, hole-hole, particle-hole, and the hole-particle part of the matrix of an operator. For an arbitrary operator $A$, it can be devided into:
+    \begin{equation}
+      A = A^{pp} + A^{hh} + A^{ph} + A^{hp} \label{tdhf52}
+    \end{equation}
+    with definition
+    \begin{equation}
+      A^{pp}:= \sigma_0 A \sigma_0; \quad  A^{hh}:= \rho_0 A \rho_0; \quad A^{ph}:=\sigma_0 A \rho_0; \quad A^{hp}:=\rho_0 A \sigma_0 \label{tdhf53}
+    \end{equation}
+    Note the following relation,
+    \begin{equation}
+      (A^\dagger)^{ph} = (A^{hp})^\dagger \label{tdhf54}
+    \end{equation}
+    and, if $A$ is Hermitian, we have the property
+    \begin{equation}
+      (A^\dagger)^{ph} = (A^{hp})^\dagger \label{tdhf55}
+    \end{equation}
+    The relation between $\rho_1$ and $\chi$ given by Eq.\eqref{tdhf26} can be wrtten
+    \begin{equation}
+      \begin{aligned}
+        \rho_1^{ph} =& i\chi^{ph}, \quad \rho_1^{hp} = -i\chi^{hp}\\  \label{tdhf56}
+        \rho_1^{pp} =& \rho_1^{hh} =0
+      \end{aligned}
+    \end{equation}
+  \end{note}
+
+  In HF theory, we can express the total energy $E$ of the system by the variables $\rho_0$ and $\rho_1$ or $\rho_0$ and $\chi$
+  \begin{equation}
+    E = {\rm Tr}(t\rho) + \frac{1}{2}{\rm Tr}_1{\rm Tr}_1(\rho\bar{v}\rho) = K + V \label{tdhf57}
+  \end{equation}
+  where 
+  \begin{equation}
+    V =  {\rm Tr}(t\rho_0) + \frac{1}{2}{\rm Tr}_1{\rm Tr}_1(\rho_0 \bar{v} \rho_0) \label{tdhf58}
+  \end{equation}
+  and 
+  \begin{equation}
+    K =  {\rm Tr}(h_0 \rho_2) + \frac{1}{2}{\rm Tr}_1{\rm Tr}_1(\rho_1 \bar{v} \rho_1) \label{tdhf59}
+  \end{equation}
+  
+  According to Eq.\eqref{tdhf36}, we know that $\rho_2$ has only $pp$ and $hh$ matrix elements, and Eq.\eqref{tdhf59} can be written as
+  \begin{equation}
+    \begin{aligned}
+          K =& {\rm Tr}[h_0 (\sigma_0\rho_1^2\sigma_0 - \rho_0\rho_1^2\rho_0)] + \frac{1}{2}{\rm Tr}_1{\rm Tr}_1(\rho_1 \bar{v} \rho_1)\\
+            =& {\rm Tr}[h_0 (\sigma_0\rho_1^2\sigma_0 - \rho_0\rho_1^2\rho_0)] + \frac{1}{2}{\rm Tr}_1(\Gamma_1 \rho_1) \label{tdhf60}
+    \end{aligned}
+  \end{equation}
+  Note that the Eq.I\eqref{tdhf50a} has no $pp$ and $hh$ matrix elements, because
+  \begin{equation}
+    \begin{aligned}
+      \dot{\rho}_0 = \frac{\partial}{\partial t}(\rho_0^2) &= \rho_0\dot{\rho}_0 + \dot{\rho}_0\rho_0\\ \label{tdhf61}
+      \dot{\rho}_0\rho_0 = \rho_0\dot{\rho}_0\rho_0 + \dot{\rho}_0\rho_0 &\Rightarrow \rho_0\dot{\rho}_0\rho_0 = \dot{\rho}_0^{hh} = 0\\
+      (\rho_0 + \sigma_0) \dot{\rho}_0 (\rho_0 + \sigma_0) &= \rho_0\dot{\rho}_0(\rho_0 + \sigma_0) + (\rho_0 + \sigma_0)\dot{\rho}_0\rho_0 \\
+      \Rightarrow \cancel{\rho_0\dot{\rho}_0\rho_0} + \cancel{\rho_0\dot{\rho}_0\sigma_0} + \cancel{\sigma_0\dot{\rho}_0\rho_0} + \sigma_0\dot{\rho}_0\sigma_0 &= \cancel{\rho_0\dot{\rho}_0\rho_0} + \cancel{\rho_0\dot{\rho}_0\sigma_0} + \rho_0\dot{\rho}_0\rho_0 + \cancel{\sigma_0\dot{\rho}_0\rho_0}\\
+      \Rightarrow \sigma_0\dot{\rho}_0\sigma_0 &= \rho_0\dot{\rho}_0\rho_0 = 0\\
+      \Rightarrow \dot{\rho}_0^{pp} &= \dot{\rho}_0^{hh} = 0\\
+    \end{aligned}
+  \end{equation}
+
+  Now, we need to transform the ATDHF Equation I\eqref{tdhf50a}, it can be written as
+  \begin{equation}
+    \begin{aligned}
+      i\hbar\dot{\rho}_0 &= [h_0, \rho_1] + [\Gamma_1, \rho_0] = h_0\rho_1 - \rho_1h_0 + \Gamma_1\rho_0 - \rho_0\Gamma_1 \\ \label{tdhf62}
+      &= \frac{i}{\hbar}h_0[\chi,\rho_0] - \frac{i}{\hbar}[\chi,\rho_0]h_0 + \Gamma_1\rho_0 - \rho_0\Gamma_1 \\
+      &= \frac{i}{\hbar}(h_0\chi\rho_0 - h_0\rho_0\chi) - \frac{i}{\hbar}(\chi\rho_0h_0 - \rho_0\chi h_0) + \Gamma_1\rho_0 - \rho_0\Gamma_1
+    \end{aligned}
+  \end{equation}
+  so
+  \begin{equation}
+    \dot{\rho}_0 = \frac{1}{\hbar^2}(h_0\chi\rho_0 - h_0\rho_0\chi - \chi\rho_0h_0 + \rho_0\chi h_0) + \frac{i}{\hbar}(\rho_0\Gamma_1 - \Gamma_1\rho_0)  \label{tdhf63}
+  \end{equation}
+  define the anti-Hermitian time-even single-particle operator
+  \begin{equation}
+    X = -i\Gamma_1  \label{tdhf64}
+  \end{equation}
+  According to the discussion in Eq.\eqref{tdhf61}, we know that
+  \begin{equation}
+    \dot{\rho}_0 = (\dot{\rho}_0)^{ph} + (\dot{\rho}_0)^{hp} \label{tdhf65}
+  \end{equation}
+  according to Eq.\eqref{tdhf63}, we can get
+  \begin{equation}
+    \begin{aligned}
+      (\dot{\rho}_0)^{ph} =& \sigma_0\dot{\rho}_0\rho_0 \\ \label{tdhf66}
+      =& \frac{1}{\hbar^2}(\sigma_0h_0\chi\rho_0 - \sigma_0h_0\rho_0\chi\rho_0 - \sigma_0\chi\rho_0h_0\rho_0 + \cancel{\sigma_0\rho_0\chi h_0\rho_0}) \\
+       &+ \frac{i}{\hbar}(\cancel{\sigma_0\rho_0\Gamma_1\rho_0} - \sigma_0\Gamma_1\rho_0)\\
+      =& \frac{1}{\hbar^2}(\sigma_0h_0(\rho_0 + \sigma_0)\chi\rho_0 - \sigma_0h_0\rho_0\chi\rho_0 - \sigma_0\chi\rho_0h_0\rho_0) - \frac{i}{\hbar} \sigma_0\Gamma_1\rho_0\\
+      =& \frac{1}{\hbar^2}(\sigma_0h_0\sigma_0\chi\rho_0 - \sigma_0\chi\rho_0h_0\rho_0) - \frac{i}{\hbar} \sigma_0\Gamma_1\rho_0\\
+      =& \frac{1}{\hbar^2}\left((\sigma_0h_0\sigma_0)(\sigma_0\chi\rho_0) - (\sigma_0\chi\rho_0)(\rho_0h_0\rho_0)\right) + \frac{1}{\hbar} \sigma_0(-i\Gamma_1)\rho_0\\
+      =& \frac{1}{\hbar^2}(h_0^{pp}\chi^{ph} - \chi^{ph}h_0^{hh}) + \frac{1}{\hbar}X^{ph}
+    \end{aligned}
+  \end{equation}
+  In the same way, we also can get
+  \begin{equation}
+    (\dot{\rho}_0)^{hp} = \frac{1}{\hbar^2}(\chi^{hp}h_0^{pp} - h_0^{hh}\chi^{hp}) - \frac{1}{\hbar}X^{hp} \label{tdhf67}
+  \end{equation}
+  we find that
+  \begin{equation}
+    \left((\dot{\rho}_0)^{ph}\right)^\dagger = (\dot{\rho}_0)^{hp} \label{tdhf68}
+  \end{equation}
+
+  Now, we calculate the trace of ${\rm Tr}(\dot{\rho}_0\chi)$,
+  \begin{equation}
+    \begin{aligned}
+      {\rm Tr}(\dot{\rho}_0\chi) =& {\rm Tr}\left[(\dot{\rho}_0^{ph} + \dot{\rho}^{hp}_{0})(\chi^{ph} + \chi^{hp})\right]\\
+      =& {\rm Tr}\left[\dot{\rho}_0^{ph}\chi^{hp} + \cancel{\dot{\rho}^{ph}_{0}\chi^{ph}} + \dot{\rho}_0^{hp}\chi^{ph} + \cancel{\dot{\rho}^{hp}_{0}\chi^{hp}} \right]\\
+      =& {\rm Tr}\left[\dot{\rho}_0^{ph}\chi^{hp} + \dot{\rho}_0^{hp}\chi^{ph}\right]\\  \label{tdhf69}
+      =& {\rm Tr}\left\{ \left(\frac{1}{\hbar^2}(h_0^{pp}\chi^{ph} - \chi^{ph}h_0^{hh}) + \frac{1}{\hbar}X^{ph}\right)\chi^{hp} \right.\\
+       & \left. + \left( \frac{1}{\hbar^2} ( \chi^{hp}h_0^{pp} - h_0^{hh}\chi^{hp} ) - \frac{1}{\hbar} X^{hp} \right) \chi^{ph} \right\} \\
+      =& \frac{1}{\hbar^2} {\rm Tr} \left( h_0^{pp}\chi^{ph}\chi^{hp} - \chi^{ph}h_0^{hh}\chi^{hp} + \chi^{hp}h_0^{pp}\chi^{ph} - h_0^{hh}\chi^{hp}\chi^{ph} \right)\\
+       & + \frac{1}{\hbar} {\rm Tr}\left( X^{ph}\chi^{hp} - X^{hp}\chi^{ph} \right) \\
+      =& \frac{2}{\hbar^2}{\rm Tr}\left[h_0^{pp}\chi^{ph}\chi^{hp} - h_0^{hh}\chi^{hp}\chi^{ph} \right] + \frac{1}{\hbar}{\rm Tr}\left[ X^{ph}\chi^{hp} - X^{ph}\chi^{hp} \right]
+    \end{aligned}
+  \end{equation}
+  here we use the cyclic property\eqref{tracecyclic}.
+
+  Using Eq.\eqref{tdhf56} and Eq.\eqref{tdhf64}, we see that this is twice the collective kinetic energy Eq.\eqref{tdhf60}
+  \begin{equation}
+    K = \frac{1}{2}{\rm Tr}(\dot{\rho}_0\chi) \label{tdhf70}
+  \end{equation}
+
+  The time-dependent representation which diagonalizes simultaneously $h_0^{pp}$, $h_0^{hh}$ and $\rho_0$ will be called the ATDHF representation. The eigenvalues of $h_0^{pp}$ will be called particle energies $\epsilon_m$, corresponding to particle states $\mid \psi_m \rangle(m, n\cdots$), and the ergenvalues of $h_0^{hh}$ will be called hole energies $\epsilon_i$, corresponding to hole states $\mid \psi_i \rangle(i, j \cdots)$. In this representation, the first-order Eq.\eqref{tdhf66}-\eqref{tdhf67} read
+  \begin{equation}
+    \begin{aligned}
+      ph:\quad \langle \psi_m \mid \dot{\rho}_0 \mid \psi_i \rangle =& (\epsilon_m - \epsilon_i)\langle \psi_m \mid\chi\mid \psi_i \rangle + \langle \psi_m \mid X \mid \psi_i \rangle\\ \label{tdhf71}
+      hp:\quad \langle \psi_i \mid \dot{\rho}_0 \mid \psi_m \rangle =& (\epsilon_m - \epsilon_i)\langle \psi_i \mid\chi\mid \psi_m \rangle + \langle \psi_i \mid X \mid \psi_m \rangle
+    \end{aligned}
+  \end{equation}
+  where the $ph$ and $hp$ elements of $X$  are ginven by 
+  \begin{equation}
+    \begin{aligned}
+      \langle \psi_m \mid X \mid \psi_i \rangle =& \frac{1}{\hbar} \sum_{nj}\left[\langle \psi_m \psi_j\mid \tilde{V} \mid \psi_i \psi_n \rangle \langle \psi_n \mid \chi \mid \psi_j \rangle - \langle \psi_m \psi_n \mid \tilde{V} \mid \psi_i \psi_j \rangle \langle \psi_j \mid \chi \mid \psi_n \rangle \right] \\ \label{tdhf72}
+      \langle \psi_i \mid X \mid \psi_m \rangle =& \frac{1}{\hbar} \sum_{nj}\left[\langle \psi_i \psi_j\mid \tilde{V} \mid \psi_m \psi_n \rangle \langle \psi_n \mid \chi \mid \psi_j \rangle + \langle \psi_i \psi_n \mid \tilde{V} \mid \psi_m \psi_j \rangle \langle \psi_j \mid \chi \mid \psi_n \rangle \right] 
+    \end{aligned}
+  \end{equation}
+  
+  Now, we define some notations
+  \begin{subequations}
+    \begin{align}
+      A_{minj} = \sum_{nj}(\epsilon_m - \epsilon_j)\delta_{mn}\delta{ij} + \tilde{v}_{mjin} =& \sum_{nj}(\epsilon_m - \epsilon_j)\delta_{mn}\delta{ij} + \tilde{v}_{jmni} = A_{njmi}^{*}\\ \label{tdhf73}
+      B_{minj} = \sum_{nj}\tilde{v}_{mnij} =& \sum_{nj}\tilde{v}_{ijmn} = B_{imjn}^* \\
+      (\dot{\rho_0})_{im} = \langle \psi_m | \dot{\rho_0} | \psi_i \rangle ~~~&~~~ (\dot{\rho_0})_{im}^* = \langle \psi_i | \dot{\rho_0} | \psi_m \rangle\\
+      \dot{\chi}_{im} = \langle \psi_m | \dot{\chi} | \psi_i \rangle ~~~&~~~ \dot{\chi}_{im}^* = \langle \psi_i | \dot{\chi} | \psi_m \rangle
+    \end{align}
+  \end{subequations}
+  With these notations, Eq.\eqref{tdhf71} becomes
+  \begin{equation}
+    \begin{aligned}
+      (\dot{\rho_0})_{im} =& \frac{1}{\hbar^2} \left\{ \sum_{nj}\left[ (\epsilon_m - \epsilon_i)\delta_{mn}\delta_{ij} \langle \psi_n | \chi | \psi_j \rangle  \right] - \sum_{nj}\langle \psi_m\psi_n | \tilde{V} | \psi_i\psi_j \rangle \langle \psi_j | \chi | \psi_n \rangle \right\}\\ \label{tdhf74}
+      =& \frac{1}{\hbar^2}( A_{minj}\chi_{jn} - B_{minj}\chi_{jn}^*)\\
+      (\dot{\rho_0})_{im}^* =& \frac{1}{\hbar^2}( A_{minj}^*\chi_{jn}^* - B_{minj}^*\chi_{jn})\\
+    \end{aligned}
+  \end{equation}
+  we write Eq.\eqref{tdhf74} in matrix form
+  \begin{equation}
+    \left(  \label{tdhf75}
+      \begin{array}{c}
+        \dot{\rho}_0\\
+        \dot{\rho}_0^*
+      \end{array}
+    \right)
+    = \frac{1}{\hbar^2}
+    \left(
+      \begin{array}{cc}
+        A    & B^*\\
+        -B^* & A^*
+      \end{array}
+    \right)
+    \left(
+      \begin{array}{c}
+        \chi  \\
+        \chi^*
+      \end{array}
+    \right)
+  \end{equation}
+  where the index of the matrices runs over all $ph$ and $hp$ pairs ($mi$). Eq.\eqref{tdhf75} connects velocities and momenta and shows that the matrix
+  \begin{equation}
+    \mathfrak{M} := \hbar^2 \label{tdhf76}
+    \left(
+      \begin{array}{cc}
+        A    &   -B\\
+        -B^* &   A^*
+      \end{array}
+    \right)^{-1}
+  \end{equation}
+  represents a \textit{mass tensor} which depends on the coordinate $\rho_0$, and we have the property
+  \begin{equation}
+    (\mathfrak{M}^{-1})^{\dagger} = \mathfrak{M}^{-1} \label{tdhf77}
+  \end{equation}
+  So, the Kinetic Energy can be written in matrix form
+  \begin{equation}
+    \begin{aligned}
+      K =& \frac{1}{2}{\rm Tr}(\dot{\rho}_0\chi) = \frac{1}{2}\sum_{i}\left[ (\dot{\rho}_0^*)_{im}\chi_{im} + (\dot{\rho}_0)_{im}\chi^*_{im} \right]\\ \label{tdhf78}
+      =& \frac{1}{2} 
+      \left(
+        \begin{array}{r}
+          \dot{\rho_0}^*, \dot{\rho}_0        
+        \end{array}
+      \right)
+      \left(
+        \begin{array}{c}
+          \chi\\
+          \chi^*
+        \end{array}
+      \right)\\
+      =& \frac{1}{2}
+      \left(
+        \begin{array}{r}
+          \dot{\rho_0}^*, \dot{\rho}_0        
+        \end{array}
+      \right)
+      \mathfrak{M}
+      \left(
+        \begin{array}{c}
+          \dot{\rho_0}\\
+          \dot{\rho_0^*}
+        \end{array}
+      \right) \\
+      =& \frac{1}{2}
+      \left(
+        \begin{array}{r}
+          \chi^*, \chi       
+        \end{array}
+      \right)
+      \mathfrak{M}^{-1}
+      \left(
+        \begin{array}{c}
+          \chi\\
+          \chi^*
+        \end{array}
+      \right) 
+    \end{aligned}
+  \end{equation}
+
+  We have thus derived a \textit{classic Hamilton function}, depending on the coordinate $\rho_0$ and quadratically on the momentum $\chi$
+  \begin{equation}
+    E = H(\chi, \rho_0) = \frac{1}{2} \label{tdhf79}
+    \left(
+      \begin{array}{r}
+        \chi^*, \chi       
+      \end{array}
+    \right)
+    \mathfrak{M}^{-1}
+    \left(
+      \begin{array}{c}
+        \chi\\
+        \chi^*
+      \end{array}
+    \right) 
+    + V(\rho_0)
+  \end{equation}
+  $V(\rho_0) = \langle \Phi_0 | H | \Phi_0 \rangle$ is the expectation value of the full Hamiltonian in the static wave function $| \Phi_0\rangle$. As we see from Eq.\eqref{tdhf59}, it is made up of two contributions. The first contains the static potential $h_0$ and the second the time-odd potential $\Gamma_1$. Neglecting this time-odd part would mean that we forget about the residual interaction $\tilde{v}$ in the mass tensor Eq.\eqref{tdhf76}.
+
+  To complete the formalism, we have to show that we can get the ATDHF equation (I)\eqref{tdhf50a} and (II)\eqref{tdhf50b}, as \textit{Hamilton equation} from the function \eqref{tdhf79}. We begin by considering the time integral
+  \begin{equation}
+    I = \int_{t_2}^{t(_1} L dt = \int_{t_2}^{t_1} \left\langle \Psi(t) \left| (i\frac{\partial}{\partial t} - H) \right| \Psi(t) )\right\rangle \label{tdhf80}
+  \end{equation}
+  For an arbitrary wave function $\Psi$ the stationary condition $\delta I =0$ leads to the Sch{\"o}dinger equation $i(\partial\Psi)/(\partial t) = H \Psi$. When $\Psi$ is restricted to be a single determinant, this condition leads to the TDHF Eq.\eqref{tdhf20}. By carring out in the intergrand $L$ the expansion of $\rho$ up to seconder order in $\chi$, the adiabatic Lagrangian $\mathscr{L}$ was shown to be
+  \begin{equation}
+    \mathscr{L} = {\rm Tr}\chi\dot{\rho}_0 - K - V \equiv {\rm Tr}\chi\dot{\rho}_0 - E \label{tdhf81}
+  \end{equation}
+
+  The adiabatic Hamilton equations can be obtained by performing independent variations of $\chi$ in the adiabatic action integral
+  \begin{equation}
+    I_A = \int_{t_1}^{t_2} \mathscr{L} dt\label{tdhf82}
+  \end{equation}
+  We note by $\delta^a$ the variations with respect to $\chi$($\rho_0$ being constant) and by $\delta^b$ the variations with respect to $\rho_0$($\chi$ being constant). we have therefore
+  \begin{equation}
+    \begin{array}{cc}
+      \delta^a\rho_0 = 0 & \delta^b\rho_0 = \delta\rho_0\\  \label{tdhf83}
+      \delta^b\chi = 0   & \delta^b\chi = \delta\chi
+    \end{array}
+  \end{equation}
+  Moreover we have
+  \begin{equation}
+    \begin{aligned}
+      (\delta\rho_0)^{pp} =& (\delta\rho_0)^{hh} = 0\\  \label{tdhf84}
+      (\delta\chi)^{pp} =& (\delta\chi)^{hh} = 0
+    \end{aligned}
+  \end{equation}
+  \begin{proof}
+    First, we have 
+    \begin{equation}
+      \rho_0^2 = \rho_0 \label{tdhf85}
+    \end{equation}
+    so we can get
+    \begin{equation}
+      \begin{aligned}
+        \delta(\rho_0^2) =& \rho_0(\delta\rho_0) + (\delta\rho_0)\rho_0 = \delta\rho_0 \\ \label{tdhf86}
+        \Rightarrow  (\delta\rho_0)\rho_0 =&  \rho_0(\delta\rho_0)\rho_0 + (\delta\rho_0)\rho_0\\
+        \Rightarrow \rho_0(\delta\rho_0)\rho_0 =& (\delta\rho_0)^{hh} = 0
+      \end{aligned}
+    \end{equation}
+  \end{proof}
+  In the context, we can get
+  \begin{equation}
+    \begin{aligned}
+      \delta V =& {\rm Tr}\left[ t(\delta\rho_0) \right] + \frac{1}{2}{\rm Tr}_1{\rm Tr}_1\left[ (\delta\rho_0)\tilde{v}\rho_0  +\rho_0\tilde{v}(\delta\rho_0) \right]\\ \label{tdhf87}
+      =& {\rm Tr}\left[ t(\delta\rho_0) \right] + {\rm Tr}_1{\rm Tr}_1[ \rho_0\tilde{v}(\delta\rho_0) ]\\
+      =& {\rm Tr}[ h_0(\delta\rho_0) ]
+    \end{aligned}
+  \end{equation}
+  and 
+  \begin{equation}
+    \begin{aligned}
+      \delta K =& {\rm Tr}[ t(\delta\rho_2) ] \\  \label{tdhf88}
+       &+ \frac{1}{2}{\rm Tr}_1{\rm Tr}_1[ (\delta\rho_0)\tilde{v}\rho_2 + \rho_0\tilde{v}(\delta\rho_2) + (\delta\rho_2)\tilde{v}\rho_0 + \rho_2\tilde{v}(\delta\rho_0) + (\delta\rho_1)\tilde{v}\rho_1 + \rho_1\tilde{v}(\delta\rho_1) ]\\
+      =& {\rm Tr}[ t(\delta\rho_2) ] \\
+       &+ \frac{1}{2}{\rm Tr}_1{\rm Tr}_1[ \rho_2\tilde{v}(\delta\rho_0) + \rho_0\tilde{v}(\delta\rho_2) + \rho_0\tilde{v}(\delta\rho_2) + \rho_2\tilde{v}(\delta\rho_0) + \rho_1\tilde{v}(\delta\rho_1) + \rho_1\tilde{v}(\delta\rho_1) ]\\
+      =& {\rm Tr}(h_0(\delta\rho_2) + \Gamma_1(\delta\rho_1) + \Gamma_2(\delta\rho_0))
+    \end{aligned}
+  \end{equation}
+
+  With our notation the total variation of the adiabaic Lagrangian $\mathscr{L}$ reads
+  \begin{equation}
+    \delta\mathscr{L} = \delta^a\mathscr{L} + \delta^b\mathscr{L}
+  \end{equation}
+ 
+  We begin by varying $\mathscr{L}$ with respect to $\chi$ i.e. calculating $\delta^a\mathscr{L}$. We have first
+  \begin{equation}
+    \delta^a({\rm Tr}\chi\dot{\rho}_0) = {\rm Tr}((\delta\chi)\dot{\rho}_0) = {\rm Tr}(\dot{\rho}_0(\delta\chi))  \label{tdhf90}
+  \end{equation}
+  According to Eqs.\eqref{tdhf26},\eqref{tdhf27} and we can obtain
+  \begin{subequations}
+    \begin{align}
+      \label{tdhf91a} \delta^a\rho_1 =& \frac{i}{\hbar}[\delta\chi, \rho_0]\\
+      \label{tdhf91b} \delta^a\rho_2 =& \frac{i}{\hbar}[\delta\chi, \rho_1] + \frac{1}{2\hbar^2}[\rho_0,[\chi, \delta\chi]]
+    \end{align}
+  \end{subequations}
+  \begin{proof}
+    The Eq.\eqref{tdhf91a} is easy to get. We need to proof Eq.\eqref{tdhf91b}. First, we have
+    \begin{equation}
+      \begin{aligned}
+        \delta^a\rho_2 =& \frac{-1}{2\hbar^2}\delta^a [\chi, [\chi, \rho_0]]\\  \label{tdhf92}
+        =& \frac{-1}{2\hbar^2}\delta^a \left( \chi[\chi, \rho_0] - [\chi, \rho_0]\chi \right)\\
+        =& \frac{-1}{2\hbar^2} \left( (\delta\chi)[\chi, \rho_0] + \chi[\delta\chi,\rho_0] - [\delta\chi, \rho_0]\chi - [\chi, \rho_0](\delta\chi) \right)\\
+        =& \frac{-1}{2\hbar^2} \left( [\delta\chi, [\chi, \rho_0]] + [\chi, [\delta\chi,\rho_0]] \right)
+      \end{aligned}
+    \end{equation}
+    in order to get the equation, we need to use Jacobi identity Eq.\eqref{Jacobidentity} with the second term in the final equation
+    \begin{equation}
+      [\chi, [\delta\chi,\rho_0]] + [\rho_0, [\chi, \delta\chi]] + [\delta\chi, [\rho_0,\chi]] = 0  \label{tdhf93}
+    \end{equation}
+
+    Insert Eq.\eqref{tdhf93} into Eq.\eqref{tdhf92} and obtain
+    \begin{equation}
+      \begin{aligned}
+        \delta^a\rho_2 =& \frac{-1}{2\hbar^2} \left( [\delta\chi, [\chi, \rho_0]] - [\rho_0, [\chi, \delta\chi]] - [\delta\chi, [\rho_0,\chi]] \right) \\ 
+        =& \frac{-1}{2\hbar^2} \left( 2[\delta\chi, [\chi, \rho_0]] - [\rho_0, [\chi, \delta\chi]] + [\delta\chi, [\chi,\rho_0]] \right) \\ 
+        =& \frac{-1}{2\hbar^2} \left( 2[\delta\chi, [\chi, \rho_0]] - [\rho_0, [\chi, \delta\chi] \right) \\ 
+        =& \frac{-1}{2\hbar^2} \left( 2[\delta\chi, \frac{\hbar}{i}\rho_1] - [\rho_0, [\chi, \delta\chi] \right) \\ 
+        =& \frac{i}{\hbar} [\delta\chi,\rho_1] + \frac{1}{2\hbar^2}[\rho_0, [\chi, \delta\chi] ]\\ 
+      \end{aligned}
+    \end{equation}
+  \end{proof}
+
+  According to Eq.\eqref{tdhf81}, \eqref{tdhf83}, \eqref{tdhf87}, \eqref{tdhf88} and \eqref{tdhf91a} ,\eqref{tdhf91b}, we calculate $\delta^aE$ in the following
+  \begin{equation}
+    \begin{aligned}
+          \delta^a E =& \delta^a K = {\rm Tr}\left[(h_0(\delta^a\rho_2) + \Gamma_1(\delta^a\rho_1)\right]\\  \label{tdhf95}
+          =& {\rm Tr}\left[ h_0\left( \frac{i}{\hbar} [\delta\chi,\rho_1] + \frac{1}{2\hbar^2}[\rho_0, [\chi, \delta\chi]] \right) + \Gamma_1\left( \frac{i}{\hbar}[\delta\chi, \rho_0] \right) \right]\\
+          =& {\rm Tr}\left( \frac{i}{\hbar} h_0 [\delta\chi,\rho_1] + \frac{1}{2\hbar^2} h_0 [\rho_0, [\chi, \delta\chi]] + \frac{i}{\hbar} \Gamma_1 [\delta\chi, \rho_0] \right)
+    \end{aligned}
+  \end{equation}
+  we calculate the terms respectively. Using the cyclic property Eq.\eqref{tracecyclic}, for the first term,
+  \begin{equation}
+    \begin{aligned}
+      {\rm Tr}(h_0 [\delta\chi,\rho_1]) =& {\rm Tr}\left[ (h_0\delta\chi)\rho_1] - {\rm Tr}[h_0\rho_1(\delta\chi) \right]\\ \label{tdhf96}
+      =& {\rm Tr}\left[ \rho_1(h_0\delta\chi)] - {\rm Tr}[h_0\rho_1(\delta\chi) \right]\\
+      =& -{\rm Tr}([h_0 ,\rho_1]\delta\chi)
+    \end{aligned}
+  \end{equation}
+  the same for the third term
+  \begin{equation}
+    {\rm Tr}(\Gamma_1 [\delta\chi,\rho_0]) = -{\rm Tr}([\Gamma_1,\rho_0]\delta\chi) \label{tdhf97}
+  \end{equation}
+  and for second term, we can get
+  \begin{equation}
+    \begin{aligned}
+      {\rm Tr}(h_0 [\rho_0, [\chi, \delta\chi]]) =&{\rm Tr}(h_0\rho_0[\chi,\delta\chi]) - {\rm Tr}(h_0[\chi,\delta\chi]\rho_0)\\ \label{tdhf98}
+      =& {\rm Tr}([h_0\rho_0,\chi]\delta\chi) - {\rm Tr}(\rho_0h_0[\chi,\delta\chi])\\
+      =& {\rm Tr}([h_0\rho_0,\chi]\delta\chi) - {\rm Tr}([\rho_0h_0,\chi]\delta\chi)\\
+      =& {\rm Tr}\{([h_0\rho_0,\chi] - [\rho_0h_0,\chi])\delta\chi\}\\
+      =& {\rm Tr}([[h_0, \rho_0],\chi]\delta\chi)\\
+    \end{aligned}
+  \end{equation}
+  Inserting Eq.\eqref{tdhf96}-\eqref{tdhf98} and we can finally get
+  \begin{equation}
+    \delta^a E = -i {\rm Tr}\left\{ \left( \frac{1}{\hbar}([h_0, \rho_1] + [\Gamma_1,\rho_0]) + \frac{i}{2\hbar^2}[[h_0,\rho_0],\chi] \right)\delta\chi \right\} = {\rm Tr}\frac{\partial E}{\partial\chi}\delta\chi  \label{tdhf99}
+  \end{equation}
+  with
+  \begin{equation}
+    \frac{\partial E}{\partial\chi} = \frac{\partial K}{\partial\chi} = -i  \left( \frac{1}{\hbar}([h_0, \rho_1] + [\Gamma_1,\rho_0]) + \frac{i}{2\hbar^2}[[h_0,\rho_0],\chi] \right)
+  \end{equation}
+  According to Eq.\eqref{tdhf81}, \eqref{tdhf90}, \eqref{tdhf99}, we can write
+  \begin{equation}
+    \delta^a\mathscr{L} = {\rm Tr}\left(\dot{\rho}_0 - \frac{\partial E}{\partial\chi}\right)\delta\chi \label{tdhf101}
+  \end{equation}
+
+  We now vary $\mathscr{L}$ with respect to $\rho_0$, keeping $\chi$ constant i.e. calculating $\delta^b \mathscr{L}$. We have first 
+  \begin{equation}
+    \delta^b {\rm Tr} \chi\dot{\rho}_0 = \frac{d}{dt}({\rm Tr}\chi\delta\rho_0) - {\rm Tr}\dot{\chi}{\delta\rho_0}  \label{tdhf102}
+  \end{equation}
+  Using Eqs.\eqref{tdhf81}, \eqref{tdhf83}, \eqref{tdhf87} and \eqref{tdhf88} we obtain
+  \begin{equation}
+    \delta^b E = \delta^b V + \delta^b K = {\rm Tr}h_0\delta\rho_0 + {\rm Tr}(\Gamma_2\delta^b\rho_0 + \Gamma_1\delta^b\rho_1 + h_0\delta^b\rho_2)  \label{tdhf103}
+  \end{equation}
+  Again we obtain $\delta^\rho_1$ and $\delta^b\rho_2$ from Eqs.\eqref{tdhf26} and \eqref{tdhf27}:
+  \begin{equation}
+    \begin{aligned}
+      \delta^b\rho_1 =& \frac{i}{\hbar}[\chi,\delta\rho_0]\\  \label{tdhf104}
+      \delta^b\rho_2 =& \frac{-1}{2\hbar^2}[\chi,[\chi,\delta\rho_0]]
+    \end{aligned}
+  \end{equation}
+  The same as Eq.\eqref{tdhf99}, by carrying Eqs.\eqref{tdhf104} in Eq.\eqref{tdhf103} and using the cyclic property \eqref{tracecyclic}, we get
+  \begin{equation}
+    \delta^b E = {\rm Tr}\left\{ \left(h_0 + \Gamma_2 + \frac{i}{\hbar}[\Gamma_1,\chi] - \frac{1}{2\hbar^2} \left[ [h_0,\chi], \chi \right]\right) \delta\rho_0 \right\} \equiv {\rm Tr}\frac{\partial E}{\partial \rho_0}\delta\rho_0  \label{tdhf105}
+  \end{equation}
+  with 
+  \begin{equation}
+    \frac{\partial E}{\partial \rho_0} = h_0 + \Gamma_2 + \frac{i}{\hbar}[\Gamma_1,\chi] - \frac{1}{2\hbar^2} \left[ [h_0,\chi], \chi \right]
+  \end{equation}
+  From Eqs.\eqref{tdhf81}, \eqref{tdhf102}, \eqref{tdhf105} we have
+  \begin{equation}
+    \delta^b \mathscr{L} = \frac{d}{dt}\left({\rm Tr}\chi\delta\rho_0\right) + {\rm Tr}\left( -\dot{\chi} - \frac{\partial E}{\partial\rho_0} \right)\delta\rho_0 \label{tdhf107}
+  \end{equation}
+  \begin{note}
+    We can have
+    \begin{equation}
+      \left(\frac{\partial V}{\partial\rho_0}\right)^{hp} = h_0^{hp}, \quad \left(\frac{\partial V}{\partial\rho_0}\right)^{ph} = h_0^{ph}
+    \end{equation}
+    \textcolor{red}{which shows that $h_0^{hp}$ and $h_0^{ph}$ play the role of the generalized force.}
+  \end{note}
+
+  \textcolor{blue}{Finally, from Eq.\eqref{tdhf82}, \eqref{tdhf101}, \eqref{tdhf107}, the total variation of the adiabaic action $I_A$ reads}
+  \begin{equation}
+    \begin{aligned}
+      \delta I_A =& \delta^a I_A + \delta^b I_A = \int_{t_1}^{t_2} \delta^a\mathscr{L} + \delta^b\mathscr{L} dt\\
+      =& \int_{t_1}^{t_2} {\rm Tr}\left(\dot{\rho}_0 - \frac{\partial E}{\partial\chi}\right)\delta\chi + \frac{d}{dt}\left({\rm Tr}\chi\delta\rho_0\right) + {\rm Tr}\left( -\dot{\chi} - \frac{\partial E}{\partial\rho_0} \right)\delta\rho_0  dt \\
+      =& \int_{t_1}^{t_2} {\rm Tr}\left\{\left(\dot{\rho}_0 - \frac{\partial E}{\partial\chi}\right)\delta\chi + \left( -\dot{\chi} - \frac{\partial E}{\partial\rho_0} \right)\delta\rho_0 \right\}  dt  + \left({\rm Tr}\chi\delta\rho_0\right)|_{t_1}^{t_2}\\
+      =& \int_{t_1}^{t_2} {\rm Tr}\left\{\left(\dot{\rho}_0 - \frac{\partial E}{\partial\chi}\right)\delta\chi + \left( -\dot{\chi} - \frac{\partial E}{\partial\rho_0} \right)\delta\rho_0 \right\}  dt
+    \end{aligned}
+  \end{equation}
+  The last term in the forth equation vanish because of the end point condition
+  \begin{equation}
+    \delta\rho_0(t_1) = \delta\rho_0(t_2) = 0
+  \end{equation}
+  Since $\delta\rho_0$ and $\delta\chi$ are independent variations, \textcolor{red}{the stationary condition}
+  \begin{equation}
+    \delta I_A = 0
+  \end{equation}
+  requires that the equations
+  \begin{equation}
+    \begin{aligned}
+      {\rm Tr}\left(\dot{\rho}_0 - \frac{\partial E}{\partial\chi}\right)\delta\chi =& 0\\  \label{tdhf112}
+      {\rm Tr}\left( \dot{\chi} + \frac{\partial E}{\partial\rho_0} \right)\delta\rho_0 =& 0
+    \end{aligned}
+  \end{equation}
+  be satisfied separately.
+
+
+  \section{Reduction to a Few Collective Coordinates}
+  We shall first assume that we have achieved a reduction and have a family of time-even Slater determinants
+  \begin{equation}
+     | \bm{ {\rm q} } \rangle = | \Phi_0(\bm{{\rm q}}) \rangle \triangleq \Phi_0(\bm{{\rm r}}_1,\cdots , \bm{{\rm r}}_A, q_1, \cdots,q_f) 
+  \end{equation}
+  with corresponding densities $\rho_0(\bm{{\rm q}})$ which have the property that the solution of the ATDHF problem will always stay within this subset of Slater determinans characterized by the real parameters $\bm{{\rm q}}$; that is, there exists a path $\bm{{\rm q}}(t)$ with 
+  \begin{equation}
+    \rho_0(t) = \rho_0({\rm q}(t))  \label{tdhf114}
+  \end{equation}
+  so, we gain for the velocity
+  \begin{equation}
+    \dot{\rho_0}(t) =	\dot{\bf{q}}(t)\frac{\partial\rho}{\partial\bf{q}} := -\frac{i}{\hbar}\dot{\bf{q}}[\bf{P}, \rho_0]  \label{tdhf115}
+  \end{equation}
+  Since $\frac{\partial}{\partial\bf{q}}\rho_0$ has only $ph$ and $hp$ matrix elements, this equation defines the corresponding elements $\bf{P}$ of the Hermitian single-particle operators $\hat{\bf{P}} = (\hat{P}_1,\cdots,\hat{P}_f)$. The single-particle matrices $\bf{P}$ have the elements
+  \begin{equation}
+    {\bf{P}}_{mi} = {\bf{P}}^*_{im} = -< m | \frac{\hbar}{i}\frac{\partial}{\partial\bf{q}} | i \rangle 	 \label{tdhf116}
+  \end{equation}
+  in the basis in which $\rho_0$ is diagonal.
+
+  Since we now have an explicite expression for the velocity $\dot{\rho}_0$ in terms of $\dot{\bf{q}}$ for the kinetic energy from Eqs.\eqref{tdhf78} and \eqref{tdhf115} we get 
+  \begin{equation}
+    K = \frac{1}{2}\sum_{\mu,\mu^\prime = 1}^{f}M_{\mu\mu^\prime}({\bf{q}}) \dot{q}_\mu \dot{q}_{\mu^\prime}	 \label{tdhf117}
+  \end{equation}
+  and the real collective mass tensor
+  \begin{equation}
+    M_{\mu\mu^{\prime}} = \frac{1}{\hbar^2}(P^* -P)_\mu  \mathfrak{M}	 \label{tdhf118}
+      \left(
+        \begin{array}{c}
+          \dot{P}\\
+          \dot{-P^*}
+        \end{array}
+      \right)_{\mu^\prime} 
+  \end{equation}
+  we also define collective momenta $p_\mu$ and find, from Eqs.\eqref{tdhf75} and \eqref{tdhf115}
+  \begin{equation}
+    p_\mu := \sum_{\textcolor{red}{\mu^\prime}} M_{\mu\mu^{\prime}}({\bf{q}})\dot{q}_{\textcolor{red}{\mu}} = {\rm Tr}(\rho_1P_\mu) = {\rm Tr}\left(\chi \frac{\partial}{\partial q_\mu\rq}\rho_0\right)	 \label{tdhf119}
+  \end{equation}
+  and gain for the Hamilton function in the collective variables
+  \begin{equation}
+    E = H({\bf{p}}, {\bf{q}}) = \frac{1}{2}\sum_{\mu\mu\rq} = \frac{1}{2} \sum_{\mu\mu\rq}M^{-1}_{\mu\mu\rq}p_\mu p_{\mu\rq} + V({\bf{q}})	 \label{tdhf120}
+  \end{equation}
+  with 
+  \begin{equation}
+    V({\bf{q}}) = V(\rho_0({\bf{q}})) = \langle {\bf{q}} | H | {\bf{q}} \rangle	 \label{tdhf121}
+  \end{equation}
+
+  \begin{proof}
+    we want to proove these equations, we can get 
+    \begin{equation}
+        (\dot{\rho}_0)_{im} = -\frac{i}{\hbar}\dot{{\bf{q}}}\langle \psi_m | [\bf{P}, \rho_0] | \psi_i \rangle= -\frac{i}{\hbar}\dot{{\bf{q}}}\langle \psi_m | {\bf{P}\rho_0 - \rho_0{\bf{P}}} | \psi_i \rangle  \label{tdhf122}
+    \end{equation}
+    since $\rho_0$ is a hole state, diagonal matrix, we can have
+    \begin{equation}
+      \begin{aligned}
+        \langle \psi_m | [{{\bf{P}}}, \rho_0] | \psi_i \rangle =&  \langle \psi_m | {\bf{P}}\rho_0 - \rho_0{\bf{P}} | \psi_i \rangle \\ \label{tdhf123}
+        =& \langle \psi_m | {\bf{P}}\rho_0 | \psi_i \rangle - \langle \psi_m |\rho_0{\bf{P}} | \psi_i \rangle \\
+        =& \sum_j \left\{\langle \psi_m | {\bf{P}}| \psi_{j} \rangle \underbrace{\langle \psi_j | \rho_0 | \psi_i \rangle}_{0}- \langle \psi_m | \rho_0 | \psi_{j} \rangle \langle \psi_j |{\bf{P}} | \psi_i \rangle\right\} \\
+        =& -\sum_j  \langle \psi_m | \rho_0 | \psi_{j} \rangle \langle \psi_j |{\bf{P}} | \psi_i \rangle \\
+        =& \langle \psi_m |{\bf{P}} | \psi_i \rangle = P_{mi}
+      \end{aligned}
+    \end{equation}  
+    in the same way, we can obtain
+    \begin{equation}
+      	\langle \psi_i | [{\bf{P}}, \rho_0] | \psi_m \rangle = -P_{im} = -P_{mi}^* \label{tdhf124}
+    \end{equation}
+    therefore, according to Eq.\eqref{tdhf115}, we can have
+    \begin{equation}
+      \begin{aligned}
+        {\rho_0}_{im} =& -\frac{i}{\hbar}{\dot{\bf{q}}}\langle \psi_m | [{\bf{P}}, \rho_0] | \psi_i \rangle = -\frac{i}{\hbar}{\dot{\bf{q}}}P_{mi} = -\frac{i}{\hbar}\sum_{\mu}\dot{q}_{\mu}P_{mi} \\	\label{tdhf125}
+        {\rho_0}_{mi} =& -\frac{i}{\hbar}{\dot{\bf{q}}}\langle \psi_i | [{\bf{P}}, \rho_0] | \psi_m \rangle = \frac{i}{\hbar}{\dot{\bf{q}}}P_{im} = \frac{i}{\hbar}\sum_{\mu}{\dot{q}_\mu}P_{mi}^* = {\rho_0}_{im}^*
+      \end{aligned}
+    \end{equation}
+    we insert Eq.\eqref{tdhf125} into \eqref{tdhf75} and get
+    \begin{equation}
+      \begin{aligned}
+        K =& \frac{1}{2}          \label{tdhf126}
+        \left(
+          \begin{array}{r}
+            \dot{\rho_0}^*, \dot{\rho}_0        
+          \end{array}
+        \right)
+        \mathfrak{M}
+        \left(
+          \begin{array}{c}
+            \dot{\rho_0}\\
+            \dot{\rho_0^*}
+          \end{array}
+        \right)\\
+        =& \frac{1}{2} \sum_{\mu\mu^\prime}^f \frac{i}{\hbar} \dot{q}_\mu
+        \left(
+          \begin{array}{r}
+            P_{mi}^*, -P_{mi}        
+          \end{array}
+        \right)_\mu
+        \mathfrak{M}
+        \left(
+          \begin{array}{c}
+            -P_{mi}\\
+            P_{mi}^*
+          \end{array}
+        \right)_{\mu^\prime}
+        \frac{i}{\hbar} \dot{q}_{\mu\rq}\\
+        =& \frac{1}{2} \frac{1}{\hbar^2} \sum_{\mu\mu^\prime}^f 
+        \left(
+          \begin{array}{r}
+            P_{mi}^*, -P_{mi}        
+          \end{array}
+        \right)_\mu
+        \mathfrak{M}
+        \left(
+          \begin{array}{c}
+            P_{mi}\\
+            -P_{mi}^*
+          \end{array}
+        \right)_{\mu^\prime}
+        \dot{q}_\mu \dot{q}_{\mu\rq}
+      \end{aligned}
+    \end{equation}
+    so we define
+    \begin{equation}
+      M_{\mu\mu^{\prime}} = \frac{1}{\hbar^2}(P^* -P)_\mu  \mathfrak{M}	 \label{tdhf127}
+        \left(
+          \begin{array}{c}
+            \dot{P}\\
+            \dot{-P^*}
+          \end{array}
+        \right)_{\mu^\prime} 
+    \end{equation}
+    and get Eq.\eqref{tdhf117}. We know that $q$ is the collective coordinate and it is necessary to find its conjugate momentum, from Eq.\eqref{tdhf70}, the kinetic energy is 
+    \begin{equation}
+      K = \frac{1}{2}{\rm Tr}(\dot{\rho}_0\chi) = \frac{1}{2}\dot{q}{\rm Tr}\chi\frac{\partial \rho_0}{\partial q} \label{tdhf128}
+    \end{equation}    
+  \end{proof}
+
+  It remains to be shown that the collective coordinates $\bf{q}$ and momenta $\bf{p}$ defined in this way obey equations of motion, which correspond to Hamilton's equations derived from the function \eqref{tdhf119}.
+
+  The first equation is trivial:
+  \begin{equation}
+    \frac{\partial H}{\partial p_\mu} = \frac{1}{2} = \sum_{\mu^\prime} M^{-1}_{\mu\mu^{\prime}}\dot{p}_{\mu\rq} = \frac{d}{dt}q_\mu	 \label{tdhf129}
+  \end{equation}
+  For the second case, first, Eq.\eqref{tdhf115} can be written as
+  \begin{equation}
+    \dot{\rho}_0(t) = \sum_{\mu} q_{\mu} \frac{\partial \rho_0}{\partial q_{\mu}}	 \label{tdhf130}
+  \end{equation}
+  we have the featrue
+  \begin{equation}
+    \sum_{\mu \neq \mu\rq } \frac{dq_\mu}{d q_{\mu\rq}} = 0	 \label{tdhf131}
+  \end{equation}
+  According to Eqs.\eqref{tdhf112} and \eqref{tdhf130}, we can get
+  \begin{subequations}
+    \begin{align}
+      \label{tdhf132a}\sum_{\mu} \dot{q}_{\mu} \frac{\partial \rho_0}{\partial q_{\mu}} - \frac{\partial E}{\partial\chi} = 0 \\ 
+      \label{tdhf132b} {\rm Tr}\left( \dot{\chi} + \frac{\partial E}{\partial\rho_0} \right)\frac{\partial \rho_0}{\partial q_\mu} = 0
+    \end{align}
+  \end{subequations}
+  we know that $q$ and $p$ are independent variables, so we have
+  \begin{equation}
+    \sum_{\mu\mu\rq} \frac{\partial p_\mu}{\partial q_{\mu\rq}} = 0 = {\rm Tr}\left( \sum_{\mu\mu\rq}\frac{\partial \chi}{\partial q_{\mu\rq}} \frac{\partial\rho_0}{\partial q_\mu} \right) + {\rm Tr}\left( \chi \sum_{\mu\mu\rq}\frac{\partial^2\rho_0}{\partial q_{\mu\rq} \partial q_{\mu}} \right)	 \label{tdhf133}
+  \end{equation}
+  so, 
+  \begin{equation}
+    \begin{aligned}
+          {\rm Tr}\left( \chi \sum_{\mu\mu\rq}\frac{\partial^2\rho_0}{\partial q_{\mu\rq} \partial q_{\mu}} \dot{q}_\mu \right) =&  - {\rm Tr}\left( \sum_{\mu\mu\rq}\frac{\partial \chi}{\partial q_{\mu\rq}} \frac{\partial\rho_0}{\partial q_\mu}\dot{q}_\mu \right)\\ \label{tdhf134}
+          =& - {\rm Tr}\left( \sum_{\mu\rq}\frac{\partial \chi}{\partial q_{\mu\rq}} \sum_{\mu} \frac{\partial\rho_0}{\partial q_\mu}\dot{q}_\mu \right)	\\
+          =& - {\rm Tr}\left( \sum_{\mu\rq}\frac{\partial \chi}{\partial q_{\mu\rq}} \frac{\partial E}{\partial\chi}  \right) \\
+          =& - {\rm Tr}\left( \sum_{\mu}\frac{\partial \chi}{\partial q_{\mu}} \frac{\partial E}{\partial\chi}  \right)
+    \end{aligned}
+  \end{equation}
+  because of Eq.\eqref{tdhf131}, the l.h.s of Eq.\eqref{tdhf134} becomes
+  \begin{equation}
+   {\rm Tr}\left( \chi \sum_{\mu\mu\rq}\frac{\partial^2\rho_0}{\partial q_{\mu\rq} \partial q_{\mu}} \dot{q}_\mu \right) = {\rm Tr}\left( \chi \sum_{\mu}\frac{\partial^2\rho_0}{\partial q_{\mu}^2} \dot{q}_\mu \right)  	 \label{tdhf135}
+  \end{equation}
+  From Eqs.\eqref{tdhf135} and \eqref{tdhf134} we can have the equation
+  \begin{equation}
+    {\rm Tr}\left( \chi \sum_{\mu}\frac{\partial^2\rho_0}{\partial q_{\mu}^2} \dot{q}_\mu \right) =  - {\rm Tr}\left( \sum_{\mu}\frac{\partial \chi}{\partial q_{\mu}} \frac{\partial E}{\partial\chi}  \right)	 \label{tdhf136}
+  \end{equation}
+  especially, we can derived
+  \begin{equation}
+    {\rm Tr}\left( \chi \frac{\partial^2\rho_0}{\partial q_{\mu}^2} \dot{q}_\mu \right) =  - {\rm Tr}\left( \frac{\partial \chi}{\partial q_{\mu}} \frac{\partial E}{\partial\chi}  \right)	 \label{tdhf137}
+  \end{equation}
+  Using Eq.\eqref{tdhf132b}, we can have
+  \begin{equation}
+    {\rm Tr}\dot{\chi}\frac{\partial\rho_0}{\partial q_\mu} = -{\rm Tr}	\frac{\partial E}{\partial \rho_0} \frac{\partial \rho_0}{\partial q} \label{tdhf138}
+  \end{equation}
+  Finally, we could derived the following equation 
+  \begin{equation}
+    \begin{aligned}
+      \dot{p}_\mu =& {\rm Tr}\left[ \frac{d}{dt}\left(\chi \frac{\partial\rho_0}{\partial q_\mu}\right) \right] = {\rm Tr}\left(\dot{\chi}\frac{\partial\rho_0}{\partial q}\right) + \dot{q}_\mu {\rm Tr}\left(\chi\frac{\partial^2\rho_0}{\partial q_\mu^2}\right) 	 \label{tdhf139}   \\ 
+      =& -{\rm Tr}	\left(\frac{\partial E}{\partial \rho_0} \frac{\partial \rho_0}{\partial q_\mu} \right)- {\rm Tr}\left( \frac{\partial \chi}{\partial q_{\mu}} \frac{\partial E}{\partial\chi}  \right) \\
+      =& - {\rm Tr}\left(\frac{\partial E}{\partial \rho_0} \frac{\partial \rho_0}{\partial q_{\mu}} + \frac{\partial \chi}{\partial q_{\mu}} \frac{\partial E}{\partial\chi} \right) \\
+      =& -\frac{\partial E}{\partial q_\mu}
+    \end{aligned}
+  \end{equation}
+
+  \vspace{8pt}
+
+  One also often introduces a set of Hermitian operators $\hat{Q}$ which have only $ph$ and $hp$ elements defined by 
+  \begin{equation}
+    \left(      
+      \begin{array}{c}      \label{tdhf140}
+        Q \\
+        Q^*
+      \end{array}
+    \right)_{\mu} = \frac{\hbar}{i}\sum_{\mu\rq} M^{-1}_{\mu\mu\rq}
+    \left(
+      \begin{array}{cc}
+        A    & -B \\
+        -B^* & A^*
+      \end{array}
+    \right)^{-1}
+    \left(
+      \begin{array}{c}
+        P \\
+        -P^*
+      \end{array}
+    \right)_{\mu\rq}   
+  \end{equation}
+  they are closely connected to the operator
+  \begin{equation}
+    \chi = \sum_{\mu\mu\rq}\dot{q}_\mu M_{\mu\mu\rq}Q_{\mu\rq}	 \label{tdhf141}
+  \end{equation}
+  and allow a simple representation of the mass tensor $M$:
+  \begin{equation}
+    M^{-1}_{\mu\mu\rq} = (Q^* Q)_{\mu}\mathfrak{M}^{-1}	 \label{tdhf142}
+    \left(
+      \begin{array}{c}
+        Q     \\
+        -Q^* 
+      \end{array}
+    \right)
+    = \frac{1}{\hbar^2}\langle {\bf{q}} | [\hat{Q}_\mu, [H, \hat{Q}_{\mu\rq}]] | {\bf{q}} \rangle
+  \end{equation}
+  They obey the relation
+  \begin{equation}
+    \langle {\bf{q}} | [\hat{P}_\mu, \hat{Q}_{\mu\rq}] | {\bf{q}} \rangle = (P^* -P)_\mu 
+    \left(
+      \begin{array}{c}
+        Q     \\
+        -Q^* 
+      \end{array}
+    \right)_{\mu\rq}
+    = \frac{\hbar}{i}\delta_{\mu\mu\rq}
+     	 \label{tdhf143}
+  \end{equation}
+  which says that $\hat{P}_\mu$ and $\hat{Q}_\mu$ are "wekaly" canonical variables.
+  
+  The operators $\hat{{\bf{P}}}$ and $\hat{{\bf{Q}}}$ act like infinitesimal generators for the wave function $|\Phi\rangle$ in the vicinity of a point ${\bf{q}_0}$. If we know the "momenta" ${\bf{p}}$ and the "coordinate" q we get for the ATDHF function $|\Phi\rangle$ at a point ${\bf{q}_0}+ {\bf{q}}$ 
+\begin{equation}
+  | \Phi({{\bf{q}}_0}+ {\bf{q}}) \rangle = e^{(i/\hbar) {\bf{p}} \hat{{\bf{Q}}} }	e^{-(i/\hbar) {\bf{q}} \hat{{\bf{P}}} }| \Phi({{\bf{q}}_0}) \rangle \label{tdhf144}
+\end{equation}
+and
+\begin{equation}
+  \rho(t) = e^{(i/\hbar) {\bf{p}}(t) {\bf{Q}} } e^{-(i/\hbar) {\bf{q}}(t) {\bf{P}} } e^{-(i/\hbar) {\bf{p}}(t) {\bf{Q}}}	 \label{tdhf145}
+\end{equation}

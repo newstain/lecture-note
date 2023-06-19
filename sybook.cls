@@ -57,9 +57,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%% 数学模式 %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage{amsmath, amssymb, bm, empheq, bookman}           % 数学模式
+\RequirePackage{amsmath, amssymb, bm, empheq, bookman, mathfont}     % 数学模式
 \RequirePackage[framemethod=tikz]{mdframed}
 \RequirePackage{enumitem}
+\RequirePackage{slashed, mathtools, cancel, wrapfig}
+\RequirePackage[mathscr]{euscript}
 \AddEnumerateCounter{\chinese}{\chinese}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,7 +157,8 @@
 
 \RequirePackage{CJKfntef}
 
-\RequirePackage{fontspec}
+% \RequirePackage{mathpazo}
+% \RequirePackage{fontspec}
 % \newfontfamily\jbmr{JetBrainsMono Regular}
 
 
@@ -296,3 +299,62 @@
 \def\rcurs{{\mbox{$\resizebox{.15in}{.08in}{\includegraphics{./figure/symbols/ScriptR}}$}}}
 \def\brcurs{{\mbox{$\resizebox{.15in}{.08in}{\includegraphics{./figure/symbols/BoldR}}$}}}
 \def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\newcommand{\bSigma}{\bm{\Sigma}}
+
+\newcommand{\balpha}{\bm{\alpha}}
+\newcommand{\bsigma}{\bm{\sigma}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bB}{\bm{B}}
+\newcommand{\bC}{\bm{C}}
+\newcommand{\bD}{\bm{D}}
+\newcommand{\bE}{\bm{E}}
+\newcommand{\bF}{\bm{F}}
+\newcommand{\bG}{\bm{G}}
+\newcommand{\bH}{\bm{H}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\bJ}{\bm{J}}
+\newcommand{\bK}{\bm{K}}
+\newcommand{\bL}{\bm{L}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bN}{\bm{N}}
+\newcommand{\bO}{\bm{O}}
+\newcommand{\bP}{\bm{P}}
+\newcommand{\bQ}{\bm{Q}}
+\newcommand{\bR}{\bm{R}}
+\newcommand{\bS}{\bm{S}}
+\newcommand{\bT}{\bm{T}}
+\newcommand{\bU}{\bm{U}}
+\newcommand{\bV}{\bm{V}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bX}{\bm{X}}
+\newcommand{\bY}{\bm{Y}}
+\newcommand{\bZ}{\bm{Z}}
+
+\newcommand{\bma}{\bm{a}}
+\newcommand{\bmb}{\bm{b}}
+\newcommand{\bmc}{\bm{c}}
+\newcommand{\bmd}{\bm{d}}
+\newcommand{\bme}{\bm{e}}
+\newcommand{\bmf}{\bm{f}}
+\newcommand{\bmg}{\bm{g}}
+\newcommand{\bmh}{\bm{h}}
+\newcommand{\bmi}{\bm{i}}
+\newcommand{\bmj}{\bm{j}}
+\newcommand{\bmk}{\bm{k}}
+\newcommand{\bml}{\bm{l}}
+\newcommand{\bmm}{\bm{m}}
+\newcommand{\bmn}{\bm{n}}
+\newcommand{\bmo}{\bm{o}}
+\newcommand{\bmp}{\bm{p}}
+\newcommand{\bmq}{\bm{q}}
+\newcommand{\bmr}{\bm{r}}
+\newcommand{\bms}{\bm{s}}
+\newcommand{\bmt}{\bm{t}}
+\newcommand{\bmu}{\bm{u}}
+\newcommand{\bmv}{\bm{v}}
+\newcommand{\bmw}{\bm{w}}
+\newcommand{\bmx}{\bm{x}}
+\newcommand{\bmy}{\bm{y}}
+\newcommand{\bmz}{\bm{z}}

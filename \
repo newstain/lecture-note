@@ -1,0 +1,104 @@
+\chapter{相对论量子力学}
+
+\section{Dirac方程}
+曾谨言——《量子力学 II》第五版，Eq. 11.2.24，证明
+\begin{proof}
+    \begin{equation*}
+        \left[ \frac{1}{2} \bSigma, H \right] =
+                        \left[ \frac{1}{2}(\Sigma_x + \Sigma_y + \Sigma_z), 
+                        c(\alpha_x p_x + \alpha_y p_y + \alpha_z p_z) \right]
+    \end{equation*}
+    只选$\Sigma_x$这一项进行计算，有以下
+    \begin{equation}
+        \begin{aligned}
+            \left[\frac{1}{2}\Sigma_x, c(\alpha_x p_x + \alpha_y p_y + \alpha_z p_z)\right]
+          &= \left[ \frac{1}{2} \Sigma_x, c(\alpha_y p_y + \alpha_z p_z) \right] \\
+          &=    c \left[ \frac{1}{2} \Sigma_x, \alpha_y p_y\right] 
+              + c \left[ \frac{1}{2} \Sigma_x, \alpha_z p_z\right]   \\
+          &=    c \left[ \frac{1}{2} \Sigma_x, \alpha_y\right] p_y
+              + c \left[ \frac{1}{2} \Sigma_x, \alpha_z\right] p_z \\
+          &=    {\rm i} c \alpha_z p_y  - {\rm i} c \alpha_y p_z \\
+          &= -ic(\alpha_y p_z - \alpha_z p_y)
+        \end{aligned}
+    \end{equation}
+    按上述分别对$\Sigma_y$、$\Sigma_z$进行处理，最后可得
+    \begin{equation*}
+        \left[ \frac{1}{2} \bSigma, H \right] = -{\rm i} c (\bm{\alpha} \times \bm{p})
+    \end{equation*}
+\end{proof}
+
+曾谨言——《量子力学 II》第五版，练习1，Eq. 11.2.34
+\begin{proof}
+    \begin{equation}
+        \begin{aligned}
+            (\bSigma \cdot \bA) (\bSigma \cdot \bB) =&
+            \begin{pmatrix}
+                \bsigma \cdot \bA  &  0 \\
+                0                         &  \bsigma \cdot \bA
+            \end{pmatrix}
+            \begin{pmatrix}
+                \bsigma \cdot \bB  &  0 \\
+                0                         &  \bsigma \cdot \bB
+            \end{pmatrix} \\
+        =& \begin{pmatrix}
+            (\bsigma \cdot \bA) (\bsigma \cdot (\bB)  &  0 \\
+            0  &  (\bsigma \cdot \bA) (\bsigma \cdot (\bB) \\
+           \end{pmatrix} \\
+        =& \begin{pmatrix}
+            \bA \cdot \bB + {\rm i} \bsigma \cdot (\bm{A} \times \bB)  &  0 \\
+            0  &  \bA \cdot \bB + {\rm i} \bsigma \cdot (\bm{A} \times \bB) \\
+           \end{pmatrix} \\
+        =& \bA \cdot \bB + {\rm i} \bSigma (\bm{A} \times \bB)
+        \end{aligned}
+    \end{equation}
+    最后一个等号的第一项其实是$\bm{I} \cdot (\bA \cdot \bB)$，$\bm{I}$是一个与
+    $\bSigma$相同纬度的单位矩阵。
+\end{proof}
+
+曾谨言——《量子力学 II》第五版，练习1，Eq. 11.2.35
+\begin{proof}
+    \begin{equation}
+        \begin{aligned}
+            (\balpha \cdot \bA) (\balpha \cdot \bB) =&
+            \begin{pmatrix}
+                0                   &  \bsigma \cdot \bA  \\
+                \bsigma \cdot \bA   & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                0                   &  \bsigma \cdot \bB  \\
+                \bsigma \cdot \bB   & 0
+            \end{pmatrix} \\
+        =& \begin{pmatrix}
+            (\bsigma \cdot \bA) (\bsigma \cdot (\bB)  &  0 \\
+            0  &  (\bsigma \cdot \bA) (\bsigma \cdot (\bB) \\
+           \end{pmatrix} \\
+        =& \bA \cdot \bB + {\rm i} \bSigma (\bm{A} \times \bB)
+        \end{aligned}
+    \end{equation}
+    最后一个等号的第一项其实是$\bm{I} \cdot (\bA \cdot \bB)$，$\bm{I}$是一个与
+    $\bSigma$相同纬度的单位矩阵。
+\end{proof}
+
+曾谨言——《量子力学 II》第五版，练习1，Eq. 11.2.36
+\begin{proof}
+    首先，我们有
+    \begin{equation}
+        \begin{aligned}
+            (\balpha \cdot \bA) (\bSigma \cdot \bB) =&
+            \begin{pmatrix}
+                0                   &  \bsigma \cdot \bA  \\
+                \bsigma \cdot \bA   & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                \bsigma \cdot \bB   & 0  \\
+                0  &  \bsigma \cdot \bB 
+            \end{pmatrix} \\
+        =& \begin{pmatrix}
+            0  &  (\bsigma \cdot \bA) (\bsigma \cdot (\bB) \\
+            0  &  (\bsigma \cdot \bA) (\bsigma \cdot (\bB) \\
+           \end{pmatrix} \\
+        \end{aligned}
+    \end{equation}
+    最后一个等号的第一项其实是$\bm{I} \cdot (\bA \cdot \bB)$，$\bm{I}$是一个与
+    $\bSigma$相同纬度的单位矩阵。
+\end{proof}
