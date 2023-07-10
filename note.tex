@@ -8,12 +8,18 @@
 \date{\today}
 \maketitle
 
+\pagestyle{empty}
+\setcounter{page}{0}
+\pagestyle{empty}
 \tableofcontents
+\newpage
+\setcounter{page}{1}
 
 \part{数学基础}
 \include{contents/math-base/reference.tex}
 \include{contents/math-base/NumericalMethod.tex}
 \include{contents/math-base/mathematicalphysics.tex}
+\include{contents/math-base/linear-algebra.tex}
 
 \part{群论}
 \include{contents/grouptheory/GroupTheory.tex}
@@ -31,7 +37,8 @@
 \include{contents/electrodynamics/electric-fileds-in-matter.tex}
 
 \part{量子力学}
-\include{contents/quantum-mechan/wvfunction-schrodinger-eq.tex}
+\include{contents/quantum-mechan/wavefunction.tex}
+\include{contents/quantum-mechan/wave-equation.tex}
 \include{contents/quantum-mechan/QuantumHarmonicOscillator.tex}
 \include{contents/quantum-mechan/CanonicalQuantization.tex}
 \include{contents/quantum-mechan/AngularMomentum.tex}
