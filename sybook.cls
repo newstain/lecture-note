@@ -62,6 +62,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{slashed, mathtools, cancel, wrapfig}
 \RequirePackage[mathscr]{euscript}
+\RequirePackage{extarrows}
 \AddEnumerateCounter{\chinese}{\chinese}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,15 +129,8 @@
                     \color{red}{\S Note:}
                 }
                 {\par}%结束部分定义
-% \newenvironment{note}
-%                {
-%                     \par\noindent
-%                     {\scriptsize\color{red}\quad}
-%                     \textbf{\color{red}}
-%                 }
-%                 {\par}
 
-% \newenvironment{proof}{{\noindent 证明}\quad}{\hfill $\square$\par}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
