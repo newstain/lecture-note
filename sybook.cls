@@ -123,8 +123,18 @@
                 {\hfill $\square$\par}
 
 \newenvironment*{note}
-                {\par\noindent \textcolor{red}{\S Note:}}%开始部分定义
+                {%开始部分定义
+                    \par\noindent
+                    \color{red}{\S Note:}
+                }
                 {\par}%结束部分定义
+% \newenvironment{note}
+%                {
+%                     \par\noindent
+%                     {\scriptsize\color{red}\quad}
+%                     \textbf{\color{red}}
+%                 }
+%                 {\par}
 
 % \newenvironment{proof}{{\noindent 证明}\quad}{\hfill $\square$\par}
 
