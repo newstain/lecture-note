@@ -1,0 +1,232 @@
+\chapter{练习题}
+
+\section{宁平治 —— 《原子核物理基础》}
+
+\begin{exercise*}[C.1]
+    由式C1.21，比结合能写为
+    \begin{equation}
+        \frac{E_{B}}{A} =   \varepsilon_1 - \varepsilon_2 A^{-\frac{1}{3}}
+                          - \varepsilon_3 \frac{Z^2}{A^{\frac{4}{3}}} 
+                          - \varepsilon_4 \frac{(A - 2Z)^2}{A^2}
+                          - \varepsilon_5 \frac{\delta}{A^{\frac{7}{4}}}
+    \end{equation}
+    将对应数值代入得$^{40}_{20}{\rm Ca}$得比结合能为
+    \begin{equation*}
+        \frac{E_{B}(20, 40)}{40} = 8.7177\, {\rm MeV}
+    \end{equation*}
+    同样可以得到
+    \begin{equation*}
+        \frac{E_{B}(64, 158)}{158} = 8.2381\, {\rm MeV}
+        \quad
+        \frac{E_{B}(100, 256)}{158} = 7.4656\, {\rm MeV}
+    \end{equation*}
+\end{exercise*}
+
+\vspace{3mm}
+%%%%%%%%%%%%%%%%%
+\begin{exercise*}[C.2]
+    由式C1.21，原子核$^{A}{\rm Z}$得单中子分离能为
+    \begin{equation*}
+        \begin{aligned}
+            S_n =& E_B(Z, A) - E_B(Z, A - 1)    \\
+                =& \left[ \varepsilon_1 A - \varepsilon_2 A^{\frac{2}{3}}
+                  - \varepsilon_3 \frac{Z^2}{A^{\frac{1}{3}}} 
+                  - \varepsilon_4 \frac{(A - 2Z)^2}{A}
+                  - \varepsilon_5 \frac{\delta}{A^{\frac{3}{4}}}\right] \\
+                  &-
+                  \left[ \varepsilon_1 (A - 1) - \varepsilon_2 (A - 1)^{\frac{2}{3}}
+                  - \varepsilon_3 \frac{Z^2}{(A - 1)^{\frac{1}{3}}} 
+                  - \varepsilon_4 \frac{(A - 1 - 2Z)^2}{A - 1}
+                  - \varepsilon_5 \frac{\delta}{{(A - 1)}^{\frac{3}{4}}}\right] \\
+                =& \varepsilon_1 - \varepsilon_2\left[A^{\frac{2}{3}} - (A - 1)^{\frac{2}{3}}\right]
+                  -\varepsilon_3\left[\frac{Z^2}{A^{\frac{1}{3}}} - \frac{Z^2}{(A - 1)^{\frac{1}{3}}}\right] \\
+                 & -\varepsilon_4\left[\frac{(A - 2Z)^2}{A} - \frac{(A - 1 - 2Z)^2}{A - 1} \right]
+                  -\varepsilon_5\left[\frac{\delta}{A^{\frac{3}{4}}} - \frac{\delta}{{(A - 1)}^{\frac{3}{4}}}\right]
+        \end{aligned}
+    \end{equation*}
+    对最后一个等号各项进行分别计算：\\
+    1. 第二项，当$A$很大时，也就是对上式对$A\rightarrow \infty$求极限，有
+    \begin{equation}
+        \begin{aligned}
+            \lim_{A \to \infty} \left(A^{\frac{2}{3}} - (A - 1)^{\frac{2}{3}} \right)
+            &\xlongequal[]{A - 1 \to 1/x} \lim_{x \to 0} \left(\left(1 + \frac{1}{x}\right)^{\frac{2}{3}}
+            - \left(\frac{1}{x}\right)^{\frac{2}{3}} \right) \\
+            &= \lim_{x \to 0} \frac{(1 + x)^{2/3} - 1}{x^{2/3}} \\
+            &= \lim_{x \to 0} \frac{(2/3) x}{x^{2/3}} \\
+            &= \lim_{x \to 0} \frac{2}{3} x^{1/3}     \\
+            &= \lim_{A \to \infty} \frac{2}{3} (A - 1)^{-1/3}
+        \end{aligned}
+    \end{equation}
+    这里用到了等价无穷小$\lim_{x \to 0}(1 + x)^{n} \backsim n x$，第三个等号由于在$x = 0$的左领域不存在$x^{2/3}$的导数，
+    故不能使用洛必达法则，我们再证
+    \begin{equation*}
+        \lim_{A \to \infty} \frac{(A - 1)^{-1/3}}{A^{-1/3}} = \lim_{A \to \infty}\left(1 - \frac{1}{A}\right)^{-1/3}
+        = 1
+    \end{equation*}
+    可见当$A$很大时，$A^{-1/3}$与$(A - 1)^{-1/3}$是等价的，故此项可写为
+    $$-\frac{2}{3}\varepsilon_2 A^{-1/3}$$
+    2. 第四项，有
+    \begin{equation*}
+        \begin{aligned}
+            \frac{(A - 2Z)^2}{A} - \frac{(A - 1 - 2Z)^2}{A - 1}
+            =& \frac{(A - 2Z)^2(A - 1) - [(A - 2Z)^2 + 1 - 2(A - 2Z)]A}{A(A - 1)} \\
+            =& \frac{A^2 - A - 4Z^2}{A(A - 1)} \\
+            =& \frac{A}{A - 1} - \frac{1}{A - 1} - \frac{4Z^2}{A(A - 1)}
+        \end{aligned}
+    \end{equation*}
+    当$A$很大时，有
+    $$\lim_{A \to \infty} \frac{A}{A - 1} = 1$$
+    $$\lim_{A \to \infty} \frac{1}{A - 1} = 0$$
+    最后一项是考虑到$Z$和$A$始终保持在某一定比例内才能保证该核素能稳定存在，不考虑使用极限的方法进行化简。故此项最后化为
+    $$-\varepsilon_4(1 - \frac{4Z^2}{A(A - 1)})$$
+    3. 第三项和第五项，直接有
+    \begin{equation}
+        \begin{aligned}
+            \lim_{A \to \infty} \left(\frac{Z^2}{A^{1/3}} - \frac{Z^2}{(A - 1)^{1/3}}\right) = 0 \\
+            \lim_{A \to \infty} \left(\frac{\delta}{A^{3/4}} - \frac{\delta}{(A - 1)^{3/4}}\right) = 0
+        \end{aligned}
+    \end{equation}
+    故对大质量的核素，其单中子分离能可近似表示为
+    $$S_n = \varepsilon_1 - \frac{2}{3}\varepsilon_2 A^{-1/3} - \varepsilon_4(1 - \frac{4Z^2}{A(A - 1)})$$
+\end{exercise*}
+
+\vspace{3mm}
+%%%%%%%%%%%%%%%%
+\begin{exercise*}[C.14]
+    $\ket{jj}$对应的单粒子波函数为
+    \begin{equation*}
+        \phi_{nljm} = R_{nl}(r) \sum_{m, m_{S}} \Braket{l\,\nicefrac{1}{2}\,m\,m_{S} | j\,j} Y_{lm}(r, \theta, \phi) \chi_{\frac{1}{2}, m_{S}}
+    \end{equation*}
+    则对应的四极矩写为
+    \begin{equation*}
+        \begin{aligned}
+            Q =& \sqrt{\frac{16\pi}{5}} e \Braket{jj| r^2 Y_{20}(\theta, \phi) | jj} \\
+            =&\sqrt{\frac{16\pi}{5}} e 
+            \int d\,\tau \left[\left(R_{nl}(r) \sum_{m^{\prime}, m_{S}^{\prime}} \Braket{l\,\nicefrac{1}{2}\,m^{\prime}\,m_{S}^{\prime} | j\,j} Y_{lm^{\prime}}(r, \theta, \phi) \chi_{\frac{1}{2}, m_{S}^{\prime}}\right)^{\ast}
+            r^2 Y_{20}(\theta, \phi) \right.\\
+            & \cdot \left. \left(R_{nl}(r) \sum_{m, m_{S}} \Braket{l\,\nicefrac{1}{2}\,m\,m_{S} | j\,j} Y_{lm}(r, \theta, \phi) \chi_{\frac{1}{2}, m_{S}}\right) \right] \\
+            =& \sqrt{\frac{16\pi}{5}} e
+              \int r^2 R_{nl}^{\ast}(r) R_{nl}(r)\, r^2dr \\
+             &\cdot
+               \sum_{mm^{\prime}m_{S}m_{S}^{\prime}} \int_{0}^{\pi}\sin{\theta}\, d\theta \int_{0}^{2\pi} d\phi \Braket{l\nicefrac{1}{2}m^{\prime}m_{S}^{\prime} | jj}\Braket{l\nicefrac{1}{2}mm_{S} | jj}
+               Y_{lm^{\prime}}^{\ast}(r, \theta, \phi) Y_{20}(\theta, \phi) Y_{lm}(r, \theta, \phi) \chi_{\frac{1}{2}m_{S}^{\prime}} \chi_{\frac{1}{2}m_{S}}\\
+        \end{aligned}
+    \end{equation*}
+    考虑到
+    \begin{equation*}
+        \chi_{\frac{1}{2}m_{S}^{\prime}} \chi_{\frac{1}{2}m_{S}} = \delta_{m_{S}m_{S}^{\prime}}
+    \end{equation*}
+    ，CG系数要求满足$m_S + m = j_z$才不为0，这里确定$j_z = j$， $m_S = m_S^{\prime}$也确定，那么有$m = m^{\prime}$。故去掉上式的两个哑指标$m^{\prime}$、$m^{\prime}_{S}$，将两个CG系数提到积分号外，同时$Y^{\ast}_{lm} = (-1)^{m}Y_{l-m}$，故上式写成
+    \begin{equation*}
+        \begin{aligned}
+        Q =& \sqrt{\frac{16\pi}{5}} e
+           \int r^2 R_{nl}^{\ast}(r) R_{nl}(r)\, r^2dr \\
+           \cdot
+           &\sum_{m m_{S}}  \Braket{l\frac{1}{2}mm_{S} | jj}^2  (-1)^{m}
+           \int_{0}^{\pi}\sin{\theta}\, d\theta \int_{0}^{2\pi} d\phi
+           Y_{l-m}(r, \theta, \phi) Y_{20}(\theta, \phi) Y_{lm}(r, \theta, \phi) \\
+          =&  \sqrt{\frac{16\pi}{5}} e
+           \int r^2 R_{nl}^{\ast}(r) R_{nl}(r)\, r^2dr
+           \cdot
+           \sum_{m m_{S}}  \Braket{l\frac{1}{2}mm_{S} | jj}^2 (-1)^{m}
+           \sqrt{\frac{5(2l + 1)^2}{4\pi}}
+           \begin{pmatrix}
+               l & 2 & l \\
+               0 & 0   & 0
+           \end{pmatrix}
+           \begin{pmatrix}
+               l & 2 & l \\
+               0 & 0 & 0
+           \end{pmatrix} \\
+           =&  \sqrt{\frac{16\pi}{5}} e
+           \int r^2 R_{nl}^{\ast}(r) R_{nl}(r)\, r^2dr
+           \cdot \sqrt{\frac{5}{4\pi}}
+           \sum_{m m_{S}}
+           \Braket{l\frac{1}{2}mm_{S} | jj}^2
+           \Braket{l200 | l0}
+           \Braket{l2m0 | lm} \\
+           =&  2 e
+           \int r^2 R_{nl}^{\ast}(r) R_{nl}(r)\, r^2dr
+           \cdot
+           \sum_{m m_{S}}
+           \Braket{l\frac{1}{2}mm_{S} | jj}^2
+           \Braket{l200 | l0}
+           \Braket{l2m0 | lm} \\
+        \end{aligned}
+    \end{equation*}
+    上式第三个等号从3j符号转到CG系数用到书籍\textit{Quantum Theory of Angular Momentum}中Section 8.1.2的Eq.\,(11)；同时用到书籍中Tab.8.1 $\sim$  8.10的CG系数公式，先计算求和符号的后两项
+    \begin{equation*}
+        \Braket{l\, 2\, 0\, 0 | l\, 0}\Braket{l\, 2\, m\, 0 | l\, m} 
+        =
+        \frac{-l(l+1)}{\left[(2l - 1)l(l+1)(2l+3)\right]^{\nicefrac{1}{2}}}
+        \cdot
+        \frac{3l^2 - l(l+1)}{\left[(2l - 1)l(l+1)(2l+3)\right]^{\nicefrac{1}{2}}}
+    \end{equation*}
+    以下分两种情况进行讨论
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
+\end{exercise*}
+
+\section{J. Suhonen —— 《From Nucleons to Nucleus: Concepts of Microscopic Nuc-
+lear Theory》}
+
+%%%%%%%%%%%%%%%%
+\begin{exercise}[Ex 2.25 in \citet{suhonen-NtoN}]
+    According to the Winger-Eckart theorem(Eq. 2.27 in the book), 
+    the reduced probability can be derived from
+    \begin{equation}
+    \begin{aligned}
+        B(\sigma\lambda; J \rightarrow J^{\prime})
+        &\equiv
+        \sum_{\mu M^{\prime}} \left|
+            \Braket{\alpha^{\prime} J^{\prime} M^{\prime} |
+            \mathcal{M}_{\sigma\lambda\mu} | \alpha J M}
+        \right|^2 \\
+        &= \sum_{\mu M^{\prime}} \left|
+        (-1)^{j^{\prime} - M^{\prime}}\begin{pmatrix}
+            J^{\prime}  &  \lambda  &  J \\
+            -M^{\prime} &  \mu      &  M 
+        \end{pmatrix}
+        \right|^2 \left|
+          \left(\alpha^{\prime} J^{\prime} \| \mathcal{M}_{\sigma\lambda} \|  \alpha J\right)
+        \right|^2 \\
+        &= \left|
+            \left(\alpha^{\prime} J^{\prime} \| \mathcal{M}_{\sigma\lambda} \|  \alpha J\right)
+          \right|^2
+          \sum_{\mu M^{\prime}} \left|\begin{pmatrix}
+            J^{\prime}  &  \lambda  &  J \\
+            -M^{\prime} &  \mu      &  M 
+        \end{pmatrix}
+        \right|^2  \\ 
+        &= \left|
+            \left(\alpha^{\prime} J^{\prime} \| \mathcal{M}_{\sigma\lambda} \|  \alpha J\right)
+          \right|^2
+          \sum_{\mu M^{\prime}} \left|
+            (-1)^{J^{\prime} - J - M} \hat{J}^{-1}
+            \braket{J^{\prime} -M^{\prime} \lambda \mu | J -M}
+        \right|^2  \\
+        &\xlongequal[]{\text{see Eq. 8-(8) in Ref. \cite{varshalovich-amt}}}
+        \hat{J}^{-1} \left|
+            \left(\alpha^{\prime} J^{\prime} \| \mathcal{M}_{\sigma\lambda} \|  \alpha J\right)
+          \right|^2\\
+          &=  \frac{1}{2J+1} \left|
+            \left(\alpha^{\prime} J^{\prime} \| \mathcal{M}_{\sigma\lambda} \|  \alpha J\right)
+          \right|^2
+    \end{aligned}
+    \end{equation}
+    the sum symbol in fourth equal sign, the CG coefficient satisfies
+    \begin{equation*}
+        \left\{
+            \begin{array}{c}
+                \Delta(J^{\prime} \lambda J) \\
+                -M^{\prime} + \mu = -M
+            \end{array}
+        \right.
+    \end{equation*}
+    so the index $\mu$ can be replaced by $M$ and the completeness
+    property of CG coefficient Eq. 1.28 can be use.
+\end{exercise}
+
+\bibliographystyle{modified-apsrev4-2}
+\bibliography{reference}

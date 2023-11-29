@@ -1,0 +1,34 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{数学物理}
+
+\section{球谐函数}
+\subsection{球谐函数的定义}
+球谐函数定义为
+\begin{equation}
+    Y_{l, m}(\theta, \phi) = (-1)^{m} \sqrt{\frac{(2l + 1)(l - m)!}{4\pi(l+m)!}} P_{l}^{m}(\cos{\theta}) e^{{\rm i}m\phi}
+\end{equation}
+
+\subsection{球谐函数的基本公式}
+\paragraph*{复共轭}
+\begin{equation}
+    Y_{lm}^{\ast}(\theta, \phi) = (-1)^{m} Y_{l-m}(\theta, \phi)
+    \label{eq:sp-ho}
+\end{equation}
+
+\paragraph*{三个球谐函数的积分}
+\begin{equation}
+    \begin{aligned}
+        \int_{0}^{\pi}\sin{\theta}\, d\theta \int_{0}^{2\pi} d\phi
+           Y_{l_1m_1} Y_{l_2m_2}Y_{l_3m_3}
+        =& 
+        \sqrt{\frac{(2l_1 + 1)(2l_2 + 1)(2l_3 + 1)}{4\pi}}
+        \begin{pmatrix}
+            l_1 & l_2 & l_3 \\
+            0   & 0   & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            l_1 & l_2 & l_3 \\
+            m_1 & m_2 & m_3
+        \end{pmatrix} \\
+    \end{aligned}
+\end{equation}

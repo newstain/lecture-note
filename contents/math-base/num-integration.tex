@@ -1,0 +1,92 @@
+\chapter{数值积分}
+
+\section{一维数值积分}
+\subsection{辛普森积分及复合辛普森积分}
+\paragraph*{辛普森积分} 区间$[a, b]$有函数$f(x)$，求函数在此区间内的积分，可定义此区间的中点$\dfrac{a+b}{2}$及对应的函数值$f(\dfrac{a+b}{2})$，也就是对区间$[a, b]$进行二等分，这样，对应的数值积分为
+\begin{equation}
+	I = \int_{a}^{b} f(x) \, dx \approx \frac{h}{6}\left[ f(a) + f(\frac{a+b}{2}) + f(b) \right]	\label{eq:simpson-integer}
+\end{equation} 
+
+\paragraph*{复合辛普森积分} 区间$[a, b]$内有函数$f(x)$，现将区间$n$等分，在区间$[x_{k}, x_{k+1}](k = 0, 1, 2, \cdots, n-1)$内应用式\eqref{eq:simpson-integer}，并对每个小区间进行累加，这样就可以得到整个区间内的积分。设$x_{k+1/2} = \dfrac{x_k + x_{k+1}}{2}$，这样，$[a, b]$区间内对$f(x)$的积分为
+\begin{equation}
+    \begin{aligned}
+		I =& \int_{a}^{b} f(x) \, dx = \sum_{i = 0}^{n - 1}\int_{x_i}^{x_{i+1}} f(x) \, dx	\\
+		=& \frac{h}{6}\sum_{i=1}^{n-1} \left[ f(x_i) + 4f(x_{k+1/2}) + f(x_{k+1})  \right] + R_n(f)
+    \end{aligned}
+\end{equation} 
+取近似
+\begin{equation}
+    \begin{aligned}
+    	I \approx S_n = \frac{h}{6}\sum_{i=1}^{n-1} \left[ f(x_i) + 4f(x_{k+1/2}) + f(x_{k+1})  \right]
+    \end{aligned}
+\end{equation} 
+上式称为\uline{复合辛普森积分}。余项为
+\begin{equation}
+	R_n(f) = I - S_n = -\frac{h}{180} \left(\frac{h}{2} \right) \sum_{i = 0}^{n-1}f^{(4)}(\eta_i), \quad \eta_i \in (x_i, x_{i+1})
+\end{equation} 
+其中，$h = x_{i+1} - x_{k}$，误差阶为$h^4$。
+
+\begin{example}
+	\textbf{c++实现复合辛普森积分：} 考虑一些数据点，
+	
+\end{example}
+
+\subsection{Cubic积分}
+在完成cubic插值后，我们可根据方程\eqref{eq:unkown_Sx}求出原函数的近似，区间$[x_i, x_{i+1}]$区间内有函数$f(x)$，此时，我们有
+\begin{equation}
+	\begin{aligned}
+		I_i =& \int_{x_i}^{x_{i+1}} f(x) \, dx \approx \int_{x_i}^{x_{i+1}} S(x) \, dx \\
+		=& \int_{x_i}^{x_{i+1}} \, dx \left[ M_i \frac{\left(x_{i+1}-x\right)^3}{6 h_i}+M_{i+1} \frac{\left(x-x_i\right)^3}{6 h_i}+\left(y_i-\frac{M_i h_i^2}{6}\right) \frac{x_{i+1}-x}{h_i} \right. \\
+		 &\left. + \left(y_{i+1}-\frac{M_{i+1} h_i^2}{6}\right) \frac{x-x_i}{h_i} \right]	\\
+		=& \left[ -\frac{M_i}{24h_i} \left(x_{i+1}-x\right)^4 + \frac{M_{i+1}}{24h_i}\left(x-x_i\right)^4 \right. \\
+		 &\left. -\left(y_i-\frac{M_i h_i^2}{6}\right) \frac{(x_{i+1}-x)^2}{2h_i} + \left(y_{i+1}-\frac{M_{i+1} h_i^2}{6}\right) \frac{(x-x_i)^2}{2h_i} + \text{Const} \right]_{x_i}^{x_{i+1}}	\\
+		=& \frac{y_i + y_{i+1}}{2} h_i - \frac{M_{i} + M_{i+1}}{24} h_i^3
+	\end{aligned}
+\end{equation} 
+其中，$h_i = x_{i+1}-x_{i}$。区间$[a,\ b]$存在函数$f(x)$，将此区间进行$n$等分，每个小区间
+为$a = x_0 < x_1 < x_2 < \cdots < x_{n-1} < x_n = b $，求函数在此区域内的积分，如下
+\begin{equation}
+	I = \sum_{i=0}^{n-1} I_{i} \approx \sum_{i=0}^{n-1} \frac{y_i + y_{i+1}}{2} h_i - \frac{M_{i} + M_{i+1}}{24} h_i^3
+\end{equation} 
+当为等距格点时，即$h = h_0 = h_1 =\cdots = h_{n-1}$时，上式化为
+\begin{equation}
+	I\approx\frac{y_0+y_n+2\sum_{i=1}^{n-1}y_i}{2}h-\frac{M_0+M_n+2\sum_{i=1}^{n-1}M_i}{24}h^3
+    \label{eq:cubic-int-equidistant}
+\end{equation} 
+
+Cubic一维积分程序见附录\ref{chap:code}。
+
+\section{二维平面积分}
+对二维笛卡尔坐标系$x-y$平面的积分，可先对$x$坐标积分，在对$y$坐标积分，这样可得到原函数在
+二维平面上的积分。
+\subsection{Cubic二维平面积分}
+对于等间距的点，我们直接用式\eqref{eq:cubic-int-equidistant}来分别对$x$方向和$y$方向进行
+积分。
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \chapter{数值微分}
+% \section{五点数值微分公式}
+% \subsection{二阶导微分公式}
+% 设$f(x)$为定义在区间$[a,b]$上的函数，给定$f(x)$在等距点$a \leqslant x_0 < x_1 < x_2 < x_3
+% < x_4 \leqslant b$，节点上函数值为$f(x_k)$，$(k=0, 1, 2, 3, 4)$，且满足$x_{k+1}-x_k=h$。
+% 在$[a,b]$上做$f(x)$的4次Lagrange插值函数，并将$x=x_0+th, t \in [0, 4], x_k = x_0+kh$带入，
+% 将方程两端对$t$求二次导，再分别把$t=0, 1, 2, 3, 4$带入，可得到$x_k$节点二阶导数的5点数值
+% 微分公式，如下：
+% \begin{equation}
+% 	\begin{aligned}
+% 		f^{\prime\prime}(x_0) =& \frac{1}{12h^2}[35f(x_0) - 104f(x_1) + 114f(x_2) - 56f(x_3) + 11f(x_4)] \\
+% 		f^{\prime\prime}(x_1) =& \frac{1}{12h^2}[11f(x_0) -  20f(x_1) +   6f(x_2) +  4f(x_3) -   f(x_4)] \\
+% 		f^{\prime\prime}(x_2) =& \frac{1}{12h^2}[ -f(x_0) +  16f(x_1) -  30f(x_2) + 16f(x_3) -   f(x_4)] \\
+% 		f^{\prime\prime}(x_3) =& \frac{1}{12h^2}[ -f(x_0) +   4f(x_1) +   6f(x_2) - 20f(x_3) + 11f(x_4)] \\
+% 		f^{\prime\prime}(x_4) =& \frac{1}{12h^2}[11f(x_0) -  56f(x_1) + 114f(x_2) -104f(x_3) + 35f(x_4)]
+% 	\end{aligned}
+% \end{equation} 
+
+
+
+

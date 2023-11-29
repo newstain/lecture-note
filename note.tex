@@ -1,0 +1,68 @@
+\documentclass{sybook}
+
+\begin{document}
+\begin{sloppypar}
+
+% \title{学习笔记}
+% \author{陈盛远}
+% \date{\today}
+
+\input{cover.tex}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+
+\part{数学基础}
+\include{contents/math-base/preparation}
+\include{contents/math-base/interpolation-method}
+\include{contents/math-base/num-integration}
+\include{contents/math-base/num-differentiation}
+\include{contents/math-base/mathphy}
+\include{contents/math-base/linear-algebra}
+
+
+\part{群论}
+\include{contents/grouptheory/GroupTheory}
+
+\part{经典力学}
+\include{contents/classical-mechanics/chapter1}
+\include{contents/classical-mechanics/chapter2}
+\include{contents/classical-mechanics/chapter3}
+\include{contents/classical-mechanics/chapter4}
+\include{contents/classical-mechanics/Kinematics_RBM}
+
+\part{电动力学}
+\include{contents/electrodynamics/electrostatics}
+\include{contents/electrodynamics/potential}
+\include{contents/electrodynamics/electric-fileds-in-matter}
+
+\part{量子力学}
+\include{contents/quantum-mechan/wavefunction}
+\include{contents/quantum-mechan/QuantumHarmonicOscillator}
+\include{contents/quantum-mechan/vectorspace}
+\include{contents/quantum-mechan/CanonicalQuantization}
+\include{contents/quantum-mechan/AngularMomentum}
+\include{contents/quantum-mechan/rotation-sym}
+
+\part{原子核物理}
+\include{contents/nuclear/basicidea}
+\include{contents/nuclear/LDM}
+\include{contents/nuclear/mfc}
+\include{contents/nuclear/chapter-3}
+\include{contents/nuclear/chapter-4}
+\include{contents/nuclear/meanfield-shell}
+\include{contents/nuclear/elemag-momtran}
+\include{contents/nuclear/tdhf}
+\include{contents/nuclear/Hartree-Fock-Bogoliubov}
+\include{contents/nuclear/oscillator_basis}
+\include{contents/nuclear/exercises}
+
+\begin{appendices}
+    \appendixpage
+    \addappheadtotoc
+    \include{contents/Appendix/variational-principle.tex}
+    \include{contents/Appendix/program-code.tex}
+\end{appendices}
+
+\end{sloppypar}
+\end{document}

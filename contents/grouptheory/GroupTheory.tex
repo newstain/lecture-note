@@ -1,0 +1,369 @@
+\chapter{群与群表示理论}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{群的基本概念与性质}
+\begin{definition}[群的定义]
+	设$G$是一些元素的集合，$G = {\cdots, g, \cdots,} = {g}$。在$G$中定义了乘法运算。$G$构成一个群所满足的条件为：
+	\begin{enumerate}
+		\item 封闭性。即对任意元素$f, g \in G$，若$ h = fg$也有$h \in G$。
+		\item 结合律。对任意$f, g, h \in G$，都有
+			\begin{equation*}
+				(fg)h = f(gh)
+			\end{equation*} 
+		\item 有唯一单位元素。即有$e \in G$，对任意$f \in G$，都有
+			\begin{equation*}
+			    ef = fe = f
+			\end{equation*} 
+		\item 有逆元素。即对任意的$f \in G$，都有唯一的$ f^{-1} \in G$，满足
+			\begin{equation*}
+				f^{-1} f = f f^{-1} = e
+			\end{equation*} 
+	\end{enumerate}
+	其中，$e$为群$G$的单位元素，$f^{-1}$为$f$的逆元素。
+\end{definition}
+构成群的可以是一些操作，比如一些集合的置换和三角形的空间变换等，以下举例说明：
+\begin{example}
+	$n$阶置换群$S_n$，又称$n$阶对称群。将$n$个元素
+\end{example}
+\begin{example}	\label{exp:D3_group}
+	平面正三角形对称群$D_3$，又称为6阶二面体群。考虑中心在原点，底边与$x$轴平行的$xOy$平面上的正三角形$\bigtriangleup ABC$，见图\ref{fig:D3_group_fig}。保证三角形空间位置不变的操作有：
+	\begin{equation*}
+		\begin{aligned}
+			e&\text{：保持三角形不动；}			\quad	&d\text{：绕$z$轴转动$2\pi/3$；}\\
+			f&\text{：绕$z$轴转动$4\pi/3$；}	\quad	&a\text{：绕轴$1$转动$\pi$角；}	 \\
+			b&\text{：绕轴$2$转动$\pi$角；}		\quad	&c\text{：绕轴$3$转动$\pi$角；}
+		\end{aligned}
+	\end{equation*}
+	现在我们定义以上操作的乘积，如$ab$为先进行$a$操作再进行$b$操作。
+	\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}
+			\draw	[line width=.05cm]	(-1.732, -1) -- (1.732, -1) -- (0, 2) -- cycle;
+			\node	(A)	at	(0, 2)			[above right]	{$A$};
+			\node	(B)	at	(-1.732, -1)	[left]			{$B$};
+			\node	(C)	at	(1.732, -1)		[right]			{$C$};
+			\node	(O)	at	(0, 0)			[left]			{$O$};
+			\draw	[-Stealth, blue]	(0, 0)		 --	(2, 0)		node[at end, below]{$x$};
+			\draw	[-Stealth, blue]	(0, 0)		 --	(0, 2.5)	node[at end, left]{$y$};
+			\draw	[red, dashed](0, 2) -- +(0, -3.3)	node[at end, below]{$1$};
+			\draw	[red, dashed](-1.732, -1) -- +(30:3.3cm)	node[at end, right]{$2$};
+			\draw	[red, dashed](1.732, -1) -- +(150:3.3cm)	node[at end, left]{$3$};
+			\node	(a)	at	(0, -2)						{$(a)$};
+
+			\draw	[line width=.05cm]	(-5.732, -5.5) -- (-2.268, -5.5) -- (-4, -2.5) -- cycle;
+			\node	(A1)	at	(-2.268, -5.5)	[right]	{$A$};
+			\node	(B1)	at	(-5.732, -5.5)	[left]	{$B$};
+			\node	(C1)	at	(-4, -2.5)		[above]	{$C$};
+			\node	(b)		at	(-4, -6)				{$(b)$};
+			\draw	[line width=.05cm]	(2.268, -5.5) -- (5.732, -5.5) -- (4, -2.5) -- cycle;
+			\node	(A2)	at	(2.268, -5.5)	[left]	{$A$};
+			\node	(B2)	at	(5.732, -5.5)	[right]	{$B$};
+			\node	(C2)	at	(4, -2.5)		[above]	{$C$};
+			\node	(c)		at	(4, -6)				{$(c)$};
+		\end{tikzpicture}
+		\caption{正三角形转动操作}
+		\label{fig:D3_group_fig}
+	\end{figure}
+	我们发现，对图中的三角形进行上述任意的六种操作以及相应的乘法操作，此\uline{三角形在空间上保持不变}，如图\ref{fig:D3_group_fig}(b)，它可以认为是直接对(a)进行$b$操作，也可认为是先进行$c$操作在进行$d$操作，这样，我们就可以得到这样的关系$dc=b$。在这些乘法作用下，上述这些操作构成群，我们称为\textcolor{red}{$D_3$群}，其乘法表如下：
+	\begin{table}[!ht]
+		\centering
+		\caption{$D_3$群乘法表}
+		\setlength{\tabcolsep}{10mm}{
+		\begin{tabular}{|c|cccccc|}\hline
+			~	&	e	&	d	&	f	&	a	&	b	&	c	\\	\hline
+			e	&	e	&	d	&	f	&	a	&	b	&	c	\\	
+			d	&	d	&	f	&	e	&	c	&	a	&	b	\\	
+			f	&	f	&	e	&	d	&	b	&	c	&	a	\\	
+			a	&	a	&	b	&	c	&	e	&	d	&	f	\\	
+			b	&	b	&	c	&	a	&	f	&	e	&	d	\\	
+			c	&	c	&	a	&	b	&	d	&	f	&	e	\\	\hline
+		\end{tabular} 
+		}
+	\end{table}
+\end{example}
+
+
+\section{群表示}
+\subsection{群表示基础}
+构成群的是一些操作，既然是一些操作，那么必然有其所对应的操作对象，其操作对象是位于某一空间下的，比如前面的例\ref{exp:D3_group}，群元是一些操作，而这些操作所对应的对象则是位于三维空间中的正三角形；我们将此三角形在三维空间中表示出来（只表示其顶点坐标），那么它将以列矢的形式表现出来，而对应的群操作的表现形式则为矩阵，这些矩阵同样构成群。因此，我们可以说，\CJKunderdot{所谓的群表示就是某一群$G$到线性空间$V$上的某一线性变换群$L(V,C)$的同态映射，也就是说表示是一种同态映射关系，它存在于一个抽象群和线性空间的线性变换群之间。}
+
+群中的群元是对某一个对象进行某种操作，而群表示则相当于我们要在某一个具体的空间下用数学的语言来描述这个群元所对应的操作。在理解这个操作之前需要了解线性空间和线性变换的概念。
+\begin{definition}[线性空间(向量空间)]
+	线性空间是定义在数域$\mathbb{K}$(比如实数域$\mathbb{R}$或复数域$\mathbb{C}$)上的向量集合$V = \{\bm{x}, \bm{y}, \bm{z}, \cdots\}$。在$V$中可以定义加法和数乘两种运算。设矢量$\bm{x}, \bm{y}, \bm{z} \in V$，数$a , b , c \in \mathbb{K}$，向量加法和数乘都具有封闭性，满足\newline
+	向量加法：
+	\begin{enumerate}
+		\item $\bm{x} + \bm{y} = \bm{y} + \bm{x}$
+		\item $\bm{x} + ( \bm{y} + \bm{z} ) = (\bm{x} + \bm{y}) + \bm{z}$
+		\item 有唯一$\bm{0}$元素，$\bm{x} + \bm{0} = \bm{x}$
+		\item 对$\forall \bm{x}$，有唯一的$-\bm{x}$，使得$\bm{x} + (-\bm{x}) = \bm{0}$
+	\end{enumerate}
+	向量与数的乘法：
+	\begin{enumerate}
+		\item $1 \cdot \bm{x} = \bm{x}$
+		\item $(ab)\bm{x} = a(b\bm{x})$
+		\item $a(\bm{x} + \bm{y}) = a\bm{x} + a\bm{y}$
+		\item $(a + b) \bm{x} = a\bm{x} + b\bm{x}$
+	\end{enumerate}
+	现在把向量的加法看成群的乘法，则线性空间$V$构成一个可交换的加法群。
+\end{definition} 
+线性空间最简单的一个例子就是三维空间，若三维空间按笛卡尔坐标系展开，则上面的向量都可用$(x, y, z)$表示，而且具有封闭性，也就是这些向量相加或数乘都无法超过这个空间。
+\begin{definition}{线性无关向量}
+	线性空间$V$中，若任意$n$个向量$\bm{X}_1, \bm{X}_2, \cdots, \bm{X}_n$的线性组合$a_1\bm{X}_1 + a_2\bm{X}_2 + \cdots + a_n\bm{X}_n = 0$，其中$a_1, a_2, \cdots, a_n \in \mathbb{K}$，当且仅当$a_1 = a_2 = \cdots = a_n = 0$时成立，这时，称$\bm{X}_1, \bm{X}_2, \cdots, \bm{X}_n$这些向量线性无关。否则，称他们线性相关。
+\end{definition} 
+
+\begin{definition}
+	线性变换$A$是将线性空间$V$映入$V$的映射，这个映射对$\forall \bm{x}, \bm{y} \in V$和$\forall a, \in \mathbb{K}$，满足$A(a\bm{x} + b\bm{y} = aA\bm{x} + bA\bm{y}$，也就是说这个变换作用到向量的线性组合上，等于这个变换作用到向量上的线性组合。
+\end{definition}
+所谓映射其实就是一种操作，它把某个区域的东西变成另一个区域的某样东西，上面的定义中$A$是将$V$中的某个元素变成$V$中的另一样元素，这两个元素可能相同也可能不同。这里，$A$将表现为矩阵形式，而我们所需要做的就是找到$A$所对应的矩阵。当我们取定$V$中的基矢为$\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n$时，对$V$中的某一向量$x=\sum_{i=1}^{n}x_i\bm{e}_i$做相关的线性变换，表现为
+\begin{equation}
+	\begin{aligned}
+		A\bm{x} =& \sum_{j=1}^{n} x_j A \bm{e}_j = \sum_{j=1}^{n}\sum_{i=1}^{n} x_j e_i a_{ij}	\\
+				=& (\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n)
+					\begin{pmatrix}
+						a_{11}	&	a_{12}	&	\cdots	&	a_{1n}	\\
+						a_{21}	&	a_{22}	&	\cdots	&	a_{2n}	\\
+						\vdots	&	\vdots	&	\ddots	&	\vdots	\\
+						a_{1n}	&	a_{2n}	&	\cdots	&	a_{nn}	\\
+					\end{pmatrix}
+					\begin{pmatrix}
+						x_1	\\
+						x_2	\\
+						\vdots	\\
+						x_n
+					\end{pmatrix}	\label{eq:group_basis_change}
+	\end{aligned}
+\end{equation}
+我们知道，一个线性空间可选取不同的基矢，不同基矢之间可通过矩阵变换联系起来，上式第三个等号的左边两项可构成向量空间$V$的另一组基，我们考虑为$\bm{e}^{\prime}_1, \bm{e}^{\prime}_2, \cdots, \bm{e}^{\prime}_n$，它们之间的关系如下：
+\begin{equation}
+	\bm{e}^{\prime}_{j} = (\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n) 
+						\begin{pmatrix}
+							a_{1j}	\\
+							a_{2j}	\\
+							\vdots	\\
+							a_{nj}
+						\end{pmatrix}
+\end{equation} 
+下面，我们取$V$中另一向量$\bm{y} = \sum_{i=1}^{n}y_i\bm{e}_i$，它是$\bm{x}$通过映射$A$得到的，满足$\bm{y} = A\bm{x}$。对于$\bm{y}$，写成矩阵形式为
+\begin{equation}
+	\bm{y} = (\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n)
+				\begin{pmatrix}
+					y_1	\\
+					y_2	\\
+					\vdots	\\
+					y_n
+				\end{pmatrix}	\label{eq:group_basis_eq_change}
+\end{equation} 
+由于$\bm{y}$与$A\bm{x}$表示的是同一向量，联合式\eqref{eq:group_basis_change}和\eqref{eq:group_basis_eq_change}，我们有以下关系成立
+\begin{equation}
+	 (\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n)
+		\begin{pmatrix}
+			a_{11}	&	a_{12}	&	\cdots	&	a_{1n}	\\
+			a_{21}	&	a_{22}	&	\cdots	&	a_{2n}	\\
+			\vdots	&	\vdots	&	\ddots	&	\vdots	\\
+			a_{1n}	&	a_{2n}	&	\cdots	&	a_{nn}	\\
+		\end{pmatrix}
+		\begin{pmatrix}
+			x_1	\\
+			x_2	\\
+			\vdots	\\
+			x_n
+		\end{pmatrix}
+		=
+		(\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n)
+		\begin{pmatrix}
+			y_1	\\
+			y_2	\\
+			\vdots	\\
+			y_n
+		\end{pmatrix}
+\end{equation} 
+由式\eqref{eq:group_basis_eq_change}，我们用新基矢$\bm{e}^{\prime}_1, \bm{e}^{\prime}_2, \cdots, \bm{e}^{\prime}_n$替换上式等号的右边两个矩阵，也就是有下式成立
+\begin{equation}
+	(\bm{e}^{\prime}_1, \bm{e}^{\prime}_2, \cdots, \bm{e}^{\prime}_n )
+	=
+	(\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_n)
+	\begin{pmatrix}
+		a_{11}	&	a_{12}	&	\cdots	&	a_{1n}	\\
+		a_{21}	&	a_{22}	&	\cdots	&	a_{2n}	\\
+		\vdots	&	\vdots	&	\ddots	&	\vdots	\\
+		a_{1n}	&	a_{2n}	&	\cdots	&	a_{nn}	\\
+	\end{pmatrix}
+\end{equation} 
+以上我们可以看出，通过矩阵$A$，我们可以把新基矢与旧基矢联系起来，矩阵的第$j$列，是新基矢用旧基矢表示的展开系数。这样，当我们知道新基矢与旧基矢之间的关系时（也就是\CJKunderdot{新基矢用旧基矢展开的展开系数}），我们就可以把矩阵$A$写出来，也就是可以把抽象群元对应的表示写出来。我们来看一个例子
+\begin{example}
+	以$D_3$群群元$b$为例，来考虑它在三维线性空间中的表示。首先，轴$2$在此空间中可表示为某一直线方程：
+	\begin{equation}
+	    -\tan \frac{\pi}{6} x + y = 0
+	\end{equation} 
+	而群元$b$是让三角形发生关于此直线的镜像变换，而原来的基矢为$\bm{e}_{x}, \bm{e}_{y}, \bm{e}_z$，变换后的基矢为$\bm{e}^{\prime}_x, \bm{e}^{\prime}_y,\bm{e}^{\prime}_z$，它们之间的关系由下图表示
+	\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}
+			\draw	[line width=.05cm]	(-1.732, -1) -- (1.732, -1) -- (0, 2) -- cycle;
+			\node	(A)	at	(0, 2)			[above right]	{$A$};
+			\node	(B)	at	(-1.732, -1)	[left]			{$B$};
+			\node	(C)	at	(1.732, -1)		[right]			{$C$};
+			\node	(O)	at	(0, 0)			[left]			{$O$};
+			\draw	[-Stealth, blue]	(0, 0)		 --	(2, 0)		node[at end, below]{$x$};
+			\draw	[-Stealth, blue]	(0, 0)		 --	(0, 2.5)	node[at end, left]{$y$};
+			\draw	[red, dashed](-1.732, -1) -- +(30:3.3cm)	node[at end, right]{$2$};
+
+			\draw	[-Stealth, cyan]	(0, 0)		 --	(1, 1.732)		node[at end, above]{$x^\prime$};
+			\draw	[-Stealth, cyan]	(0, 0)		 --	(2.5, -1.4434)	node[at end, below]{$y^\prime$};
+		\end{tikzpicture}
+		\caption{$D_3$群群元$b$在三维空间中的操作}
+	\end{figure}
+	\newline
+	写成数学表达式：
+	\begin{equation}
+	    \begin{aligned}
+			\bm{e}_x^\prime =& \cos \frac{2\pi}{6} \bm{e}_x + \sin \frac{2\pi}{6} \bm{e}_y	\\
+			\bm{e}_y^\prime =& \sin \frac{2\pi}{6} \bm{e}_x - \cos \frac{2\pi}{6} \bm{e}_y	\\
+			\bm{e}_z^\prime =& \bm{e}_z
+	    \end{aligned}
+	\end{equation} 
+	根据上式写成矩阵形式，则可得到$D_3$群元$b$在三维线性空间中的群表示
+	\begin{equation}
+	    A(b) =
+		\begin{pmatrix}
+			\cos \frac{2\pi}{6}	&	\sin \frac{2\pi}{6}		&	0	\\
+			\sin \frac{2\pi}{6}	&	-\cos \frac{2\pi}{6}	&	0	\\
+			0					&	0						&	1	
+		\end{pmatrix}
+	\end{equation} 
+\end{example}
+
+\begin{definition}
+	设有群$G$，如存在一个从$G$到$n$维线性空间$V$上的线性变换群$L(V,C)$的同态映射$A$，则称$A$是群$G$的一个线性表示，$V$为表示空间，$n$是表示的维数。显然，由同态的定义，$\forall g_\alpha \in G$，有$A(g_\alpha) \in L(V, C)$，同时，对$\forall g_\alpha, g_\beta \in G$，有$A(g_\alpha g_\beta) = A(g_\alpha)A(g_\beta)$。$G$的单位元素对应的是$V$上的恒等变换，互逆元素对应的是互逆的变换。
+\end{definition}
+\CJKunderdot{对于线性空间$V$，如果选定一组特定的基矢，那么每个线性变换都可以有一个矩阵表示，而线性变换也会对应到一个矩阵群。这是，抽象群$G$与线性变换群的同台映射关系可以理解为抽象群$G$与矩阵群的同态映射关系。}我们考虑一个例子来理解这个概念，同样取例\ref{exp:D3_group}，我们在三维笛卡尔坐标系中对其展开描述，$D_3$群群元对应到线性空间中的矩阵为
+\begin{equation*}
+	\begin{aligned}
+		&e \xrightarrow[]{A}
+		A(e) = 
+		\begin{pmatrix}
+			1	&	0	&	0	\\
+			0	&	1	&	0	\\
+			0	&	0	&	1
+		\end{pmatrix}
+		\\
+		&d \xrightarrow[]{A}
+		A(d) =
+		\begin{pmatrix}
+			\cos \frac{2\pi}{3}	&	\sin \frac{2\pi}{3}	&	0	\\
+			-\sin	\frac{2\pi}{3}	&	\cos \frac{2\pi}{3}	&	0	\\
+			0	&	0	&	1
+		\end{pmatrix}
+		\\
+		&f \xrightarrow[]{A}
+		A(d) =
+		\begin{pmatrix}
+			\cos  \frac{4\pi}{3}	&	\sin \frac{4\pi}{3}	&	0	\\
+			-\sin \frac{4\pi}{3}	&	\cos \frac{4\pi}{3}	&	0	\\
+			0						&	0					&	1
+		\end{pmatrix}
+		\\
+		&a \xrightarrow[]{A}
+		A(a) =
+		\begin{pmatrix}
+			-1	&	0	&	0	\\
+			0	&	1	&	0	\\
+			0	&	0	&	1
+		\end{pmatrix}
+		\\
+		&b \xrightarrow[]{A}
+		A(b) =
+		\begin{pmatrix}
+			\frac{1}{2}			&	\frac{\sqrt{3}}{2}	&	0	\\
+			\frac{\sqrt{3}}{2}	&	-\frac{1}{2}		&	0	\\
+			0					&	0					&	1
+		\end{pmatrix}
+		\\
+		&c \xrightarrow[]{A}
+		A(c) =
+		\begin{pmatrix}
+			\frac{1}{2}			&	-\frac{\sqrt{3}}{2}	&	0	\\
+			-\frac{\sqrt{3}}{2}	&	-\frac{1}{2}		&	0	\\
+			0					&	0					&	1
+		\end{pmatrix}
+	\end{aligned}
+\end{equation*} 
+其中，$A$是一种映射关系，它将$D_3$群中的群元在线性空间中表示为矩阵，而这些矩阵是属于线性变换群$L(V,C)$的。这样，我们可以把群表示关系(抽象群与矩阵变换群的关系)写成如下形式：
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}
+		\draw	(-3, 0)ellipse [x radius=1.2cm, y radius=2cm];
+		\draw	(3, 0)ellipse [x radius=1.2cm, y radius=2cm];
+		\draw	[-Stealth]	(-2.8, 0.7)	--	(2.8, 0.7);
+		\node	(g_alpha)	at	(-2.9, 0.7)	[left]	{$g_{\alpha}$};
+		\node	(A_alpha)	at	(2.9, 0.7)	[right]	{$A(g_\alpha)$};
+		\node	(G)	at	(-3, 2.5)	{$G$};
+		\node	(L)	at	(3, 2.5)	{$L(V,C)$};
+		\node	(A)	at	(0, 2.5)	{$A$};
+	\end{tikzpicture}
+	\caption{群表示}
+\end{figure}
+\newline
+下面，我们举一些例子一边更好的理解清楚这个定义的概念
+\begin{example}
+	考虑三个二阶群：(1) $\{E, \sigma_k\}$（三维空间对$x-y$平面的反射），(2) $\{E, C_k(\pi)\}$（绕$z$轴转$\pi$角），(3) $\{E, I\}$（空间反演操作）。去表示空间为三维实空间，基矢为$\{\bm{i}, \bm{j}, \bm{k}\}$，写出它们的表示。首先，我们考虑群元$E$，由于它是恒等变换，也就是把$\{\bm{i}, \bm{j}, \bm{k}\}$变成$\{\bm{i}, \bm{j}, \bm{k}\}$，对应的新向量在旧基矢组下的展开系数分别为$(1, 0, 0), (0, 1, 0), (0, 0, 1)$，表示矩阵为三阶单位矩阵。
+	\newline
+	对于非单位元，考虑第一种情况，$\sigma_k$把$\{\bm{i}, \bm{j}, \bm{k}\}$变为$\{\bm{i}, \bm{j}, -\bm{k}\}$表示矩阵为$ \begin{pmatrix}
+		1	&	0	&	0	\\
+		0	&	1	&	0	\\
+		0	&	0	&	-1
+	\end{pmatrix}$；
+	\newline
+	第二种情况$C_k(\pi)$把$\{\bm{i}, \bm{j}, \bm{k}\}$变为$\{-\bm{i}, -\bm{j}, \bm{k}\}$，表示矩阵为$ \begin{pmatrix}
+		-1	&	0	&	0	\\
+		0	&	-1	&	0	\\
+		0	&	0	&	1
+	\end{pmatrix}$；
+	\newline
+	第三种情况$I$把$\{\bm{i}, \bm{j}, \bm{k}\}$变为$\{-\bm{i}, -\bm{j}, -\bm{k}\}$，表示矩阵为$ \begin{pmatrix}
+		-1	&	0	&	0	\\
+		0	&	-1	&	0	\\
+		0	&	0	&	-1
+	\end{pmatrix}$。
+\end{example}
+
+我们需要弄清楚的一点是，\textcolor{red}{抽象群的群元是作用在向量$\bm{r}$上的，而群元的表示是作用在基矢上的，我们以什么作为基矢，那么表示就作用在谁身上，而有时候向量和基矢的类型可能是不一样的}。上面的例子中，我们很容易理解抽象群群元作用在了一个变量$\bm{r}$上，由于我们选取的基矢也是向量，所以这些群元的表示也作用在向量上；而对于一些基矢为函数的情况则有所不同，当我们选取函数$\{\Psi_1(\bm{r}), \Psi_2(\bm(r), \cdots, \Psi_n(\bm{r}))\}$作为基矢时，抽象群群元$g_i$仍作用在$\bm{r}$上，但是其表示$A(g_i)$却是作用在$\Psi_i(\bm{r})$上的。
+
+我们以$\Psi_i(\bm{r})$为例，$g_\alpha$作用到基矢$\Psi_i(\bm{r})$上的效果为$ g_\alpha \Psi_i(\bm{r}) =\Psi_i(g_\alpha \bm{r}) = \Psi_i(\bm{r}^{\prime})$；$A(g_\alpha)$作用到$\Psi_i(\bm{r})$上的效果为：$ A(g_\alpha)\Psi_i(\bm{r}) = \Psi_i^{\prime}(\bm{r})$。由于$A(g_\alpha)$是群元$g_\alpha$的表示，也就是有关系$\Psi_i(g_\alpha \bm{r}) = A(g_\alpha)\Psi_i(\bm{r})$成立，所以最后得到的结果应该也要保持一致，所以应该满足关系：$\Psi_i^\prime(\bm{r}) = \Psi_i(\bm{r}^\prime)$。现在，$\Psi^\prime_i(\bm{r})$变成了新的基矢，基于前面的讨论，我们如果想要知道表示$A(g_\alpha)$的具体形式，我们只要将新基矢$\Psi_i^{\prime}(\bm{r})$用旧基矢$\Psi_i(\bm{r})$进行展开，并得到对应的展开系数便能求得$A(g_\alpha)$，等价的，我们只需要将$\Psi_i(\bm{r}^\prime)$进行展开便可以得到$\Psi^\prime_i(\bm{r})$的展开结果。
+
+\subsection{等价表示，可约表示，酉表示}
+\begin{definition}[等价表示]
+	设群$G=\{g\}$在表示空间上的一个表示$A$是$\{A(g_\alpha)$，也就是说对每个$g_\alpha$都有非奇异变换$A(g_\alpha)$与之对应。设$P$是$V$上的一个非奇异变换，${\rm det}(P)$不为零，则$\{P^{-1} A(g_\alpha) P\}$也给出群$G$的一个表示，因为每个$g_\alpha$也唯一对应一个$\{P^{-1}A(g_\alpha)P\}$，且$\{P^{-1}A(g_\alpha)P\}$
+\end{definition}
+
+\subsection{有限群表示理论}
+\begin{theorem}[完备性定理]
+	设$A^{p}(p = 1, 2, \cdots, q)$是有限群$G = {g_{\alpha}}$的所有不等价不可约酉表示，则$A^{p}$生成的群函数$A^{p}_{\mu\nu}(g_{i})$在$p$遍历所有不等价不可约酉表示的指标，$\mu, \nu$遍历所有行和列的指标时，$A^{p}_{\mu\nu}(g_{i})$在群函数空间是完备的。
+\end{theorem} 
+下面我们来证明此定理：
+\begin{proof}
+	我们需要用到一些简单的性质：假设有一个群空间，我们按群代数中定义的向量乘法来做线性变换时，这个群空间是右正则表示$R(g_j)$的表示空间。
+\end{proof}
+
+\begin{example}
+	设$A(g)$群$G=\{g\}$的一个表示，证明：复共轭$A^{*}(g)$也是$G$的一个表示。如果$A(g)$是不可约的或酉的，那么$A^*(g)$也是不可约的或酉的。
+	\begin{proof}
+		$A(g)$是群$G$的一个表示，存在这样一个表示空间$V$，使$A(g)$与此空间上的一般线性变换群$L(V,C)$同态，即对$\forall g_i$，我们有$A(g_i) \in L(V, C)$成立，且满足
+		\begin{equation*}
+			\begin{aligned}
+				\forall g_{i} \in G, \quad & A(g_i) \in L(V, C)	\\
+				\forall g_{i}, g_{j} \in G, \quad & A(g_i g_j) = A(g_i) A(g_j) \in L(V, C)
+			\end{aligned}
+		\end{equation*}
+		对于复共轭$A^*(g)$，我们可以取表示空间$V$上的一般线性变换群$L^* (V, C)$，使其满足$\forall A^* (g_i) \in L^* (V, C)$，并且，我们有对$\forall g_i \in G, A^*(g_i) \in L^*(V, C)$，且有以下关系：
+		\begin{equation*}
+			\begin{aligned}
+				& A^* (g_i g_j) = [A(g_i) A(g_j)]^* = A^*(g_i) A^*(g_j) \in L^* (V, C)	\\
+				& A^{*}(e) \in L^{*}(V, C) \\
+				& A^{*}(g) A^{-1*}(g) = [A(g)A^{-1}(g)]^* = E^* = E
+			\end{aligned}
+		\end{equation*} 
+		可知，$A^{*}(g)$同样满足群表示的定义，也是群$G$的一个表示。
+	\end{proof}
+\end{example}
+

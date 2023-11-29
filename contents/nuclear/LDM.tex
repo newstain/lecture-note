@@ -1,0 +1,78 @@
+\chapter{液滴模型}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{引言}
+\paragraph*{液滴模型(LDM)提出的依据}
+\begin{enumerate}
+	\item 原子核的不可压缩性：一般的，我们认为原子核无法的压缩性极低，且其体积不随其形状的改变而发生变化；
+	\item 原子核具有明确的表面(well defined surface)；
+	\item 原子核中核力的\textcolor{red}{\underline{饱和性质：}}原子核中的一个核子仅与有限个核子发生相互作用。
+\end{enumerate}
+
+基于上面原子核的性质，人们提出了所谓的液滴模型，将原子核当成一个均匀带电的、不可压缩的、体积不变的液滴。从严格意义上来讲，这与真实的原子核情况是不相符的：原子核还具有结团(cluster)现象，表现为质量数等于4的核较为稳定；此外，在经典液滴中，两粒子的平均距离由粒子间作用力的极小值给出，大约为0.7fm，但是真实原子核应该是一个量子流体，其中的粒子间平均距离约为2.4fm，这是因为核子是满足费米统计(Fermi statistics)的，此时，泡利原理(Pauli principle)会阻止核子间距离过于接近，从而切掉了大部分两体力，导致核子间距离变大；在一个量子流体中是很少发生散射的，而在经典液滴中则以散射为主要反应。
+
+\paragraph*{原子核的结合能}
+对于一个包含$A$个粒子的系统，其结合能若只由两体力提供，那么它的总结合能$B(N,Z)$与粒子所构成的两体相互作用的组合数成正比关系，即有如下关系成立：
+\begin{equation*}
+	B(N, Z) \propto
+	\begin{pmatrix}
+		2	\\
+		A
+	\end{pmatrix}
+	= \frac{1}{2} A(A-1)
+\end{equation*} 
+上述关系的例子可参考原子中的电子结合能。按上所述，原子核的总结合能$B(N,Z)$应随质量数的增大而增大，而且其\underline{\textcolor{red}{每核子的结合能}}（或称\underline{\textcolor{red}{比结合能}}）应随质量数呈线性递增的关系，但实验发现对于质量数$A > 12$的原子核，其比结合能会大致处在某一常数附近
+\begin{equation}
+	\frac{B(N, Z)}{A} \simeq -8.5 [\text{ MeV/nucleon }]  \label{eq_specific_binding_energy}
+\end{equation} 
+原子核中结合能的行为可由核力的饱和性质进行解释。而这最后可归因到核力的短程性以及泡利原理与不确定性原理的结合。
+\begin{note}
+	核力是短程力的表现：核力的作用范围为$< 1.5 \times 10^{-15} {\rm m}$，在大于$0.8 \times 10^{-15} {\rm m}$ 时表现为吸引力，而且随着距离的增大而减小，当两核子距离$> 1.5 \times 10^{-15} {\rm m}$时核力会迅速降低并消失；两核子距离$ < 0.8 \times 10^{-15} {\rm m}$时，核力表现为排斥力，且随距离的减小而增大。
+\end{note}
+
+\paragraph*{原子核半径}
+若将原子核描述为一个密度为常数并且具有sharp表面的球体，那么其半径可取经验公式
+\begin{equation}
+	R = r_0 A^{1/3}	\label{eq_nuclear_radius}
+\end{equation} 
+参数$r_0$一般取经验值$r_0 = 1.2 {\rm fm}$。
+
+\paragraph*{原子核结合能的半经验公式：}根据液滴模型，C.F. Weizaker提出了原子核结合能的半经验公式：
+\begin{equation}
+	B(N, Z) = a_V A + a_S A^{2/3} + a_C \frac{Z^2}{A^{1/3}} + a_I \frac{(N-Z)^2}{A} - \delta(A)	\label{eq_semi-empirical_mass_formula}
+\end{equation} 
+其中拟合参数为
+\begin{equation}
+    \begin{aligned}
+		a_V = -15.68; \quad a_S = 18.56; \quad a_C = 0.717; \quad a_I = 28.1	\quad	[MeV]	\\
+		\delta(A) = \left\{ \begin{array}{cc}
+				34 \cdot A^{-3/4} & \text{ for even-even } \\
+				0 & \text{ for even-odd }	\\
+				-34 \cdot A^{-3/4} & \text{ for odd-odd }
+		\end{array}\right\} \text{nuclei}
+    \end{aligned}
+    	\label{eq_semi-empirical_mass_formula_fit}
+\end{equation} 
+式\eqref{eq_semi-empirical_mass_formula_fit}等号右边逐项的物理解释如下：
+\begin{enumerate}
+	\item 第一项：体积能项，因为$ A \propto R^3$，对应于球形的体积公式；
+	\item 第二项：表面能项，因为$ A^{2/3} \propto R^2$，对应于球形面积公式；
+	\item 第三项：库伦能项，表示质子间的库伦排斥项。库伦能正比于原子核中的质子对数量($\propto Z^2$)，并与半径称反比。
+	\item 第四项：对称能项，若没有泡利原理，由于质子间存在库仑斥力，因此原子核更倾向于仅包含中子的情况；
+	\item 第五项：对能项，考虑到偶偶核、偶奇核、奇奇核的质量差等因素。
+\end{enumerate}
+得到结合能公式后的拟合图像如下图所示
+
+
+\section{形变参数}
+\paragraph*{形变原子核半径}
+原子核的形状可体现在其表面上某一点到原点的距离，也就是形变核核中从原点到表面的半径矢量
+\begin{equation}
+	R = R(\theta, \phi) = R_0 ( 1 + \alpha_{00} + \sum_{\lambda = 1}^{\infty} \sum_{\mu = -\lambda}^{\lambda}\alpha^{*}_{\lambda\mu} Y_{\lambda\mu}(\theta, \phi) )	\label{eq_deform_radius}
+\end{equation} 
+其中$R_0$表示相同体积的球形核半径。此公式并非唯一描述该半径的公式，但却是最常用的。
+
+
+
+
+
+

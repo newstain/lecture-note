@@ -1,0 +1,106 @@
+\chapter{原子核基本性质}
+
+\section{原子核形状}
+\paragraph*{核密度分布与核半径}
+原子核作为一个多体量子体系，可以用多体波函数$\Psi(\bmr)$来描述其基本性质。
+原子核密度分布即多体波函数的平方
+\begin{equation}
+    \rho(\bmr) = | \Psi(\bmr) |^2   \label{eq:nucl.radius}
+\end{equation}
+
+\section{剩余相互作用}
+\subsection{“对能”的简单理论模型}
+
+\paragraph*{Seniority模型}
+\CJKunderline{Seniority模型主要是针对满壳外的$j$壳层上的核子的处理}。在独立例子壳层模型中，不考虑对关联的原子核Hamiltonian的二次量子化形式为
+\begin{equation}
+    \hat{H}_{\text{独}}
+        = \sum_{j} \varepsilon_j \sum_{m} \xi_{jm}^{\dagger} \xi_{jm}
+    \label{eq:indep-hamil}
+\end{equation}
+其中，$\varepsilon_j$是$j$壳层的单粒子能量，$\xi_{jm}^{\dagger}$和$\xi_{jm}$对应为$\ket{jm}$态粒子的产生和湮灭算符。$\ket{jm}$态对应的粒子数算符为
+\begin{equation}
+    \hat{N}_{m} = \xi_{jm}^{\dagger} \xi_{jm}
+\end{equation}
+这样，$j$壳层所包含的粒子数算符写为
+\begin{equation}
+    \hat{N} = \sum_{m = -j}^{+j} \hat{N}_m
+            = \sum_{m = -j}^{+j} \xi_{jm}^{\dagger} \xi_{jm}
+\end{equation}
+由于泡利原理，\CJKunderline{一个$\ket{jm}$态上只能有一个费米子(此处为核子)或者无粒子填充(即空穴)}，因此$j$壳层的空穴数量为
+\begin{equation}
+    \sum_{m}(1 - \hat{N}_m) = \sum_{m}(1 -  \xi_{jm}^{\dagger} \xi_{jm} )
+                    = \sum_{m}(\xi_{jm} \xi_{jm}^{\dagger} )
+\end{equation}
+
+由于$j$是单粒子自旋-轨道耦合的总角动量，因此总为半整数，故其对应的第三分量$m\neq 0$，引入配对粒子算符
+\begin{equation}
+    \hat{A}^{\dagger} = \sum_{m > 0} (-1)^{j - m} \xi_{jm}^{\dagger} \xi_{j-m}^{\dagger}
+    \label{def:pair}
+\end{equation}
+这里的$\pm m$表示全部量子数$n$、$l$、$j$、$\pm j_z$。算符$\hat{A}^{\dagger}$的意义是，它在$j$壳层同时产生一对核子，每个核子的角动量都为$j$，“配对”要求这两个核子耦合的总角动量$J = 0$。
+\begin{proof}
+    由\Cref{def:pair}，我们要求两个核子偶合成总角动量为0的态，因此耦合导致的CG系数为
+    \begin{equation*}
+        \Braket{jmj-m | 00} = (-1)^{j - m} \frac{\delta_{jj}\delta_{mm}}{\sqrt{2j + 1}}
+    \end{equation*}
+    这里用到了书籍\textit{Quantum Theory of Angular Momentum}中Section 8.5的Eq.\,(1)。
+    这里出现了系数$(-1)^{j-m}$，但根号项尚未弄清楚，有可能吸到算符里了。
+\end{proof}
+
+对于偶数个费米子系统的集体算符，按玻色子的对易关系进行处理，上述配对算符是两费米子系统算符，因此使用玻色子对易关系
+\begin{equation}
+    [\hat{A}, \hat{A}^{\dagger}]_{-} = \left[\sum_{m > 0}(-1)^{j - m}\xi_{-m} \xi_{m}, \sum_{n > 0} (-1)^{j - m} \xi_{n}^{\dagger} \xi_{-n}^{\dagger}\right]_{-}
+    \label{eq:fermi-pair-comm}
+\end{equation}
+\begin{note}
+    \begin{equation*}
+        \hat{A} = (\hat{A}^{\dagger})^{\dagger} = \sum_{m > 0} (-1)^{j - m} \xi_{jm}^{\dagger} (\xi_{j-m}^{\dagger})^{\dagger}
+        = \sum_{m > 0} (-1)^{j - m} \xi_{j-m} \xi_{jm}
+    \end{equation*}
+\end{note}
+利用费米子反对易关系，现在分以下情况考虑\Cref{eq:fermi-pair-comm}的关系：
+\begin{enumerate}
+    \item $n \neq m$时，有
+        \begin{align*}
+            \left[\xi_{-m} \xi_{m},\, \xi_{n}^{\dagger} \xi_{-n}^{\dagger}\right]_{-}
+            =&\  \xi_{-m} \xi_{m} \xi_{n}^{\dagger} \xi_{-n}^{\dagger}
+            - \xi_{n}^{\dagger} \xi_{-n}^{\dagger} \xi_{-m} \xi_{m}  \\
+            =&\ \xi_{n}^{\dagger} \xi_{-n}^{\dagger} \xi_{-m} \xi_{m} 
+            - \xi_{n}^{\dagger} \xi_{-n}^{\dagger} \xi_{-m} \xi_{m}  \\
+            =&\ 0
+        \end{align*}
+    \item $n = m$时，有
+        \begin{align*}
+            \left[\xi_{-m} \xi_{m},\, \xi_{m}^{\dagger} \xi_{-m}^{\dagger}\right]_{-}
+            =&\  \xi_{-m} \xi_{m} \xi_{m}^{\dagger} \xi_{-m}^{\dagger}
+              - \xi_{m}^{\dagger} \xi_{-m}^{\dagger} \xi_{-m} \xi_{m}  \\
+            =&\  \xi_{-m} (1 - \xi_{m}^{\dagger} \xi_{m}) \xi_{-m}^{\dagger}
+              - \xi_{m}^{\dagger} \xi_{-m}^{\dagger} \xi_{-m} \xi_{m} \\
+            =&\  \xi_{-m}\xi_{-m}^{\dagger} - \xi_{-m}\xi_{m}^{\dagger} \xi_{m} \xi_{-m}^{\dagger}
+              - \xi_{m}^{\dagger} \xi_{-m}^{\dagger} \xi_{-m} \xi_{m} \\
+            =&\  1 - \xi_{-m}^{\dagger}\xi_{-m} - \xi_{m}^{\dagger} \xi_{m} \xi_{-m} \xi_{-m}^{\dagger}
+              - \xi_{m}^{\dagger} \xi_{-m}^{\dagger} \xi_{-m} \xi_{m} \\
+            =&\  1 - \xi_{-m}^{\dagger}\xi_{-m} - \xi_{m}^{\dagger} \xi_{m} (1 - \xi_{-m}^{\dagger}\xi_{-m})
+              - \xi_{m}^{\dagger} \xi_{-m}^{\dagger} \xi_{-m} \xi_{m} \\
+            =&\  1 - \xi_{-m}^{\dagger}\xi_{-m} - \xi_{m}^{\dagger} \xi_{m} + \cancel{\xi_{m}^{\dagger} \xi_{m}\xi_{-m}^{\dagger}\xi_{-m}
+              - \xi_{m}^{\dagger} \xi_{-m}^{\dagger} \xi_{-m} \xi_{m} } \\ 
+            =&\  1 - \xi_{-m}^{\dagger}\xi_{-m} - \xi_{m}^{\dagger} \xi_{m}
+        \end{align*}
+\end{enumerate}
+由以上分析，我们有关于配对粒子算符的对易关系
+\begin{equation}
+    \begin{aligned}
+        \left[\hat{A},\, \hat{A}^{\dagger}\right]_{-}
+        =& \sum_{m > 0}(1 - \xi_{-m}^{\dagger}\xi_{-m} - \xi_{m}^{\dagger} \xi_{m}) \\
+        =&  \sum_{m > 0}(1 - N_{-m} - N_{m}) \\
+        =& j + \frac{1}{2} - N
+    \end{aligned}
+\end{equation}
+最后一步考虑到$m>0$的项一共有$j + \nicefrac{1}{2}$项(核子的总角动量$j$与其第三分量$m$为半整数)，粒子数算符为$N = \sum_{m} N_{-m} + N_{m}$。
+
+剩余相互作用是非常复杂的，现在只考虑核子间配对作用，由于是在独立粒子模型下引入的，因此核子配对算符应附加在\Cref{eq:indep-hamil}之后：
+\begin{equation}
+    \hat{H} = \hat{H}_{\text{独}} + \hat{H}_{\text{对}}
+    = \sum_{j} \varepsilon_j \sum_{m} \xi_{jm}^{\dagger} \xi_{jm} - G\sum_{j}\hat{A}_{j}^{\dagger}\hat{A}_{j}
+\end{equation}

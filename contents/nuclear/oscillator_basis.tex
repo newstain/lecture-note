@@ -1,0 +1,532 @@
+\chapter{Harmonic oscillator basis in RMF}
+
+\section{Dirac Equation}
+We start from the Dirac equation of the nucleon:
+\begin{equation}
+    \{ -i\boldsymbol{\alpha \nabla } + V(\boldsymbol{r}) + \beta[M + S(\boldsymbol{r})] \} \psi_i = \epsilon_i \psi_i   \label{oc_dirac}
+\end{equation}
+
+where $V(\boldsymbol{r})$ represents the \textit{vector} potential, and $S(\boldsymbol{r})$ is the \textit{scalar} potential, which contribute to the effective mass as
+\begin{equation}
+    M^{*}(\boldsymbol{r}) = M + S(\boldsymbol{r})   \label{oc_effectiv_mass}
+\end{equation}
+
+For the axially symmetric deformed shape, the spinor can be written in the from
+\begin{equation}
+    \psi_{i}(\boldsymbol{r}, t)=\left(\begin{array}{c}
+        f_{i}(\boldsymbol{r}) \\
+        i g_{i}(\boldsymbol{r})
+        \end{array}\right)=\frac{1}{\sqrt{2 \pi}}\left(\begin{array}{c}
+        f_{i}^{+}\left(z, r_{\perp}\right) e^{i\left(\Omega_{i}-1 / 2\right) \varphi} \\
+        f_{i}^{-}\left(z, r_{\perp}\right) e^{i\left(\Omega_{i}+1 / 2\right) \varphi} \\
+        i g_{i}^{+}\left(z, r_{\perp}\right) e^{i\left(\Omega_{i}-1 / 2\right) \varphi} \\
+        i g_{i}^{-}\left(z, r_{\perp}\right) e^{i\left(\Omega_{i}+1 / 2\right) \varphi}
+    \end{array}\right) \chi_{t_{i}}(t)
+\end{equation}
+where the $\Omega_i$ is the eigenvalue of the symmetry operator $j_{z_i}$ (the projection of the single particle angular momentum $\bm{j}_i$ on the \textit{z}-axis), and the $t_i$ is the \textit{z}-component of the isospin.
+
+\section{One Harmonic oscillator basis in cylindrical coordinate}
+In cylindrical coordinates, the axially symmetric oscillator potential can be written as
+\begin{equation}
+    V_{osc}(z, r_{\perp}) = \frac{1}{2} M \omega_z^2 z^2 + \frac{1}{2} \omega_{\perp}^2 r_{\perp}^2  \label{oc_potential}
+\end{equation}
+Imposing volume conservation, the deformation parameter is $\beta_0$, then the oscillator frequencies $\hbar \omega_{\perp}$ and $\hbar \omega_{z}$ can be expressed by the form:
+\begin{equation}
+\begin{aligned}
+    \hbar \omega_{z} &= \hbar \omega_0 {\rm exp}\left( -\sqrt{\frac{5}{4\pi}} \beta_0 \right) \\
+    \hbar \omega_{\perp} &= \hbar \omega_0 {\rm exp}\left( + \frac{1}{2} \sqrt{\frac{5}{4\pi}} \beta_0\right)    \label{oc_}
+\end{aligned}
+\end{equation}
+
+The corresponding oscillator length parameters are 
+\begin{equation}
+    b_z = \sqrt{ \frac{\hbar}{M \omega_z} }  \quad \text{and}  \quad  b_{\perp} = \sqrt{ \frac{\hbar}{M \omega_{\perp} } }
+\end{equation}
+Because of volume conservation, we have $b_0 = b_{\perp}^2 b_{z}$.
+
+Using the \underline{method of separation of variables}, the ergenfunctions of the deformed harmonic oscillator can be written as
+\begin{equation}
+    |\alpha\rangle=\left|n_{z}, n_{r}, m_{l}, m_{s}\right\rangle  \label{oc_eigenfun}
+\end{equation}
+The parity is given by 
+\begin{equation}
+\pi = (-)^{n_z + m_l}
+\end{equation}
+The eigenfunction of the deformed harmonic oscillator can be written explicitly as
+\begin{equation}
+\begin{aligned}
+    \Phi_{\alpha} \left( z, r_{\perp}, \varphi, s, t \right) &= \phi_{n_{z}}(z) \phi_{n_{r}}^{m_{l}} \left( r_{\perp} \right) \frac{1}{\sqrt{2 \pi}} e^{i m_{l} \varphi} \chi_{m_s}(s) \chi_{t_{\alpha}}(t) \\
+    &=\Phi_{\alpha}(\boldsymbol{r}, s) \chi_{t_{\alpha}}(t) \label{oc_ergenfun_exp}
+\end{aligned}
+\end{equation}
+with
+\begin{align}
+    \phi_{n_{z}}(z) &= \frac{N_{n_{z}}}{\sqrt{b_{z}}} H_{n_{z}}(\zeta) e^{-\zeta^{2} / 2} \\
+    \phi_{n_r}^{m_l}(r_{\perp}) &= \frac{ N_{n_r}^{m_l} }{ b_{\perp} } \sqrt{2} \eta^{m_l/2} L_{n_r}^{m_l}(\eta) e^{-\eta/2}
+\end{align}
+and
+\begin{equation}
+    \zeta = z/b_z, \quad \eta = r_\perp^2 / b_{\perp}^2.
+\end{equation}
+The $H_n(\zeta)$ and $L_n^m(\eta)$ are Hermite polynomials and associated Laguerre polynomials. The normalization constants are given by 
+\begin{equation}
+    N_{n_{z}}=\frac{1}{\sqrt{\sqrt{\pi} 2^{n_{z}} n_{z} !}} \quad \text { and } \quad N_{n_{r}}^{m_{l}}=\sqrt{\frac{n_{r} !}{\left(n_{r}+m_{l}\right) !}} .
+\end{equation}
+\begin{note}
+  $\phi_{n_{z}}(z)$, $\phi_{n_{r}}^{m_{l}} ( r_{\perp})$, $e^{i m_{l} \varphi}$, $\chi_{m s}(s)$ and $\chi_{t_{\alpha}}(t)$ are the eigenfunction of \textit{z-axis}, radial direction, anglar, spin, and time, respectively.
+\end{note}
+
+The solutios of the Dirac equation in the axially symmetric case have only the good quantum numbers $\Omega = m_l + m_s$ and parity $\pi$, we use the expansion
+\begin{align}
+    f_{i}(\boldsymbol{r}, s, t) &= \frac{1}{\sqrt{2 \pi}}
+    \left(\begin{array}{l}
+    f_{i}^{+}\left(z, r_{\perp}\right) e^{i(\Omega-1 / 2) \varphi} \\
+    f_{i}^{-}\left(z, r_{\perp}\right) e^{i(\Omega+1 / 2) \varphi}
+    \end{array}\right)
+    =\sum_{\alpha}^{\alpha_{\max }} f_{\alpha}^{(i)} \Phi_{\alpha}(\boldsymbol{r}, s) \chi_{t_{i}}(t)  \label{oc_fi_hos} \\
+    g_{i}(\boldsymbol{r}, s, t) &= \frac{1}{\sqrt{2 \pi}}
+    \left(\begin{array}{l}
+    g_{i}^{+}\left(z, r_{\perp}\right) e^{i(\Omega-1 / 2) \varphi} \\
+    g_{i}^{-}\left(z, r_{\perp}\right) e^{i(\Omega+1 / 2) \varphi}
+    \end{array}\right)
+    =\sum_{\bar{\alpha}}^{\tilde{\alpha}_{\max }} g_{\tilde{\alpha}}^{(i)} \Phi_{\tilde{\alpha}}(\boldsymbol{r}, s) \chi_{t_{i}}(t) \label{oc_gi_hos}
+\end{align}
+\begin{note}
+    For $f_i(\boldsymbol{r}, s, t)$, the spin component is represented in the column vector. The corresponding spin part is in the $\Phi_{\alpha}(\boldsymbol{r}, s)$. $f_{\alpha}^{(i)}$ is the expansion coefficient. While $\chi_{t_{i}}(t)$ is the time part of wavefunction.
+\end{note}
+To avoid the appearance of the spurious states, the quantum numbers $\alpha_{max}$ and $\tilde{\alpha}_{max}$ are chosen in a special way. Acoording to \href{https://journals.aps.org/prc/abstract/10.1103/PhysRevC.66.014310}{[Phy. Rev. C, 66, 014310 (2002)]}, the truncation of basis is taken the from
+\begin{equation}
+\frac{n_z}{Q_z} + \frac{2n_{\perp} + |m|}{Q_{\perp}} \leqslant N \label{oc_basis_truncate}
+\end{equation}
+The major quantum numbers $N$ are not larger than $N_F + 1$ for the expansion of the small components, and note larger than $N_F$ for the expansion of the large components, the form are as follows
+\begin{equation}
+\begin{aligned}
+  N &\leqslant N_F + 1, \quad &(\text{for} \quad g_i) \\
+  N &\leqslant N_F, \quad &(\text{for} \quad f_i)
+\end{aligned}
+\end{equation}
+In which the $n_z$ and $n_{\perp}$ are the quantum numbers of base vector of \textit{z-axis} and \textit{x-y planes}, respectively. while $m$ is magnetic quantum number. The value of $Q_{z}$ and $Q_{\perp}$ are
+\begin{equation}
+Q_z = \text{MAX}(1, \frac{b_z}{b_0}), \quad Q_{\perp} = \text{MAX}(1, \frac{b_{\perp}}{b_0})
+\end{equation}
+
+\underline{\textcolor{red}{In the program of RMF}}, the deformation parameter $\beta_0$ is choosen as
+\begin{equation}
+\beta_{0}= 
+\begin{cases}
+  0.5 \sqrt{\beta_{2}} & \left(\beta_{2}>1\right) \\ 
+  0.5 \beta_{2}        & \left(0 \leq \beta_{2} \leq 1\right) \\ 
+  0                    & \left(\beta_{2}<0\right)
+\end{cases}
+\end{equation}
+And oscillator length parameter is taken the value
+\begin{equation}
+\begin{cases}
+  b_{\perp} = q^{-\frac{1}{6}}, \\
+  b_z = q^{\frac{1}{3}}  \\
+  q  = e^{\frac{3}{4}\sqrt{\frac{5}{\pi}} \beta_0}
+\end{cases}
+\end{equation}
+
+In Dirac Equation \eqref{oc_dirac}, we first have
+\begin{equation}
+\begin{aligned}
+  \boldsymbol{\sigma} \centerdot \boldsymbol{\nabla} &= (\sigma_x \vec{e}_x + \sigma_y \vec{e}_y + \sigma_z\vec{e}_z )(\partial_x\vec{e}_x + \partial_y \vec{e}_y + \partial_z\vec{e}_z ) \\
+  &= \sigma_x\partial_x + \sigma_y\partial_y + \sigma_z\partial_z \\
+  &= \sigma_x\left( \cos\varphi \partial_{r_{\perp}} - \frac{\sin\varphi}{r_{\perp}} \partial_{\varphi}  \right) + \sigma_y\left( \sin\varphi\partial_{r_{\perp}} + \frac{\cos\varphi}{r_{\perp}}\partial_{\varphi} + \sigma_z\partial_z \right) \\
+  &= (\sigma_x\cos\varphi + \sigma_y\sin\varphi) \partial_{r_{\perp}} + (-\sigma_x\sin\varphi + \sigma_y\cos\varphi)\frac{\partial_{\varphi}}{r_{\perp}} + \sigma_z\partial_z
+\end{aligned}
+\end{equation}
+Using \Cref{oc_fi_hos,oc_gi_hos}, the \textcolor{red}{Dirac equation reduces to a symmetric matrix diagonalization problem}, 
+\begin{equation}
+\begin{aligned}
+  (M^* + V)f_i + \left[ (\sigma_x\cos\varphi + \sigma_y\sin\varphi)\partial_{r_{\perp}} + \frac{im_l}{r_{\perp}}(-\sigma_x\sin\varphi + \sigma_y\cos\varphi) + \sigma_z\partial_z \right] g_i &= \epsilon_i f_i \\
+  -\left[ (\sigma_x\cos\varphi + \sigma_y\sin\varphi)\partial_{r_{\perp}} + \frac{im_l}{r_{\perp}}(-\sigma_x\sin\varphi + \sigma_y\cos\varphi) + \sigma_z\partial_z \right] f_i - (M^* - V)g_i &= \epsilon_i g_i \\
+\end{aligned}
+\end{equation}
+So, we have
+\begin{equation}
+\left(\begin{array}{cc}
+  A_{\alpha, \alpha^{\prime}}         & B_{\alpha, \tilde{\alpha}^{\prime}} \\
+  B_{\tilde{\alpha}, \alpha^{\prime}} & -C_{\tilde{\alpha}, \tilde{\alpha}^{\prime}}
+  \end{array}\right)
+  \left(\begin{array}{l}
+    f_{\alpha^{\prime}}^{(i)} \\
+    g_{\tilde{\alpha}^{\prime}}^{(i)}
+  \end{array}\right)
+  =\epsilon_{i}
+  \left(\begin{array}{c}
+    f_{\alpha}^{(i)} \\
+    g_{\tilde{\alpha}}^{(i)}
+  \end{array}\right)
+\end{equation}
+\textbf{For the diagonal element,}
+\begin{equation}
+\begin{aligned}
+  \textcolor{red}{\langle n_z n_r m_l m_s | A_{\alpha, \alpha^{\prime}} | n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \rangle} 
+  =& \langle n_z n_r m_l m_s | M^* + V | n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \rangle \\
+  =& \int r_{\perp}dr_{\perp}d\varphi dz \left[ \phi_{n_z}^{\ast}(z) \phi_{n_r}^{m_l\ast}(r_{\perp}) \frac{1}{\sqrt{2\pi}}e^{-im_l\varphi} \chi_{m_s}^{\ast}(s) \right.\\
+  & \left. \cdot \phi_{n_z^{\prime}}(z) \phi_{n_r^{\prime}}^{m_l^{\prime}}(r_{\perp}) \frac{1}{\sqrt{2\pi}}e^{im_l^{\prime}\varphi} \chi_{m_s^{\prime}}(s) (M^{\ast} + V) \right]  \\
+  =& \int dz \phi_{n_z}^{\ast}(z)\phi_{n_z^{\prime}}(z) \int r_{\perp}dr_{\perp}\phi_{n_r}^{m_l\ast}(r_{\perp})\phi_{n_r^{\prime}}^{m_l^{\prime}}(r_{\perp})(M^{\ast}+V)  \\
+  & \cdot \frac{1}{2\pi} \int d\varphi e^{i(m_l^{\prime} - m_l)\varphi} \sum_{m_s, m_{s}{\prime}} \chi_{m_s}^{\ast}(s)\chi_{m_s^{\prime}}(s)  \\
+  =& \delta_{m_l m_l^{\prime}} \delta_{m_s m_s^{\prime}}\int dz \phi_{n_z}^{\ast}(z)\phi_{n_z^{\prime}}(z) \int r_{\perp}dr_{\perp}\phi_{n_r}^{m_l\ast}(r_{\perp})\phi_{n_r^{\prime}}^{m_l^{\prime}}(r_{\perp})(M^{\ast}+V) \\
+  =& \delta_{m_l m_l^{\prime}} \delta_{m_s m_s^{\prime}} \int dz \left\{ \frac{N_{n_z} N_{n_z^{\prime}}}{b_z} H_{n_z}(\frac{z}{b_z})H_{n_z^{\prime}}(\frac{z}{b_z})\right. \\
+  & \left. \cdot N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}} \int \frac{2r_{\perp}}{b_z}dr_{\perp} \left(\frac{r_{\perp}^2}{b_{\perp}^2}\right)^{(m_l + m_l^{\prime})/2} L_{n_r}^{m_l}\left(\frac{r_{\perp}^2}{b_{\perp}^2}\right) L_{n_r^{\prime}}^{m_l^{\prime}}\left(\frac{r_{\perp}^2}{b_{\perp}^2}\right) (M^{\ast} + V) \right\}  \\
+  =& \delta_{m_l m_l^{\prime}} \delta_{m_s m_s^{\prime}} N_{n_z} N_{n_z^{\prime}} N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}} \int d\zeta H_{n_z}(\zeta) H_{n_z^{\prime}}(\zeta) e^{-\zeta^2} \\
+  & \cdot \int d\eta L_{n_r}^{m_l}\left(\frac{r_{\perp}^2}{b_{\perp}^2}\right) L_{n_r^{\prime}}^{m_l^{\prime}}\left(\frac{r_{\perp}^2}{b_{\perp}^2}\right) \eta^{m_l}e^{-\eta} (M^{\ast} + V)
+\end{aligned}
+\end{equation}
+where $\zeta = z/b_z$ and $\eta = r_{\perp}^2/b_{\perp}^2$. Therefore, the \underline{symmetric part of the matrix} can be written in the from
+\begin{equation}
+\begin{aligned}
+  \textcolor{red}{\left(\begin{array}{c}
+    A_{\alpha, \alpha^{\prime}} \\
+    C_{\tilde{\alpha}, \tilde{\alpha}}
+  \end{array}\right)} &=\delta_{m_{l} m_{l^{\prime}}} \delta_{m_{s} m_{s^{\prime}}} N_{n_{z}} N_{n_{z^{\prime}}} N_{n_{r}}^{m_{l}} N_{n_{r^{\prime}}}^{m_{j^{\prime}}} \int_{0}^{\infty} d \eta e^{-\eta} \eta^{m_{i}} L_{n_{r}}^{m_{l}}(\eta) L_{n_{r^{\prime}}}^{m_{j^{\prime}}}(\eta) \\
+  & \times \int_{0}^{\infty} d \zeta e^{-\zeta^{2}} H_{n_{z^{\prime}}}(\zeta) H_{n_{z}}(\zeta)(M^\ast \pm V)
+\end{aligned}
+\end{equation}
+\begin{proof}
+\\1. 
+\begin{equation}
+  \frac{1}{2\pi} \int_{0}^{2\pi} d\varphi e^{i(m_l^{\prime} - m_l)\varphi} = \delta_{m_l m_l^{\prime}}
+  \begin{cases}
+    1 & (\text{for} \quad m_l = m_l^{\prime})  \\
+    \frac{1}{2\pi i(m_l^{\prime} - m_l)} \left[e^{i(m_l^{\prime} -m_l) \varphi}\right]_0^{2\pi}= 0 & (\text{for} \quad m_l \neq m_l^{\prime})
+  \end{cases}
+\end{equation}
+2. $\sum_{m_s, m_{s}^\prime} \chi_{m_s}^{\ast}(s)\chi_{m_s^{\prime}}(s)$\\
+for $m_s = m_s^{\prime}$,
+\begin{equation}
+  =
+  \begin{cases}
+    \chi_{\frac{1}{2}}^{\ast}\chi_{\frac{1}{2}} \\
+    \chi_{-\frac{1}{2}}^{\ast}\chi_{-\frac{1}{2}}
+  \end{cases}
+  =1
+\end{equation}
+for $m_s \neq m_s^{\prime}$
+\begin{equation}
+  =
+  \begin{cases}
+    \chi_{-\frac{1}{2}}^{\ast}\chi_{\frac{1}{2}} \\
+    \chi_{\frac{1}{2}}^{\ast}\chi_{-\frac{1}{2}}
+  \end{cases}
+  =0
+\end{equation}
+3. Using the properties of Hermite and Laguerre polynomials
+\begin{equation*}
+  H_n^{\ast}(z) = H_n(z), \quad L_{n_r}^{m_l\ast} = L_{n_r}^{m_l}(z)
+\end{equation*}
+we have
+\begin{equation*}
+  \psi_{n_z}^{\ast}(z) = \psi_{n_z}, \quad \psi_{n_r}^{m_l\ast} = \psi_{n_r}^{m_l} 
+\end{equation*}
+\end{proof}
+
+\textbf{For undiagonal element,}
+\begin{equation}
+\begin{aligned}
+  &\textcolor{red}{\langle n_z n_r m_l m_s | B_{\alpha, \alpha} | n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \rangle}\\
+  =& \langle n_z n_r m_l m_s | (\sigma_x \cos\varphi + \sigma_{y}\sin\varphi)\partial_{r_{\perp}} + \frac{im_l^{\prime}}{r_{\perp}}(-\sigma_x\sin\varphi + \sigma_y\cos\varphi) + \sigma_z\partial_z | n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \rangle  \\
+  =& \delta_{n_z,n_z^{\prime}} \left( \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} + \delta_{m_s,m_s^{\prime}+1} \delta _{m_{l}^{\prime},m_{l}+1} \right) \frac{N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}}}{b_{\perp}} \int_{0}^{\infty} d\eta L_{n_r}^{m_l}\tilde{L}_{n_r^\prime}^{m_l^\prime} e^{-\eta} \eta^{\frac{m_{l}^{\prime} + m_l}{2}} \\
+  &+ i m_l^\prime \delta_{n_z,n_z^\prime} \left(\delta_{m_s,m_s^{\prime}+1} \delta_{m_{l}^{\prime},m_{l}+1} - \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} \right) \cdot \frac{N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}}}{b_{\perp}} \int_{0}^{\infty} d\eta L_{n_r}^{m_l}(\eta) L_{n_r^\prime}^{m_l^\prime}(\eta) \eta^{\frac{m_l + m_l^\prime - 1}{2}} e^{-\eta}\\
+  &+ \frac{(-1)^{1 / 2-m_{s}}}{b_{z}} \delta_{m_{s} m_{s}^{\prime}} \delta_{m_{l} m_{l}^{\prime}} \delta_{n_{r} n_{r}^{\prime}}\left(\sqrt{\frac{n_{z}^{\prime}}{2}} \delta_{n_{z} n_{z}^{\prime}-1}+\sqrt{\frac{n_{z}^{\prime}+1}{2}} \delta_{n_{z} n_{z}^{\prime}+1}\right) \label{oc_undiagonal}
+\end{aligned}
+\end{equation}
+\begin{proof}
+First, we have the following relationship
+\begin{align}
+  \langle n_z | n_z^{\prime} \rangle =& \int d\zeta H_{n_z}(\zeta) H_{n_z^{\prime}}(\zeta) e^{-\zeta^2} = \delta_{n_z n_z^{\prime}}\\
+  \langle m_s | \sigma_x | m_s^{\prime} \rangle =& \delta_{m_s,m_s^{\prime}+1} + \delta_{m_s,m_s^{\prime}-1}\\
+  \langle m_s | \sigma_y | m_s^{\prime} \rangle =& i(\delta_{m_s,m_s^{\prime}-1} - \delta_{m_s,m_s^{\prime}+1})\\
+  \langle m_s | \sigma_z | m_s^{\prime} \rangle =& (-)^{\frac{1}{2} - m_s}\delta_{m_s m_s^{\prime}}\\
+\end{align}
+In addition,
+\begin{align}
+  \begin{aligned}
+  \left\langle m_{l}|\cos \varphi| m_{l^{\prime}}\right\rangle=&\frac{1}{2 \pi} \int_{0}^{2 \pi} e^{i(m_l^{\prime} - m_l) \varphi} \cos \varphi d \varphi\\
+  =&\frac{1}{2 \pi} \int_{0}^{2 \pi} \frac{1}{2} e^{i(m_l^{\prime} - m_l) \varphi} \cdot\left(e^{i \varphi}+e^{-i \varphi}\right) d \varphi\\
+  =&\frac{1}{2}\left[\frac{1}{2 \pi} \int_{0}^{2 \pi} e^{i(m_l^{\prime} - m_l +1) \varphi} d \varphi+\frac{1}{2 \pi} \int_{0}^{2 \pi} e^{i(m_l^{\prime} - m_l - 1) \varphi} d \varphi\right]\\
+  =&\frac{1}{2}\left[\delta_{m_{l}^{\prime},m_{l}-1}+\delta_{m_{l}^{\prime},m_{l}+1}\right]
+  \end{aligned} \\
+  \begin{aligned}
+    \langle m_{l}^{\prime}|\sin \varphi| m_{l}\rangle =& \frac{1}{2 \pi} \int_{0}^{2 \pi} e^{i(m_l^{\prime} - m_l) \varphi} \sin \varphi d \varphi\\
+    =&\frac{1}{2 \pi} \int_{0}^{2 \pi} \frac{1}{2 i} e^{i(m_l^{\prime} - m_l) \varphi} \cdot (e^{i \varphi}-e^{-i \varphi} ) d \varphi \\
+    =&\frac{1}{2 i} \left[ \frac{1}{2 \pi} \int_{0}^{2 \pi} e^{ i(m_l^{\prime} - m_l +1) \varphi} d \varphi-\frac{1}{2 \pi} \int_{0}^{2 \pi} e^{i (m_l^{\prime} - m_l -1) \varphi} d \varphi \right] \\
+    =&\frac{1}{2 i} (\delta_{m_{l}^{\prime},m_{l}-1}-\delta _{m_{l}^{\prime},m_{l}+1} ) \\
+    =&\frac{i}{2} (\delta _{m_{l}^{\prime},m_{l}+1} - \delta_{m_{l}^{\prime},m_{l}-1} )
+  \end{aligned}
+\end{align}
+Define the polynomials $\tilde{L}_{n_r}^{m_l}$ and $\tilde{H}_{n_z}$ with recursion relations
+\begin{align}
+  \tilde{H}_{n_z}(\zeta) =& \zeta H_{n_z}(\zeta) - H_{n_z+1}(\zeta) \label{oc_Hermite_recur} \\ 
+  \tilde{L}_{n_r}^{m_l}(\eta) =& (2n_r + m_l - \eta) L_{n_r}^{m_l}(\eta) - 2( n_r + m_l ) L_{n_r - 1}^{m_l}(\eta) \label{oc_L_first_der}
+\end{align}
+Thus, we obatain
+\begin{align}
+  \partial_{z}\phi_{n_z} =& \frac{N_{n_z}}{b_z^{3/2}} \tilde{H}_{n_z}(\zeta)e^{-\zeta^2/2}\\
+  \partial_{r_\perp}\phi_{\perp} =& \frac{N_{n_r}^{m_l}}{b_{\perp}^{2}}\sqrt{2} \eta^{(m_l - 1)/2} \tilde{L}_{n_r}^{m_l}(\eta) e^{-\eta/2}  \label{oc_phi_perp_one_firs_der}
+\end{align}
+
+Based the condition above, we can calculate the undiagonal element Eq.\eqref{oc_undiagonal}, we first calculate
+\begin{equation}
+  \begin{aligned}
+    &\textcolor{blue}{\langle n_z n_r m_l m_s | (\sigma_x \cos\varphi + \sigma_{y}\sin\varphi)\partial_{r_{\perp}}| n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \rangle}\\
+    =& \langle n_z | n_z^{\prime} \rangle \left(\langle m_s | \sigma_x | m_s^{\prime} \rangle \langle m_l | \cos\varphi | m_l^{\prime} \rangle + \langle m_s | \sigma_y | m_s^{\prime} \rangle \langle m_l | \sin\varphi | m_l^{\prime}\rangle\right) \langle n_{r_{\perp}} | \partial_{r_{\perp}} | n_{r_\perp}^{\prime} \rangle \\
+    =& \delta_{n_z,n_z^{\prime}} \left[\left( \delta_{m_s,m_s^{\prime}+1} + \delta_{m_s,m_s^{\prime}-1} \right) \frac{1}{2}\left(\delta_{m_{l}^{\prime},m_{l}-1}+\delta_{m_{l}^{\prime},m_{l}+1}\right) \right. \\
+    & \left. + i(\delta_{m_s,m_s^{\prime}-1} - \delta_{m_s,m_s^{\prime}+1}) \frac{i}{2} (\delta _{m_{l}^{\prime},m_{l}+1} - \delta_{m_{l}^{\prime},m_{l}-1}) \right] \cdot \langle n_{r_{\perp}} | \partial_{r_{\perp}} | n_{r_\perp}^{\prime} \rangle \\
+    =& \delta_{n_z,n_z^{\prime}} \left( \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} + \delta_{m_s,m_s^{\prime}+1} \delta _{m_{l}^{\prime},m_{l}+1} \right) \cdot \langle n_{r_{\perp}} | \partial_{r_{\perp}} | n_{r_\perp}^{\prime} \rangle\\
+    =& \delta_{n_z,n_z^{\prime}} \left( \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} + \delta_{m_s,m_s^{\prime}+1} \delta _{m_{l}^{\prime},m_{l}+1} \right) \frac{N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}}}{b_{\perp}} \int_{0}^{\infty} d\eta L_{n_r}^{m_l}\tilde{L}_{n_r^\prime}^{m_l^\prime} e^{-\eta} \eta^{\frac{m_{l}^{\prime} + m_l}{2}} \\
+  \end{aligned}
+\end{equation}
+The second part is 
+\begin{equation}
+  \begin{aligned}
+    &\textcolor{blue}{\left\langle n_z n_r m_l m_s \left| \frac{i m_l^\prime}{r_{\perp}}( -\sigma_x \sin\varphi + \sigma_{y}\cos\varphi) \right| n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \right\rangle}\\
+    =& i m_l^\prime \langle n_z | n_z^{\prime} \rangle \left( -\langle m_s | \sigma_x | m_s^{\prime} \rangle \langle m_l | \sin\varphi | m_l^{\prime} \rangle + \langle m_s | \sigma_y | m_s^{\prime} \rangle \langle m_l | \cos\varphi | m_l^{\prime}\rangle\right) \left\langle n_{r_{\perp}} \left| \frac{1}{r_{\perp}} \right| n_{r_\perp}^{\prime} \right\rangle \\
+    =& i m_l^\prime \delta_{n_z,n_z^\prime} \left( -\left( \delta_{m_s,m_s^{\prime}+1} + \delta_{m_s,m_s^{\prime}-1} \right) \frac{i}{2} \left(\delta _{m_{l}^{\prime},m_{l}+1} - \delta_{m_{l}^{\prime},m_{l}-1}\right) \right. \\
+    & \left. + i\left(\delta_{m_s,m_s^{\prime}-1} - \delta_{m_s,m_s^{\prime}+1}\right) \frac{1}{2}\left(\delta_{m_{l}^{\prime},m_{l}-1}+\delta_{m_{l}^{\prime},m_{l}+1}\right) \right) \left\langle n_{r_{\perp}} \left| \frac{1}{r_{\perp}} \right| n_{r_\perp}^{\prime} \right\rangle \\
+    =& i m_l^\prime \delta_{n_z,n_z^\prime} \left(\delta_{m_s,m_s^{\prime}+1} \delta_{m_{l}^{\prime},m_{l}+1} - \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} \right) \int_{0}^{\infty} r_{\perp} dr_{\perp} \frac{ \mathcal{N}_{n_r}^{m_l} }{ b_{\perp} } \sqrt{2} \eta^{m_l/2} L_{n_r}^{m_l}(\eta) e^{-\eta/2} \\
+    &\cdot \frac{1}{r_{\perp}} \cdot \frac{ N_{n_r^{\prime}}^{m_l^{\prime}} }{ b_{\perp} } \sqrt{2} \eta^{m_l^{\prime}/2} L_{n_r^{\prime}}^{m_l^{\prime}}(\eta) e^{-\eta/2} \\
+    =& i m_l^\prime \delta_{n_z,n_z^\prime} \left(\delta_{m_s,m_s^{\prime}+1} \delta_{m_{l}^{\prime},m_{l}+1} - \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} \right) \\
+    & \cdot N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}}\int_{0}^{\infty} \frac{2r_{\perp}}{b_{\perp}^2} dr_{\perp} \eta^{\frac{m_l + m_l^\prime}{2}} L_{n_r}^{m_l}(\eta) L_{n_r^\prime}^{m_l^\prime}(\eta)e^{-\eta} \cdot \frac{1}{r_\perp} \cdot  \underbrace{\frac{r_\perp}{b_\perp}}_{\eta^{1/2}} \cdot \underbrace{\frac{b_\perp}{r_\perp}}_{\eta^{-1/2}}\\
+    =& i m_l^\prime \delta_{n_z,n_z^\prime} \left(\delta_{m_s,m_s^{\prime}+1} \delta_{m_{l}^{\prime},m_{l}+1} - \delta_{m_s,m_s^{\prime}-1} \delta_{m_{l}^{\prime},m_{l}-1} \right) \cdot \frac{N_{n_r}^{m_l} N_{n_r^{\prime}}^{m_l^{\prime}}}{b_{\perp}} \int_{0}^{\infty} d\eta L_{n_r}^{m_l}(\eta) L_{n_r^\prime}^{m_l^\prime}(\eta) \eta^{\frac{m_l + m_l^\prime - 1}{2}} e^{-\eta}
+  \end{aligned}
+\end{equation}
+
+For last part, the property of wave function of harmonic oscillator is needed
+\begin{equation}
+  \frac{\partial}{\partial z} \phi_{n_z} = \frac{1}{b_\perp} \left( \sqrt{\frac{n_z}{2}}\psi_{n_z -1} + \sqrt{\frac{n_z + 1}{2}} \psi_{n_z + 1} \right)
+\end{equation}
+Therefore, we can obtain
+\begin{equation}
+  \begin{aligned}
+    &\textcolor{blue}{\left\langle n_z n_r m_l m_s \left| \sigma_z \partial_z \right| n_z^{\prime} n_r^{\prime} m_l^{\prime} m_s^{\prime} \right\rangle}\\
+    &=\frac{(-1)^{1 / 2-m_{s}}}{b_{z}} \delta_{m_{s} m_{s}^{\prime}} \delta_{m_{l} m_{l}^{\prime}} \delta_{n_{r} n_{r}^{\prime}}\left(\sqrt{\frac{n_{z}^{\prime}}{2}} \delta_{n_{z} n_{z}^{\prime}-1}+\sqrt{\frac{n_{z}^{\prime}+1}{2}} \delta_{n_{z} n_{z}^{\prime}+1}\right)
+  \end{aligned}
+\end{equation}
+\end{proof}
+
+\section{Two harmonic oscillator basis in cylindrical coordinate}
+
+In cylindrical coordinate, the axially symmetric two-center oscillator potential take the form
+\begin{equation}
+V_{tosc}(z, r_\perp) = V(r_\perp) + V(z) = \frac{1}{2} M \omega_\perp^2 r_\perp^2 + 
+\begin{cases}
+  \frac{1}{2} M \omega_1^2(z + z_1)^2, \quad  z<0\\
+  \frac{1}{2} M \omega_2^2(z - z_2)^2, \quad  z \geqslant 0
+\end{cases}
+\end{equation}
+The corresponding eigenfunction can be abtained by solving the Shr{\"o}dinger equation in cylindrical coordinate
+\begin{equation}
+\left[-\frac{\hbar^{2}}{2 M} \Delta+V\left(r_{\perp}, z\right)\right] \Phi=\left[-\frac{\hbar^{2}}{2 M}\left[\frac{\partial^{2}}{\partial r_{\perp}^{2}}+\frac{1}{r_{\perp}} \frac{\partial}{\partial r_{\perp}}+\frac{1}{r_{\perp}^{2}} \frac{\partial^{2}}{\partial \varphi^{2}}+\frac{\partial^{2}}{\partial z^{2}}\right]+V\left(r_{\perp}, z\right)\right] \Phi=E \Phi \label{tc_shrodinger}
+\end{equation}
+
+Because of the particularity of the potential, the Sch{\"o}dinger equation is solved by separating variables $r_\perp$, $z$, $\varphi$. Therefore, the eigenfunction is expressed explicitly
+\begin{equation}
+\Phi(z, r_\perp, \varphi) = \phi_\nu(z)\phi_{n_r}{m_l}(r_\perp)\Theta \label{tc_sep_var} 
+\end{equation}
+with
+\begin{align}
+\phi_{\nu}(z)=&\left\{
+  \begin{array}{l}
+    C_{\nu_{1}} H_{\nu_{1}}\left(-\zeta_{1}\right) e^{-\zeta_{1}^{2} / 2} \quad \text{with} \quad \zeta_{1}=\left(z+z_{1}\right) / b_{1}, \quad z<0 \\
+    C_{\nu_{2}} H_{\nu_{2}}\left(\zeta_{2}\right) e^{-\zeta_{2}^{2} / 2} \quad \text{with} \quad \zeta_{2}=\left(z-z_{2}\right) / b_{2}, \quad z \geq 0
+\end{array}\right.  \\
+\phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)=&\frac{N_{n_{r}}^{m_{l}}}{b_{\perp}} \sqrt{2} \eta^{m_{l} / 2} L_{n_{r}}^{m_{l}}(\eta) e^{-\eta / 2} \quad \text { with } \quad \eta=r_{\perp}^{2} / b_{\perp}^{2} \quad \text { and } \quad N_{n_{r}}^{m_{l}}=\sqrt{\frac{n_{r} !}{\left(n_{r}+m_{l}\right) !}}\\
+\Theta(\varphi)=&\frac{1}{\sqrt{2 \pi}} e^{i m_{l} \varphi}
+\end{align}
+where $L_{n_r}^{m_l}(\eta)$ and $H_\nu(\epsilon)$ is Laguerre and Hermite polynomials, and the $C_{v_i}$ is normalization constant, and $z_1, z_2 \geqslant 0$. The oscillator length parameters are
+\begin{equation}
+b_i = \sqrt{\frac{\hbar}{M\omega_i}},\quad i = 1,2 \quad \text{and} \quad
+b_\perp = \sqrt{\frac{\hbar}{M\omega_\perp}}
+\end{equation}
+The vibrational frequency of harmonic oscillator of initial nucleus is obtained by $\hbar\omega_0 = 41 A_0^{-1/3}$. In the fission process, the vibrational frequency of the harmonic oscillator is
+\begin{equation}
+\omega_i = \frac{R_0}{R_i}\omega_0, \quad i = 1, 2
+\end{equation}
+
+Put Eq.\eqref{tc_sep_var} into the Eq.\eqref{tc_shrodinger}, then the l.h.s and r.h.s simultaneously multply $-\frac{2M}{\hbar^2}$, we can get
+\begin{equation}
+\begin{aligned}
+    \left[ \frac{\partial^{2}}{\partial r_{\perp}^{2}}+\frac{1}{r_{\perp}} \frac{\partial}{\partial r_{\perp}}-\frac{2 M}{\hbar^{2}}  V(r_{1}) \right] &\phi_{\nu}(z) \phi_{n_{r}}^{m_{1}}(r_{\perp})\Theta(\varphi) +\left[\frac{\partial^{2}}{\partial z^{2}}-\frac{2 M}{\hbar^{2}} V(z)\right] \phi_{\nu}(z) \phi_{n_{r}}^{m_{1}}(r_{\perp})\Theta(\varphi)\\
+    &+\frac{1}{r_{\perp}^{2}} \frac{\partial^{2}}{\partial \varphi^{2}} \phi_{\nu}(z) \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)\Theta(\varphi)=-\frac{2 M}{\hbar^{2}} E \phi_{\nu}(z) \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)\Theta(\varphi)
+\end{aligned}
+\end{equation}
+The two sides of the equation divided by $\phi_{\nu}(z) \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)\Theta(\varphi)$, and in order to separate variables completely, two sides of the equation left multply $r_\perp^2$, we have
+\begin{equation}
+\begin{aligned}
+  &\left[r_{\perp}^{2} \frac{1}{\phi_{n_{l}}^{m_l}\left(r_{\perp}\right)} \frac{d^{2}}{d r_{\perp}^{2}} \phi_{n_{r}}^{m_l}\left(r_{\perp}\right)+r_{\perp} \frac{1}{\phi_{n_{r}}^{m_{l}} r_{\perp}} \frac{d}{d r_{\perp}} \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)-r_{\perp}^{2} \frac{2 M}{\hbar^{2}} V\left(r_{\perp}\right)\right]\\
+  &+\left[r_{\perp}^{2} \frac{1}{\phi_{\nu}(z)} \frac{d^{2}}{d z^{2}} \phi_{\nu}(z)-r_{\perp}^{2} \frac{2 M}{\hbar^{2}} V(z)\right]+\frac{1}{\Theta(\varphi)} \frac{d^{2}}{d \varphi^{2}}\Theta(\varphi)=-\frac{r_{\perp}^{2} 2 M}{\hbar^{2}} E
+\end{aligned}
+\end{equation}
+Therefore, we obtain
+\begin{equation}
+\begin{aligned}
+  -\frac{1}{\Theta(\varphi)} \frac{d^{2}}{d \varphi^{2}}\Theta(\varphi) = 
+  &\left[r_{\perp}^{2} \frac{1}{\phi_{n_{l}}^{m_l}\left(r_{\perp}\right)} \frac{d^{2}}{d r_{\perp}^{2}} \phi_{n_{r}}^{m_l}\left(r_{\perp}\right)+r_{\perp} \frac{1}{\phi_{n_{r}}^{m_{l}} r_{\perp}} \frac{d}{d r_{\perp}} \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)-r_{\perp}^{2} \frac{2 M}{\hbar^{2}} V\left(r_{\perp}\right)\right]\\
+  &+\left[r_{\perp}^{2} \frac{1}{\phi_{\nu}(z)} \frac{d^{2}}{d z^{2}} \phi_{\nu}(z) + r_{\perp}^{2} \frac{2 M}{\hbar^{2}}\left( E - V(z)\right)\right]  \label{tc_sep_first}
+\end{aligned}
+\end{equation}
+It is obviously that the two side of the equation are the total derivative with respect to $\varphi$, $r_\perp$, $z$, respectively, and abtained from 
+\begin{align}
+\text{l.s.h} =& A_1 \quad \Rightarrow \left(\frac{d^2}{d\varphi^2} + A_1 \right) = 0  \\
+\text{r.s.h} =& A_1 \\
+\Rightarrow -\left[ \frac{1}{\phi_\nu(z)}\frac{d^2}{dz^2}\phi_{\nu}(z) + \frac{2M}{\hbar^2}(E - V(z)) \right] =& \left[  \frac{1}{\phi_{n_r}^{m_l}(r_\perp)} \frac{d^2}{d r_\perp^2} \phi_{n_r}^{m_l}(r_\perp)  + \frac{1}{r_\perp} \frac{1}{\phi_{n_r}^{m_l}(r_\perp)}\frac{d}{d r_\perp}\phi_{n_r}^{m_l}(r_\perp) \right. \label{tc_sep_r_z} \\
+& - \left. \frac{2M}{\hbar^2} V(r_\perp) - \frac{A_1}{r_\perp^2} \right] \notag
+\end{align}
+Acoording to Eq.\eqref{tc_sep_r_z}, We do the separation variable operation again and obtain
+\begin{equation}
+\begin{aligned}
+  \left[\frac{\partial^{2}}{\partial r_{\perp}^{2}}+\frac{1}{r_{\perp}} \frac{\partial}{\partial r_{\perp}}-\frac{A_{1}}{r_{\perp}^{2}}-\frac{2 M}{\hbar^{2}} V\left(r_{\perp}\right)-A_{2}\right] \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)=& 0 \\
+  \left[\frac{\partial^{2}}{\partial z^{2}}+\frac{2 M E}{\hbar^{2}}-\frac{2 M}{\hbar^{2}} V(z)+A_{2}\right] \phi_{\nu}(z)=& 0
+\end{aligned}
+\end{equation}
+Where $A_1$ and $A_2$ are the seperation constants.
+
+The quantum number $\nu_1$, $\nu_2$, and the normalization constant $C_{v_i}$ is obatined from the conditions which are the continuous of eigenfunction and its firs-order derivative and the normalization of the eigenfunction:
+\begin{align}
+\phi_{\nu}(z)\left|_{\substack{z \rightarrow 0 \\ z<0}}\right. =& \phi_{\nu}(z)\left|_{\substack{z \rightarrow 0 \\ z>0}} \right.  \label{tc_wave_con}\\
+\frac{\partial\phi_\nu(z)}{\partial z} \left|_{\substack{z \rightarrow 0 \\ z< 0}} \right. =& \frac{\partial\phi_\nu(z)}{\partial z} \left|_{\substack{z \rightarrow 0 \\ z > 0}} \right. \label{tc_wave_one_order_con} \\  
+\int_{-\infty}^{\infty} \left| \phi_\nu(z) \right| ^2 dz =& 1 \label{tc_wave_norm}
+\end{align}
+In addition, we need the static condition
+\begin{equation}
+\hbar\omega_1(\nu_1 + \frac{1}{2}) = \hbar\omega_2(\nu_2 + \frac{1}{2}) \label{tc_static_con}
+\end{equation}
+\textcolor{blue}{\Cref{tc_static_con} means that the two oscillators along the \textit{z}-axis have the same energy level.}
+
+The normalization constant $C_{v_1}$ and $C_{v_2}$ can be abtained from the Eq.\eqref{tc_wave_con}, \eqref{tc_wave_norm}
+\begin{align}
+C_{\nu_{1}}=&C_{\nu_{2}} \frac{e^{-\frac{\left(z_{2} / b_{2}\right)^{2} }{2}} H_{\nu_{2}}\left(-\frac{z_{2}}{b_{2}}\right)}{e^{-\frac{\left(z_{1} / b_{1}\right)^{2}}{2}} H_{\nu_{1}}\left(-\frac{z_{1}}{b_{1}}\right)}  \label{tc_Cv_1} \\
+C_{\nu_{2}}=&\left[b_{2} j\left(\nu_{2}, \nu_{2},-\frac{z_{2}}{b_{2}}\right)+\frac{e^{-\left(\frac{z_{2}}{b_{2}}\right)^{2}} H_{\nu_{2}}^{2}\left(-\frac{z_{2}}{b_{2}}\right)}{e^{-\left(\frac{z_{1}}{b_{1}}\right)^{2}} H_{\nu_{1}}^{2}\left(-\frac{z_{1}}{b_{1}}\right)} b_{1} j\left(\nu_{1}, \nu_{1},-\frac{z_{1}}{b_{1}}\right)\right]^{-\frac{1}{2}}  \label{tc_Cv_2}
+\end{align}
+where
+\begin{equation}
+j(\nu^\prime, \nu, \varepsilon_0) = \int_{\varepsilon_0}^{\infty} d\varepsilon H_{\nu^\prime}(\varepsilon) H_{\nu}(\varepsilon) e^{-\varepsilon^2}  \label{tc_j_func}
+\end{equation}
+\begin{proof}
+In Eq.\eqref{tc_wave_con}, for the l.s.h ($z < 0$)
+\begin{equation}
+  \phi_v(z) = C_{v_1} H_{v_1}(-\varepsilon_1) e^{-\frac{\varepsilon_1^2}{2}}  \quad (\varepsilon_1 = \frac{z+z_1}{b_1})
+\end{equation}
+Thus, when $z$ limit to $0$, we have
+\begin{equation}
+  z \to 0 \Rightarrow \varepsilon_1 \to \frac{z_1}{b_1}
+\end{equation}
+Therefore, we have the relation
+\begin{equation}
+  \phi_\nu(z) \left|_{\substack{z < 0 \\ z \to 0}} \right. \Rightarrow \phi_\nu(\varepsilon_1) \left|_{\substack{\varepsilon < z_1/b_1 \\ \varepsilon \to z_1/b_1}} \right. = C_{v_1} H_{v_1}(\frac{z_1}{b_1}) e^{-\frac{(z_1/b_1)^2}{2}} \label{tc_wave_con_l}
+\end{equation}
+It's the same for r.h.s of Eq.\eqref{tc_wave_con}
+\begin{equation}
+  \phi_\nu(z) \left|_{\substack{z \geqslant 0 \\ z \to 0}} \right. \Rightarrow \phi_\nu(\varepsilon_2) \left|_{\substack{\varepsilon \geqslant z_2/b_2 \\ \varepsilon \to z_2/b_2}} \right. = C_{v_2} H_{v_2}(\frac{z_2}{b_2}) e^{-\frac{(z_2/b_2)^2}{2}} \label{tc_wave_con_r}
+\end{equation}
+Simultaneous Eqs.\eqref{tc_wave_con}, \eqref{tc_wave_con_l} and \eqref{tc_wave_con_r}, we can obtain Eq.\eqref{tc_Cv_1}. \\
+Now, we can calculate $C_{\nu_2}$, put Eq.\eqref{tc_Cv_1} into Eq.\eqref{tc_wave_norm}, we have
+\begin{equation}
+  \begin{aligned}
+    \int_{-\frac{z_1}{b_1}}^{\infty} d\varepsilon b_1 C_{\nu_2}^2 \frac{e^{-(z_2/b_2)^2} H_{\nu_2}^2(-\frac{z_2}{b_2})}{e^{-(z_2/b_2)^2}H_{\nu_1}^2(-\frac{z_1}{b_1})} H_{\nu_1}^2(\varepsilon) e^{-\varepsilon^2}  + \int_{-\frac{z_2}{b_2}}^{\infty} d\varepsilon b_2 C_{\nu_2}^2 H_{\nu_2}^2(\varepsilon) e^{-\varepsilon^2} = 1  \\
+    \Rightarrow C_{\nu_2} = \frac{1}{\left[ b_1 \frac{e^{-(z_2/b_2)^2} H_{\nu_2}^2(-\frac{z_2}{b_2})}{e^{-(z_2/b_2)^2}H_{\nu_1}^2(-\frac{z_1}{b_1})} \int_{-\frac{z_1}{b_1}}^{\infty} d\varepsilon H_{\nu_1}^2(\varepsilon) e^{-\varepsilon^2} + b_2 \int_{-\frac{z_2}{b_2}^{\infty}} d\varepsilon H_{\nu_2}^2(\varepsilon) e^{-\varepsilon^2} \right]^{\frac{1}{2}}}
+  \end{aligned}
+\end{equation}
+Let
+\begin{equation*}
+  j(\nu^\prime, \nu, \varepsilon_0) = \int_{\varepsilon_0}^{\infty} d\varepsilon H_{\nu^\prime}(\varepsilon) H_{\nu}(\varepsilon) e^{-\varepsilon^2}
+\end{equation*}
+And we finally obtain Eq.\eqref{tc_Cv_1} and Eq.\eqref{tc_Cv_2}.
+\end{proof}
+
+the numerical solution of Eq.\eqref{tc_j_func} can be confirm by
+\begin{equation}
+j\left(\nu^{\prime}, \nu, \xi_{0}\right)=\left\{
+  \begin{array}{l}
+    \frac{e^{-\xi_{0}^{2}}}{\nu^{\prime}-\nu}\left[\nu^{\prime} H_{\nu^{\prime}-1}\left(-\xi_{0}\right) H_{\nu}\left(-\xi_{0}\right)-\nu H_{\nu^{\prime}}\left(-\xi_{0}\right) H_{\nu-1}\left(-\xi_{0}\right)\right], \quad \nu^{\prime} \neq \nu \vspace{2.5ex} \\
+    \frac{e^{-\xi_{0}^{2}}}{4 \Gamma(-\nu)}\left\{\nu H_{\nu-1}\left(-\xi_{0}\right) \sum_{m=0}^{\infty}\left[(-1)^{m} \frac{\Gamma[(m-\nu) / 2] \psi[(m-\nu) / 2]}{m !}\left(-2 \xi_{0}\right)^{m}\right]\right. \\
+    \left.+H_{\nu}\left(-\xi_{0}\right) \sum_{m=0}^{\infty}\left[(-1)^{m} \frac{\Gamma[(m-\nu+1) / 2] \psi[(m-\nu+1) / 2]}{m !}\left(-2 \xi_{0}\right)^{m}\right]\right\}, \quad \nu^{\prime}=\nu \neq \text {integer} \vspace{2.5ex} \\
+    e^{-\xi_{0}^{2}} \sum_{m=0}^{n-1}\left[2^{m} \frac{n !}{(n-1) !} H_{n-m+1}\left(-\xi_{0}\right) H_{n-m}\left(-\xi_{0}\right)\right]+2^{n-1} n ! \sqrt{\pi}\left[1+\operatorname{erf}\left(\xi_{0}\right)\right], \\
+    \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \nu^{\prime}=\nu=n=\text{integer}
+  \end{array}\right.
+\end{equation}
+Where $\text{erf}(\varepsilon)$ is the error function, $H_n(\varepsilon)$ is Hermite polynomials, and $\psi(\nu) = \Gamma^\prime(\nu) / \Gamma(\nu)$ is \textit{Psi} function.
+
+Now, we need to confirm the values of $\nu_1$ and $\nu_2$, therefore, the continuous condition Eq.\eqref{tc_wave_one_order_con} of one-order derivation of $\psi_\nu(z)$ at $z = 0$ is necessary, and we have
+\begin{equation}
+\begin{aligned}
+  & \frac{C_{\nu_{1}}}{b_{1}}\left[\frac{z_{1}}{b_{1}} H_{\nu_{1}}\left(-\frac{z_{1}}{b_{1}}\right)+H_{\nu_{1}+1}\left(-\frac{z_{1}}{b_{1}}\right)\right] e^{-\left(z_{1} / b_{1}\right)^{2} / 2} \\
+  =& \frac{C_{\nu_{2}}}{b_{2}}\left[-\frac{z_{2}}{b_{2}} H_{\nu_{2}}\left(-\frac{z_{2}}{b_{2}}\right)-H_{\nu_{2}+1}\left(-\frac{z_{2}}{b_{2}}\right)\right] e^{-\left(z_{2} / b_{2}\right)^{2} / 2}   \label{tc_one_order_con_expand}
+\end{aligned}
+\end{equation}
+Simultaneous Eqs.\eqref{tc_Cv_1} and \eqref{tc_one_order_con_expand}, and liminate $C_{\nu_1}$ and $C_{\nu_2}$, we finally get the eigenfunction of $\nu_1(\nu_2)$
+\begin{equation}
+\begin{aligned}
+  & e^{-\left(z_{2} / b_{2}\right)^{2} / 2} H_{\nu_{2}}\left(-\frac{z_{2}}{b_{2}}\right)\left[\frac{z_{1}}{b_{1}} H_{\nu_{1}}\left(-\frac{z_{1}}{b_{1}}\right)+H_{\nu_{1}+1}\left(-\frac{z_{1}}{b_{1}}\right)\right] e^{-\left(z_{1} / b_{1}\right)^{2} / 2} \\
+  =& e^{-\left(z_{1} / b_{1}\right)^{2} / 2} H_{\nu_{1}}\left(-z_{1} / b_{1}\right) \frac{b_{1}}{b_{2}}\left[-\frac{z_{2}}{b_{2}} H_{\nu_{2}}\left(-\frac{z_{2}}{b_{2}}\right)-H_{\nu_{2}+1}\left(-\frac{z_{2}}{b_{2}}\right)\right] e^{-\left(z_{2} / b_{2}\right)^{2} / 2}  \label{tc_eigen_func_Cv}
+\end{aligned}
+\end{equation}
+\begin{proof}
+Usin Eq.\eqref{tc_wave_one_order_con}, and case by case discussion.\\
+\textbf{1. $z < 0$}, we have
+\begin{equation}
+  \phi_{\nu}(z) = C_{\nu_1} H_{\nu_1}(-\frac{z+z_1}{b_1}) e^{-\frac{[(z+z_1)/b_1]^2}{2}}
+\end{equation}
+Let
+\begin{equation}
+    \varepsilon = -\frac{z+z_1}{b_1}
+\end{equation}
+In addition, we need the recursion relation of Hermite polynomials Eq.\eqref{oc_Hermite_recur}, and the one-order derivation of $\phi_{\nu}(z)$ is
+\begin{equation}
+  \begin{aligned}
+    \frac{\partial \phi_{\nu}(z)}{\partial z} =& \frac{d\varepsilon}{d z} \frac{\partial \phi_{\nu}(z)}{\partial z} = -\frac{C_{\nu_1}}{b_1} \frac{d}{d\varepsilon} \left[ H_{\nu_1}(\varepsilon) e^{-\varepsilon^2/2} \right]  \\
+    =& -\frac{C_{\nu_1}}{b_1} \left[ \frac{d H_{\nu_1}(\varepsilon)}{d\varepsilon}  e^{-\varepsilon^2/2} - \varepsilon H_{\nu_1}(\varepsilon)  e^{-\varepsilon^2/2}\right]  \\
+    =& -\frac{C_{\nu_1}}{b_1} \left[ \frac{d H_{\nu_1}(\varepsilon)}{d\varepsilon} - \varepsilon H_{\nu_1}(\varepsilon)\right]  e^{-\varepsilon^2/2}  \\
+    =& -\frac{C_{\nu_1}}{b_1} \left[ 2\varepsilon H_{\nu_1}(\varepsilon) - H_{\nu+1}(\varepsilon) - \varepsilon H_{\nu_1}(\varepsilon)\right]  e^{-\varepsilon^2/2}  \\
+    =& -\frac{C_{\nu_1}}{b_1} \left[ - H_{\nu+1}(\varepsilon) + \varepsilon H_{\nu_1}(\varepsilon)\right]  e^{-\varepsilon^2/2}  \\
+    =& -\frac{C_{\nu_1}}{b_1} \left[ - H_{\nu+1}(-\frac{z+z_1}{b_1}) - \frac{z+z_1}{b_1} H_{\nu_1}(-\frac{z+z_1}{b_1})\right]  e^{-[(z+z_1)/b_1]^2/2}  \label{tc_phi_z_first_der}
+  \end{aligned}
+\end{equation}
+Therefore, we have
+\begin{equation}
+  \frac{\partial\phi_\nu(z)}{\partial z} \left|_{\substack{z \rightarrow 0 \\ z< 0}} \right. 
+  = -\frac{C_{\nu_1}}{b_1} \left[ - H_{\nu+1}(-\frac{z_1}{b_1}) - \frac{z_1}{b_1} H_{\nu_1}(-\frac{z_1}{b_1})\right]  e^{-(z_1/b_1)^2/2} \label{tc_wave_one_order_l}
+\end{equation}
+\textbf{2. $z \geq 0$}, it's the same with case 1., and we obtain
+\begin{equation}
+  \frac{\partial\phi_\nu(z)}{\partial z} \left|_{\substack{z \rightarrow 0 \\ z > 0}} \right. 
+  = \frac{C_{\nu_2}}{b_2} \left[ -\frac{z_2}{b_2} H_{\nu_2}(\frac{z - z_2}{b_2}) - H_{\nu_2 + 1}(-\frac{z_2}{b_2}) \right] e^{-(z_2/b_2)^2/2} \label{tc_wave_one_order_r}
+\end{equation}
+
+Simultaneous Eqs.\eqref{tc_wave_one_order_con}, \eqref{tc_wave_one_order_l}, \eqref{tc_wave_one_order_r}, \eqref{tc_Cv_1}, and eliminate $C_{\nu_1}$, $C_{\nu_2}$, we finally obtain Eq.\eqref{tc_eigen_func_Cv}.
+\end{proof}
+Therefore, the eigenvalue of potential $V(r_{r_\perp}, z)$ is 
+\begin{equation}
+E_{\nu, n, m} = \hbar\omega_1(\nu_1 + \frac{1}{2}) + \hbar\omega_\perp (2n_r + m_l +1)
+\end{equation}
+
+
+The \underline{form of eigenfunction of two center harmonic oscillators potential} take the same with one harmonic oscillator
+\begin{equation}
+| \alpha \rangle = | \nu, n, m, s \rangle
+\end{equation}
+where $\nu$ represents $\nu_1$ or $\nu_2$, and \underline{it doesn't have to be an integer}, we choose $\nu_1$ as $\nu$. Compared to general eigenfunction of harmonic oscillator potential, \textcolor{red}{it doesn't require $\nu$ as an integer.} But the eigenvalue of $j_z$, which is the projection of total angular momentum on symmetric axis, is still a good quantum number, i.e. $\Omega = m + s$.
+
+In order to calculate the matrix elements, we need the first derivatives with respect to $z$ and $r_\perp$ for $\phi_\nu(z)$ and $\phi_{n_r}^{m_l}(r_\perp)$, respectively. Acoording to Eqs.\eqref{tc_phi_z_first_der}, \eqref{oc_L_first_der}, \eqref{oc_phi_perp_one_firs_der}
+\begin{align}
+\partial_{z} \phi_{\nu}(z)=& \left\{\begin{array}{l}
+  \frac{C_{\nu_{1}}}{b_{1}}\left[\zeta_{1} H_{\nu_{1}}\left(-\zeta_{1}\right)+H_{\nu_{1}+1}\left(-\zeta_{1}\right)\right] e^{-\zeta_{1}^{2} / 2}  \quad  \text{for} \quad z < 0\\
+  \frac{C_{\nu_{2}}}{b_{2}}\left[\zeta_{2} H_{\nu_{2}}\left(\zeta_{2}\right)-H_{\nu_{2}+1}\left(\zeta_{2}\right)\right] e^{-\zeta_{2}^{2} / 2}  \quad \quad ~ \text{for} \quad z \geq 0
+\end{array}\right.  \\
+\partial_{r_{\perp}} \phi_{n_{r}}^{m_{l}}\left(r_{\perp}\right)=&\frac{\partial \eta}{\partial r_{\perp}} \frac{\partial}{\partial \eta} \phi_{n_{r}}^{m_{l}}(\eta)=\frac{N_{n_{r}}^{m_{l}}}{b_{\perp}^{2}} \sqrt{2} \eta^{\left(m_{l}-1\right) / 2} \tilde{L}_{n_{r}}^{m_{l}}(\eta) e^{-\eta / 2}
+\end{align}
+where $\zeta_1 = (z + z_1) / b_1$ and $\zeta_2 = (z - z_2) / b_2$. \\
+The second derivative of $\phi_\nu(z)$ and $\phi_{n_r}^{m_L}(r_\perp)$ with respect to $z$ and $r_\perp$, respectively, are take the form 
+\begin{align}
+\partial_{z} \partial_{z} \phi_{\nu}(z)=&\left\{\begin{array}{l}
+  \frac{C_{\nu_{1}}}{b_{1}^{2}}\left[\zeta_{1}^{2} H_{\nu_{1}}\left(-\zeta_{1}\right)-\left(2 \nu_{1}+1\right) H_{\nu_{1}}\left(-\zeta_{1}\right)\right] e^{-\zeta_{1}^{2} / 2}   \quad  \text{for} \quad z < 0\\
+  \frac{C_{\nu_{2}}}{b_{2}^{2}}\left[\zeta_{2}^{2} H_{\nu_{2}}\left(\zeta_{2}\right)-\left(2 \nu_{2}+1\right) H_{\nu_{2}}\left(\zeta_{2}\right)\right] e^{-\zeta_{2}^{2} / 2}  \quad  \quad ~ \text{for} \quad z \geq 0
+\end{array}\right.  \\
+\frac{1}{r_{\perp}} \partial r_{\perp} r_{\perp} \partial r_{\perp}\left(e^{-\eta / 2} L_{n}^{0}(\eta)\right) =& \frac{1}{b_{\perp}^{2}}\left[(-2+\eta) L_{n}^{0}(\eta)+4 \eta L_{n-2}^{2}(\eta)+4(-1+\eta) L_{n-1}^{1}(\eta)\right] e^{-\eta / 2} \notag \\
+=&\frac{1}{b_{\perp}^{2}}(-2+\eta-4 n) L_{n}^{0}(\eta) e^{-\eta / 2} \\
+=&\frac{1}{b_{\perp}^{2}}\left[-(2 n+1) L_{n}^{0}(\eta)-\left\{(n+1) L_{n+1}^{0}(\eta)+n L_{n-1}^{0}(\eta)\right\}\right] e^{-\eta / 2} \notag
+\end{align}

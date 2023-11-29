@@ -1,0 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{数值微分}
+\section{五点数值微分公式}
+\subsection{二阶导微分公式}
+设$f(x)$为定义在区间$[a,b]$上的函数，给定$f(x)$在等距点$a \leqslant x_0 < x_1 < x_2 < x_3
+< x_4 \leqslant b$，节点上函数值为$f(x_k)$，$(k=0, 1, 2, 3, 4)$，且满足$x_{k+1}-x_k=h$。
+在$[a,b]$上做$f(x)$的4次Lagrange插值函数，并将$x=x_0+th, t \in [0, 4], x_k = x_0+kh$带入，
+将方程两端对$t$求二次导，再分别把$t=0, 1, 2, 3, 4$带入，可得到$x_k$节点二阶导数的5点数值
+微分公式，如下：
+\begin{equation}
+	\begin{aligned}
+		f^{\prime\prime}(x_0) =& \frac{1}{12h^2}[35f(x_0) - 104f(x_1) + 114f(x_2) - 56f(x_3) + 11f(x_4)] \\
+		f^{\prime\prime}(x_1) =& \frac{1}{12h^2}[11f(x_0) -  20f(x_1) +   6f(x_2) +  4f(x_3) -   f(x_4)] \\
+		f^{\prime\prime}(x_2) =& \frac{1}{12h^2}[ -f(x_0) +  16f(x_1) -  30f(x_2) + 16f(x_3) -   f(x_4)] \\
+		f^{\prime\prime}(x_3) =& \frac{1}{12h^2}[ -f(x_0) +   4f(x_1) +   6f(x_2) - 20f(x_3) + 11f(x_4)] \\
+		f^{\prime\prime}(x_4) =& \frac{1}{12h^2}[11f(x_0) -  56f(x_1) + 114f(x_2) -104f(x_3) + 35f(x_4)]
+	\end{aligned}
+\end{equation} 
+
+
+
+

@@ -1,0 +1,121 @@
+\chapter{矢量空间及波函数展开}
+主要参考 \textit{chapter 9, 10, Quantum Mechanicsc, third edition} —— E. Merzbacher
+
+
+正规算符(normal operators)包括厄密算符(Hermitian operators)和幺正算符(unitary)。
+
+
+用$A$、$B$等表示算符，$A^{\prime}_{i}$等表示对应的本征值。但用$K$来表示力学量完全集，对应的单个力学量本征值为$K_{i}$。量子态用$\Psi$表示。
+%%%%%%%%%
+\section{量子力学中的矢量空间}
+
+\paragraph*{概率幅及其组成}
+厄密算符$A$的本征方程为
+\begin{equation}
+    A \psi_n(x) = A_i^{\prime} \psi_i(x)
+\end{equation}
+其中$A^{\prime}_{i}$表示第$i$个本征值。其本征波函数满足正交关系
+\begin{equation}
+    \int \psi_{i}^{\ast}(x) \psi_j(x)\, dx = \delta_{nk}
+\end{equation}
+这样，任意一个态$\phi(x)$都可用上述本征波函数的叠加
+\begin{equation}
+    \phi(x) = \sum_{i} c_{i} \psi_i (x)
+\end{equation}
+其中展开系数$c_i$称为概率幅
+\begin{equation}
+    c_i = \int_{-\infty}^{+\infty} \psi_i^{\ast}(x) \phi(x) \, dx
+\end{equation}
+
+\paragraph*{力学量完全集}
+若厄密算符$A$的一个本征值对应到多个线性独立的本征波函数，只知道$A$的期待值无法区分这些本征波函数，也就是不知道$A$的本征态是如何叠加得到；假如有厄密算符$B$，本征波函数$\psi_i$同时是$A$和$B$的本征波函数，对应本征值为$A_i$和$B_i$，这样，对应于$A$相同本征值的本征态可由$B$不同本征值对应的本征态进行区分。例如，三维球形谐振子势中的单粒子波函数，同一$l$轨道的不同波函数可用不同径向量子数进行区分。若引入$B$后仍无法区分这些本征波函数，则继续此操作引入更多的类似算符，直到构成一个\CJKunderdot{对易力学量完全集}，能够完全描述这个系统。若一个系统波函数有某一正交基叠加而成，那么有如下基本假设：
+\begin{center}
+    \fbox{系统可观测量的完全集的概率幅包含了该系统测量结果的最大信息。}
+\end{center}
+
+因为$K$是一组力学量完全集，其期望由线性独立的本征值$K_i$构成，因此必须要满足归一性：
+\begin{equation}
+    \sum_{i} \left|\Braket{K_i | \Psi}\right|^2 = 1
+\end{equation}
+\CJKunderdot{引入符号$\Braket{A_i^{\prime} | B_j^{\prime}}$，用以表示在算符$B$的本征值确定为$B_j^{\prime}$时，算符$A$的期望中本征值$A_i$所对应的概率幅}。力学量完全集的线性独立性表现为集合中不同力学量的本征值或本真态势可以明确区分的，即满足正交性以及单位矢量性的特点：
+\begin{equation}
+    \Braket{K_i | K_j} = \delta_{ij}
+\end{equation}
+
+$\Psi$用不同的力学量完全集(如$K$、$L$等)进行描述，这两个力学量完全集概率幅间由下式联系
+\begin{equation}
+    \Braket{L_j | \Psi} = \sum_{i}\Braket{L_j | K_i}\Braket{K_i | \Psi}
+\end{equation}
+$L$直接对量子态$\Psi$进行操作，则找到$L_j$的概率幅为
+\begin{equation}
+    \left| \Braket{L_j | \Psi} \right|^2 = \left| \sum_{i}\Braket{L_j | K_i}\Braket{K_i | \Psi} \right|^2
+    \label{eq:lj-in-psi}
+\end{equation}
+但是计算概率的一般规则为
+\begin{equation}
+    \sum_{i} \left|\Braket{L_j | K_i}\right|^2 \left| \Braket{K_i | \Psi} \right|^2
+    \label{eq:conv-cal-prob}
+\end{equation}
+\Cref{eq:lj-in-psi}比\Cref{eq:conv-cal-prob}多出了\CJKunderdot{相干项}。对\Cref{eq:conv-cal-prob}进行剖析：其含义是先用力学量完全集算符$K$对$\Psi$进行操作，得到具体的量子态$\ket{K_i}$后再用$L$算符进行操作得到$\ket{L_j}$态所对应的概率幅；但这个中间态$\ket{K_j}$的测量会导致初态$\Psi$发生显著且不可逆的变化，故\Cref{eq:conv-cal-prob}并不代表在$\Psi$态中$\ket{L_j}$对应的概率幅。由此知道，\CJKunderdot{叠加态在不同力学量完全集间的转换会导致相干项的产生}。
+
+\section{基展开及矩阵对角化} \label{sec:mat-diag}
+\paragraph*{波函数展开}
+若系统哈密顿量$H$已知，总波函数用一组正交完备基矢展开
+\begin{equation}
+    \ket{\Psi} = \sum_{i}^{n} c_i \ket{\psi_i}
+    \label{eq:wv-expand-basis}
+\end{equation}
+
+\paragraph*{矩阵元及矩阵方程}
+利用薛定谔方程$H\ket{\Psi} = E\ket{\Psi}$，有
+\begin{equation}
+    H\ket{\Psi} = \sum_{j=1}^{n}c_j H\ket{\psi_j} = E\sum_{j=1}^{n} c_j\ket{\psi_j}
+\end{equation}
+利用基矢的正交关系$\Braket{\psi_i | \psi_j} = \delta_{ij}$，上式乘左矢$\bra{\psi_i}$，有
+\begin{equation}
+    \bra{\psi_i}\sum_{j=1}^{n}c_j H\ket{\psi_j}
+    =\sum_{j=1}^{n}c_j \Braket{\psi_i|H|\psi_j}
+    =\sum_{j=1}^{n} H_{ij} c_j 
+    =E\sum_{j=1}^{n} c_j\Braket{\psi_i|\psi_j}
+    = E c_i
+    \label{eq:basis-expand-eq}
+\end{equation}
+矩阵元为
+\begin{equation}
+    H_{ij} = \Braket{\psi_i | H | \psi_j}
+\end{equation}
+本征方程\Cref{eq:basis-expand-eq}写为一阶齐次方程组：
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            H_{11}c_1 + H_{12}c_2 + H_{13}c_3 + \cdots + H_{1n}c_n =& E c_1 \\
+            H_{21}c_1 + H_{22}c_2 + H_{23}c_3 + \cdots + H_{2n}c_n =& E c_2 \\
+            H_{31}c_1 + H_{32}c_2 + H_{33}c_3 + \cdots + H_{3n}c_n =& E c_3 \\           
+            \cdots \qquad \cdots \qquad \cdots \\
+            H_{n1}c_1 + H_{n2}c_2 + H_{n3}c_3 + \cdots + H_{nn}c_n =& E c_n    
+        \end{aligned}         
+    \right. 
+    \label{eq:expand-coeff}
+\end{equation}
+其矩阵形式为
+\begin{equation}
+    HC = EC
+    \label{eq:expand-basis-matform}
+\end{equation}
+这样，关于本征值$E$的久期方程写为
+\begin{equation}
+    \begin{vmatrix}
+        H_{11} - E  &  H_{12}  &  H_{13}  & \cdots  &  H_{1n} \\
+        H_{21}  &  H_{22} - E  &  H_{23}  & \cdots  &  H_{2n} \\
+        H_{31}  &  H_{32}  &  H_{33} - E  & \cdots  &  H_{3n} \\
+        \vdots  &  \vdots  &  \vdots      & \vdots  &  \vdots \\
+        H_{n1}  &  H_{n2}  &  H_{n3}  & \cdots  &  H_{nn} - E
+    \end{vmatrix}
+    = 0
+\end{equation}
+\paragraph*{本征值问题}
+这是关于$E$的$n$阶方程，它的$n$个实数解就是薛定谔方程的$n$个能量本征值$E_{i}\,(i = 1, 2, \cdots, n)$。当利用幺正变换对\Cref{eq:expand-basis-matform}中的哈密顿量矩阵进行对角化时，相当于对基矢进行了变换，对角化后的哈密顿量矩阵实在其本征波函数作为基矢的框架下构建的，因此对角化后的对角元就是其对应的能量本征态。
+
+\paragraph*{展开系数的确定}
+对于一个确定的本征值$E$，矩阵元$H_{ij}$是可以直接计算得到的，也就是$H$矩阵是确定的，这样，可由\Cref{eq:expand-coeff}或\Cref{eq:expand-basis-matform}得到$n$个系数$c_{i}$，并进一步由\Cref{eq:wv-expand-basis}得到本征值为$E$对应的本征波函数。注意，这里的非对角元并不为0，这表明构建波函数的这组基矢并不是系统哈密顿量的本征波函数。若$n$为有限值，则这些基矢$\ket{\psi_i}$不构成完备基，只能得到能量本征值$E$的$n$个近似解。
+

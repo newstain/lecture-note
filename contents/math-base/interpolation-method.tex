@@ -1,0 +1,224 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{插值方法}
+
+许多实际问题都需要用$y=f(x)$来表示其内在规律，但其中相当一部分是通过实验或观测得到的，而且只能给出其中的某一区间$[ab]$内的离散点的数据。因此，我们希望能根据这些给定的数据构建出一个既能反应函数$f(x)$的特性，又便于计算的简单函数$P(x)$，用$P(x)$来近似$f(x)$。我们一般选取一类较简单的函数（如代数多项式或分段代数多项式）来作为$P(x)$，并使$P(x)=f(x_i)$对$i=0,1,\cdots,n$成立，这样的$P(x)$就是我们所希望得到的插值多项式。
+
+假设函数$y=f(x)$在区间$[a,b]$内有定义，并且已知在点$a \leqslant x_0 < x_1 < \cdots < x_n \leqslant b$上的值$y_0$、$y_1$、$\cdots$、$y_n$，若存在一个简单函数$P(x)$，使
+\begin{equation}
+    P(x_i) = y_i,	i=0,1,\cdots,n
+\end{equation} 
+成立，则称$P(x)$为$f(x)$的\textbf{插值函数}，点$x_0$、$x_1$、$\cdots$、$x_n$称为\textbf{插值节点}，包含插值节点的区间$[a,b]$称为\textbf{插值区间}，求插值函数$P(x)$的方法称为\textbf{插值法}。若$P(x)$是次数不超过$n$的代数多项式，即可写成如下形式
+\begin{equation}
+	P(x)=a_0 + a_1 x + \cdots + a_n x^n
+\end{equation} 
+其中$a_i$为实数，成$P(x)$为\textbf{插值多项式}，相应的插值法称为\textbf{多项式插值}。
+
+从图像上看，插值法相当于求曲线$y=P(x)$，使其通过给定的$n+1$个点$(x_i, y_i)$，并用它近似已知曲线$y=f(x)$。
+\section{拉格朗日插值}
+为理解清楚拉格朗日插值，我们先讨论比较特殊的线性插值和抛物线插值方法，然后再讨论拉格朗日插值方法，最后分析其截断误差并给出一些例子以供理解。
+\subsection{线性插值与抛物线插值}
+
+
+\section{三次样条插值方法}
+下面我们先给出三次样条（cubic）插值的定义：
+\begin{definition}[三次样条插值]
+	函数$S(x) \in C^2 [a, b]$，存在给定节点$a = x_0 < x_1 < \cdots < x_i < \cdots < x_n = b$，若$S(x)$在每个小区间$[x_i, x_{i+1}]$上表现为三次多项式，则称$S(x)$是节点$x_0, x_1, \cdots, x_i , \cdots, x_n$上的\textbf{三次样条曲线}。若存在节点$x_i$上给定函数值$y_i = f(x_i)(i = 0, 1, 2, \cdots, n)$，并成立
+	\begin{equation}
+	    S(x_i) = y_i , i = 0, 1, \cdots, n
+	\end{equation} 
+	则$S(x)$称为\textbf{三次样条插值曲线}。	
+\end{definition}
+基于上述定义，在区间$[x_i, x_{i+1}]$内的$S(x)$可写为三次项形式
+\begin{equation}
+	S(x) = c x^3 + d x^2 + e x + f	\label{eq:cubic}
+\end{equation} 
+由上式我们发现一个区间内共有$c, d, e, f$这4个待定系数，范围在$[a, b]$内的所有区间$[x_0, x_1]$、$[x_1, x_2]$、$\cdots$、$[x_{n-1}, x_{n}]$共有$n$个，故全空间范围内一共有$4n$个待定系数。考虑到$S(x)$在两个连续区间$[x_{i-1}, x_i]$和$[x_i, x_{i+1}]$间是连续光滑的，因此其二阶导要求连续，由此可得到连续性条件：
+\begin{equation*}
+	S(x_{j-0}) = S(x_{j+0}), \quad S^{\prime}(x_{j-0}) = S^{\prime}(x_{j+0}),\quad S^{\prime\prime}(x_{j-0}) = S^{\prime\prime}(x_{j+0}), \quad (j = 1, 2, \cdots, n-1)
+\end{equation*} 
+其中$x_{j-0}\in [x_{j-1}, x_j], x_{j+0} \in [x_{j}, x_{j+1}]$。从连续性条件我们可以得到$3n-3$个约束条件，再加上式\eqref{eq:cubic}，我们可以得到$(3n-3) + (n + 1)= 4n - 2$个约束条件，但是一共有$4n$个待定系数，因此我们还需要补充2个条件才能求解出$S(x)$。这两个条件我们可以对$[a, b]$的两个端点$x_0 = a$和$x_n = b$分别施加一个条件（即\textbf{边界条件}）获得，一般有以下3种取法：
+\begin{enumerate}
+	\item 已知两端的一阶导数值
+		\begin{equation}
+			S^{\prime}(x_0) = f^\prime_0, \quad S^{\prime}(x_n) = f^\prime_n	\label{eq:first_boundary}
+		\end{equation} 
+	\item 已知两端的二阶导数值
+		\begin{equation}
+			S^{\prime\prime}(x_0) = f^{\prime\prime}_0, \quad S^{\prime\prime}(x_n) = f^{\prime\prime}_n	\label{eq:second_boundary}
+		\end{equation} 
+	我们把如下的特殊情况称为\textbf{自然边界条件}：
+	\begin{equation}
+		S^{\prime\prime}(x_0) = S^{\prime\prime}(x_n) = 0	\label{eq:natural_boundary}
+	\end{equation} 
+	\item 若函数$f(x)$是以$x_n - x_0$为周期的周期函数，则要求$S(x)$也是周期函数，此时边界条件要满足：
+		\begin{equation}
+			S(x_0 + 0 ) = S(x_n - 0), \quad S^{\prime}(x_0 + 0 ) = S^{\prime}(x_n - 0), \quad S^{\prime\prime} (x_0 + 0) = S^{\prime\prime}(x_n - 0)	\label{third_boundary}
+		\end{equation} 
+		此时式\eqref{eq:cubic}中满足$y_0 = y_n$，这样确定的样条函数$S(x)$称为\textbf{周期样条函数}。
+\end{enumerate}
+\subsection{三次样条曲线的构建}
+下面用插值函数$S(x)$的二阶导数值$S^{\prime\prime}$来表示$S(x)$。三次样条插值要求$S(x)$在区间$[x_i, x_{i+1}]$表现为三次函数形式：
+\begin{equation*}
+	S(x) = Ax^3 + Bx^2 + Cx + D
+\end{equation*} 
+由上式，我们知道$S(x)$的二阶导$S^{\prime\prime}$表现为一次函数形式，也就是其二阶导在$[x_i, x_{i+1}]$上表现为线性函数形式。记$h_i = x_{i+1} - x_{i}$，我们在$[x_i, x_{i+1}]$将$S^{\prime\prime}$写为如下形式：
+\begin{equation}
+	S^{\prime\prime} = M_{i+1} \frac{x - x_i}{h_i} + M_{i} \frac{x_{i+1} - x}{h_i}
+\end{equation} 
+对上式求两次积分
+\begin{equation*}
+	\begin{aligned}
+		S(x) =& \int\int S^{\prime\prime}(x) dx^2	\\
+				=&	\int\int M_{i+1} \frac{x - x_i}{h_i} + M_{i} \frac{x_{i+1} - x}{h_i} dx^2	\\
+				=&	\int M_{i+1} \frac{(x - x_i)^2}{2h_i} -  M_{i} \frac{(x_{i+1} - x)^2}{2h_i} + E dx	\\
+				=&	M_{i+1} \frac{(x - x_i)^3}{6h_i} +  M_{i} \frac{(x_{i+1} - x)^3}{6h_i} + Ex + F 
+	\end{aligned}
+\end{equation*} 
+其中$E, F$为积分常数。考虑到$S(x_i) = y_i, S(x_{i+1}) = y_{i+1}$，我们有
+\begin{equation*}
+	\left\{
+		\begin{aligned}
+			y_i =& M_{i+1} \frac{(x_{i} - x_i)^3}{6h_i} +  M_{i} \frac{(x_{i+1} - x_i)^3}{6h_i} + Ex_i + F  \\
+				=& M_{i} \frac{(x_{i+1} - x_i)^3}{6h_i} + Ex_i + F = M_{i} \frac{h_i^2}{6} + Ex_i + F   \\ 
+			y_{i+1} =& M_{i+1}\frac{(x_{i+1}-x_i)^3}{6h_i}+M_{i}\frac{(x_{i+1}-x_{i+1})^3}{6h_i}+Ex_{i+1}+F  \\
+					=& M_{i+1} \frac{(x_{i+1} - x_i)^3}{6h_i} + Ex_{i+1} + F = M_{i+1} \frac{h_i^2}{6} + Ex_{i+1} + F   
+		\end{aligned}
+	\right.
+\end{equation*} 
+对上式做一下变形，得到
+\begin{equation*}
+	\left\{ 
+		\begin{aligned}
+			y_i - M_{i} \frac{h_i^2}{6} =&  Ex_i + F   \\ 
+			y_{i+1} - M_{i+1} \frac{h_i^2}{6} = & Ex_{i+1} + F   
+		\end{aligned}
+	\right.
+\end{equation*} 
+将其作为线性方程的解，并利用对应的线性插值基函数，可得到最后的$S_{i}(x)$为：
+\begin{equation}
+	\begin{aligned}
+		S_{i}(x)=& M_i \frac{\left(x_{i+1}-x\right)^3}{6 h_i}+M_{i+1} \frac{\left(x-x_i\right)^3}{6 h_i}+\left(y_i-\frac{M_i h_i^2}{6}\right) \frac{x_{i+1}-x}{h_i} \\
+				&+\left(y_{i+1}-\frac{M_{i+1} h_i^2}{6}\right) \frac{x-x_i}{h_i}, \quad i=0,1, \cdots, n-1 .
+	\end{aligned}
+	\label{eq:unkown_Sx}
+\end{equation} 
+现在我们的问题就变成了求解式\eqref{eq:unkown_Sx}，而其中的未知数为$M_i(i = 0, 1, \cdots, n)$。为确定未知数$M_i$，我们需要用到一阶导的连续性，为此，我们对$S_{i}(x)$求一次导得
+\begin{equation}
+	S_{i}^{\prime}(x)=-M_i \frac{\left(x_{i+1}-x\right)^2}{2 h_i}+M_{i+1} \frac{\left(x-x_i\right)^2}{2 h_i}+\frac{y_{i+1}-y_i}{h_i}-\frac{M_{i+1}-M_i}{6} h_i	\label{eq:first_order_Sx}
+\end{equation}
+这样，在区间$[x_i, x_{i+1}]$内，我们得到
+\begin{equation*}
+	S_{i}^{\prime}(x_i + 0) = - \frac{h_i}{2}M_i + \frac{y_{i+1} - y_i}{h_i} - \frac{M_{i+1} - M_{i}}{6}h_i = - \frac{h_i}{3}M_i - \frac{h_i}{6}M_{i+1} + \frac{y_{i+1} - y_i}{h_i}
+\end{equation*} 
+在区间$[x_{i-1}, x_i]$内，也可以类似的求得
+\begin{equation*}
+	S^{\prime}(x_i - 0) = \frac{h_{i-1}}{2}M_{i} + \frac{y_{i} - y_{i-1}}{h_{i-1}} - \frac{M_{i} - M_{i-1}}{6}h_{i-1} = \frac{h_{i-1}}{3}M_i + \frac{h_{i-1}}{6}M_{i-1} + \frac{y_{i} - y_{i-1}}{h_{i-1}}
+\end{equation*} 
+再利用$S^{\prime}(x_i + 0) =S^{\prime}(x_i - 0)$，我们有
+\begin{equation*}
+		- \frac{h_i}{3}M_i - \frac{h_i}{6}M_{i+1} + \frac{y_{i+1} - y_i}{h_i} = \frac{h_{i-1}}{3}M_i + \frac{h_{i-1}}{6}M_{i-1} + \frac{y_{i} - y_{i-1}}{h_{i-1}}	\\
+\end{equation*}
+由上式，我们可以直接得到对应的关系式为
+\begin{equation}
+	\frac{h_{i-1}}{h_i + h_{i-1}}M_{i-1} + 2 M_i + \frac{h_{i}}{h_i + h_{i-1}}M_{i} = \frac{6}{h_i + h_{i - 1}}\left(\frac{y_{i+1} - y_i}{h_i} - \frac{y_i - y_{i - 1}}{h_{i - 1}} \right)	\label{eq:cubic_linear}
+\end{equation} 
+注意上式并不包含区域$[a, b]$上的端点，因此我们需要用边界条件来补全约束条件。
+\begin{enumerate}
+	\item 第一种边界条件，满足式\eqref{eq:first_boundary}，我们从式\eqref{eq:cubic_linear}中导出两个额外的方程。对于$x_0, x_n$，我们取一次导$S^{\prime}(0+0)$和$S^{\prime}(n-0)$，由式\eqref{eq:first_order_Sx}，我们有
+		\begin{equation}
+			\begin{aligned}
+				S^{\prime}(x_0+0) = f^{\prime}(x_0) =& - \frac{h_0}{3}M_0 - \frac{h_0}{6}M_{1} + \frac{y_{1} - y_0}{h_0}	\\
+				\Rightarrow 
+				2M_0 + M_1 =& \frac{6}{h_0} \left( \frac{y_1 - y_0}{h_0} - f^{\prime}(x_0) \right)	\\
+				S^{\prime}(x_n-0) = f^{\prime}(x_n) =& \frac{h_{n-1}}{3}M_n - \frac{h_{n-1}}{6}M_{n-1} + \frac{y_{n} - y_{n-1}}{h_{n-1}}	\\
+				\Rightarrow 
+				M_{n-1} + 2M_n =& \frac{6}{h_{n-1}} \left( f^{\prime}(x_{n}) - \frac{y_{n} - y_{n-1}}{h_{n-1}} \right)	\\
+			\end{aligned}
+			\label{eq:first_boundary_condition}
+		\end{equation} 
+		这样，根据式\eqref{eq:cubic_linear}和\eqref{eq:first_boundary_condition}，我们可以得到对应的矩阵形式如下：
+		\begin{equation}
+			\begin{pmatrix}
+				2						&	1	&	~						&	~	&	~\\
+				\frac{h_0}{h_1 + h_{0}}	&	2	&	\frac{h_1}{h_1 + h_0}	&	~	&	~\\
+				\ddots	&	\ddots		&	\ddots	&	\ddots	&	~\\
+				~		&	~			&	\frac{h_{n-2}}{h_{n-1}+h_{n-2}}	&	2	&	\frac{h_{n-1}}{h_{n-2} + h_{n-1}}\\
+				~		&	~			&	~	&	1	&	2\\
+			\end{pmatrix}
+			\begin{pmatrix}
+				M_0		\\
+				M_1		\\	
+				\vdots	\\
+				M_{n-1}	\\
+				M_{n}	
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				\frac{6}{h_0}\left(\frac{y_1-y_0}{h_0} - f^{\prime}(x_0)\right)	\\
+				\frac{6}{h_1 + h_0}\left(\frac{y_2-y_1}{h_1} - \frac{y_1 - y_0}{h_{0}}\right)	\\
+				\vdots	\\
+				\frac{6}{h_{n-1} + h_{n-2}}\left(\frac{y_n-y_{n-1}}{h_{n-1}} - \frac{y_{n-1} - y_{n-2}}{h_{n-2}}\right) \\
+				\frac{6}{h_{n-1}}\left(f^{\prime}(x_n) - \frac{y_{n}-y_{n-1}}{h_{n-1}} \right)
+			\end{pmatrix}
+		\end{equation}
+		由于$y_0, y_1, \cdots, y_n$和$h_0, h_1, \cdots, h_{n-1}$已知，通过求解上述线性方程组，我们可以得到对应的二阶导$M_0, M_1, \cdots, M_n$，将其带入式\eqref{eq:unkown_Sx}便可得到最后的插值多项式表示。
+	\item 对于第二种边界条件，由于端点的连续性，我们直接有
+		\begin{equation}
+			M_0 = f^{\prime\prime}(x_0)	\quad M_n = f^{\prime\prime}(x_n)
+		\end{equation} 
+		这样可以得到相应的矩阵为
+		\begin{equation}
+			\begin{pmatrix}
+				1						&	0	&	~						&	~	&	~\\
+				\frac{h_1}{h_1 + h_{0}}	&	2	&	\frac{h_0}{h_1 + h_0}	&	~	&	~\\
+				\ddots	&	\ddots		&	\ddots	&	~	&	~\\
+				~		&	~			&	\frac{h_{n-1}}{h_{n-1}+h_{n-2}}	&	2	&	\frac{h_{n-2}}{h_{n-2} + h_{n-1}}\\
+				~		&	~			&	~	&	0	&	1\\
+			\end{pmatrix}
+			\begin{pmatrix}
+				M_0		\\
+				M_1		\\	
+				\vdots	\\
+				M_{n-1}	\\
+				M_{n}	
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				f^{\prime\prime}(x_0)	\\
+				\frac{6}{h_1 + h_0}\left(\frac{y_2-y_1}{h_1} - \frac{y_1 - y_0}{h_{0}}\right)	\\
+				\vdots	\\
+				\frac{6}{h_{n-1} + h_{n-2}}\left(\frac{y_n-y_{n-1}}{h_1} - \frac{y_{n-1} - y_{n-1}}{h_{n-2}}\right) \\
+				f^{\prime\prime}(x_n)
+			\end{pmatrix}
+		\end{equation} 
+\end{enumerate}
+
+
+\section{Akima插值方法}
+Akima方法中的函数由一系列次数不高于3次的分段函数构成，每一个多项式都代表了一对给定点之间曲线的一部分，它是由点的坐标和点的斜率决定的。Akima方法得到的曲线相比其他方法，如三次样条(cubic)方法等，更接近手绘的曲线。
+
+这里假设对于每个给定点，其斜率由5个点构成：给定点自身(作为中心点)及其相邻两边的两点。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \chapter{数值微分}
+% \section{五点数值微分公式}
+% \subsection{二阶导微分公式}
+% 设$f(x)$为定义在区间$[a,b]$上的函数，给定$f(x)$在等距点$a \leqslant x_0 < x_1 < x_2 < x_3
+% < x_4 \leqslant b$，节点上函数值为$f(x_k)$，$(k=0, 1, 2, 3, 4)$，且满足$x_{k+1}-x_k=h$。
+% 在$[a,b]$上做$f(x)$的4次Lagrange插值函数，并将$x=x_0+th, t \in [0, 4], x_k = x_0+kh$带入，
+% 将方程两端对$t$求二次导，再分别把$t=0, 1, 2, 3, 4$带入，可得到$x_k$节点二阶导数的5点数值
+% 微分公式，如下：
+% \begin{equation}
+% 	\begin{aligned}
+% 		f^{\prime\prime}(x_0) =& \frac{1}{12h^2}[35f(x_0) - 104f(x_1) + 114f(x_2) - 56f(x_3) + 11f(x_4)] \\
+% 		f^{\prime\prime}(x_1) =& \frac{1}{12h^2}[11f(x_0) -  20f(x_1) +   6f(x_2) +  4f(x_3) -   f(x_4)] \\
+% 		f^{\prime\prime}(x_2) =& \frac{1}{12h^2}[ -f(x_0) +  16f(x_1) -  30f(x_2) + 16f(x_3) -   f(x_4)] \\
+% 		f^{\prime\prime}(x_3) =& \frac{1}{12h^2}[ -f(x_0) +   4f(x_1) +   6f(x_2) - 20f(x_3) + 11f(x_4)] \\
+% 		f^{\prime\prime}(x_4) =& \frac{1}{12h^2}[11f(x_0) -  56f(x_1) + 114f(x_2) -104f(x_3) + 35f(x_4)]
+% 	\end{aligned}
+% \end{equation} 
+
+
+
+

@@ -1,0 +1,149 @@
+\chapter{占据数表象}
+
+\section{多粒子态表象}
+
+\subsection{\texorpdfstring{$N$}粒子系统的基矢及Fock空间}
+原子核中的单粒子态$\left\{\ket{\alpha_i}\right\}$可构建$N$粒子系统的基矢——Slater行列式：
+\begin{equation}
+    \left\{\ket{\alpha_1\, \alpha_2\, \cdots,\alpha_N}\right\}_{\alpha_1\, \alpha_2\, \cdots,\alpha_N}
+\end{equation}
+该符号表示$N$单粒子量子数的不同集合——$N$粒子组态的所有基向量都已包含在内。在给定单粒子态下，对于$N$个相同的费米子，这些基矢张成了对应的Hilbert空间。\CJKunderline{这些具有不同$N$值的希尔伯特空间的总和就是建立在单粒子态上的Fock空间。}
+
+\subsection{占据数表象}
+Fock空间中的基矢或Fock矢量用单粒子状态的占据数来标定：
+\begin{equation}
+    \ket{\alpha_1\, \alpha_2\, \cdots\alpha_N} = \ket{n_1\, n_2\, n_3\,\cdots}
+\end{equation}
+其中
+\begin{equation}
+    n_i = \left\{\begin{array}{cc}
+        1   &  \text{if\ } i \in \left\{\alpha_1, \cdots \alpha_n\right\} \\
+        0  &  \text{if\ } i \notin \left\{\alpha_1, \cdots \alpha_n\right\}
+    \end{array}\right.
+    ,\quad
+    \sum_{i = 1}^{\infty} n_i = N
+\end{equation}
+在占据数表象中，用$N$个占据数$n_i = 1$表示单粒子轨道$i$的占据状态。
+
+%%%%%%%%%%%%%%%%%%%%%
+\section{算符及其矩阵元}
+$\mathcal{O}$表示整个原子核的多体算符，在某一组基下，其可写成矩阵形式，其对应矩阵元为
+\begin{equation}
+    \Braket{\alpha_1, \alpha_2\,\cdots\, \alpha_N | \mathcal{O} | \beta_1, \beta_2\,\cdots\, \beta_N}
+\end{equation}
+\begin{note}
+    上式展开为矩阵形式为
+    \begin{equation*}
+        \left(\bra{\alpha_1}\bra{\alpha_2}\cdots\bra{\alpha_N}\right)
+        \begin{pmatrix}
+            \mathcal{O}_{11} & \mathcal{O}_{12} & \cdots & \mathcal{O}_{1N} \\
+            \mathcal{O}_{21} & \mathcal{O}_{22} & \cdots & \mathcal{O}_{2N} \\
+            \cdots & \cdots & \cdots & \cdots \\
+            \mathcal{O}_{N1} & \mathcal{O}_{N2} & \cdots & \mathcal{O}_{NN} \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            \ket{\beta_1} \\
+            \ket{\beta_2} \\
+            \cdots \\
+            \ket{\beta_N}
+        \end{pmatrix}
+    \end{equation*}
+    单拎出来，矩阵元可写成
+    \begin{equation}
+        \mathcal{O}_{\alpha_i\beta_j} \equiv \Braket{\alpha_i | \mathcal{O} | \beta_j}
+    \end{equation}
+    这里，多体算符和单粒子算符通过矩阵形式联系起来，通过求解其中的矩阵元可构建完备基或单粒子态作为基矢下的多体算符矩阵，将其作用到集体波函数上(集体波函数通过基展开的形式构建)得到本征值；左右矢(同样通过基展开表示)夹集体算符可获得跃迁值或期待值。
+\end{note}
+本节主要探讨单体算符和两体算符的矩阵元。
+
+\subsection{单体算符的占据数表象}
+作如下约定：
+\begin{enumerate}
+    \item $t$\ —— 单体动能算符，只做用在粒子$i$上的表示为$t(i)$，坐标表象下表示为$t(x_i)$。
+    \item $T$\ —— 集体动能算符，为所有粒子单体动能算符作用后的叠加：$T = \sum_{i = 1}^{A} t(x_i)$。
+\end{enumerate}
+占据数表象下，一般的单体算符可表示为
+\begin{equation}
+    \begin{aligned}
+        T =& \sum_{i = 1}^{A} t(x_i) = \sum_{\alpha\beta} t_{\alpha\beta}c_{\alpha}^{\dagger}c_{\beta} \\
+        t_{\alpha\beta} \equiv & \Braket{\alpha | T | \beta} = \int \phi_{\alpha}(x)^{\dagger} t(x) \phi_{\beta}(x) d\tau
+    \end{aligned}
+\end{equation}
+
+\paragraph*{M-scheme和J-Scheme}
+对于单体球张量算符$T_{\lambda\mu}$，根据Wigner-Eckart定理，可以得到如下非常有用的形式
+\begin{equation}
+    \boxed{
+    T_{\lambda\mu} = 
+    \underbrace{ \sum_{\alpha\beta}\braket{\alpha | T_{\lambda\mu} | \beta} c_{\alpha}^{\dagger} c_{\beta}}_{\text{M-scheme}}
+    =\underbrace{\hat{\lambda}^{-1} \sum_{ab}\left(a || \bmT_{\lambda} || b\right) \left[c_{a}^{\dagger}\tilde{c}_{b} \right]_{\lambda\mu}}_{\text{J-scheme}}
+    }
+    \label{eq:sing-reduced-part-elem}
+\end{equation}
+其中，
+\begin{equation}
+    \tilde{c}_{\alpha} \equiv (-1)^{j_{\alpha} + m_{\alpha}} c_{-\alpha},
+    \quad
+    c_{-\alpha} = c_{a, -m_\alpha}
+    \label{eq:sp.annihilation}
+\end{equation}
+是$j_{a}$阶球张量适当行为的湮灭算符。$\braket{\alpha | T_{\lambda\mu} | \beta}$是\CJKunderdot{单粒子矩阵元}，$\left(a \| \bmT_{\lambda} \| b\right)$是\CJKunderdot{约化单粒子矩阵元}。J-shceme中的求和相对于M-scheme中的求和少了对角动量在$z$轴投影的量子数$m_{\alpha}$的求和，极大减少了计算量。
+
+$\left[c_{a}^{\dagger}\tilde{c}_{b}\right]_{\lambda\mu}$中的$\lambda$可理解为跃迁过程中初态与末态相差的角动量，$\mu$表示对应的第三分量(在$z$轴上的投影)。这样，用$\ket{i}$和$\ket{f}$分别表示初态和末态，则$\braket{f | [c_{a}^{\dagger}\tilde{c}_{b}]_{\lambda\mu} | i}$表示具有$\lambda\mu$特征的跃迁值或期待值。
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\section{正规乘积、缩并和Wick定理}
+
+\paragraph*{正规乘积(Normal ordering)}
+有关于费米子的一组产生算符$\{A^{\dagger}_{k}\}$和一组湮灭算符$\{A_k\}$，它们的积为
+\begin{equation}
+    \prod = \prod \left(\left\{A_k\right\}, \left\{A^{\dagger}_l\right\}\right)
+\end{equation}
+<<<<<<< HEAD
+这些算符的乘积没有固定的顺序，产生算符和湮灭算符可能会交替出现，如$A_1^\dagger A_2 A^3_\dagger A_4$，为了方便后面的计算，定义正规乘积概念如下：
+\begin{enumerate}
+    \item 作用在真空态上
+\end{enumerate}
+=======
+现在定义正规乘积$\mathcal{N}[\,\prod\,]$：
+\begin{enumerate}[topsep=1pt,itemsep=0pt]
+	\item [a.] 作用在真空态上为0的算符(湮灭算符)放在右边，作用在真空态上为1的算符(产生算符)放在左边；
+	\item [b.] 两个算符交换需添加一个负号。
+\end{enumerate}
+这样，他的形式就可以写为
+\begin{equation}
+    \mathcal{N}[\,\Pi \,] = (-1)^{P} \prod \left(\text{creation} \times \text{annihilation}\right)
+\end{equation}
+这里，$P$是需要将所有湮灭算符移至产生算符右边的换位(两粒子位置的交换)次数。根据泡利原理，费米子体系中同一能级不允许出现两个状态相同的粒子，上述乘积中的产生算符集合和湮灭算符集合中不能出现重复的单粒子算符(也就是说，单独对产生算符来讲，其下标不能有重复值；单独对湮灭算符也是一样的)，因此上述算符构成的算符都满足反对易关系为0。
+\begin{example}
+    考虑这样一组产生算符和湮灭算符的乘积$\prod(\left\{c_\beta, c_\delta\right\}, \left\{c_{\alpha}^{\dagger}, c_{\gamma}^{\dagger}\right\}) = a_{\alpha}^{\dagger} a_{\beta} a_{\gamma}^{\dagger} a_{\delta}$，现在对其进行正规乘积处理
+    \begin{equation}
+        \mathcal{N}\left[a_{\alpha}^{\dagger} a_{\beta} a_{\gamma}^{\dagger} a_{\delta}\right] = (-1)^{1} a_{\alpha}^{\dagger} a_{\gamma}^{\dagger} a_{\beta} a_{\delta} = (-1)^{2} a_{\alpha}^{\dagger} a_{\gamma}^{\dagger} a_{\delta} a_{\beta}
+    \end{equation} 
+    正规乘积导致的最后的两个结果相差一个系数，但是等价的。
+\end{example}
+
+正规乘积的另一个常用表达为
+\begin{equation}
+    \mathcal{N}[ABC\cdots] \equiv :ABC\cdots:
+\end{equation}
+正规乘积有如下规则成立：
+\begin{align}
+    \mathcal{N}\left[\lambda_1 \Pi + \lambda_2 \Pi^{\prime}\right]
+    =&\, \lambda_1 \mathcal{N}[\Pi] + \lambda_2 \mathcal{N}\left[\Pi^{\prime}\right] \\
+    \mathcal{N}\left[\Pi(\Pi^{\prime} + \Pi^{\prime\prime})\right]
+    =&\, \mathcal{N}[\Pi\,\Pi^{\prime}] + \mathcal{N}\left[\Pi\,\Pi^{\prime\prime}\right]
+\end{align}
+
+\paragraph*{缩并}
+$A$和$B$是任意的产生算符或湮灭算符，它们的缩并可以表示为
+\begin{equation}
+    \wick{\c A \c B} \equiv AB - \mathcal{N}[AB]
+\end{equation}
+算符的缩并是一个c-number\footnote{称为classical number，Paul Dirac引入的术语，用于表示实数和复数，在量子力学中与算符(一般表示为q-number或quantum numbers)区分开来。}。
+>>>>>>> office-work
+
+%%%%%%%%%%%%%%%%%%%%%
+\section{粒子-空穴表示}
+

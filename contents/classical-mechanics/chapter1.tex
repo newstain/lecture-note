@@ -1,0 +1,351 @@
+\chapter{力学基本原理}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{单粒子力学原理}
+\begin{theorem}[单粒子守恒原理]
+	线动量守恒：若合力$\bm{F} = 0$, 即$\bm{\dot{p}} = 0$，则线动量$\bm{p}$守恒。
+\end{theorem}
+考虑一个单粒子运动，其位置矢量表示为$\bm{r}$，对应的速度为
+\begin{equation}
+  \bm{v} = \frac{d \bm{r}}{d t} \label{eq_single_velocity}
+\end{equation}
+粒子质量为$m$，则其动量定义为：
+\begin{equation}
+  \bm{p} = m \bm{v}   \label{eq_single_momentum}
+\end{equation}
+其方向与速度方向一致。由于粒子可能与外部物体或场发生相互作用，因此粒子会受到外部力的作用，粒子所受到的合力可以写为;
+\begin{equation}
+  \bm{F} = \frac{d \bm{p}}{dt} = \dot{\bm{p}} = \frac{d }{dt}(m\bm{v})  \label{eq_single_tot_force}
+\end{equation}
+在质量守恒的情况下，上式可写为：
+\begin{equation}
+  \bm{F} = m \frac{d\bm{v}}{dt} m \bm{a}
+\end{equation}
+其中$\bm{a}$为粒子的矢量加速度，其定义为
+\begin{equation}
+	\bm{a} = \frac{d^2 \bm{r}}{dt^2}
+\end{equation}
+此运动方程仅为二阶微分方程，假设$\bm{F}$并不依赖于高阶微分项。
+\begin{definition}[惯性系(伽利略系)]
+	在惯性系中，对于不受合外力影响的物体将保持相对静止或匀速直线运动，其时间是均匀流逝的，空间也是均匀且各向同性的。此参考系使方程\eqref{eq_single_tot_force}成立。
+\end{definition}
+
+\vspace{5pt}
+\begin{theorem}[角动量守恒原理]
+	若一物体的总扭矩$\bm{N}=0$，即角动量$\bm{L}$对时间的一次微分项$\dot{\bm{L}} = 0$，则粒子的角动量$\bm{L}$守恒，也就是总角动量$\bm{L}$不随时间变化。
+\end{theorem}
+若粒子绕某一点$O$旋转，其与点$O$的径矢为$\bm{r}$，动量为$\bm{p}$，可定义其角动量为
+\begin{equation}
+	\bm{L} = \bm{r} \times \bm{p}	\label{eq_angular_momentum}
+\end{equation}
+类似公式\eqref{eq_single_tot_force}，定义该粒子关于某一点的\underline{\textit{力矩}}为
+\begin{equation}
+	\bm{N} = \frac{d\bm{L}}{dt} = \frac{d \bm{r}}{dt} \times \bm{p} + \bm{r} \times \frac{d\bm{p}}{dt} = \bm{v} \times (m\bm{v}) + \bm{r} \times \frac{d\bm{p}}{dt} = \bm{r} \times \frac{d(m\bm{v})}{dt} = \bm{r} \times \bm{F}
+\end{equation}
+显然，我们可以得到力矩与角动量之间的关系为：
+\begin{equation}
+	\bm{N} = \frac{d\bm{L}}{dt} = \dot{\bm{L}}
+\end{equation}
+\begin{note}
+	需要注意的是，$\bm{L}$和$\bm{N}$都依赖于点$O$。
+\end{note}
+
+\vspace{5pt}
+\begin{theorem}[能量守恒原理]
+	若作用在一个粒子上的力是保守的，那么这个粒子的总能量(总动能+势能) $T+V$是守恒的。
+\end{theorem}
+考虑一个粒子在外力$\bm{F}$作用下从点$1$到点$2$所做的功。
+\begin{equation}
+	W_{12} = \int_{1}^{2} \bm{F} \cdot d\bm{s}	\label{eq_work_done}
+\end{equation}
+若质量为常量(若无特殊说明，第一部分中质量皆为常数)，则方程\eqref{eq_work_done}可约化为：
+\begin{equation}
+	\int_{1}^{2} \bm{F} \cdot d\bm{s} = m \int \frac{d\bm{v}}{dt}\bm{v} dt = \frac{m}{2} \int \frac{d}{dt}(v^2) dt = \frac{m}{2} \int \frac{d(v^2)}{dt} 
+\end{equation}
+因此，我们有
+\begin{equation}
+	W_{12} = \frac{m}{2}(v_2^2 - v_1^2)
+\end{equation}
+其中，标量$mv^2/2$表示该粒子的动能，并用$T$标记，则上式可改写为
+\begin{equation}
+	W_{12} = T_2 - T_1	\label{eq_tot_different_kinetic}
+\end{equation} 
+上式表示在外力$\bm{F}$的作用下，粒子从位置1到位置2的动能变化。
+\begin{note}
+	\underline{力场保守}，也就是该力场下使粒子从点1沿任意路径运动到点2，其所作功$W_{12}$不变；换种说法，若力场保守，则粒子从起点出发沿任意闭合路径在运动回起点，所作功为0，即满足下式
+	\begin{equation}
+		\oint \bm{f} d\bm{s} = 0	\label{eq_force_circuit_path}
+	\end{equation} 
+	可类比于重力场，我们在不考虑其他外力的作用下，一个物体从地面运动到楼顶在回到地面，重力对它是不做功的。
+\end{note}
+$W_{12}$与路径无关的的充要条件是该粒子受力为某一标量坐标函数的梯度：
+\begin{equation}
+	\bm{F} = - \nabla V(\bm{r})	\label{eq_force_derived_potential}
+\end{equation} 
+其中，$V$就是所谓的势，或者称为势能。若$W_{12}$与路径无关，仅与两个终点有关，那么它对路径的微分应该表现为一个常量，这个常量应该可以由$-V$对路径的微分进行确定，或该常量与路径微分的标积等于$-V$的微分：
+\begin{equation*}
+	\bm{F} \cdot d \bm{s} = -d V  \quad \text{or} \quad F_{s} = \frac{\partial V}{\partial s}
+\end{equation*} 
+上式与方程\eqref{eq_force_derived_potential}是一致的。
+\begin{note}
+	注意到\Cref{eq_force_derived_potential}，方程左边加入任意一个常量其结果不变，因此可以知道，零势能面是可以任意确定的。
+\end{note}
+对于一个守恒的系统，从点1到点2的所作的功可用势能之差表示，如下：
+\begin{equation}
+	W_{12} = V_2 - V_1	\label{eq_work_down_v}
+\end{equation} 
+由式\eqref{eq_tot_different_kinetic}和\eqref{eq_work_down_v}可得如下关系：
+\begin{equation}
+	T_1 + V_1 = T_2 + V_2	\label{eq_energy_conservation}
+\end{equation} 
+上式表示，在一个守恒体系下，系统在某一点出的动能与势能之和等于某一常数。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{约束}
+\paragraph*{广义坐标}
+我们需要先了解一下什么是\underline{自由度}。在笛卡尔坐标系中，描述一个自由粒子的确切位置可用$(x,y,z)$三个坐标来标定，这三个坐标之间无关联关系，我们成这个粒子具有三个自由度；此时，我们再考虑一个具有$N$个自由粒子的系统，此时每个粒子都有一套独立的坐标$(x_1, y_1, z_1), (x_2, y_2, z_2), \cdots (x_n, y_n, z_n)$一共$3N$个独立坐标来标定整个系统的状态，则我们称这个系统具有$3N$个自由度。现在，我们对这个系统施加$k$个完整约束，则对整个系统有$k$个约束方程，对这些方程进行联立则可消掉$k$个自由度，则整个系统只剩下$3N-k$个独立变量，我们将其称为此系统的$3N-k$个自由度，我们用$q_1, q_2, \cdots, q_{3N-k}$来表示，则每个粒子的坐标可以表示为：
+\begin{equation*}
+	\begin{aligned}
+		\bm{r}_1 &= \bm{r}_1(q_1, q_2, \cdots, q_{3N-k})	\\
+					   &\cdots	\\
+		\bm{r}_N &= \bm{r}_N(q_1, q_2, \cdots, q_{3N-k})	\\
+	\end{aligned}
+\end{equation*} 
+上式称为从$\bm{r}_i$到$q_i$的转换方程。
+\begin{note}
+	广义坐标一般与三维笛卡尔坐标是不一样的，他们不一定正交，只是互不相关的一些量而已。	
+\end{note}
+
+\paragraph*{完整约束(holonomic)}
+完整约束具有以下形式
+\begin{equation}
+    f(\bm{q}, t) = 0	\label{eq:constrain_holo}
+\end{equation} 
+例如刚体，刚体系统中每个点之间的距离是固定的，有如下形式：
+\begin{equation*}
+    (\bm{r}_i - \bm{r}_j)^2 - c_{ij}^2 = 0
+\end{equation*} 
+此形式的方程就是具有完整约束的约束方程。对于其他一些约束，形如：
+\begin{equation}
+    f(\bm{q}, \dot{\bm{q}}, t) = 0
+    \label{eq:eq:constrain-holo-disg}
+\end{equation}
+若通过积分将上式化成如式\eqref{eq:constrain_holo}的形式，则称这样的约束为隐藏的完整约束
+(holonomic constraint in disguise)。
+
+\paragraph*{非完整约束(nonholonomic)}
+无法将约束形式写为或者划归成方程\eqref{eq:constrain_holo}的约束称为非完整约束，例如在空心
+球内的气体运动：
+\begin{equation*}
+	\bm{r} - a^2 = 0
+\end{equation*} 
+此外，还可根据约束中是否包含时间来进行划分，约束中显示的包含时间则将此约束类型称为非恒稳约束(rheonomous)，约束中不包含时间则为恒稳约束(scleronomous)。
+
+此外，约束也可能带来一些问题，如下：
+\begin{enumerate}
+	\item 受约束方程的影响，粒子坐标不再独立，而这会使每个粒子的运动方程发生联系；
+	\item 在很多问题的求解中需要知道约束力，而这往往是未知的。
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{作用力与约束力}
+\paragraph*{作用力（Applied force）}
+作用在系统的外部力称为作用力。
+
+\paragraph*{约束（Constraint force）}
+系统内部的力称为约束力。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{虚位移，虚功原理和达朗贝尔原理}
+
+%%%%%%%%%%%
+\paragraph*{虚位移(virtual displacement)}
+虚位移也称无穷小位移(infinitesimal displacement)，表示在某一时刻$t$，物体在约束条件下发生
+的任意无穷小位移。虚位移与实际发生的位移是不一样的，它是物体在受约束情况下可能发生的任何
+一种无穷小位移，但实际并没发生，而实际位移则是物体真实产生的位移，一旦发生便无法改变。举个例子，若一个物体被约束在$xOy$平面上运动，则其虚位移如下：
+\begin{figure}[htbp]
+	\centering
+	\setlength{\abovecaptionskip}{0.2cm}
+	\begin{tikzpicture}[auto]
+		\draw	(0, 0)	circle	[radius=1cm];
+		\filldraw	[gray]	(0, 0)	circle	[radius=0.1cm];
+		\draw	[-Latex]	(0, 0)	-- (0, 1);
+		\draw	[-Latex]	(0, 0)	-- (1, 0);
+		\draw	[-Latex]	(0, 0)	-- (-1, 0);
+		\draw	[-Latex]	(0, 0)	-- (0, -1);
+		\draw	[-Latex]	(0, 0)	-- (0.7071, 0.7071);
+		\draw	[-Latex]	(0, 0)	-- (-0.7071, 0.7071);
+		\draw	[-Latex]	(0, 0)	-- (0.7071, -0.7071);
+		\draw	[-Latex]	(0, 0)	-- (-0.7071, -0.7071);
+	\end{tikzpicture}
+	\caption{虚位移$\delta \bm{r}$的图像，此时约束力垂直平面向里。}
+\end{figure}
+物体能在$xOy$平面内任意移动，但无法沿$z$轴方向移动。
+
+%%%%%%%%%%%
+\paragraph*{虚功原理}
+为推导此原理，我们假设系统处于平衡状态，也就是作用在系统中每一粒子的合力$\bm{F}_i = 0$，
+因此，系统中每一点的虚功(合外力在虚位移上所做的功)为0，即$\bm{F}_i \cdot \delta \bm{r}_i =0$。对系统中所有粒子的虚功取和，我们同样应该由
+\begin{equation}
+	\sum_i \bm{F}_i \cdot \delta \bm{r}_i  = 0 \label{eq_system_virtual_work}
+\end{equation} 
+系统中某一粒子的合力由作用力$\bm{F}^{(a)}_i$和约束力$\bm{f}_i$，对此，式\eqref{eq_system_virtual_work}可化为：
+\begin{equation}
+	\sum_i \bm{F}^{(a)}_i \cdot + \sum_i \bm{f}_i \cdot \delta i = 0
+                                  \label{eq_system_virtual_work_decomposed}
+\end{equation} 
+现在，我们仅考虑净虚功为0的情况，也就是约束力对所有虚位移所作功之和为0的情况：比如一个物
+体被约束在某一平面，那么约束力与该平面垂直，而虚位移只能与该平面相切，此时的虚功便为0。在
+这种情况下，式\eqref{eq_system_virtual_work_decomposed}左边第二项变为0，进一步，我们可以知
+道其作用力在虚位移上所作的功也为0：
+\begin{equation}
+	\sum_i \bm{F}^a_i \cdot \delta \bm{r}_i = 0	\label{eq_virtual_work_principle}
+\end{equation} 
+式\eqref{eq_virtual_work_principle}就是所谓的\underline{\textcolor{red}{虚功原理}}。由于$\bm{r}_i$受约束作用，它们并不独立，因此我们一般有$\bm{F}^{(a)}_i \neq 0$，因此，在具体计算时，我们需要将上述虚位移转化为相互独立的广义坐标$q_i$空间进行计算。
+\begin{note}
+	若一个粒子被约束在某一平面且存在摩擦，由于约束力总与虚位移垂直，某一时刻的物体在虚位移
+    上所作的虚功仍为0；但是，物体在真实位移上所作功(并不特指约束力所作功)不一定为0，因为摩
+    擦力会作功。
+\end{note}
+
+%%%%%%%%%%%
+\paragraph*{达朗贝尔原理(D'Alembert's principle)}
+上述虚功原理只适合用于系统平衡的情况，当系统处于运动中时，需要使用达朗贝尔原理进行计算。
+一般的，\textcolor{red}{ 运动方程 }为：
+\begin{equation*}
+	\bm{F}_i = \dot{\bm{p}}_i
+\end{equation*} 
+可将上式重新写为：
+\begin{equation*}
+	\bm{F}_i - \dot{\bm{p}} = 0
+\end{equation*}
+上式$\bmF_i$表示作用在一个粒子上的合外力，减去$\dot{\bm{p}}$后整个式子变为了0，我们将$-\dot{\bm{p}}$称为“相反的有效力”，它与合外力共同作用使此粒子处于平衡态。将上式代入\Cref{eq_system_virtual_work}，并遍历所有粒子，我们有：
+\begin{equation}
+	\sum_{i}(\bm{F}_i - \dot{\bm{p}}_i) \cdot \delta \bm{r}_i = 0
+\end{equation} 
+同时，我们按式\eqref{eq_virtual_work_principle}将合力分解为作用力和粒子间作用力，得到
+\begin{equation*}
+	\sum_i (\bm{F}^{(a)}_i - \dot{p}_i) \cdot \delta \bm{r}_i + \sum_i \bm{f}_i \cdot \delta \bm{r}_i = 0)
+\end{equation*} 
+同样，我们只在讨论约束力所作虚功为0的情况，则上式最后可以化为：
+\begin{equation}
+	\sum_i (\bm{F}^{(a)}_{i} - \dot{\bm{p}}_i) \cdot \delta \bm{r}_i = 0	\label{eq:dalember_principle}
+\end{equation} 
+称\Cref{eq:dalember_principle}为\underline{达朗贝尔原理(D'Alembert's principle)}。现在，我们知道，当约束力所作虚功为0时，合外力所作功与物体运动加速度产生的所谓“相反有效力”所作功相等，此处，我们可以将上标$^{(a)}$去掉。
+
+%%%%%%%%%%%
+\paragraph*{广义坐标下的达朗贝尔原理}
+为方便求解动力学问题，我们需要将达朗贝尔原理用广义坐标来表示。我们将$\bm{r}_i$转换为广义坐
+标$q_{j}$(假设有$n$个独立坐标)，其变换方程为：
+\begin{equation*}
+	\bm{r}_i = \bm{r}_i(q_1, q_2, \cdots , q_n, t)
+\end{equation*} 
+这样，$\bm{r}_i$对应的速度可以表示为：
+\begin{equation}
+	\bm{v}_i \equiv \frac{d\bm{r}_i}{dt} = \sum_k \frac{\partial \bm{r}_i}{\partial q_k}\dot{q}_k + \frac{\partial \bm{r}_i}{\partial t}
+	\label{eq:velocity-gener-coord}
+\end{equation} 
+类似地，我们可以得到虚位移$\delta\bm{r}_i$的表示：
+\begin{equation}
+	\delta\bm{r}_i = \sum_j \frac{\partial \bm{r}_i}{\partial q_j}\delta q_j
+	\label{eq:virtual-displace-expand}
+\end{equation} 
+\begin{note}
+	虚位移是在某一时刻下物体可能发生的任意无穷小的位移，因此它只是广义坐标的函数，而不包
+    含时间的变化$\delta t$。此外，我们在讨论虚位移时确实也只应该将其当成广义坐标的函数，
+    应该排除其包含时间，因此当约束力随时间变化时，虚位移与约束力应当是相互垂直的。
+\end{note}
+
+%%%%%%%%%%%
+\paragraph*{广义力}
+在广义坐标下，$\bm{F}_i$所作的功表示为
+\begin{equation}
+	\sum_i \bm{F}_i \cdot \delta \bm{r}_i = \sum_{i, j}\bm{F}_i \cdot \frac{\partial \bm{r}_i}{\partial q_j} \delta q_j = \sum_{j} Q_j \delta q_j
+\end{equation} 
+其中，$Q_j$就是所谓的\textcolor{red}{广义力的组分}，其形式为
+\begin{equation}
+	Q_j = \sum_{i} \bm{F}_i \cdot \frac{\partial \bm{r}_i}{\partial q_j}	\label{eq_generalized_force}
+\end{equation} 
+\begin{note}
+	广义坐标$q$单位不一定为长度，同样地，广义力$Q$的单位也一定为力的单位，但必须保证他们
+    的乘积具有功的单位。如$q$表示转动的角度$d\theta$而$Q$表示力矩$N_j$，他们的乘积
+    $N_j d\theta$则具有功的单位。
+\end{note}
+
+%%%%%%%%%%%
+\paragraph*{达朗贝尔原理用广义力和广义动量表示}
+根据\Cref{eq:dalember_principle,eq:virtual-displace-expand}，将其中的有效力$\dot{\bmp}$改写为
+\begin{equation*}
+	\begin{aligned}
+		\sum_{i} \dot{\bmp}\cdot \delta\bmr_i = \sum_{i} m_i \ddot{\bmr}_i \cdot\delta\bmr_i = \sum_{ij} m_i \ddot{\bmr}_i \cdot\frac{\partial \bm{r}_i}{\partial q_j}\delta q_j
+	\end{aligned}
+\end{equation*}
+现在利用关系式
+\begin{equation}
+	\sum_{i} m_i \ddot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}
+	=\sum_{i}\left[\frac{d}{dt}\left(m_i\dot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}\right) - m_i\dot{\bmr}_i\cdot\frac{d}{dt}\left(\frac{\partial\bmr_i}{\partial q_j}\right)\right]
+	\label{eq:math-exp}
+\end{equation}
+上式左端最后一项交换对时间$t$和广义坐标$q_j$的偏分，这样有
+\begin{equation}
+	\begin{aligned}
+	\frac{d}{dt}\left(\frac{\partial\bmr_i}{\partial q_j}\right)
+	=\frac{\partial\dot{\bmr}_i}{\partial q_j}
+	=&\frac{\partial}{\partial q_j} \frac{d\bmr}{dt} \\
+	=&\frac{\partial}{\partial q_j} 
+	      \left[\sum_{k}\left(\frac{\partial\bmr_i}{\partial q_k}\frac{d q_{k}}{dt} + \frac{\partial \bmr_i}{\partial t}\frac{\partial t}{\partial t}\right)\right]
+	=\sum_{k}\frac{\partial^2\bmr_i}{\partial q_j\partial q_k}\dot{q_k} + \frac{\partial^2 \bmr_i}{\partial q_j \partial t}	 \\
+	=&\frac{\partial \bmv_i}{\partial q_j}
+\end{aligned}
+\end{equation}
+最后一个等式用了$\dot{\bmr}_i = \bmv_i$，第三个等式右边的第二项是因为坐标$\bmr$是广义坐标与时间的函数。由\Cref{eq:velocity-gener-coord}得
+\begin{equation}
+	\frac{\partial \bmv_i}{\partial \dot{q}_j} 
+	= \sum_{k}\left(\dot{q}_j\frac{\partial}{\partial q_k}\cancel{\frac{\partial \bmr_i}{\partial \dot{q}_j}} + \frac{\partial \bmr_i}{\partial q_k}\frac{\partial \dot{q}_k}{\partial \dot{q}_j} + \frac{\partial}{\partial t}\cancel{\frac{\partial \bmr_i}{\partial \dot{q}_j}}\right)
+	= \frac{\partial \bmr_i}{\partial q_j}
+\end{equation}
+上式第一个等号左边第一项和最后一项为0是因为坐标$\bmr_i$并非广义速度$\dot{q}_j$的函数，第二项当且仅当$j = k$时有$\partial \dot{q}_k / \partial \dot{q}_j = 1$，否则为0。将上式代入\Cref{eq:math-exp}中，有
+\begin{equation}
+	\begin{aligned}
+	\sum_{i} m_i \ddot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}
+	=& \sum_{i}\left[\frac{d}{dt}\left(m_i\dot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}\right) - m_i\dot{\bmr}_i\cdot\frac{d}{dt}\left(\frac{\partial\bmr_i}{\partial q_j}\right)\right] \\
+	=& \sum_{i}\left[\frac{d}{dt}\left(m_i\bmv_i\cdot\frac{\partial\bmv_i}{\partial \dot{q}_j}\right) - m_i\bmv_i\left(\frac{\partial\bmv_i}{\partial \dot{q}_j}\right)\right] \\
+	=& \sum_{i}\left[\frac{d}{dt}\left(\frac{\partial}{\partial \dot{q}_j} \frac{1}{2}m_i\bmv_i^2\right) -\frac{\partial\bmv_i}{\partial q_j}\frac{1}{2} m_i\bmv_i^2\right]
+	\end{aligned}
+\end{equation}
+进一步，\Cref{eq:dalember_principle}中，作用力用广义力\Cref{eq_generalized_force}表示，则等号左边可以表示为
+\begin{equation*}
+	\sum_{j} \left\{\frac{d}{dt}\left[\frac{\partial}{\partial \dot{q}_j}\left(\sum_{i}\frac{1}{2}m_i v_i^2\right)\right] - \frac{\partial}{\partial q_j}\left(\sum_i \frac{1}{2}m_i v_i^2\right) - Q_j\right\}\delta q_j
+\end{equation*}
+上式中，$\sum_{i} \frac{1}{2}m_i v_i^2$为系统的动能，则达朗贝尔原理最终写为
+\begin{equation}
+	\sum \left\{ \left[\frac{d}{dt}\left(\frac{\partial T}{\partial \dot{q}_j}\right) - \frac{\partial T}{\partial q_j}\right] - Q_j \right\} \delta q_j = 0
+	\label{eq:genera-dalember}
+\end{equation}
+
+\paragraph*{拉格朗日方程}
+注意到\Cref{eq:genera-dalember}中的广义坐标$q_j$可以是任何能完整描述系统的一套坐标，而且它们应该互相独立，这样，\Cref{eq:genera-dalember}中$\delta q_j$前面的系数应等于0才能使等式成立，于是有
+\begin{equation}
+	\frac{d}{dt} \left(\frac{\partial T}{\partial \dot{q}_j}\right) - \frac{\partial T}{\partial q_j} = Q_j
+	\label{eq:genera-kin-force}
+\end{equation}
+如果有$n$个独立坐标，那么就有$n$个这样的方程。此外，标量势能$V$对坐标的偏分为广义力，广义力可进一步用势能来表示
+\begin{equation}
+	Q_j = \sum_{i} \bmF_i \cdot \frac{\partial r_i}{\partial q_j} = \sum_{i} -\nabla_i V \cdot \frac{\partial \bmr_i}{\partial q_j} = - \sum_{i} \frac{V}{\partial \bmr_i} \frac{\partial \bmr_i}{\partial q_j} = - \frac{\partial V}{\partial q_j}
+\end{equation}
+上式第三个等式是由于势能是$\bmr_i$的函数$V = V(\bmr_1, \bmr_2, \cdots, \bmr_n, t)$。
+
+上式代入\Cref{eq:genera-kin-force}，有
+\begin{equation}
+	\frac{d}{dt} \left(\frac{\partial T}{\partial \dot{q}_j}\right) - \frac{\partial (T - V)}{\partial q_j} = 0
+	\label{eq:pre-lagrangian-eq}
+\end{equation}
+当势能不显含时间时，系统守恒，且势能不依赖于广义速度，则定义拉格朗日量$L$为
+\begin{equation}
+	L = T - V
+	\label{eq:lagrangian}
+\end{equation}
+这样，将其代回\Cref{eq:pre-lagrangian-eq}就能获得\CJKunderdot{拉格朗日方程}：
+\begin{equation}
+	\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{q}_j}\right) - \frac{\partial (L)}{\partial q_j} = 0
+\end{equation}

@@ -1,0 +1,28 @@
+\chapter{转动及其他对称性算符}
+
+\section{张量算符及Wigner-Eckart定理}
+
+\subsection{Wigner-Eckart定理}
+$T_{LM}$为$L$阶球张量，考虑这样一个量子态$\ket{\xi j m}$，角动量$j$及其第三分量$m$是好量子数，$\xi$包含了确定系统所需的其他所有量子数。这样，$T_{LM}$对应的矩阵元$\braket{\xi^{\prime} j^{\prime} m^{\prime} | T_{LM} | \xi j m}$可用Wigner-Eckart定理把角动量第三分量提取出来
+\begin{equation}
+    \boxed{
+    \begin{aligned}
+        \braket{\xi^{\prime} j^{\prime} m^{\prime} | T_{LM} | \xi j m}
+        =& \hat{j^{\prime}}^{-1}\braket{jmLM | j^{\prime} m^{\prime}}
+        \left(\xi^{\prime} j^{\prime} \| \bmT_{L} \| \xi j \right) \\
+        =& (-1)^{j^\prime - m^\prime}
+        \begin{pmatrix}
+            j^{\prime} & L & j \\
+            -m^{\prime}& M & m
+        \end{pmatrix}
+        \left(\xi^{\prime} j^{\prime} \| \bmT_{L} \| \xi j \right)      
+    \end{aligned}
+    }
+    \label{eq:wigner-eckart}
+\end{equation}
+此处，$\left(\xi^{\prime} j^{\prime} \| \bmT_{L} \| \xi j \right)$为约化矩阵元，$\braket{\xi^{\prime} j^{\prime} m^{\prime} | T_{LM} | \xi j m}$为矩阵元。
+
+\subsection{约化矩阵元的计算}
+计算\Cref{eq:wigner-eckart}定理中的约化矩阵元，只需取一些特定的值将左边的矩阵元算出，即可求出约化矩阵元。 
+
+
