@@ -16,12 +16,44 @@ $\bmA$是标量势，与原子核流密度相关，表示磁部分的相互作�
 开的多极项中的一个作为媒介来完成。
 
 \subsection{跃迁概率和半衰期}
+\begin{definition}[跃迁概率]
+    从原子核初态$i$通过$\gamma$-衰变跃迁到末态$f$的每单位时间的跃迁概率，记作$T_{fi}$。
+\end{definition}
+\begin{itemize}
+    \item 跃迁概率对应的\CJKunderdot{寿命}为$1/T_{fi}$。
+    \item 对应的\CJKunderdot{半衰期}为
+    \begin{equation}
+        \boxed{
+        t_{1/2} = \frac{\ln{2}}{T_{fi}}\ .
+        }
+    \end{equation}
+\end{itemize}
+
+用指标$\sigma=\,$E or M指代电或磁的场类型，则对应的$\sigma\lambda\mu$跃迁概率计算公式为
+\begin{equation}
+    T_{fi}^{(\sigma\lambda\mu)} = \frac{2}{\epsilon_0\hbar}\frac{\lambda+1}{\lambda\left[(2\lambda+1)!!\right]^2}\left(\frac{E_{\gamma}}{\hbar c}\right)^{2\lambda+1} \left|\Braket{\xi_{f}J_{f}m_{f} | \mathcal{M}_{\sigma\lambda\mu} | \xi_{i} J_{i} m_{i}}\right|^2
+\end{equation}
+其中，$E_{\gamma}$为跃迁能量，$\mathcal{M}_{\sigma\lambda\mu}$为场$\sigma\lambda\mu$多极辐射对应的原子核算符。
+
+\CJKunderdot{约化跃迁概率}(推导详见Ex. \ref{exer-suhonen:ex2-25})为
+\begin{equation}
+    B(\sigma\lambda; \xi_i J_i \rightarrow \xi_f J_f) \equiv \frac{1}{2J_i + 1} \left|\Braket{\xi_f J_f || \mathcal{M}_{\sigma\lambda} || \xi_i J_i}\right|^2
+    \label{eq:reduced-TransProb}
+\end{equation}
 
 
+
+%%%%%%%%%%%%%%%%%%%
 \subsection{选择定则}
+\begin{question}[一个常数无法连接两个不同的原子核态。]
+    将一个常数取代$\mathcal{M}_{\sigma\lambda}$放进约化跃迁概率\Cref{eq:reduced-TransProb}中，由于常数可以提出去，最后只剩下$\Braket{\xi_f J_f |\xi_i J_i} = 0$(不同态的正交性)，因此一个常数无法给出两个态之间的关系。
+\end{question}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{One-Particle和One-Hole原子核的电磁跃迁}
+
+%%%%%%%%%%%%%%%%%%%%%%
 \subsection{约化跃迁概率}
 \paragraph*{One-Particle单体跃迁概率}
 One-Particle的初态和末态表示为

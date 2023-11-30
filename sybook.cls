@@ -12,6 +12,7 @@
 \RequirePackage[numbers,square,sort&compress,sectionbib]{natbib}
 % \setcitestyle{numbers,square}
 \RequirePackage{chapterbib}
+\setlength{\bibsep}{0.1ex}
 % \RequirePackage[backend=biber,url=false,doi=false]{biblatex}
 
 \RequirePackage{xcolor}
@@ -25,7 +26,7 @@
 \RequirePackage{geometry}   % 设置页面
 \geometry{
     a4paper,
-    top=18mm, bottom=18mm,
+    top=14mm, bottom=14mm,
     left=16mm,  right=16mm,
     headheight=12.7pt,
     headsep=4mm,
@@ -76,6 +77,11 @@
 \RequirePackage{simpler-wick}
 \AddEnumerateCounter{\chinese}{\chinese}{}
 
+%%%%%%%%%%%  列表环境   %%%%%%%%%%%
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
 % Dirac symbols
 \RequirePackage{braket}
 
@@ -115,6 +121,8 @@
 %                     {\color{black}\thmname{#1}~\thmnumber{#2}}
 %                 }%
 
+
+%%%%%%%%%%%%% 定义环境 %%%%%%%%%%%%%
 \theoremstyle{defstyle} \newmdtheoremenv[
                                             backgroundcolor=gray,
                                             linecolor=black,
@@ -125,7 +133,7 @@
                                         {definition}
                                         {\noindent\bf 定义}
                                         [chapter]
-
+%%%%%%%%%%%% 定理环境 %%%%%%%%%%%%%%
 \theoremstyle{defstyle} \newmdtheoremenv[
                                             backgroundcolor=gray,
                                             linecolor=black,
@@ -137,6 +145,30 @@
                                         {\noindent\bf 定理}
                                         [chapter]
 
+%%%%%%%%%%%% begin 问题环境 %%%%%%%%%%%%%%
+\newtheoremstyle{questionstyle}                      % 名字
+                {3pt}{3pt}                      % 距文字的上、下垂直距离
+                {\normalfont}                   % 主体字体
+                {0pt}                           % 定理头 缩进量
+                {\sffamily\bfseries}            % 定理头字体
+                {}                              % 定理头后标点符号
+                {0mm}                           % 定理头后的空间
+                {                               % 定理头规范，可以为空，表示normal
+                    {\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\fs\ -\ #3\newline\indent}
+                }%
+
+\theoremstyle{questionstyle} \newmdtheoremenv[
+                                            backgroundcolor=white,
+                                            linecolor=teal,
+                                            leftmargin=0pt,
+                                            innerleftmargin=1pt,
+                                            innerrightmargin=1pt,
+                                        ]
+                                        {question}
+                                        {\noindent\bf \color{blue} QUESTION}
+                                        [chapter]
+%%%%%%%%%%%% end 问题环境 %%%%%%%%%%%%%%
+
 \theoremstyle{definition} \newtheorem{example}
                                     {\noindent\bf 例}
                                     [chapter]
@@ -147,7 +179,7 @@
 \newenvironment*{note}
                 {%开始部分定义
                     \par\noindent
-                    \color{blue}{\S Note:}
+                    \color{blue}{\bf{\S Note:}}
                 }
                 {\par}%结束部分定义
 
