@@ -219,7 +219,7 @@ $W_{12}$与路径无关的的充要条件是该粒子受力为某一标量坐标
 \begin{equation*}
 	\bm{F}_i - \dot{\bm{p}} = 0
 \end{equation*}
-上式$\bmF_i$表示作用在一个粒子上的合外力，减去$\dot{\bm{p}}$后整个式子变为了0，我们将$-\dot{\bm{p}}$称为“相反的有效力”，它与合外力共同作用使此粒子处于平衡态。将上式代入\Cref{eq_system_virtual_work}，并遍历所有粒子，我们有：
+上式$\bm{F}_i$表示作用在一个粒子上的合外力，减去$\dot{\bm{p}}$后整个式子变为了0，我们将$-\dot{\bm{p}}$称为“相反的有效力”，它与合外力共同作用使此粒子处于平衡态。将上式代入\Cref{eq_system_virtual_work}，并遍历所有粒子，我们有：
 \begin{equation}
 	\sum_{i}(\bm{F}_i - \dot{\bm{p}}_i) \cdot \delta \bm{r}_i = 0
 \end{equation} 
@@ -274,43 +274,43 @@ $W_{12}$与路径无关的的充要条件是该粒子受力为某一标量坐标
 
 %%%%%%%%%%%
 \paragraph*{达朗贝尔原理用广义力和广义动量表示}
-根据\Cref{eq:dalember_principle,eq:virtual-displace-expand}，将其中的有效力$\dot{\bmp}$改写为
+根据\Cref{eq:dalember_principle,eq:virtual-displace-expand}，将其中的有效力$\dot{\bm{p}}$改写为
 \begin{equation*}
 	\begin{aligned}
-		\sum_{i} \dot{\bmp}\cdot \delta\bmr_i = \sum_{i} m_i \ddot{\bmr}_i \cdot\delta\bmr_i = \sum_{ij} m_i \ddot{\bmr}_i \cdot\frac{\partial \bm{r}_i}{\partial q_j}\delta q_j
+		\sum_{i} \dot{\bm{p}}\cdot \delta\bm{r}_i = \sum_{i} m_i \ddot{\bm{r}}_i \cdot\delta\bm{r}_i = \sum_{ij} m_i \ddot{\bm{r}}_i \cdot\frac{\partial \bm{r}_i}{\partial q_j}\delta q_j
 	\end{aligned}
 \end{equation*}
 现在利用关系式
 \begin{equation}
-	\sum_{i} m_i \ddot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}
-	=\sum_{i}\left[\frac{d}{dt}\left(m_i\dot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}\right) - m_i\dot{\bmr}_i\cdot\frac{d}{dt}\left(\frac{\partial\bmr_i}{\partial q_j}\right)\right]
+	\sum_{i} m_i \ddot{\bm{r}}_i\cdot\frac{\partial\bm{r}_i}{\partial q_j}
+	=\sum_{i}\left[\frac{d}{dt}\left(m_i\dot{\bm{r}}_i\cdot\frac{\partial\bm{r}_i}{\partial q_j}\right) - m_i\dot{\bm{r}}_i\cdot\frac{d}{dt}\left(\frac{\partial\bm{r}_i}{\partial q_j}\right)\right]
 	\label{eq:math-exp}
 \end{equation}
 上式左端最后一项交换对时间$t$和广义坐标$q_j$的偏分，这样有
 \begin{equation}
 	\begin{aligned}
-	\frac{d}{dt}\left(\frac{\partial\bmr_i}{\partial q_j}\right)
-	=\frac{\partial\dot{\bmr}_i}{\partial q_j}
-	=&\frac{\partial}{\partial q_j} \frac{d\bmr}{dt} \\
+	\frac{d}{dt}\left(\frac{\partial\bm{r}_i}{\partial q_j}\right)
+	=\frac{\partial\dot{\bm{r}}_i}{\partial q_j}
+	=&\frac{\partial}{\partial q_j} \frac{d\bm{r}}{dt} \\
 	=&\frac{\partial}{\partial q_j} 
-	      \left[\sum_{k}\left(\frac{\partial\bmr_i}{\partial q_k}\frac{d q_{k}}{dt} + \frac{\partial \bmr_i}{\partial t}\frac{\partial t}{\partial t}\right)\right]
-	=\sum_{k}\frac{\partial^2\bmr_i}{\partial q_j\partial q_k}\dot{q_k} + \frac{\partial^2 \bmr_i}{\partial q_j \partial t}	 \\
-	=&\frac{\partial \bmv_i}{\partial q_j}
+	      \left[\sum_{k}\left(\frac{\partial\bm{r}_i}{\partial q_k}\frac{d q_{k}}{dt} + \frac{\partial \bm{r}_i}{\partial t}\frac{\partial t}{\partial t}\right)\right]
+	=\sum_{k}\frac{\partial^2\bm{r}_i}{\partial q_j\partial q_k}\dot{q_k} + \frac{\partial^2 \bm{r}_i}{\partial q_j \partial t}	 \\
+	=&\frac{\partial \bm{v}_i}{\partial q_j}
 \end{aligned}
 \end{equation}
-最后一个等式用了$\dot{\bmr}_i = \bmv_i$，第三个等式右边的第二项是因为坐标$\bmr$是广义坐标与时间的函数。由\Cref{eq:velocity-gener-coord}得
+最后一个等式用了$\dot{\bm{r}}_i = \bm{v}_i$，第三个等式右边的第二项是因为坐标$\bm{r}$是广义坐标与时间的函数。由\Cref{eq:velocity-gener-coord}得
 \begin{equation}
-	\frac{\partial \bmv_i}{\partial \dot{q}_j} 
-	= \sum_{k}\left(\dot{q}_j\frac{\partial}{\partial q_k}\cancel{\frac{\partial \bmr_i}{\partial \dot{q}_j}} + \frac{\partial \bmr_i}{\partial q_k}\frac{\partial \dot{q}_k}{\partial \dot{q}_j} + \frac{\partial}{\partial t}\cancel{\frac{\partial \bmr_i}{\partial \dot{q}_j}}\right)
-	= \frac{\partial \bmr_i}{\partial q_j}
+	\frac{\partial \bm{v}_i}{\partial \dot{q}_j} 
+	= \sum_{k}\left(\dot{q}_j\frac{\partial}{\partial q_k}\cancel{\frac{\partial \bm{r}_i}{\partial \dot{q}_j}} + \frac{\partial \bm{r}_i}{\partial q_k}\frac{\partial \dot{q}_k}{\partial \dot{q}_j} + \frac{\partial}{\partial t}\cancel{\frac{\partial \bm{r}_i}{\partial \dot{q}_j}}\right)
+	= \frac{\partial \bm{r}_i}{\partial q_j}
 \end{equation}
-上式第一个等号左边第一项和最后一项为0是因为坐标$\bmr_i$并非广义速度$\dot{q}_j$的函数，第二项当且仅当$j = k$时有$\partial \dot{q}_k / \partial \dot{q}_j = 1$，否则为0。将上式代入\Cref{eq:math-exp}中，有
+上式第一个等号左边第一项和最后一项为0是因为坐标$\bm{r}_i$并非广义速度$\dot{q}_j$的函数，第二项当且仅当$j = k$时有$\partial \dot{q}_k / \partial \dot{q}_j = 1$，否则为0。将上式代入\Cref{eq:math-exp}中，有
 \begin{equation}
 	\begin{aligned}
-	\sum_{i} m_i \ddot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}
-	=& \sum_{i}\left[\frac{d}{dt}\left(m_i\dot{\bmr}_i\cdot\frac{\partial\bmr_i}{\partial q_j}\right) - m_i\dot{\bmr}_i\cdot\frac{d}{dt}\left(\frac{\partial\bmr_i}{\partial q_j}\right)\right] \\
-	=& \sum_{i}\left[\frac{d}{dt}\left(m_i\bmv_i\cdot\frac{\partial\bmv_i}{\partial \dot{q}_j}\right) - m_i\bmv_i\left(\frac{\partial\bmv_i}{\partial \dot{q}_j}\right)\right] \\
-	=& \sum_{i}\left[\frac{d}{dt}\left(\frac{\partial}{\partial \dot{q}_j} \frac{1}{2}m_i\bmv_i^2\right) -\frac{\partial\bmv_i}{\partial q_j}\frac{1}{2} m_i\bmv_i^2\right]
+	\sum_{i} m_i \ddot{\bm{r}}_i\cdot\frac{\partial\bm{r}_i}{\partial q_j}
+	=& \sum_{i}\left[\frac{d}{dt}\left(m_i\dot{\bm{r}}_i\cdot\frac{\partial\bm{r}_i}{\partial q_j}\right) - m_i\dot{\bm{r}}_i\cdot\frac{d}{dt}\left(\frac{\partial\bm{r}_i}{\partial q_j}\right)\right] \\
+	=& \sum_{i}\left[\frac{d}{dt}\left(m_i\bm{v}_i\cdot\frac{\partial\bm{v}_i}{\partial \dot{q}_j}\right) - m_i\bm{v}_i\left(\frac{\partial\bm{v}_i}{\partial \dot{q}_j}\right)\right] \\
+	=& \sum_{i}\left[\frac{d}{dt}\left(\frac{\partial}{\partial \dot{q}_j} \frac{1}{2}m_i\bm{v}_i^2\right) -\frac{\partial\bm{v}_i}{\partial q_j}\frac{1}{2} m_i\bm{v}_i^2\right]
 	\end{aligned}
 \end{equation}
 进一步，\Cref{eq:dalember_principle}中，作用力用广义力\Cref{eq_generalized_force}表示，则等号左边可以表示为
@@ -331,9 +331,9 @@ $W_{12}$与路径无关的的充要条件是该粒子受力为某一标量坐标
 \end{equation}
 如果有$n$个独立坐标，那么就有$n$个这样的方程。此外，标量势能$V$对坐标的偏分为广义力，广义力可进一步用势能来表示
 \begin{equation}
-	Q_j = \sum_{i} \bmF_i \cdot \frac{\partial r_i}{\partial q_j} = \sum_{i} -\nabla_i V \cdot \frac{\partial \bmr_i}{\partial q_j} = - \sum_{i} \frac{V}{\partial \bmr_i} \frac{\partial \bmr_i}{\partial q_j} = - \frac{\partial V}{\partial q_j}
+	Q_j = \sum_{i} \bm{F}_i \cdot \frac{\partial r_i}{\partial q_j} = \sum_{i} -\nabla_i V \cdot \frac{\partial \bm{r}_i}{\partial q_j} = - \sum_{i} \frac{V}{\partial \bm{r}_i} \frac{\partial \bm{r}_i}{\partial q_j} = - \frac{\partial V}{\partial q_j}
 \end{equation}
-上式第三个等式是由于势能是$\bmr_i$的函数$V = V(\bmr_1, \bmr_2, \cdots, \bmr_n, t)$。
+上式第三个等式是由于势能是$\bm{r}_i$的函数$V = V(\bm{r}_1, \bm{r}_2, \cdots, \bm{r}_n, t)$。
 
 上式代入\Cref{eq:genera-kin-force}，有
 \begin{equation}

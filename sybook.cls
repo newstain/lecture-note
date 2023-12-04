@@ -46,7 +46,12 @@
 % %%%%%%%%%% 超链接 %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{url,hyperref}
-\hypersetup{colorlinks=true, linkcolor=black,citecolor=black} % 去掉目录红框
+\hypersetup{
+    colorlinks=true,    % 开启后 方框引用变成颜色的引用及链接
+    linkcolor=blue,    % 
+    citecolor=blue,     % 文献引用\cite变成蓝色 
+    urlcolor=blue
+    } % 去掉目录红框
 
 % 设置页眉
 \fancyhead[RO]{\leftmark}                   % R：页面右边；O：奇数页；\leftmark：表示“一级标题”
@@ -89,8 +94,11 @@
 % %%%%%%%%%%% 引用 %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{cleveref}
-\crefname{equation}{Eq.}{Eq.}
-\crefname{figure}{Fig.}{Fig.}
+%%%        名称       单   复
+\crefname{equation}{Eq.}{Eqs.}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{figure}{Figure}{Figures}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%% 定义、定理、例子的设置 %%%%%%%%
@@ -443,57 +451,3 @@
 \newcommand{\vbx}{\vec{\bm{x}}}
 \newcommand{\vby}{\vec{\bm{y}}}
 \newcommand{\vbz}{\vec{\bm{z}}}
-
-\newcommand{\bmA}{\bm{A}}
-\newcommand{\bmB}{\bm{B}}
-\newcommand{\bmC}{\bm{C}}
-\newcommand{\bmD}{\bm{D}}
-\newcommand{\bmE}{\bm{E}}
-\newcommand{\bmF}{\bm{F}}
-\newcommand{\bmG}{\bm{G}}
-\newcommand{\bmH}{\bm{H}}
-\newcommand{\bmI}{\bm{I}}
-\newcommand{\bmJ}{\bm{J}}
-\newcommand{\bmK}{\bm{K}}
-\newcommand{\bmL}{\bm{L}}
-\newcommand{\bmM}{\bm{M}}
-\newcommand{\bmN}{\bm{N}}
-\newcommand{\bmO}{\bm{O}}
-\newcommand{\bmP}{\bm{P}}
-\newcommand{\bmQ}{\bm{Q}}
-\newcommand{\bmR}{\bm{R}}
-\newcommand{\bmS}{\bm{S}}
-\newcommand{\bmT}{\bm{T}}
-\newcommand{\bmU}{\bm{U}}
-\newcommand{\bmV}{\bm{V}}
-\newcommand{\bmW}{\bm{W}}
-\newcommand{\bmX}{\bm{X}}
-\newcommand{\bmY}{\bm{Y}}
-\newcommand{\bmZ}{\bm{Z}}
-
-\newcommand{\bma}{\bm{a}}
-\newcommand{\bmb}{\bm{b}}
-\newcommand{\bmc}{\bm{c}}
-\newcommand{\bmd}{\bm{d}}
-\newcommand{\bme}{\bm{e}}
-\newcommand{\bmf}{\bm{f}}
-\newcommand{\bmg}{\bm{g}}
-\newcommand{\bmh}{\bm{h}}
-\newcommand{\bmi}{\bm{i}}
-\newcommand{\bmj}{\bm{j}}
-\newcommand{\bmk}{\bm{k}}
-\newcommand{\bml}{\bm{l}}
-\newcommand{\bmm}{\bm{m}}
-\newcommand{\bmn}{\bm{n}}
-\newcommand{\bmo}{\bm{o}}
-\newcommand{\bmp}{\bm{p}}
-\newcommand{\bmq}{\bm{q}}
-\newcommand{\bmr}{\bm{r}}
-\newcommand{\bms}{\bm{s}}
-\newcommand{\bmt}{\bm{t}}
-\newcommand{\bmu}{\bm{u}}
-\newcommand{\bmv}{\bm{v}}
-\newcommand{\bmw}{\bm{w}}
-\newcommand{\bmx}{\bm{x}}
-\newcommand{\bmy}{\bm{y}}
-\newcommand{\bmz}{\bm{z}}

@@ -17,32 +17,32 @@
 
 平均场近似下，复杂的多体相互作用将被忽略。一般认为一个核子与其它$A-1$个核子间发生两体相互作用，类似瞬时力的概念，核子间的相互作用势场可理解为无穷小时间间隔内的核子-核子相互作用的平均
 \begin{equation}
-	v(\bmr_i) = \frac{1}{\Delta T} \int_{T}^{T + \Delta T} dt\, \sum_{j = 1; j \neq i}^{A} v(\bmr_i(t), \bmr_j(t))
+	v(\bm{r}_i) = \frac{1}{\Delta T} \int_{T}^{T + \Delta T} dt\, \sum_{j = 1; j \neq i}^{A} v(\bm{r}_i(t), \bm{r}_j(t))
 \end{equation}
 这样，原子核的平均场被认为由这$A$个粒子所受的势场所组成
 \begin{equation}
-	V_{mf} = \sum_{i}^{A} v(\bmr_i)
+	V_{mf} = \sum_{i}^{A} v(\bm{r}_i)
 \end{equation}
 核子将在上式所示的势场中运动。
 
 以下将讨论所谓的平均场（或Hartree-Fock）准粒子。在像原子核这样的多体系统中，核子-核子相互作用可忽略掉三体及以上的多体相互作用，最高写成两体相互作用的形式，其哈密顿量由动能项和势能项组成：
 \begin{equation}
-	H = T + V = \sum_{i = 1}^{A} t(\bmr_i) + \sum_{i, j = 1; i < j}^{A} v(\bmr_i, \bm{r}_j) =  \sum_{i = 1}^{A} \frac{-\hbar^2}{2m_N}\nabla_i^2 + \sum_{i, j = 1; i < j}^{A} v(\bmr_i, \bmr_j) 
+	H = T + V = \sum_{i = 1}^{A} t(\bm{r}_i) + \sum_{i, j = 1; i < j}^{A} v(\bm{r}_i, \bm{r}_j) =  \sum_{i = 1}^{A} \frac{-\hbar^2}{2m_N}\nabla_i^2 + \sum_{i, j = 1; i < j}^{A} v(\bm{r}_i, \bm{r}_j) 
 \end{equation}
-$m_N$表示核子质量(这里假设中子和质子具有相同的核子质量$m_N c^2 \approx 940\, \rm{MeV}$)，$\bmr_i$表示第$i$个核子的坐标。
+$m_N$表示核子质量(这里假设中子和质子具有相同的核子质量$m_N c^2 \approx 940\, \rm{MeV}$)，$\bm{r}_i$表示第$i$个核子的坐标。
 可以加上减去这个单粒子势能，有
 \begin{equation}
-	H = \left[T + \sum_{i}^{A}v(\bmr_i) \right] + \left[V - \sum_{i}^{A} v(\bmr_i)\right]
+	H = \left[T + \sum_{i}^{A}v(\bm{r}_i) \right] + \left[V - \sum_{i}^{A} v(\bm{r}_i)\right]
 	= H_{mf} + H_{res}
 \end{equation}
 其中，定义\CJKunderline{原子核平均场哈密顿量}为
 \begin{equation}
-	H_{mf} = T + \sum_{i}^{A} v(\bmr_i) = \sum_{i}^{A}\left[t(\bmr_i) + v(\bmr_i)\right] \equiv \sum_{i}^{A} h(\bmr_i)
+	H_{mf} = T + \sum_{i}^{A} v(\bm{r}_i) = \sum_{i}^{A}\left[t(\bm{r}_i) + v(\bm{r}_i)\right] \equiv \sum_{i}^{A} h(\bm{r}_i)
 	\label{eq:mf-hamil}
 \end{equation}
 \CJKunderline{原子核剩余相互作用比初始势能$V$小得多，}定义为
 \begin{equation}
-	V_{res} = V - \sum_{i}^{A} v(\bmr_i) \equiv \sum_{i, j = 1; i < j}^{A} v(\bmr_i, \bmr_j) - \sum_{i}^{A}v(\bmr_i)
+	V_{res} = V - \sum_{i}^{A} v(\bm{r}_i) \equiv \sum_{i, j = 1; i < j}^{A} v(\bm{r}_i, \bm{r}_j) - \sum_{i}^{A}v(\bm{r}_i)
 \end{equation}
 
 %%%%%%%%%%%%
@@ -96,14 +96,14 @@ $m_N$表示核子质量(这里假设中子和质子具有相同的核子质量$m
 
 %%%%%%%%%%%%
 \paragraph*{平均场的迭代求解}
-平均场哈密顿量$H_{mf}$作用到$A$核子的集体波函数$\Psi_0(\bmr_1, \bmr_2, \cdots, \bmr_A)$上可得到原子核的总能量，得到相应的Sch{\"o}dinger方程
+平均场哈密顿量$H_{mf}$作用到$A$核子的集体波函数$\Psi_0(\bm{r}_1, \bm{r}_2, \cdots, \bm{r}_A)$上可得到原子核的总能量，得到相应的Sch{\"o}dinger方程
 \begin{equation}
 	H_{mf} \Psi_0 = E \Psi_0
 	\label{eq:mf-scho-eq}
 \end{equation}
 由\Cref{eq:mf-hamil}，原子核集体波函数分写成单粒子波函数的直乘形式
 \begin{equation}
-	\Psi_0(\bmr_1, \bmr_2, \cdots, \bmr_A) = \phi_{\alpha_1}(\bmr_1) \phi_{\alpha_2}(\bmr_2) \cdots \phi_{\alpha_A}(\bmr_A)
+	\Psi_0(\bm{r}_1, \bm{r}_2, \cdots, \bm{r}_A) = \phi_{\alpha_1}(\bm{r}_1) \phi_{\alpha_2}(\bm{r}_2) \cdots \phi_{\alpha_A}(\bm{r}_A)
 	\label{def:collect-wv}
 \end{equation}
 $\phi_{\alpha_{i}}$表示不同能级上的单粒子波函数。
@@ -215,8 +215,8 @@ Skyrme力有6个可调参数$t_0$、$t_1$、$t_2$、$t_3$、$x_0$和$W_0$。
 单核子薛定谔方程中的哈密顿量为：
 \begin{equation}
 	\begin{aligned}
-		h =&\, \frac{-\hbar^2}{2 m_{N}} \nabla^2 + v(r) + v_{LS}(r) \bmL\cdot \bmS	\\
-		=&\, \frac{-\hbar^2}{2 m_{N}}\left(\nabla^2_{r} - \frac{\bmL^2/\hbar^2}{r^2}\right) + v_{WS}(r) + v_{C}(r) + v_{LS}(r)\boldsymbol{L\cdot S}
+		h =&\, \frac{-\hbar^2}{2 m_{N}} \nabla^2 + v(r) + v_{LS}(r) \bm{L}\cdot \bm{S}	\\
+		=&\, \frac{-\hbar^2}{2 m_{N}}\left(\nabla^2_{r} - \frac{\bm{L}^2/\hbar^2}{r^2}\right) + v_{WS}(r) + v_{C}(r) + v_{LS}(r)\boldsymbol{L\cdot S}
 	\end{aligned}
 \end{equation} 
 其中，径向偏分取一般形式
@@ -301,7 +301,7 @@ Skyrme力有6个可调参数$t_0$、$t_1$、$t_2$、$t_3$、$x_0$和$W_0$。
 \section{多核子组态}
 单粒子态和单粒子能量是原子核壳模型的基础。对单粒子态做如下约定：
 \begin{equation}
-	\ket{\phi_{\alpha}} \equiv \ket{\alpha} \equiv \ket{am_{\alpha}}, \quad a \equiv n_{a} l_{a} j_{a}
+	\ket{\phi_{\alpha}} \equiv \ket{\alpha} \equiv \ket{am_{\alpha}}, \quad a \equiv n_{a} l_{a} j_{a} \label{eq:sgl-part-stat}
 \end{equation}
 其中，$l_a$和$n_a$是$a$轨道的轨道量子数和总角动量量子数，$n_a$为主量子数，$m_{\alpha}$则是$j_a$在$z$轴的第三分量量子数。
 

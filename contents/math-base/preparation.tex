@@ -394,7 +394,7 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 三维Cartesian坐标系中，定义宇称变换矩阵
 \begin{equation}
-    \bmP = \begin{pmatrix}
+    \bm{P} = \begin{pmatrix}
         -1  &   0   &   0   \\
          0  &  -1   &   0   \\
          0  &   0   &  -1 
@@ -406,9 +406,9 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 量(axial vectors)}；标量分为\textbf{标量(scalar)}、\textbf{赝标量(pseudoscalar)}。
 
 \paragraph*{极矢量}
-对任意矢量$\vbV$，若宇称变换矩阵$\bmP$作用后使其符号发生改变，将其定义为极矢量，如下：
+对任意矢量$\vbV$，若宇称变换矩阵$\bm{P}$作用后使其符号发生改变，将其定义为极矢量，如下：
 \begin{equation}
-    \bmP \vbV = -\vbV
+    \bm{P} \vbV = -\vbV
     \label{eq:polar-vector}
 \end{equation}
 如位置矢量$\vbr$和速度矢量$\vbv$。
@@ -419,10 +419,10 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
     \vbV^{\ast} = \vbV_1 \times \vbV_2
     \label{eq:pesudovectors-def}
 \end{equation}
-如角动量$\vbl = \vbr \times \vbp$就是赝矢量，其特征就是当宇称矩阵$\bmP$作用其上不改变它的
+如角动量$\vbl = \vbr \times \vbp$就是赝矢量，其特征就是当宇称矩阵$\bm{P}$作用其上不改变它的
 符号：
 \begin{equation}
-    \bmP \vbV^{\ast} = (\bmP \vbV_1) \times (\bmP \vbV_1) = \vbV^{\ast}
+    \bm{P} \vbV^{\ast} = (\bm{P} \vbV_1) \times (\bm{P} \vbV_1) = \vbV^{\ast}
     \label{eq:pesudovec-parity}
 \end{equation}
 例如，角动量$\vbl = \vbr \times \vbp$是一个赝矢量，它由位置矢量$\vbr$和动量矢量$\vbp$这两
@@ -436,7 +436,7 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \paragraph*{标量}
 标量$S$定义为
 \begin{equation}
-    \bmP S = S
+    \bm{P} S = S
     \label{eq:scalar-def}
 \end{equation}
 也就是说标量仅有大小而没有方向。
@@ -447,9 +447,9 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
     S^{\ast} = \vbV \cdot \vbV^{\ast}
     \label{eq:pseudoscalar-def}
 \end{equation}
-如此，宇称变换算符$\bmP$作用后，赝标量符号改变
+如此，宇称变换算符$\bm{P}$作用后，赝标量符号改变
 \begin{equation}
-    \bmP S^{\ast} = \bmP (\vbV \cdot \vbV^{\ast}) = (\bmP \vbV) \cdot (\bmP\vbV^{\ast})
+    \bm{P} S^{\ast} = \bm{P} (\vbV \cdot \vbV^{\ast}) = (\bm{P} \vbV) \cdot (\bm{P}\vbV^{\ast})
                   = -\vbV \cdot \vbV^{\ast} = -S^{\ast}
     \label{eq:pseudoscalar-prop1}
 \end{equation}

@@ -1,10 +1,10 @@
 \chapter{电磁多极矩和跃迁}
 
 \section{电磁可观测量的一般性质}
-原子核电磁场衰变是原子核和外部电磁场相互作用的结果。外部电磁场由电场$\bmE$和磁场
-$\bmB$组成，电磁场能量正比于$\bmE^2 + c^2 \bmB^2$。用势$(\phi, \bmA)$作为原子核
+原子核电磁场衰变是原子核和外部电磁场相互作用的结果。外部电磁场由电场$\bm{E}$和磁场
+$\bm{B}$组成，电磁场能量正比于$\bm{E}^2 + c^2 \bm{B}^2$。用势$(\phi, \bm{A})$作为原子核
 和场相互作用的媒介。其中$\phi$是标量势，与原子核密度相关，表示电部分的相互作用；
-$\bmA$是标量势，与原子核流密度相关，表示磁部分的相互作用。
+$\bm{A}$是标量势，与原子核流密度相关，表示磁部分的相互作用。
 
 \CJKunderline{原子核流密度(current density)组成：运动的质子构成轨道部分，质子和
 中子的自旋构成自旋部分}。
@@ -13,7 +13,7 @@ $\bmA$是标量势，与原子核流密度相关，表示磁部分的相互作�
 完整的系统，这两部分的相互作用很弱，一般用微扰理论进行处理。考虑一个处于激发态
 的原子核通过电磁衰减至基态，那么无微扰的系统初态是激发的原子核态加上处于基态的
 电磁场；系统末态是原子核基态加上电磁场的1-声子态。从初态到末态的跃迁由辐射场展
-开的多极项中的一个作为媒介来完成。
+开的多极项中的一个作为媒介来完成。 
 
 \subsection{跃迁概率和半衰期}
 \begin{definition}[跃迁概率]
@@ -40,13 +40,18 @@ $\bmA$是标量势，与原子核流密度相关，表示磁部分的相互作�
     B(\sigma\lambda; \xi_i J_i \rightarrow \xi_f J_f) \equiv \frac{1}{2J_i + 1} \left|\Braket{\xi_f J_f || \mathcal{M}_{\sigma\lambda} || \xi_i J_i}\right|^2
     \label{eq:reduced-TransProb}
 \end{equation}
-
-
+电和磁张量算符的分量为
+\begin{align}
+    Q_{\lambda\mu} &= \zeta^{(E\lambda)} \sum_{j = 1}^{A} e(j) r_j^{\lambda} Y_{\lambda\mu}(\Omega_{j}) \label{eq:mul-elec} \\
+    M_{\lambda\mu} &= \frac{\mu_{N}}{\hbar c} \zeta^{(M\lambda)} \sum_{j = 1}^{A} \left[\frac{2}{\lambda+1}g_{l}^{(j)} \bm{l}(j) + g_{s}^{(j)}\bm{s}(j)\right] \cdot \nabla_j [r_j^\lambda Y_{\lambda\mu}(\Omega_j)]
+\end{align}
+其中，$j$表示第$j$个核子，$e(j)$表示第$j$个核子的电荷，$\bm{l}(j)$和$\bm{s}(j)$分别该核子的轨道和自旋角动量。以下，$e$表示质子的单位电荷，中子电荷为0。
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{选择定则}
+选择定则包含\CJKunderdot{宇称选择定则}和\CJKunderdot{角动量守恒定则}。
 \begin{question}[一个常数无法连接两个不同的原子核态。]
-    将一个常数取代$\mathcal{M}_{\sigma\lambda}$放进约化跃迁概率\Cref{eq:reduced-TransProb}中，由于常数可以提出去，最后只剩下$\Braket{\xi_f J_f |\xi_i J_i} = 0$(不同态的正交性)，因此一个常数无法给出两个态之间的关系。
+    将一个常数取代$\mathcal{M}_{\sigma\lambda}$放进约化跃迁概率\cref{eq:reduced-TransProb}中，由于常数可以提出去，最后只剩下$\Braket{\xi_f J_f |\xi_i J_i} = 0$(不同态的正交性)，因此一个常数无法给出两个态之间的关系。
 \end{question}
 
 

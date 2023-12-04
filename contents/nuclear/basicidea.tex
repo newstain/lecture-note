@@ -2,10 +2,10 @@
 
 \section{原子核形状}
 \paragraph*{核密度分布与核半径}
-原子核作为一个多体量子体系，可以用多体波函数$\Psi(\bmr)$来描述其基本性质。
+原子核作为一个多体量子体系，可以用多体波函数$\Psi(\bm{r})$来描述其基本性质。
 原子核密度分布即多体波函数的平方
 \begin{equation}
-    \rho(\bmr) = | \Psi(\bmr) |^2   \label{eq:nucl.radius}
+    \rho(\bm{r}) = | \Psi(\bm{r}) |^2   \label{eq:nucl.radius}
 \end{equation}
 
 \section{剩余相互作用}
@@ -36,11 +36,11 @@
 由于$j$是单粒子自旋-轨道耦合的总角动量，因此总为半整数，故其对应的第三分量$m\neq 0$，引入配对粒子算符
 \begin{equation}
     \hat{A}^{\dagger} = \sum_{m > 0} (-1)^{j - m} \xi_{jm}^{\dagger} \xi_{j-m}^{\dagger}
-    \label{def:pair}
+    \label{eq:def-pair}
 \end{equation}
 这里的$\pm m$表示全部量子数$n$、$l$、$j$、$\pm j_z$。算符$\hat{A}^{\dagger}$的意义是，它在$j$壳层同时产生一对核子，每个核子的角动量都为$j$，“配对”要求这两个核子耦合的总角动量$J = 0$。
 \begin{proof}
-    由\Cref{def:pair}，我们要求两个核子偶合成总角动量为0的态，因此耦合导致的CG系数为
+    由\autoref{eq:def-pair}，我们要求两个核子偶合成总角动量为0的态，因此耦合导致的CG系数为
     \begin{equation*}
         \Braket{jmj-m | 00} = (-1)^{j - m} \frac{\delta_{jj}\delta_{mm}}{\sqrt{2j + 1}}
     \end{equation*}

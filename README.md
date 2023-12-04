@@ -98,6 +98,32 @@ fc-cache -fv
 \lstinputlisting[style=styleC]{contents/Appendix/code/cubic-integration.cpp}
 ```
 
+### 引用
+
+#### 公式、图表、章节的引用
+
+1. 使用`\RequirePackage{cleveref}`包，句首引用`\Cref{}`显示名字全称，其它位置使用`\cref{}`显示缩写。
+
+2. 当使用`ulem`的环境时，`cleveref`的引用要用`\mbox`括起来，否则会报错，进行如下操作
+
+   ```tex
+   \uline{程序使用的是\mbox{\cref{eq:quad-couple}}的最后一个等号右边式子}
+   ```
+
+3. 
+
+#### 文献引用
+
+使用`\RequirePackage[numbers,square,sort&compress,sectionbib]{natbib}`宏包，一些命令
+
+```tex
+%%%%%% 由于引入了 numbers 参数，文献将以计数的形式出现，而非author-year形式
+\citet{jon90}	% Jones et al. [1]
+\citep{jon90}	% [1]
+```
+
+
+
 ## 一些注意事项
 
 ### .bib编译
