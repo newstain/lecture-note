@@ -43,17 +43,19 @@ $\bm{A}$是标量势，与原子核流密度相关，表示磁部分的相互作
 电和磁张量算符的分量为
 \begin{align}
     Q_{\lambda\mu} &= \zeta^{(E\lambda)} \sum_{j = 1}^{A} e(j) r_j^{\lambda} Y_{\lambda\mu}(\Omega_{j}) \label{eq:mul-elec} \\
-    M_{\lambda\mu} &= \frac{\mu_{N}}{\hbar c} \zeta^{(M\lambda)} \sum_{j = 1}^{A} \left[\frac{2}{\lambda+1}g_{l}^{(j)} \bm{l}(j) + g_{s}^{(j)}\bm{s}(j)\right] \cdot \nabla_j [r_j^\lambda Y_{\lambda\mu}(\Omega_j)]
+    M_{\lambda\mu} &= \frac{\mu_{N}}{\hbar c} \zeta^{(M\lambda)} \sum_{j = 1}^{A} \left[\frac{2}{\lambda+1}g_{l}^{(j)} \bm{l}(j) + g_{s}^{(j)}\bm{s}(j)\right] \cdot \nabla_j [r_j^\lambda Y_{\lambda\mu}(\Omega_j)]    \label{eq:mul-magn}
 \end{align}
 其中，$j$表示第$j$个核子，$e(j)$表示第$j$个核子的电荷，$\bm{l}(j)$和$\bm{s}(j)$分别该核子的轨道和自旋角动量。以下，$e$表示质子的单位电荷，中子电荷为0。
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{选择定则}
 选择定则包含\CJKunderdot{宇称选择定则}和\CJKunderdot{角动量守恒定则}。
-\begin{question}[一个常数无法连接两个不同的原子核态。]
+\begin{question}[一个常数无法连接两个不同的原子核态。]\label{ques:const-not-connect-stat}
     将一个常数取代$\mathcal{M}_{\sigma\lambda}$放进约化跃迁概率\cref{eq:reduced-TransProb}中，由于常数可以提出去，最后只剩下$\Braket{\xi_f J_f |\xi_i J_i} = 0$(不同态的正交性)，因此一个常数无法给出两个态之间的关系。
 \end{question}
-
+\begin{enumerate}
+    \item \uline{没有\mbox{$E0$}和\mbox{$M1$}跃迁}：由\cref{eq:mul-elec}，$\lambda=0$时，此张量形式为一个常数，由\cref{ques:const-not-connect-stat}的论断，$E0$跃迁不存在；由\cref{eq:mul-magn},$\lambda=0$时，由于$\nabla$的存在，其对$r^0$求导为0，故$M_0$跃迁不存在。
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{One-Particle和One-Hole原子核的电磁跃迁}

@@ -1,5 +1,6 @@
 \chapter{原子核平均场及多核子组态}
 
+本章主要参考\citet[][Chap. 3]{suhonen-NtoN}。
 \section{原子核平均场}
 
 %%%%%%%%%%%%
@@ -52,7 +53,7 @@ $m_N$表示核子质量(这里假设中子和质子具有相同的核子质量$m
 	\Psi_0(\bm{r}_1,\ \bm{r}_2,\ \bm{r}_3,\cdots,\ \bm{r}_A) = \prod_{i=1}^{A} 
     \phi_{\alpha_i}(\bm{r}_i)
 \end{equation} 
-在\uline{\textsl{Hartree-Fock}}方法中，集体波函数表现为有个单粒子直积形式的混合，且具有反
+在\uline{\textsl{Hartree-Fock}}方法中，集体波函数表现为单粒子波函数直积形式的混合，且具有反
 对称性质，如下
 \begin{equation}
     \begin{aligned}
@@ -82,8 +83,8 @@ $m_N$表示核子质量(这里假设中子和质子具有相同的核子质量$m
 			\phi_2(\bm{r}_1)	&	\phi_2(\bm{r}_2)	&	\phi_2(\bm{r}_3)	\\
 			\phi_3(\bm{r}_1)	&	\phi_3(\bm{r}_2)	&	\phi_3(\bm{r}_3)	\\
 		\end{vmatrix}	\\
-		={}& \phi_1(\bm{r}_1)\phi_2(\bm{r}_2)\phi_3(\bm{r}_3) + \phi_1(\bm{r}_2)\phi_2(\bm{r}_3)\phi_3(\bm{r}_1) + \phi_1(\bm{r}_3)\phi_2(\bm{r}_1)\phi_3(\bm{r}_2) \\
-		&- \phi_1(\bm{r}_3)\phi_2(\bm{r}_2)\phi_3(\bm{r}_1) - \phi_1(\bm{r}_2)\phi_2(\bm{r}_1)\phi_3(\bm{r}_3) - \phi_1(\bm{r}_1)\phi_2(\bm{r}_3)\phi_3(\bm{r}_2) 
+		=& \frac{1}{\sqrt{6}} \left[\phi_1(\bm{r}_1)\phi_2(\bm{r}_2)\phi_3(\bm{r}_3) + \phi_1(\bm{r}_2)\phi_2(\bm{r}_3)\phi_3(\bm{r}_1) + \phi_1(\bm{r}_3)\phi_2(\bm{r}_1)\phi_3(\bm{r}_2)\right. \\
+		& \left. - \phi_1(\bm{r}_3)\phi_2(\bm{r}_2)\phi_3(\bm{r}_1) - \phi_1(\bm{r}_2)\phi_2(\bm{r}_1)\phi_3(\bm{r}_3) - \phi_1(\bm{r}_1)\phi_2(\bm{r}_3)\phi_3(\bm{r}_2)\right] 
     \end{aligned}
 \end{equation} 
 现在我们考察上式第二个等号的左边第一项，$\phi_1(\bm{r}_1)\phi_2(\bm{r}_2)\phi_3(\bm{r}_3)$表示粒子$1$处于能级$\phi_1$、位置在$\bm{r}_1$，且粒子$2$处于能级$\phi_2$、位置在$\bm{r}_2$，同时粒子$3$处于能级$\phi_3$、位置在$\bm{r}_3$的概率；后面几项类同。事实上，由于全同粒子的不可区分性，我们根本无法辨别粒子$1$、$2$、$3$，因此我们无法判断具体某一个态上的粒子具体是$1$、$2$、$3$中的哪一个，所以我们需要把各种情况考虑进来，同时考虑费米子的交换反对称性应加上对应的相位，上式最后一个等号右边的排列情况构成了如图\ref{fig:three-body-wv}所示：
@@ -101,22 +102,22 @@ $m_N$表示核子质量(这里假设中子和质子具有相同的核子质量$m
 	H_{mf} \Psi_0 = E \Psi_0
 	\label{eq:mf-scho-eq}
 \end{equation}
-由\Cref{eq:mf-hamil}，原子核集体波函数分写成单粒子波函数的直乘形式
+由\cref{eq:mf-hamil}，原子核集体波函数分写成单粒子波函数的直乘形式
 \begin{equation}
 	\Psi_0(\bm{r}_1, \bm{r}_2, \cdots, \bm{r}_A) = \phi_{\alpha_1}(\bm{r}_1) \phi_{\alpha_2}(\bm{r}_2) \cdots \phi_{\alpha_A}(\bm{r}_A)
 	\label{def:collect-wv}
 \end{equation}
 $\phi_{\alpha_{i}}$表示不同能级上的单粒子波函数。
 
-由\Cref{eq:mf-hamil,eq:mf-scho-eq,def:collect-wv}，平均场下的\textsl{Hartree(-Fock)}方程如下(表示单个粒子的类Sch{\"o}dinger方程)：
-\begin{equation}
+由\cref{eq:mf-hamil,eq:mf-scho-eq,def:collect-wv}，平均场下的\textsl{Hartree(-Fock)}方程如下(表示单个粒子的类Sch{\"o}dinger方程)：
+\begin{equation}\boxed{
     \begin{aligned}
         \frac{-\hbar^{2}}{2m_N} \nabla^{2} \phi_{\alpha}(\bm{r}) + V_{H(F)}\left(
-        \{\phi_{i}(\bm{r})\}\right) = \varepsilon_{\alpha}\phi_{\alpha}(\bm{r}) \\ 
+        \{\phi_{i}(\bm{r})\}\right)\phi_{\alpha} = \varepsilon_{\alpha}\phi_{\alpha}(\bm{r}) \\ 
         i = 1, 2, \cdots, A, \quad \alpha = 1, 2, \cdots, \infty
     \end{aligned}
     \label{eq:Hartree-Fock}
-\end{equation}
+}\end{equation}
 原子核能量为单粒子能量之和
 \begin{equation}
 	E = \sum_{i = 1}^{A} \varepsilon_{\alpha_i}
@@ -128,7 +129,7 @@ $\varepsilon_{\alpha_i}$表示第$i$个粒子所在能级对应的能量。
 \end{equation*}
 \Cref{eq:Hartree-Fock}为非线性方程组，一般用迭代的方法求解。我们先猜测得到一组试探
 波函数$\{\phi_i^0(\bm{r})\}_{i=1}^{A}$，然后我们根据势能与波函数的关系得到初始势场
-$V_{H(F)}^{0}$；完成上述步骤后，我们将试探波函数和初始势场带入式\eqref{eq:Hartree-Fock}，
+$V_{H(F)}^{0}$；完成上述步骤后，我们将试探波函数和初始势场带入\cref{eq:Hartree-Fock}，
 求解得到一组新的波函数$\{\phi_{\alpha}^1(\bm{r})\}_{\alpha=1}^{A}$和本征值$\varepsilon_{\alpha}^{(1)}$，
 通过这组新的波函数，我们可以再次生成一个新的势场$V_{H(F)}^{(1)}$；将生成的新势场和新波函数
 再次代入式\eqref{eq:Hartree-Fock}，可得到更新一组的本征波函数和本征能量。通过比较某次迭代
@@ -142,13 +143,16 @@ $V_{H(F)}^{0}$；完成上述步骤后，我们将试探波函数和初始势场
 此方法得到的势场一般为中心势场，只适合描述球形核。对于形变核需要进行额外的处理。
 
 \paragraph*{关于平均势场和初始波函数形式的选取}
-上述平均场方程中，势能具体形式为
-\begin{equation}
-    V_{H(F)}\left( \left\{ \phi_i(\bm{r}) \right\} \right) = \sum_{i \neq j} \int 
+上述平均场方程中，势能具体形式为\citep[][Eqs. C2.3 and C2.6]{ningpz}
+\begin{equation}\boxed{\begin{aligned}
+    V_{H}\left( \left\{ \phi_i(\bm{r}) \right\} \right) \phi_j(\bm{r}_j) &= \sum_{i \neq j} \int 
     \phi_i^{\star}(\bm{r}_i^{\prime}) V_{ij}(\bm{r}_i^{\prime}, \bm{r}_j) \phi_{i}(\bm{r}_i^{\prime})
-    \,d\bm{r}_i^{\prime}
+    \,d\bm{r}_i^{\prime}\ \phi_j(\bm{r}_j) \\
+	V_{HF}\left( \left\{ \phi_i(\bm{r}) \right\} \right) \phi_j(\bm{r}_j) &= \sum_{i} \int 
+    \phi_i^{\star}(\bm{r}_i^{\prime}) V_{ij}(\bm{r}_i^{\prime}, \bm{r}_j) \phi_{i}(\bm{r}_i^{\prime}) \phi_j(\bm{r}_j) - \phi_i^{\star}(\bm{r}_i^{\prime}) V_{ij}(\bm{r}_i^{\prime}, \bm{r}_j) \phi_{i}(\bm{r}_j) \phi_j(\bm{r}_i^{\prime})
+    \,d\bm{r}_i^{\prime}  
     \label{eq:mean-field}
-\end{equation}
+\end{aligned}}\end{equation}
 为寻找到一组合适的平均场，试探波函数可以选取一组零级近似，如费米气体模型单粒子波函数：
 \begin{equation}
     \phi_i = \sqrt{V^{-1}} \exp{(i \bm{k}_i \cdot \bm{r}_i)}
@@ -299,10 +303,17 @@ Skyrme力有6个可调参数$t_0$、$t_1$、$t_2$、$t_3$、$x_0$和$W_0$。
 
 %%%%%%%%%%%%%
 \section{多核子组态}
+\paragraph*{“坐标表象”}
+同时描述自旋为$\nicefrac{1}{2}$的旋子的坐标空间$\bm{r}$及自旋空间$\bm{\chi}$的表象，简记为$\bm{x}$。
+
+\paragraph*{多核子组态}
 单粒子态和单粒子能量是原子核壳模型的基础。对单粒子态做如下约定：
-\begin{equation}
+\begin{equation}\boxed{
 	\ket{\phi_{\alpha}} \equiv \ket{\alpha} \equiv \ket{am_{\alpha}}, \quad a \equiv n_{a} l_{a} j_{a} \label{eq:sgl-part-stat}
-\end{equation}
+}\end{equation}
 其中，$l_a$和$n_a$是$a$轨道的轨道量子数和总角动量量子数，$n_a$为主量子数，$m_{\alpha}$则是$j_a$在$z$轴的第三分量量子数。
 
-详见《\textit{From Nucleons to Nucleus Concepts of Microscopic Nuclear Theory}》中Sec. 3.3。
+
+
+\bibliographystyle{modified-apsrev4-2}
+\bibliography{reference}

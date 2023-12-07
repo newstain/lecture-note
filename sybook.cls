@@ -94,11 +94,7 @@
 % %%%%%%%%%%% 引用 %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{cleveref}
-%%%        名称       单   复
-\crefname{equation}{Eq.}{Eqs.}
-\crefname{figure}{Fig.}{Figs.}
-\Crefname{equation}{Equation}{Equations}
-\Crefname{figure}{Figure}{Figures}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%% 定义、定理、例子的设置 %%%%%%%%
@@ -213,7 +209,13 @@
                {\par\ignorespacesafterend}
 
 
-
+%%%        名称       单   复
+\crefname{equation}{Eq.}{Eqs.}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{question}{QUEST.}{QUESTs.}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{figure}{Figure}{Figures}
+\Crefname{question}{Question}{Questions.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%   文字   %%%%%%%%

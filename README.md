@@ -121,7 +121,15 @@ fc-cache -fv
 \citet{jon90}	% Jones et al. [1]
 \citep{jon90}	% [1]
 ```
+### 定义、定理、问题环境
 
+使用`\RequirePackage{cleveref}`宏包，一些命令
+
+``` tex
+%%%%%% 引用定义、定理问题
+\cref{***}
+\Cref{***}
+```
 
 
 ## 一些注意事项
