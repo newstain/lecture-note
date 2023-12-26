@@ -87,6 +87,27 @@ $\vbe_{i}$、$\vbe_{j}$和$\vbe_{k}$；在刚体内部建立另一套Cartesian�
 \begin{equation}
 	a_{ij} = \cos{\theta_{ij}}
 \end{equation}
+有如下关系成立
+\begin{equation}
+	\left\{\begin{aligned}
+	x_1^{\prime} =& a_{11}x_1 + a_{12}x_2 + a_{13}x_3 \\
+	x_2^{\prime} =& a_{21}x_1 + a_{22}x_2 + a_{23}x_3 \\
+	x_3^{\prime} =& a_{31}x_1 + a_{32}x_2 + a_{33}x_3
+	\end{aligned}\right. \qquad
+	\left\{\begin{aligned}
+		x_1 =& a_{11}x_1^{\prime} + a_{12}x_2^{\prime} + a_{13}x_3^{\prime} \\
+		x_2 =& a_{21}x_1^{\prime} + a_{22}x_2^{\prime} + a_{23}x_3^{\prime} \\
+		x_3 =& a_{31}x_1^{\prime} + a_{32}x_2^{\prime} + a_{33}x_3^{\prime}
+	\end{aligned}\right.
+\end{equation}
+根据爱因斯坦求和规则$\sum_{i}x_i^2 \rightarrow x_i x_i$，将前面的方向角正交关系重新表述如下：
+\begin{equation}
+	a_{ij} a_{ik} = \delta_{jk}
+\end{equation}
+\begin{note}
+	满足上述关系的变换矩阵成为正交变换，此为判定矩阵是否为正交矩阵的充要条件。
+\end{note}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{欧拉角}
 欧拉角用于描述一个物体定点转动。转动矩阵的行列式的值为$+1$。

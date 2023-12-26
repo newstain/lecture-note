@@ -100,9 +100,15 @@ fc-cache -fv
 
 ### 引用
 
-#### 公式、图表、章节的引用
+#### 公式、图表、章节、定理、定义等的引用
 
 1. 使用`\RequirePackage{cleveref}`包，句首引用`\Cref{}`显示名字全称，其它位置使用`\cref{}`显示缩写。
+
+   ``` tex
+   %%%%%% 引用定义、定理问题
+   \cref{***}
+   \Cref{***}
+   ```
 
 2. 当使用`ulem`的环境时，`cleveref`的引用要用`\mbox`括起来，否则会报错，进行如下操作
 
@@ -121,15 +127,18 @@ fc-cache -fv
 \citet{jon90}	% Jones et al. [1]
 \citep{jon90}	% [1]
 ```
-### 定义、定理、问题环境
+### 定义、定理、问题、引用环境
 
-使用`\RequirePackage{cleveref}`宏包，一些命令
+引用某段文字时，用如下命令
 
-``` tex
-%%%%%% 引用定义、定理问题
-\cref{***}
-\Cref{***}
+```tex
+% 引用环境     引用出处
+\begin{quote}{source_name}
+    Reference
+\end{quote}
 ```
+
+
 
 
 ## 一些注意事项

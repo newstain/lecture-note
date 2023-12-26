@@ -1,7 +1,46 @@
 \chapter{练习题}
 
+%%%%%%%%% sec
+\section{基础数学}
+\begin{exercise}[单位长度矢量的梯度]
+    求$\nabla \cdot \frac{1}{|\rcurs|^2}\vec{\rcurs}$ = 0，其中$\vec{\rcurs}=\vec{r}-\vec{r}^{\prime}$。
+
+    笛卡尔坐标系下，有
+    $$
+        \vec{\rcurs} = (x - x^{\prime})\cdot \vec{e}_{x} + (y - y^{\prime})\cdot \vec{e}_{y} + (z - z^{\prime})\cdot \vec{e}_{z}
+    $$
+    因此，$\vec{\rcurs}/|\rcurs|^2$为
+    $$
+    \frac{\vec{\rcurs}}{|\rcurs|^2 } = \frac{(x - x^{\prime})\cdot \vec{e}_{x} + (y - y^{\prime})\cdot \vec{e}_{y} + (z - z^{\prime})\cdot \vec{e}_{z}}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}}        
+    $$
+    根据\cref{eq:def-nabla-cartesian}，有
+    \begin{equation*}\begin{aligned}
+    \nabla \cdot \frac{\vec{\rcurs}}{|\rcurs|^2} =\,& \frac{\partial}{\partial x} \frac{(x - x^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}} \\
+    &+ \frac{\partial}{\partial x} \frac{(x - x^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}} \\
+    &+ \frac{\partial}{\partial x} \frac{(x - x^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}}
+    \end{aligned}\end{equation*}
+    取第一项计算
+    \begin{equation*}\begin{aligned}
+        &\frac{\partial}{\partial x} \frac{(x - x^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}}\\
+         =&\, \frac{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}} - \frac{3}{2}(x - x^{\prime})[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{1/2}\cdot 2(x-x^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^3} \\
+         =&\, \frac{(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2 - 3(x - x^{\prime})^2}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{5/2}}
+    \end{aligned}\end{equation*}
+    同理可得其他两项
+    \begin{equation*}\begin{aligned}
+        \frac{\partial}{\partial y} \frac{(y - y^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}} =& \, \frac{(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2 - 3(y - y^{\prime})^2}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{5/2}} \\
+        \frac{\partial}{\partial z} \frac{(z - z^{\prime})}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{\nicefrac{3}{2}}} =& \, \frac{(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2 - 3(z - z^{\prime})^2}{[(x - x^{\prime})^2 + (y - y^{\prime})^2 + (z - z^{\prime})^2]^{5/2}} \\
+    \end{aligned}\end{equation*}
+    以上三式相加得到
+    $$
+    \nabla \cdot \frac{1}{|\rcurs|^2}\vec{\rcurs} = 0
+    $$
+\end{exercise}
+
+
+%%%%%%%%% sec
 \section{核物理练习题}
 
+%%%%%%  ex
 \begin{exercise}[Ex. C.1 in \citet{ningpz}]
     由式C1.21，比结合能写为
     \begin{equation}

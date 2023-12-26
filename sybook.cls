@@ -100,8 +100,38 @@
 % %%%%%%%% 定义、定理、例子的设置 %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{amsthm}                     % 证明、定理环境等所需要的宏包
+\RequirePackage{framed}
+\RequirePackage[strict]{changepage}
 
-\newcommand*\mymathbox[1]{\fcolorbox{black}{gray}{\hspace{1em}#1\hspace{0em}}}
+% \newcommand*\mymathbox[1]{\fcolorbox{black}{gray}{\hspace{1em}#1\hspace{0em}}}
+\newsavebox{\quotename}   % 预先定义引用环境参数的变量以便在 end 中使用
+\renewenvironment{quote}
+                 [1]
+                 {% begin
+                    \sbox\quotename{\color{blue} \sffamily\bfseries ({#1})}   % 暂时保存 #1 到\quotename，在\end 中用到
+                    % \vspace{1pt}
+                    \def\FrameCommand{
+                        % \hspace{1pt}
+                        {\color{white} \vrule width 12pt}
+                        {\color{blue}  \vrule width 2pt}
+                        \colorbox{gray}
+                    }
+                    \MakeFramed{\advance\hsize-\width\FrameRestore}
+                    \hspace{-4pt}
+                    \begin{adjustwidth}{}{7pt}
+                    \noindent\itshape
+                 }
+                 {% end
+                    {   
+                        \hspace*{\fill}\nolinebreak[3]
+                        \hspace*{\fill}%如果发生了断行，此设置保证\Citation是居右的。
+                        -----\,\usebox{\quotename}
+                    }
+                    \vspace{1pt}
+                    \end{adjustwidth}
+                    \endMakeFramed
+                 }
+
 
 % 自定义环境 用于 定理和定义
 \newtheoremstyle{defstyle}                      % 名字
@@ -196,7 +226,7 @@
                 \refstepcounter{exer}
                 \par\noindent\makebox[-3pt][r]
                 {\quad}
-                \textbf{Exercise. \theexer\ (\textcolor{blue}{#1}) }\rmfamily
+                \textbf{Exercise. \theexer\ \textcolor{blue}{(\,#1\,)} }\rmfamily
                }
                {\par\ignorespacesafterend}
 
@@ -257,7 +287,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{listings}
 
-\newfontfamily\jbmr{JetBrains Mono Regular}
+\newfontfamily\jbmr{JetBrainsMono Nerd Font}
 
 \definecolor{commentColor}{RGB}{53,129,34}
 \definecolor{keywordColor}{RGB}{172, 62, 158}
