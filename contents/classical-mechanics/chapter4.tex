@@ -108,6 +108,83 @@ $\vbe_{i}$、$\vbe_{j}$和$\vbe_{k}$；在刚体内部建立另一套Cartesian�
 	满足上述关系的变换矩阵成为正交变换，此为判定矩阵是否为正交矩阵的充要条件。
 \end{note}
 
+若primed和unprimed坐标系间可通过正交变换实现转换，相应的的变换矩阵为
+\begin{equation}
+	\underbrace{
+	\begin{bmatrix}
+		a_{11}	&	a_{12}	&	a_{13} \\
+		a_{21}	&	a_{22}	&	a_{23} \\
+		a_{31}	&	a_{32}	&	a_{33}
+	\end{bmatrix}
+	}_{\text{unprimed to primed}}
+	\qquad
+	\underbrace{
+	\begin{bmatrix}
+		a_{11}	&	a_{21}	&	a_{31} \\
+		a_{12}	&	a_{22}	&	a_{32} \\
+		a_{13}	&	a_{23}	&	a_{33}
+	\end{bmatrix}
+	}_{\text{primed to unprimed}}
+\end{equation}
+
+%%%%%%%%%%%
+\paragraph*{矢量在不同坐标系下的变换}
+现有两套坐标系，分别为primed和unprimed，它们对对空间中的同一个矢量的表示应该是等价的，即
+\begin{equation}
+	(\vec{r})^{\prime} = A \vec{r}
+\end{equation}
+上式等号坐标，对矢量加上括号表示这个矢量在primed坐标系下表示；等号右边的$A$表示不同坐标系间的变换矩阵，未加括号的$\vec{r}$实在unprimed坐标系下的表示。上面的式子的物理含义为：$\vec{r}$是矢量在unprimed坐标系下的表达，现在我们想要在primed坐标系下对这个矢量进行重新表述，我们就需要将坐标系进行变换，而$A$的作用就是将primed坐标系转到unprimed坐标系，此时，这个矢量在新的坐标系下的表示就是$(\vec{r})^{\prime}$。
+
+此外，相对的，坐标系间的变换也可以理解成在同一坐标系下对某一个矢量进行变换，即
+\begin{equation}
+	\vec{r}^{\prime} = A \vec{r}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{变换矩阵的形式特性}
+\paragraph*{变换矩阵的一般性质}
+矩阵变换具有先后顺序性，对矢量$\vec{r}$先进行变换$B$得到$\vec{r}^{\prime}$，再对$\vec{r}^{\prime}$进行变换$A$得到矢量$\vec{r}^{\prime\prime}$，则对应的变换为
+\begin{equation}
+	\vec{r}^{\prime\prime} = C\vec{r} = A\vec{r}^{\prime} = A(B\vec{r}) = AB\vec{r}
+\end{equation}
+这里定义
+\begin{equation}
+	C = AB \quad (\text{一般的，}AB\neq BA)
+\end{equation}
+$AB$和$BA$表示不同的操作，一般不相等，除非其中一个为单位矩阵（意味着这个变换对矢量不做任何变换）。$C$的矩阵元为
+\begin{equation}
+	C_{ij} = a_{ik}b_{kj} \quad (\text{爱因斯坦求和规则})
+\end{equation}
+
+若有多个矩阵变换操作，则表示为对应的矩阵乘法，且有
+\begin{equation}
+	(AB)C = A(BC)
+\end{equation}
+
+现在unprimed坐标系下有一矢量$\vec{f}$，经变换矩阵$A$作用后变为矢量$\vec{g}$，即
+\begin{equation}
+	\vec{g} = A \vec{f}
+\end{equation}
+变换矩阵$B$的作用是将unprimed坐标系变为primed坐标系，此时primed坐标系下的矢量$\vec{g}$表示为
+\begin{equation}
+	B\vec{g} = B(A\vec{f}) = (BAB^{-1})(B\vec{f})
+\end{equation}
+其中，$B\vec{f}$是矢量$\vec{f}$在primed坐标系下的表示；$BAB^{-1}$为primed坐标系下的变换矩阵$A$（在unprimed坐标系下作用到矢量上）的表示，换句话就是说$BAB^{-1}$和$A$对矢量的操作是一样的，只不过它们在不同的坐标系下进行操作，$BAB^{-1}$是在primed坐标系下对矢量的操作，而$A$实在primed坐标系下对矢量的操作。以上两式结合来看，表示了矢量变换在不同坐标系统下的变换操作。
+
+
+\paragraph*{变换为正交矩阵的情况}
+若矩阵$A$为正交矩阵，则$A$的逆$A^{-1}$与其转置$\tilde{A}$等价，满足以下等式
+\begin{equation}
+	\begin{aligned}
+		A^{-1} &= \tilde{A} \\
+		\tilde{A}A = A^{-1}&A = AA^{-1} = \bm{1}
+	\end{aligned}
+\end{equation}
+以上推得正交矩阵行列式的规则
+\begin{equation}
+	|A|^2 = |\tilde{A}A| = |\tilde{A}|\cdot|A| = 1
+\end{equation}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{欧拉角}
 欧拉角用于描述一个物体定点转动。转动矩阵的行列式的值为$+1$。

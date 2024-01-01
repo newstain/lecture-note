@@ -114,7 +114,7 @@
                         % \hspace{1pt}
                         {\color{white} \vrule width 12pt}
                         {\color{blue}  \vrule width 2pt}
-                        \colorbox{gray}
+                        % \colorbox{gray}
                     }
                     \MakeFramed{\advance\hsize-\width\FrameRestore}
                     \hspace{-4pt}
@@ -125,9 +125,9 @@
                     {   
                         \hspace*{\fill}\nolinebreak[3]
                         \hspace*{\fill}%如果发生了断行，此设置保证\Citation是居右的。
-                        -----\,\usebox{\quotename}
+                        \usebox{\quotename}
                     }
-                    \vspace{1pt}
+                    % \vspace{1pt}
                     \end{adjustwidth}
                     \endMakeFramed
                  }
