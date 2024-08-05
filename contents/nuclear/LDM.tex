@@ -67,12 +67,112 @@
 \paragraph*{形变原子核半径}
 原子核的形状可体现在其表面上某一点到原点的距离，也就是形变核核中从原点到表面的半径矢量
 \begin{equation}
-	R = R(\theta, \phi) = R_0 ( 1 + \alpha_{00} + \sum_{\lambda = 1}^{\infty} \sum_{\mu = -\lambda}^{\lambda}\alpha^{*}_{\lambda\mu} Y_{\lambda\mu}(\theta, \phi) )	\label{eq_deform_radius}
+	R = R(\theta, \phi) = R_0 ( 1 + \alpha_{00} + \sum_{\lambda = 1}^{\infty} \sum_{\mu = -\lambda}^{\lambda}\alpha^{*}_{\lambda\mu} Y_{\lambda\mu}(\theta, \phi) )	\label{eq:nul-radii}
 \end{equation} 
 其中$R_0$表示相同体积的球形核半径。此公式并非唯一描述该半径的公式，但却是最常用的。
 
+%%%%%%%%
+\section{球形核的表面振动}
+原子核具有一些动力学特征，比如原子核整体的转动和振动等，当我们描述这些运动是，原子核的表面特征是一个动力学的过程。\Cref{eq:nul-radii}描述原子核的形状，其中$Y_{\lambda\mu}$具有固定表达，它是随时间不变的量。为描述原子核的动力学特征，我们可以将参数$\alpha_{\lambda\mu}$认为是随时间变化的量：$\alpha_{\lambda\mu}(t)$\citep[Sect. 1.4]{Peter2004}。
+
+%%%%%%%%
+\section{Bohr哈密顿量}
+经典哈密顿量表述为（还未进行量子化前）
+\begin{equation}
+    H = \frac{1}{2} \sum_{\mathcal{K}}^{3} \mathcal{J}\omega_{\mathcal{K}}^2 + \frac{1}{2} D \left[\dot{\beta}^2 + \dot{\gamma}^2 \right] + V(\beta, \gamma)
+	\label{eq:class-bohr-hamiltonian}
+\end{equation}
+
+\Cref{eq:class-bohr-hamiltonian}量子化后对应的动能项为
+\begin{equation}
+	T = \frac{1}{2} \sum_{\mathcal{K}}^{3} \mathcal{J}\omega_{\mathcal{K}}^2 + \frac{1}{2} D \left[\dot{\beta}^2 + \dot{\gamma}^2 \right]
+	= \frac{1}{2} D \left[\dot{\beta}^2 + \dot{\gamma}^2 \right] + \frac{1}{2} \sum_{\mathcal{K}}^{3} \mathcal{J}\omega_{\mathcal{K}}^2
+\end{equation}
+其广义动量为$\dot{\beta}$，$\dot{\gamma}$和$\omega_{\mathcal{K}}$，共5个独立变量，故在度规$g_{ij}$中仅包含对角元
+\begin{equation}
+    \bm{G} = \begin{pmatrix}
+		D & 0        & 0     & 0     & 0 \\
+		0 & D\beta^2 & 0     & 0     & 0 \\
+		0 & 0        & J_{1} & 0     & 0 \\
+		0 & 0        & 0     & J_{2} & 0 \\
+		0 & 0        & 0     & 0     & J_{3}
+	\end{pmatrix}
+\end{equation}
+
+\begin{note}
+笛卡尔坐标系下体系动能为$\cfrac{1}{2}\sum\limits_{i} \dot{x}_i^2$，其在曲线坐标系下表示为
+\begin{equation}
+	T = \frac{1}{2} \sum_{ij} g_{ij} \dot{q}_i \dot{q}_j
+    \label{eq:curve-classical-kin}
+\end{equation}
+对应的动能变换矩阵为$\bm{G} = (g_{ij}) = \left(\sum\limits_{\alpha}\cfrac{\partial x_{\alpha}}{\partial q_i}\cfrac{\partial x_{\alpha}}{\partial q_j}\right)$，其逆矩阵为$\bm{G}^{-1} = (g^{-1}_{ij})$，对应的行列式为$|\bm{G}| = J^2$，我们现在对\cref{eq:curve-classical-kin}进行量子化。首先根据\cref{eq:mat-der-var,eq:det-log-dev}，有以下方程成立
+        \begin{equation*}\begin{aligned}
+            \frac{d |\bm{G}|}{d q_{k}} =& 
+            |\bm{G}| {\rm Tr} \left( \bm{G}^{-1} \frac{d \bm{G}}{d q_{k}} \right) \\
+            \frac{\ln{|\bm{G}|}}{d q_{k}} =& \frac{1}{|\bm{G}|} \frac{d |\bm{G}|}{d q_{k}} = {\rm Tr} \left( \bm{G}^{-1} \frac{d \bm{G}}{d q_{k}} \right)
+        \end{aligned}\end{equation*}
+        这里已经假定$|\bm{G}| > 0$。定义矩阵
+        \begin{equation*}
+            \bm{D} = (d_{i\alpha}) = \left(\frac{\partial x_{i}}{\partial q_{\alpha}}\right), \quad \bm{D}^{-1} = (d^{-1}_{i\alpha}) = \left(\frac{\partial q_{i}}{\partial x_{\alpha}}\right)
+        \end{equation*}
+        这样，就有
+        \begin{equation*}\begin{aligned}
+            \bm{G} =& \bm{D}^{T}\bm{D} = (g_{ij}) = \left(\sum_{\alpha}d^{T}_{i\alpha}d_{\alpha j}\right) = \left(\sum_{\alpha}\frac{\partial x_{\alpha}}{\partial q_i}\frac{\partial x_{\alpha}}{\partial q_j}\right) \\
+            \bm{G}^{-1} =& (g^{-1}_{ij}) = \bm{D}^{-1}\bm{D}^{T-1} = \left(\sum_{\alpha}\frac{\partial q_{i}}{\partial x_{\alpha}}\frac{\partial q_{j}}{\partial x_{\alpha}}\right) \\
+        \end{aligned}\end{equation*}
+以上可得
+\begin{equation}\begin{aligned}
+    \frac{\partial \ln{|\bm{G}|}}{\partial q_k} =& \frac{\partial \ln{(J^2)}}{\partial q_k} = 2 \frac{\partial \ln{J}}{\partial q_k} = 2 \frac{\partial \ln{|\bm{D}|}}{\partial q_k} =  2{\rm Tr} \left( \bm{D}^{-1} \frac{d \bm{D}}{d q_{k}} \right) \\
+    =& 2\sum_{ij}d^{-1}_{ji}\frac{\partial d_{ij}}{\partial q_{k}} = 2 \sum_{ij}\frac{\partial q_{j}}{\partial x_{i}} \frac{\partial}{\partial q_{k}} \left(\frac{\partial x_{i}}{\partial q_j}\right) = 2 \sum_{ij}\frac{\partial q_{j}}{\partial x_{i}} \frac{\partial}{\partial q_{j}} \left(\frac{\partial x_{i}}{\partial q_k}\right)
+\end{aligned}\end{equation}
+注意到
+\begin{equation}\begin{aligned}
+    \sum_{ij}\left[\frac{\partial q_{j}}{\partial x_{i}} \frac{\partial}{\partial q_{j}} \left(\frac{\partial x_{i}}{\partial q_k}\right) + \frac{\partial x_{i}}{\partial q_k}\frac{\partial}{\partial q_{j}} \left(\frac{\partial q_{j}}{\partial x_{i}} \right)\right] =& \sum_{ij} \frac{\partial }{\partial q_{j}} \left(\frac{\partial q_{j}}{\partial x_{i}} \frac{\partial x_{i}}{\partial q_{k}}\right) \\
+    =& \sum_{j}\frac{\partial }{\partial q_{j}} \left(\sum_{i} \frac{\partial q_{j}}{\partial x_{i}} \frac{\partial x_{i}}{\partial q_{k}}\right) \\
+    =& \sum_{j}\frac{\partial }{\partial q_{j}} \left(\frac{d q_{j}}{d q_{k}}\right) \\
+    =& \sum_{j}\frac{\partial }{\partial q_{j}} \delta_{jk} \\
+    =& 0
+\end{aligned}\end{equation}
+这样，我们有
+\begin{equation}
+    \frac{\partial \ln{|\bm{G}|}}{\partial q_k} = -2\sum_{ij}\frac{\partial x_{i}}{\partial q_k} \left(\frac{\partial}{\partial q_{j}}\frac{\partial q_{j}}{\partial x_{i}} \right), \quad \frac{\partial \ln{J}}{\partial q_k} = -\sum_{ij}\frac{\partial x_{i}}{\partial q_k} \left(\frac{\partial}{\partial q_{j}}\frac{\partial q_{j}}{\partial x_{i}} \right)
+\end{equation}
+另外，从坐标$x_{i}$到坐标$q_{i}$，有
+\begin{equation}\begin{aligned}
+    \frac{\partial}{\partial x_{i}} =& \sum_{\alpha} \frac{\partial q_{\alpha}}{\partial x_{i}} \frac{\partial}{\partial q_{\alpha}} \\
+    \sum_{i}\frac{\partial^{2}}{\partial x_{i} \partial x_{i}} =& \sum_{i \alpha\beta} \frac{\partial q_{\alpha}}{\partial x_{i}} \frac{\partial}{\partial q_{\alpha}} \left(\frac{\partial q_{\beta}}{\partial x_{i}} \frac{\partial}{\partial q_{\beta}}\right) \\
+    =& \sum_{i \alpha\beta} \frac{\partial q_{\alpha}}{\partial x_{i}} \frac{\partial q_{\beta}}{\partial x_{i}} \frac{\partial^2}{\partial q_{\alpha}\partial q_{\beta}} + \frac{\partial q_{\alpha}}{\partial x_{i}}  \left(\frac{\partial}{\partial q_{\alpha}}\frac{\partial q_{\beta}}{\partial x_{i}}\right) \frac{\partial}{\partial q_{\beta}}\\
+    =& \sum_{\alpha\beta} \frac{\partial q_{\alpha}}{\partial x_{i}} \frac{\partial q_{\beta}}{\partial x_{i}} \frac{\partial^2}{\partial q_{\alpha}\partial q_{\beta}} + \left(\frac{\partial}{\partial q_{\alpha}}\frac{\partial q_{\alpha}}{\partial x_{i}}\frac{\partial q_{\beta}}{\partial x_{i}}\right) \frac{\partial}{\partial q_{\beta}} - \frac{\partial q_{\beta}}{\partial x_{i}} \left(\frac{\partial}{\partial q_{\alpha}}\frac{\partial q_{\alpha}}{\partial x_{i}}\right) \frac{\partial}{\partial q_{\beta}} \\
+    =& \sum_{\alpha\beta} \left[\left(\sum_{i}\frac{\partial q_{\alpha}}{\partial x_{i}} \frac{\partial q_{\beta}}{\partial x_{i}}\right) \frac{\partial^2}{\partial q_{\alpha}\partial q_{\beta}} + \left(\frac{\partial}{\partial q_{\alpha}} \left(\sum_{i}\frac{\partial q_{\alpha}}{\partial x_{i}}\frac{\partial q_{\beta}}{\partial x_{i}}\right)\right) \frac{\partial}{\partial q_{\beta}} - \sum_{i}\frac{\partial q_{\beta}}{\partial x_{i}} \left(\frac{\partial}{\partial q_{\alpha}}\frac{\partial q_{\alpha}}{\partial x_{i}}\right) \frac{\partial}{\partial q_{\beta}}\right] \\
+    =& \sum_{\alpha\beta} \left(g^{-1}_{\alpha\beta} \frac{\partial^2}{\partial q_{\alpha}\partial q_{\beta}} + \frac{\partial g^{-1}_{\alpha\beta}}{\partial q_{\alpha}} \frac{\partial}{\partial q_{\beta}}\right) - \sum_{i\alpha\beta}\frac{\partial q_{\beta}}{\partial x_{i}} \left( \frac{\partial}{\partial q_{\alpha}}\frac{\partial q_{\alpha}}{\partial x_{i}}\right) \frac{\partial}{\partial q_{\beta}}
+\end{aligned}\end{equation}
+同时，我们注意到
+\begin{equation}\begin{aligned}
+    \sum_{ij}\frac{1}{J} \frac{\partial}{\partial q_{i}}{g}^{-1}_{ij} J \frac{\partial}{\partial q_j} =& \sum_{ij}\frac{1}{J} \left[{g}^{-1}_{ij} J \frac{\partial^2}{\partial q_{i}\partial q_{j}} + \frac{\partial ({g}^{-1}_{ij}J)}{\partial q_{i}} \frac{\partial}{\partial q_{j}}\right] \\
+    =& \sum_{ij}{g}^{-1}_{ij} \frac{\partial^2}{\partial q_{i}\partial q_{j}} + \frac{\partial {g}^{-1}_{ij}}{\partial q_{i}} \frac{\partial}{\partial q_{j}} + {g}^{-1}_{ij}\frac{1}{J}\frac{\partial J}{\partial q_{i}} \frac{\partial}{\partial q_{j}} \\
+    =& \sum_{ij}{g}^{-1}_{ij} \frac{\partial^2}{\partial q_{i}\partial q_{j}} + \frac{\partial {g}^{-1}_{ij}}{\partial q_{i}} \frac{\partial}{\partial q_{j}} + {g}^{-1}_{ij}\frac{\partial \ln{J}}{\partial q_{i}} \frac{\partial}{\partial q_{j}}
+    \label{eq:expand1}
+\end{aligned}\end{equation}
+这里的最后一项展开
+\begin{equation}\begin{aligned}
+    \sum_{ij}{g}^{-1}_{ij}\frac{\partial \ln{J}}{\partial q_{i}} \frac{\partial}{\partial q_{j}} =& -\sum_{ij} {g}^{-1}_{ij} \left(\sum_{\alpha k}\frac{\partial x_{\alpha}}{\partial q_{i}} \frac{\partial}{\partial q_{k}} \frac{\partial q_{k}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}} \\
+    =& -\sum_{ij}\left(\sum_{\beta}\frac{\partial q_{i}}{\partial x_{\beta}} \frac{\partial q_{j}}{\partial x_{\beta}}\right) \left(\sum_{\alpha k}\frac{\partial x_{\alpha}}{\partial q_{i}} \frac{\partial}{\partial q_{k}} \frac{\partial q_{k}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}} \\
+    =& -\sum_{j\alpha\beta k}\left(\sum_{i}\frac{\partial x_{\alpha}}{\partial q_{i}}\frac{\partial q_{i}}{\partial x_{\beta}}\right)  \frac{\partial q_{j}}{\partial x_{\beta}} \left(\frac{\partial}{\partial q_{k}} \frac{\partial q_{k}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}} \\
+    =& -\sum_{j\alpha\beta k} \frac{d x_{\alpha}}{d x_{\beta}} \frac{\partial q_{j}}{\partial x_{\beta}} \left(\frac{\partial}{\partial q_{k}} \frac{\partial q_{k}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}} \\
+    =& -\sum_{j\alpha\beta k} \delta_{\alpha\beta} \frac{\partial q_{j}}{\partial x_{\beta}} \left(\frac{\partial}{\partial q_{k}} \frac{\partial q_{k}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}} \\
+    =& -\sum_{j\alpha k} \frac{\partial q_{j}}{\partial x_{\alpha}} \left(\frac{\partial}{\partial q_{k}} \frac{\partial q_{k}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}}
+    \label{eq:expand2}
+\end{aligned}\end{equation}
+将\cref{eq:expand2}代回\cref{eq:expand1}并变换哑指标$k\rightarrow i$，最后得到
+\begin{equation}\begin{aligned}
+    \sum_{ij}\frac{1}{J} \frac{\partial}{\partial q_{i}}{g}^{-1}_{ij} J \frac{\partial}{\partial q_j} = \sum_{ij}\left({g}^{-1}_{ij} \frac{\partial^2}{\partial q_{i}\partial q_{j}} + \frac{\partial {g}^{-1}_{ij}}{\partial q_{i}} \frac{\partial}{\partial q_{j}} \right) - \sum_{ij\alpha}\left(\frac{\partial q_{j}}{\partial x_{\alpha}} \left(\frac{\partial}{\partial q_{i}} \frac{\partial q_{i}}{\partial x_{\alpha}}\right) \frac{\partial}{\partial q_{j}}\right)
+\end{aligned}\end{equation}
+以上，可知量子化后的动能想可表述为
+\begin{equation}
+	\hat{T} = -\frac{\hbar^2}{2} \sum_{ij} |g^{-1/2}| \frac{\partial}{\partial \q_i} |g^{1/2}| g^{-1}_{ij} \frac{\partial}{\partial \q_{j}}
+\end{equation}
+\end{note}
 
 
-
-
-
+\bibliographystyle{modified-apsrev4-2}
+\bibliography{reference}

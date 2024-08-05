@@ -17,6 +17,7 @@
 
 \RequirePackage{xcolor}
 \definecolor{black}{RGB}{0,0,0}
+\definecolor{light-black}{RGB}{75,75,75}
 \definecolor{gray}{RGB}{243,243,244}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,6 +104,7 @@
 \RequirePackage{framed}
 \RequirePackage[strict]{changepage}
 
+\RequirePackage{manfnt}       % 一些符号类
 % \newcommand*\mymathbox[1]{\fcolorbox{black}{gray}{\hspace{1em}#1\hspace{0em}}}
 \newsavebox{\quotename}   % 预先定义引用环境参数的变量以便在 end 中使用
 \renewenvironment{quote}
@@ -137,7 +139,7 @@
 \newtheoremstyle{defstyle}                      % 名字
                 {3pt}{3pt}                      % 距文字的上、下垂直距离
                 {\normalfont}                   % 主体字体
-                {0pt}                           % 定理头 缩进量
+                {-3pt}                           % 定理头 缩进量
                 {\sffamily\bfseries}            % 定理头字体
                 {}                              % 定理头后标点符号
                 {0mm}                           % 定理头后的空间
@@ -160,9 +162,9 @@
 \theoremstyle{defstyle} \newmdtheoremenv[
                                             backgroundcolor=gray,
                                             linecolor=black,
-                                            % leftmargin=0pt,
-                                            % innerleftmargin=1pt,
-                                            % innerrightmargin=1pt,
+                                            leftmargin=0pt,
+                                            innerleftmargin=1pt,
+                                            innerrightmargin=1pt,
                                         ]
                                         {definition}
                                         {\noindent\bf 定义}
@@ -207,13 +209,15 @@
                                     {\noindent\bf 例}
                                     [chapter]
 \renewenvironment*{proof}
-                {{\par\noindent\bf Proof:\,}}
+                {{\par\noindent\bf Proof:\,}\color{light-black}}
                 {\hfill $\square$\par}
 
-\newenvironment*{note}
+\newenvironment{note}
                 {%开始部分定义
-                    \par\noindent
-                    \color{blue}{\bf{\S Note:}}
+                    \par\noindent\makebox[-3pt][r]{
+                        \scriptsize\color{red!90}\textdbend\quad
+                    }
+                    \textbf{\color{red}Note} \kaishu
                 }
                 {\par}%结束部分定义
 
@@ -259,6 +263,7 @@
 \setCJKfamilyfont{song}{SimSun}                   % 宋体 song
 \setCJKfamilyfont{hei}{SimHei}                    % 黑体  hei
 \setCJKfamilyfont{hwxh}{STXihei}                  % 华文细黑  hwxh
+\setCJKfamilyfont{zhkai}{KaiTi}
 
 \newcommand*{\song}{\CJKfamily{song}}
 \newcommand*{\tnr}{\CJKfamily{tnr}}                     
@@ -266,6 +271,7 @@
 \newcommand*{\msyh}{\CJKfamily{yh}}  
 \newcommand*{\hei}{\CJKfamily{hei}}     
 \newcommand*{\hwxh}{\CJKfamily{hwxh}}
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}
 
 \setmainfont{Times New Roman}                       % 全局英文字体
 \setCJKmainfont[ItalicFont={KaiTi}]{SimSun}         % 全局中文字体
@@ -276,7 +282,7 @@
 \RequirePackage{CJKfntef}
 
 % \RequirePackage{mathpazo}
-% \RequirePackage{fontspec}
+\RequirePackage[no-math]{fontspec}
 % \newfontfamily\jbmr{JetBrainsMono Regular}
 
 

@@ -1,4 +1,12 @@
-\chapter{坐标系与矢量分析\label{chapter:reference}}
+\chapter{数学基础\label{chapter:reference}}
+
+\section{微分}
+\begin{note}
+    函数$f(x_1, x_2, x_3\cdots)$包含多个变量时，其对自己的全导数为
+    \begin{equation}
+        \frac{d f}{d f} = \sum_{i} \frac{\partial f}{\partial x_i} \frac{\partial x_i}{\partial f}
+    \end{equation}
+\end{note}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cartesian坐标系与矢量\label{section:reference-cartesian}}
@@ -494,3 +502,166 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \section{一些重要结论}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 列出一些经常用到的公式计算结果及证明.
+
+%%%%%%%%%%%%%
+\section{行列式}
+
+\subsection{余子式}
+对$n$阶行列式$|\bm{A}|$，去掉其矩阵元$a_{ij}$所在行和列的所有元素后，留下的$n-1$阶行列式$|\bm{M}_{ij}|$为矩阵元$a_{ij}$对应的余子式。
+
+\begin{example}
+    $|\bm{A}|$是$3\times 3$的矩阵
+    \begin{equation*}
+    |\bm{A}| = \begin{vmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23} \\
+        a_{31} & a_{32} & a_{33}
+    \end{vmatrix}
+    \end{equation*}
+    其矩阵元$a_{11}$对应的余子式为
+    \begin{equation*}
+    |\bm{M}_{ij}| = \begin{vmatrix}
+        a_{22} & a_{23} \\
+        a_{32} & a_{33}
+    \end{vmatrix}
+    \end{equation*}
+\end{example}
+
+%%%%%%%%%%%
+\subsection{代数余子式}
+矩阵元$a_{ij}$对应的代数余子式表示为
+\begin{equation}
+    |\bm{A}_{ij}| = (-)^{i+j} |\bm{M}_{ij}|
+\end{equation}
+
+\section{矩阵}
+
+定义$\bm{I}$为单位矩阵
+\begin{equation}
+    \bm{I} = \begin{pmatrix}
+        1 &   &          \\
+          & 1 &          \\
+          &   &  \ddots  \\
+    \end{pmatrix}
+\end{equation}
+
+\paragraph*{矩阵的一些约定}
+\begin{enumerate}
+    \item 矩阵用粗体大写字母或圆括号包裹其中元素(对应的小写字母，下表表示对应的行和列)表示
+        \begin{equation}
+            \bm{A} = (a_{ij})
+        \end{equation}
+    \item 转置矩阵 $\bm{A}^{T}$ 或 $(a^{T}_{ij})$
+    \item 逆矩阵 $\bm{A}^{-1}$ 或 $(a^{-1}_{ij})$。
+    \item 伴随矩阵 $\bm{A}^{adj}$。
+\end{enumerate}
+
+%%%%%%%%%%%%
+\subsection{伴随矩阵}
+矩阵$\bm{A}$的伴随矩阵用其代数余子式表示为
+\begin{equation}
+    \bm{A}^{adj} = \begin{pmatrix}
+        |\bm{A}_{11}| & |\bm{A}_{21}| & \cdots & |\bm{A}_{n1}| \\
+        |\bm{A}_{12}| & |\bm{A}_{22}| & \cdots & |\bm{A}_{n2}| \\
+        \vdots        & \vdots        & \ddots & \vdots        \\
+        |\bm{A}_{1n}| & |\bm{A}_{2n}| & \cdots & |\bm{A}_{nn}|
+    \end{pmatrix}
+    \label{eq:adjoint-mat}
+\end{equation}
+其跟矩阵$\bm{A}$的关系为
+\begin{equation}
+    \bm{A}\bm{A}^{adj} = |\bm{A}|\bm{I}
+    \label{eq:corr-mat-adjmat}
+\end{equation}
+
+%%%%%%%%%%%%
+\subsection{逆矩阵}
+矩阵$\bm{A}$的逆矩阵$\bm{A}^{-1}$满足
+\begin{equation}
+    \bm{A}\bm{A}^{-1} = \bm{A}^{-1}\bm{A} = \bm{I}
+    \label{eq:inverse-mat}
+\end{equation}
+根据\cref{eq:corr-mat-adjmat,eq:inverse-mat}，伴随矩阵与逆矩阵矩阵元$a^{-1}_{ij}$间的关系为
+\begin{equation}\boxed{
+        a^{-1}_{ij} = \frac{\bm{A}^{adj}_{ji}}{|\bm{A}|}
+    \label{eq:corr-adjmat-invmat}
+}\end{equation}
+
+\section{本征值与本征矢}
+
+\begin{definition}[本征值与本征矢]
+  $\bm{A}$是$n$阶方阵，若存在数$\lambda$和非零矢量$\bm{x}$，使得$\bm{Ax}=\lambda \bm{x}$ ($\bm{x}\neq \bm{0}$)，则$\lambda$为方阵$\bm{A}$的本征值，$\bm{x}$为对应的本征矢。
+\end{definition}
+
+\section{矩阵的迹}
+矩阵的迹为其对角元之和，矩阵的迹又如下性质：
+\begin{enumerate}
+\item Linear property:
+\begin{equation}
+    {\rm Tr}(A+B) = {\rm Tr}(A) +{\rm Tr}(B)  \label{tracelinear}
+\end{equation}
+
+\item Multiplicity property:
+\begin{equation}
+    {\rm Tr}(cA) = c{\rm Tr}(A)  \label{tracemulti}
+\end{equation}
+
+\item Cyclic property:
+\begin{equation}
+  \begin{aligned}
+    {\rm Tr}(AB) =& {\rm Tr}(BA)\\  \label{tracecyclic}
+    {\rm Tr}[A,B]C =& {\rm Tr}A[B,C]
+  \end{aligned}
+\end{equation}
+\end{enumerate}
+
+
+\section{The Jacobi identity}
+\begin{theorem}{The Jacobi identity}{}
+  For three matrices $A, B$ and $C$, we have the identical relation
+  \begin{equation}
+    \left[A, [B,C]\right] + \left[C, [A,B]\right] + \left[B, [C,A]\right] = 0 \label{Jacobidentity}
+  \end{equation}
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{行列式的导数}
+
+\subsection{行列式对矩阵元的导数}
+方阵$\bm{A}$对应的行列式为$|\bm{A}|$，它可以写成代数余子式$\bm{C_{ij}}$的求和
+\begin{equation}
+    |\bm{A}| = \sum_{j} a_{ij} |\bm{A}_{ij}|
+    \label{eq:rep-cofactor}
+\end{equation}
+这样，该行列式对其中某一元素的导数为
+\begin{equation}\boxed{
+    \frac{\partial |\bm{A}|}{\partial a_{ij}} = \sum_{j} \frac{\partial \left(a_{ij} |\bm{A}_{ij}|\right)}{\partial a_{ij}} = |\bm{A}_{ij}|
+    \label{eq:Det-part-elem}
+}\end{equation}
+上述表明行列式对某一元素的导数为其元素对应的代数余子式。
+
+\subsection{行列式对其他变量的导数}
+行列式中所有元素都是变量$t$的函数：$a_{ij}(t)$。由\cref{eq:Det-part-elem}，根据变量$t$的求导用连续偏导方程展开
+\begin{equation*}
+    \frac{d |\bm{A}|}{d t} = \sum_{ij} \frac{\partial |\bm{A}|}{\partial a_{ij}} \frac{\partial a_{ij}}{\partial t} = \sum_{ij} |\bm{A}_{ij}| \frac{\partial a_{ij}}{\partial t} = |\bm{A}| \sum_{ij} \frac{|\bm{A}_{ij}|}{|\bm{A}|} \frac{d a_{ij}}{d t}
+\end{equation*}
+$\cfrac{d a_{ij}}{d t}$是$\cfrac{d \bm{A}}{d t}$的矩阵元，根据\cref{eq:corr-adjmat-invmat}，上式最后一个等号改写为
+\begin{equation*}
+    |\bm{A}| \sum_{ji} (a)^{-1}_{ji} \left(\frac{d \bm{A}}{d t}\right)_{ij}
+    =
+    |\bm{A}| \sum_{j} \left( \bm{A}^{-1} \frac{d \bm{A}}{d t} \right)_{jj}
+    = 
+    |\bm{A}| {\rm Tr} \left( \bm{A}^{-1} \frac{d \bm{A}}{d t} \right)
+\end{equation*}
+所以最后有
+\begin{equation}\boxed{
+    \frac{d |\bm{A}|}{d t} = 
+    |\bm{A}| {\rm Tr} \left( \bm{A}^{-1} \frac{d \bm{A}}{d t} \right)
+    \label{eq:mat-der-var}
+}\end{equation}
+
+由\cref{eq:mat-der-var}可知，包含对数的求导$\cfrac{d \ln{|\bm{A}|}}{d t}$的求导过程为
+\begin{equation}\boxed{
+    \frac{\ln{|\bm{A}|}}{d t} = \frac{1}{|\bm{A}|} \frac{d |\bm{A}|}{d t} = {\rm Tr} \left( \bm{A}^{-1} \frac{d \bm{A}}{d t} \right)
+    \label{eq:det-log-dev}
+}\end{equation}
