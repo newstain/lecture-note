@@ -178,6 +178,7 @@ $AB$和$BA$表示不同的操作，一般不相等，除非其中一个为单位
 	\begin{aligned}
 		A^{-1} &= \tilde{A} \\
 		\tilde{A}A = A^{-1}&A = AA^{-1} = \bm{1}
+        \label{eq:orth-mat-qualification}
 	\end{aligned}
 \end{equation}
 以上推得正交矩阵行列式的规则
@@ -186,8 +187,127 @@ $AB$和$BA$表示不同的操作，一般不相等，除非其中一个为单位
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-\section{欧拉角}
-欧拉角用于描述一个物体定点转动。转动矩阵的行列式的值为$+1$。
+\section{Euler角}
+\CJKunderline{欧拉角可以描述一个物体定点转动，也可以描述两个坐标系之间的转动变换，其转动矩阵的行列式的值为$+1$。}欧拉角有$x$-convention和$y$-convention两种，其常用领域有所不同。
+
+\subsection{\texorpdfstring{$x-$}convention下的Euler角}
+$x$-convetion的欧拉角操作如\cref{fig:x-euler-ang}所示。欧拉角变换可分3步进行操作：
+\begin{enumerate}
+    \item 从初始的笛卡尔坐标$xyz$开始，先绕$z$轴转动角度$\phi$（转动后的主轴重新标定为$x\rightarrow\xi$、$x\rightarrow\eta$和$z\rightarrow\zeta$），对应的变换矩阵为$\bm{A}$；
+    \item 绕主轴$\xi$转动角度$\theta$，转动后的主轴重新进行标定（$\xi\rightarrow\xi^{\prime}$、$\eta\rightarrow\eta^{\prime}$和$\zeta\rightarrow\zeta^{\prime}$），对应的变换矩阵为$\bm{B}$；
+    \item 最后一次是绕$\zeta^{\prime}$转动角度$\psi$，此时主轴变为$x^{\prime}\rightarrow z^{\prime}$、$\eta^{\prime}\rightarrow y^{\prime}$和$\zeta^{\prime}\rightarrow z^{\prime}$，对应的变换矩阵为$\bm{C}$。
+\end{enumerate}
+\begin{figure}[htb]
+    \centering
+    \setlength{\abovecaptionskip}{0.2cm}
+    \includegraphics[scale=0.6]{./figure/classical-mechanics/Eular-angle.eps}
+    \caption{$x$-convention的欧拉角。}
+    \label{fig:x-euler-ang}
+\end{figure}
+
+通过完成上述操作，我们最终实现从$xyz\rightarrow x^{\prime}y^{\prime}z^{\prime}$的空间转换。以上操作也可以通过某一个转动变化直接实现，其对应的变换矩阵为$\bm{R}$，则应有如下关系成立：
+\begin{equation}
+    \bm{R} = \bm{CBA}
+\end{equation}
+\begin{note}
+    这里的物理意义很明显，这些矩阵均表示一个转动操作，我们直接将其作用的$xyz$坐标系的基矢上，会发现$\bm{Ax}$作用后得到$\xi\eta\zeta$坐标系下的基矢，即
+    \begin{equation*}
+        \begin{pmatrix}
+            \vec{\bm{e}}_{\xi} \\
+            \vec{\bm{e}}_{\eta} \\
+            \vec{\bm{e}}_{\zeta} \\
+        \end{pmatrix}
+        =  \bm{A}
+        \begin{pmatrix}
+            \vec{\bm{e}}_{x} \\
+            \vec{\bm{e}}_{y} \\
+            \vec{\bm{e}}_{z} \\
+        \end{pmatrix}
+    \end{equation*}
+\end{note}
+
+$\bm{A}$矩阵对应为绕$z$轴的旋转，$\bm{B}$为绕$\xi$轴的转动，$\bm{C}$为绕$\zeta^{\prime}$轴的转动，其对应的变换为
+\begin{equation}
+    \bm{A} = \begin{pmatrix}
+        \cos{\phi} & \sin{\phi} & 0 \\
+        -\sin{\phi} & \cos{\phi} & 0 \\
+        0          & 0          & 0
+    \end{pmatrix}
+    \quad
+    \bm{B} = \begin{pmatrix}
+        1           & 0             & 0 \\
+        0           & \cos{\theta}  & \sin{\theta} \\
+        0           & -\sin{\theta} & \cos{\theta}
+    \end{pmatrix}
+    \quad
+    \bm{C} = \begin{pmatrix}
+        \cos{\psi} & \sin{\psi} & 0 \\
+        -\sin{\psi} & \cos{\psi} & 0 \\
+        0          & 0          & 0
+    \end{pmatrix}
+\end{equation}
+因此，矩阵$R$为
+\begin{equation}
+    \bm{R} = \bm{CBA}
+           = \begin{pmatrix}
+            \cos{\psi}\cos{\phi} - \cos{\theta}\sin{\phi}\sin{\psi} & \cos{\psi}\sin{\phi} + \cos{\theta}\cos{\phi}\sin{\psi} & \sin{\psi}\sin{\theta} \\
+            -\sin{\psi}\cos{\phi} - \cos{\theta}\sin{\phi}\cos{\psi} & -\sin{\psi}\sin{\phi} + \cos{\theta}\cos{\phi}\cos{\psi} & \cos{\psi}\sin{\theta} \\
+            \sin{\theta}\sin{\phi} & -\sin{\theta}\cos{\phi} & \cos{\theta}
+           \end{pmatrix}
+		   \label{eq:Euler-rot-mat}
+\end{equation}
+
+这里，$\bm{R}$为正交矩阵，其逆矩阵表示从$x^{\prime}y^{\prime}z^{\prime}$变换回$xyz$坐标系，根据\cref{eq:orth-mat-qualification}，有
+\begin{equation}
+    \bm{R}^{-1} = \tilde{\bm{R}}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{刚体运动中的Euler角}
+当刚体随时间发生，其变换矩阵$\bm{R}$也是关于时间的连续函数$\bm{R}(t)$。以下讨论基于$x$-convention下的欧拉角。
+\begin{theorem}[Euler定理]
+    固定一点的刚体的广义位移相当于刚体绕某一根轴的转动。
+\end{theorem}
+
+首先计算矩阵$\bm{R}$的本征值，将其作用到$xyz$的某一矢量上，对应的久期方程（或本征方程）为
+\begin{equation}
+    \vec{\bm{r}}^{\,\prime} = \bm{R}\vec{\bm{r}} = \lambda\vec{\bm{r}}
+\end{equation}
+\begin{note}
+    这个方程作用在$xyz$坐标系下表示的矢量$\vec{\bm{r}}$上，最后得到的矢量$\lambda\vec{\bm{r}}$依旧是用$xyz$坐标表示的，这表明本征方程中的矩阵$\bm{R}$的作用效果是坐标系自己和自己之间的变换，或者是对矢量$\vec{\bm{r}}^{\,\prime}$自己的操作。
+\end{note}
+
+上面的久期方程有非平庸解的条件是其行列式为0
+\begin{equation}
+    \begin{vmatrix}
+        r_{11} - \lambda & r_{12}           & r_{13} \\
+        r_{21}           & r_{22} - \lambda & r_{23} \\
+        r_{31}           & r_{32}           & r_{33} - \lambda \\
+    \end{vmatrix}
+    = 0
+    \label{eq:vec-tran-mat}
+\end{equation}
+\begin{note}
+    由于$\bm{R}$是正交矩阵，描述的是一种转动，欧拉定理指出其必定有本征值$\lambda = +1$，表示其经过转动不变。
+\end{note}
+下面对式\cref{eq:vec-tran-mat}进行求解。首先做一些定义：
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{无穷小转动}
+刚体无穷小转动时，其Euler角变化趋于0，即
+\begin{equation*}
+	\theta\rightarrow 0, \quad \phi\rightarrow 0, \quad \psi\rightarrow 0
+\end{equation*}
+取极限有
+\begin{equation*}
+	d\theta \equiv \lim_{\theta\rightarrow 0} \theta = \lim_{\theta\rightarrow 0} \sin{\theta}, \quad \lim_{\theta\rightarrow 0} \cos{\theta} = 1
+\end{equation*}
+上述关系对$\phi$和$\psi$同时成立，根据\cref{eq:Euler-rot-mat}，忽略高阶无穷小，这样，无穷小Euler转动角对应的变换矩阵$\bm{R}$可写为
+\begin{equation}
+	\bm{R} = \begin{pmatrix}
+		1                 &  (d\phi + d\psi)  &    0 \\
+		-(d\phi + d\psi)  &  1                & d\theta \\
+		0                 &  - d\theta        & 1
+	\end{pmatrix}
+\end{equation}

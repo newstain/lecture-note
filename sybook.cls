@@ -352,11 +352,12 @@
 
 % \RequirePackage{transparent}
 \RequirePackage{graphicx, float, subfig}
+\RequirePackage{graphics}
 \graphicspath{
               {./figure/}{./figure/math/}{./figure/symbols/}
               {./figure/electrodynamics}
               {./figure/nuclear}
-              {./classical-mechanics}
+              {./figure/classical-mechanics}
              }
 
 
@@ -436,37 +437,6 @@
 \newcommand{\balpha}{\bm{\alpha}}
 \newcommand{\bsigma}{\bm{\sigma}}
 
-\newcommand{\vbA}{\vec{\bm{A}}}
-\newcommand{\vbB}{\vec{\bm{B}}}
-\newcommand{\vbC}{\vec{\bm{C}}}
-\newcommand{\vbD}{\vec{\bm{D}}}
-\newcommand{\vbE}{\vec{\bm{E}}}
-\newcommand{\vbF}{\vec{\bm{F}}}
-\newcommand{\vbG}{\vec{\bm{G}}}
-\newcommand{\vbH}{\vec{\bm{H}}}
-\newcommand{\vbI}{\vec{\bm{I}}}
-\newcommand{\vbJ}{\vec{\bm{J}}}
-\newcommand{\vbK}{\vec{\bm{K}}}
-\newcommand{\vbL}{\vec{\bm{L}}}
-\newcommand{\vbM}{\vec{\bm{M}}}
-\newcommand{\vbN}{\vec{\bm{N}}}
-\newcommand{\vbO}{\vec{\bm{O}}}
-\newcommand{\vbP}{\vec{\bm{P}}}
-\newcommand{\vbQ}{\vec{\bm{Q}}}
-\newcommand{\vbR}{\vec{\bm{R}}}
-\newcommand{\vbS}{\vec{\bm{S}}}
-\newcommand{\vbT}{\vec{\bm{T}}}
-\newcommand{\vbU}{\vec{\bm{U}}}
-\newcommand{\vbV}{\vec{\bm{V}}}
-\newcommand{\vbW}{\vec{\bm{W}}}
-\newcommand{\vbX}{\vec{\bm{X}}}
-\newcommand{\vbY}{\vec{\bm{Y}}}
-\newcommand{\vbZ}{\vec{\bm{Z}}}
-
-\newcommand{\vba}{\vec{\bm{a}}}
-\newcommand{\vbb}{\vec{\bm{b}}}
-\newcommand{\vbc}{\vec{\bm{c}}}
-\newcommand{\vbd}{\vec{\bm{d}}}
 \newcommand{\vbe}{\vec{\bm{e}}}
 \newcommand{\vbf}{\vec{\bm{f}}}
 \newcommand{\vbg}{\vec{\bm{g}}}

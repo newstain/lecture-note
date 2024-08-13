@@ -32,73 +32,73 @@ Cartesian坐标系是直角坐标系和斜坐标系的统称。我们一般讨�
 
 \paragraph*{矢量操作}
 \begin{enumerate}
-    \item \textit{矢量加法}：矢量$\vbB$的尾叠在矢量$\vbA$的头上。一般表现为三角形
+    \item \textit{矢量加法}：矢量$\vec{\bm{b}}$的尾叠在矢量$\vec{\bm{a}}$的头上。一般表现为三角形
           规则或平行四边形规则。满足交换律和集合律
           \begin{align}
-              \vbA + \vbB &= \vbB + \vbA
+              \vec{\bm{a}} + \vec{\bm{b}} &= \vec{\bm{b}} + \vec{\bm{a}}
                                           \label{eq:vec-vec-add-exchang} \\
-              \vbA + (\vbB + \vbC) &= (\vbA + \vbB) + \vbC
+              \vec{\bm{a}} + (\vec{\bm{b}} + \vec{\bm{c}}) &= (\vec{\bm{a}} + \vec{\bm{b}}) + \vec{\bm{c}}
                                           \label{eq:vec-vec-add-combine}
           \end{align}
     \item \textit{标量与矢量乘法}：正值标量与矢量相乘只改变矢量大小不改变方向，负值标
           量与与矢量相乘改变矢量的大小和方向，$0$与矢量相乘永远标量为0。满足分配律
           \begin{equation}
               \begin{aligned}
-                  a(\vbA + \vbB) &= a\vbA + a\vbB \\
-                  (a + b) \vbA     &= a\vbA + b\vbA
+                  a(\vec{\bm{a}} + \vec{\bm{b}}) &= a\vec{\bm{a}} + a\vec{\bm{b}} \\
+                  (a + b) \vec{\bm{a}}     &= a\vec{\bm{a}} + b\vec{\bm{a}}
               \end{aligned}
             \label{eq:vec-distri}
           \end{equation}
     \item \textit{矢量与矢量点积}：两矢量点积定义为
            \begin{equation}
-               \vbA \cdot \vbB = |\vbA|\ |\vbB|\cos{\theta}
+               \vec{\bm{a}} \cdot \vec{\bm{b}} = |\vec{\bm{a}}|\ |\vec{\bm{b}}|\cos{\theta}
             \label{eq:vec-dotproduct}
            \end{equation}
-           $\theta$为$\vbA$与$\vbB$之间的夹角。满足交换律和分配律
+           $\theta$为$\vec{\bm{a}}$与$\vec{\bm{b}}$之间的夹角。满足交换律和分配律
            \begin{align}
-               \vbA \cdot \vbB &= \vbB \cdot \vbA
+               \vec{\bm{a}} \cdot \vec{\bm{b}} &= \vec{\bm{b}} \cdot \vec{\bm{a}}
                                            \label{eq:vec-vec-dot-exchange}   \\
-               \vbA \cdot (\vbB + \vbC) &= \vbA \cdot \vbB + \vbA \cdot \vbB
+               \vec{\bm{a}} \cdot (\vec{\bm{b}} + \vec{\bm{c}}) &= \vec{\bm{a}} \cdot \vec{\bm{b}} + \vec{\bm{a}} \cdot \vec{\bm{b}}
                                            \label{eq:vec-vec-dot-distri}
            \end{align}
     \item \textit{矢量与矢量叉积}：两矢量叉积定义为
           \begin{equation}
-              \vbA \times \vbB = |\vbA|\ |\vbB|\sin{\theta} \hat{\vbn}
+              \vec{\bm{a}} \times \vec{\bm{b}} = |\vec{\bm{a}}|\ |\vec{\bm{b}}|\sin{\theta} \hat{\vbn}
             \label{eq:vec-vec-cross}
           \end{equation}
-          $\theta$为$\vbA$与$\vbB$之间的夹角，$\hat{\vbn}$为同时垂直与$\vbA$和$\vbB$的单
+          $\theta$为$\vec{\bm{a}}$与$\vec{\bm{b}}$之间的夹角，$\hat{\vbn}$为同时垂直与$\vec{\bm{a}}$和$\vec{\bm{b}}$的单
           位矢量。满足分配律
           \begin{equation}
-              \vbA \times(\vbB + \vbC) = \vbA \times \vbB + \vbA \times \vbC
+              \vec{\bm{a}} \times(\vec{\bm{b}} + \vec{\bm{c}}) = \vec{\bm{a}} \times \vec{\bm{b}} + \vec{\bm{a}} \times \vec{\bm{c}}
                                             \label{eq:vec-vec-cross-distri}
           \end{equation}
           不满足交换律，但有
           \begin{equation}
-              \vbA \times \vbB = - \vbB \times \vbA
+              \vec{\bm{a}} \times \vec{\bm{b}} = - \vec{\bm{b}} \times \vec{\bm{a}}
             \label{eq:vec-vec-cross-exchange}
           \end{equation}
-          $\vbA$与$\vbB$的叉积可理解为边长为$A$和$B$的平行四边形的面积，在乘上此
+          $\vec{\bm{a}}$与$\vec{\bm{b}}$的叉积可理解为边长为$A$和$B$的平行四边形的面积，在乘上此
           四边形法向的单位向量。
       \item \textit{混合积1}：
             \begin{equation}
                 \begin{aligned}
-                    (\vbA \times \vbB) \cdot \vbC 
-                                        =& (\vbB \times \vbC) \cdot \vbA \\
-                                        =& (\vbC \times \vbA) \cdot \vbB \\
-                                        =&-(\vbB \times \vbA) \cdot \vec{C} \\
-                                        =&-(\vbC \times \vbB) \cdot \vbA \\
-                                        =&-(\vbA \times \vbC) \cdot \vbB \\
+                    (\vec{\bm{a}} \times \vec{\bm{b}}) \cdot \vec{\bm{c}} 
+                                        =& (\vec{\bm{b}} \times \vec{\bm{c}}) \cdot \vec{\bm{a}} \\
+                                        =& (\vec{\bm{c}} \times \vec{\bm{a}}) \cdot \vec{\bm{b}} \\
+                                        =&-(\vec{\bm{b}} \times \vec{\bm{a}}) \cdot \vec{\bm{c}} \\
+                                        =&-(\vec{\bm{c}} \times \vec{\bm{b}}) \cdot \vec{\bm{a}} \\
+                                        =&-(\vec{\bm{a}} \times \vec{\bm{c}}) \cdot \vec{\bm{b}} \\
                 \end{aligned}
                 \label{eq:vec-vec-vec-mix1}
             \end{equation}
             \CJKunderdot{注意}：上式第一个等号右边的乘积顺序是
-            $\vbA \rightarrow \vbB \rightarrow \vbC$，前两个等号右边式子从$\vbA$开始也遵
+            $\vec{\bm{a}} \rightarrow \vec{\bm{b}} \rightarrow \vec{\bm{c}}$，前两个等号右边式子从$\vec{\bm{a}}$开始也遵
             循同样的规律，因此其前面符号为正；最后三个等号从$\vec{A}$开始的顺序为
-            $\vbA \rightarrow \vbC \rightarrow \vbB$，顺序不再与第一个式子相同，
+            $\vec{\bm{a}} \rightarrow \vec{\bm{c}} \rightarrow \vec{\bm{b}}$，顺序不再与第一个式子相同，
             出现负号。
       \item \textit{混合积2}：
           \begin{equation}
-          \vbA \times (\vbB \times \vbC) = \vbB(\vbA \cdot \vbC) - \vbC(\vbA \cdot \vbB)
+          \vec{\bm{a}} \times (\vec{\bm{b}} \times \vec{\bm{c}}) = \vec{\bm{b}}(\vec{\bm{a}} \cdot \vec{\bm{c}}) - \vec{\bm{c}}(\vec{\bm{a}} \cdot \vec{\bm{b}})
                                                         \label{eq:vec-vec-vec-mix2}
           \end{equation}
 \end{enumerate}
@@ -218,7 +218,7 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \CJKunderdot{有关散度的基本定理}：散度定理又称为高斯定理、格林定理，表示为
 \begin{equation}
     \int_{V} (\nabla \cdot \vbv)\ \mathrm{d} \tau
-                         = \oint_{S} \vbv \cdot \mathrm{d} \vba
+                         = \oint_{S} \vbv \cdot \mathrm{d} \vec{\bm{a}}
     \label{eq:div-basetheo}
 \end{equation}
 它指出，一个矢量函数散度在区域的体积分可以转化该矢量函数在该区域边界上的面积分值。我
@@ -251,16 +251,17 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
     \label{fig:vec-curl}
 \end{figure}
 
+%%%%%%%%%%%%%%%%
 \subsection{积规则}
 针对$\nabla$算符，标量由两种方式构建：
 \begin{center}
     $fg$ \\
-    $\vbA\vbB$
+    $\vec{\bm{a}}\vec{\bm{b}}$
 \end{center}
 矢量由两种方式构建：
 \begin{center}
-    $f\vbA$ \\
-    $\vbA \times \vbB$
+    $f\vec{\bm{a}}$ \\
+    $\vec{\bm{a}} \times \vec{\bm{b}}$
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -345,7 +346,7 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \end{equation}
 
 \paragraph*{球坐标到Cartesian坐标的转换}
-球坐标上某一点$\vbP(r, \theta, \phi)$变换到Cartesian坐标的变换公式为
+球坐标上某一点$\vec{\bm{P}}(r, \theta, \phi)$变换到Cartesian坐标的变换公式为
 \begin{equation}
     \begin{aligned}
         \vbe_{x} 
@@ -414,9 +415,9 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 量(axial vectors)}；标量分为\textbf{标量(scalar)}、\textbf{赝标量(pseudoscalar)}。
 
 \paragraph*{极矢量}
-对任意矢量$\vbV$，若宇称变换矩阵$\bm{P}$作用后使其符号发生改变，将其定义为极矢量，如下：
+对任意矢量$\vec{\bm{V}}$，若宇称变换矩阵$\bm{P}$作用后使其符号发生改变，将其定义为极矢量，如下：
 \begin{equation}
-    \bm{P} \vbV = -\vbV
+    \bm{P} \vec{\bm{V}} = -\vec{\bm{V}}
     \label{eq:polar-vector}
 \end{equation}
 如位置矢量$\vbr$和速度矢量$\vbv$。
@@ -424,13 +425,13 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \paragraph*{赝矢量(轴矢量)}
 赝矢量定义为两个极矢量的叉乘
 \begin{equation}
-    \vbV^{\ast} = \vbV_1 \times \vbV_2
+    \vec{\bm{V}}^{\ast} = \vec{\bm{V}}_1 \times \vec{\bm{V}}_2
     \label{eq:pesudovectors-def}
 \end{equation}
 如角动量$\vbl = \vbr \times \vbp$就是赝矢量，其特征就是当宇称矩阵$\bm{P}$作用其上不改变它的
 符号：
 \begin{equation}
-    \bm{P} \vbV^{\ast} = (\bm{P} \vbV_1) \times (\bm{P} \vbV_1) = \vbV^{\ast}
+    \bm{P} \vec{\bm{V}}^{\ast} = (\bm{P} \vec{\bm{V}}_1) \times (\bm{P} \vec{\bm{V}}_1) = \vec{\bm{V}}^{\ast}
     \label{eq:pesudovec-parity}
 \end{equation}
 例如，角动量$\vbl = \vbr \times \vbp$是一个赝矢量，它由位置矢量$\vbr$和动量矢量$\vbp$这两
@@ -452,13 +453,13 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \paragraph*{赝标量}
 赝标量$S^{\ast}$定义为
 \begin{equation}
-    S^{\ast} = \vbV \cdot \vbV^{\ast}
+    S^{\ast} = \vec{\bm{V}} \cdot \vec{\bm{V}}^{\ast}
     \label{eq:pseudoscalar-def}
 \end{equation}
 如此，宇称变换算符$\bm{P}$作用后，赝标量符号改变
 \begin{equation}
-    \bm{P} S^{\ast} = \bm{P} (\vbV \cdot \vbV^{\ast}) = (\bm{P} \vbV) \cdot (\bm{P}\vbV^{\ast})
-                  = -\vbV \cdot \vbV^{\ast} = -S^{\ast}
+    \bm{P} S^{\ast} = \bm{P} (\vec{\bm{V}} \cdot \vec{\bm{V}}^{\ast}) = (\bm{P} \vec{\bm{V}}) \cdot (\bm{P}\vec{\bm{V}}^{\ast})
+                  = -\vec{\bm{V}} \cdot \vec{\bm{V}}^{\ast} = -S^{\ast}
     \label{eq:pseudoscalar-prop1}
 \end{equation}
 
@@ -467,15 +468,15 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \section{矢量场理论}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{势函数}
-若一个矢量场$\vbF$的旋度处处为0，则$\vbF$可表示为一个标量势$V$的梯度
+若一个矢量场$\vec{\bm{f}}$的旋度处处为0，则$\vec{\bm{f}}$可表示为一个标量势$V$的梯度
 \begin{equation}
-    \nabla \times \vbF = 0 \Leftrightarrow \vbF = -\nabla V
+    \nabla \times \vec{\bm{f}} = 0 \Leftrightarrow \vec{\bm{f}} = -\nabla V
     \label{eq:scalar-poten}
 \end{equation}
 \begin{proof}
     必要性，上面左边等式
     \begin{equation*}
-        \vbF = - \nabla V = -\vbe_x \frac{\partial V_x}{\partial x}
+        \vec{\bm{f}} = - \nabla V = -\vbe_x \frac{\partial V_x}{\partial x}
                             -\vbe_y \frac{\partial V_y}{\partial y}
                             -\vbe_z \frac{\partial V_z}{\partial z}
     \end{equation*}
@@ -494,7 +495,7 @@ $|\nabla T|$代表这个最大增加方向的斜率。同样的，梯度为$0$�
 \begin{theorem}[无旋场]
     以下条件等价：
     \begin{enumerate}
-        \item 对任何一点满足$\nabla \times \vbF = 0$;
+        \item 对任何一点满足$\nabla \times \vec{\bm{f}} = 0$;
     \end{enumerate}
 \end{theorem}
 
@@ -665,3 +666,69 @@ $\cfrac{d a_{ij}}{d t}$是$\cfrac{d \bm{A}}{d t}$的矩阵元，根据\cref{eq:c
     \frac{\ln{|\bm{A}|}}{d t} = \frac{1}{|\bm{A}|} \frac{d |\bm{A}|}{d t} = {\rm Tr} \left( \bm{A}^{-1} \frac{d \bm{A}}{d t} \right)
     \label{eq:det-log-dev}
 }\end{equation}
+
+%%%%%%%%%%%%%%
+\section{坐标变换}
+
+\subsection{矩阵描述的坐标变换}
+二维Cartesian坐标变换如\cref{fig:2dimCartesianCoordTrans}所示，表示$xOy$坐标系（基矢为$\vec{\bm{e}}_{x}$和$\vec{\bm{e}}_{y}$）绕坐标原点逆时针旋转$\theta$角后变为$x^{\prime}O^{\prime}y^{\prime}$坐标系（基矢为$\vec{\bm{e}}_{x}^{\prime}$和$\vec{\bm{e}}_{y}{\prime}$）。
+\begin{figure}[htb]
+    \centering
+    \setlength{\abovecaptionskip}{0.2cm}
+    \includegraphics[scale=0.8]{figure/math/2dim-transform.eps}
+    \caption{二维Cartesian坐标变换。}
+    \label{fig:2dimCartesianCoordTrans}
+\end{figure}
+
+上述坐标变为相当于对基矢进行变化，从$xOy\Rightarrow x^{\prime}O^{\prime}y^{\prime}$的变换方程为
+\begin{equation}\begin{aligned}
+    \vec{\bm{e}}_{x}^{\,\prime} =& \vec{\bm{e}}_{x}\cos{\theta} + \vec{\bm{e}}_{y}\sin{\theta} \\
+    \vec{\bm{e}}_{y}^{\,\prime} =& -\vec{\bm{e}}_{x}\sin{\theta} + \vec{\bm{e}}_{y}\cos{\theta}
+    \label{eq:rot-char-eq}
+\end{aligned}\end{equation}
+其对应的逆变换（$x^{\prime}O^{\prime}y^{\prime} \Rightarrow xOy$）为
+\begin{equation}\begin{aligned}
+    \vec{\bm{e}}_{x} =& \vec{\bm{e}}_{x}^{\,\prime}\cos{\theta} - \vec{\bm{e}}_{y}^{\,\prime}\sin{\theta} \\
+    \vec{\bm{e}}_{y} =& \vec{\bm{e}}_{x}^{\,\prime}\sin{\theta} + \vec{\bm{e}}_{y}^{\,\prime}\cos{\theta}
+    \label{eq:inver-rot-char-eq}
+\end{aligned}\end{equation}
+
+此变换可用矩阵来表示，假定矩阵$\bm{R}(\theta)$的作用是将矢量绕原点逆时针旋转$\theta$角（表示方程\cref{eq:rot-char-eq}），则$\bm{R}^{-1}(\theta) = \bm{R}(-\theta)$表示将矢量绕坐标原点顺时针旋转$\theta$角（表示\cref{eq:inver-rot-char-eq}），则\cref{fig:2dimCartesianCoordTrans}中坐标系的变换可写为
+\begin{equation}
+    \bm{R}(\theta) = \begin{pmatrix}
+        \cos{\theta} & \sin{\theta} \\
+        -\sin{\theta} & \cos{\theta}
+    \end{pmatrix},
+    \qquad
+    \bm{R}^{-1}(\theta) = \bm{R}(-\theta) = \begin{pmatrix}
+        \cos{\theta} & -\sin{\theta} \\
+        \sin{\theta} & \cos{\theta}
+    \end{pmatrix}
+\end{equation}
+因此\cref{eq:rot-char-eq,eq:inver-rot-char-eq}又可用矩阵表述为如下形式
+\begin{equation*}
+    \begin{pmatrix}
+        \vec{\bm{e}}_{x} \\
+        \vec{\bm{e}}_{y}
+    \end{pmatrix}
+    = \bm{R} \begin{pmatrix}
+        \vec{\bm{e}}_{x}^{\,\prime} \\
+        \vec{\bm{e}}_{y}^{\,\prime}
+    \end{pmatrix},
+    \qquad
+    \begin{pmatrix}
+        \vec{\bm{e}}_{x}^{\,\prime} \\
+        \vec{\bm{e}}_{y}^{\,\prime}
+    \end{pmatrix}
+    = \bm{R}^{-1} \begin{pmatrix}
+        \vec{\bm{e}}_{x} \\
+        \vec{\bm{e}}_{y}
+    \end{pmatrix}
+\end{equation*}
+
+\subsection{用复数表示的转动}
+用复数可以表示绕定点或定轴的转动。具体可参考\href{https://www.cnblogs.com/noluye/p/11964513.html}{网页链接}。二维空间中可认为是绕$z$轴或原点的转动，三维空间中可描述在垂直于定轴的平面上的转动。
+
+此时，转动算符$\bm{R}(\theta)$与${\rm e}^{i\theta}$的作用是一致的。
+
+\section{张量}
